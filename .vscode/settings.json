@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Khruchevka.sln"
+    "dotnet.defaultSolution": "KONTURGameJam2026.sln"
 }
