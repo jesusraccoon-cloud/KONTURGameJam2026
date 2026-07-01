@@ -1,6 +1,6 @@
 # Khruchevka — Solo Indie Horror Project
 
-Solo indie horror project developed in Unity using C#.
+ indie horror project developed in Unity using C#.
 
 The project is an atmospheric VHS/PS1-style horror game inspired by post-Soviet apartment blocks, analog video aesthetics and urban horror.  
 The main focus is exploration, tension, interactive environment, anomalies and simple survival-horror mechanics.
