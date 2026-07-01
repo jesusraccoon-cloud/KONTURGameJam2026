@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{5f111800-a9b0-4f6f-bfaa-4ac4e5e48cee}">
+		<property name="assetPath">
+			<value>Sounds/Door/Open/Doors, Wood, Slowly Open and Shut, Old, Creaks, Crioaks and Rattle Perspective 01 SND144430 S00.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>4.6108750000000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{64d47a68-0926-4226-ac5b-0f9c721261eb}</destination>
+		</relationship>
+	</object>
+</objects>
