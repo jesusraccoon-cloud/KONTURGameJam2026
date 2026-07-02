@@ -1,110 +1,175 @@
-using UnityEngine; // Подключаем основные Unity-классы
-using UnityEngine.UI; // Подключаем UI Image для красной полоски
-using TMPro; // Подключаем TextMeshPro для текста 0/10
+using UnityEngine; // Подключаем Unity-классы
+using UnityEngine.UI; // Подключаем UI Image
+using TMPro; // Подключаем TextMeshPro
 
 public class NoiseMeterUI : MonoBehaviour // Скрипт визуальной шкалы шума игрока
 {
     [Header("UI References")] // Блок ссылок UI
-    public TMP_Text noiseText; // Текст под шкалой, например 0/10
+    public TMP_Text noiseText; // Текст шума
 
-    public Image noiseFillImage; // Красная полоска заполнения шума
+    public Image noiseFillImage; // Красная полоска шума
 
     [Header("Main Settings")] // Главные настройки
-    [Range(0, 10)] public int currentNoise = 0; // Текущий отображаемый шум от 0 до 10
+    [Range(0, 10)] public int currentNoise = 0; // Текущий шум
 
-    public int maxNoise = 10; // Максимальное значение шума
+    public int maxNoise = 10; // Максимальный шум
 
-    [Header("Fade Settings")] // Настройки плавного затухания
-    public bool autoFadeToZero = true; // Нужно ли шуму плавно спадать до нуля
+    [Header("Fade Settings")] // Настройки спада
+    public bool autoFadeToZero = true; // Спадать ли к нулю
 
-    public float fadeDelay = 0.25f; // Задержка перед началом спада
+    public float fadeDelay = 0.25f; // Задержка перед спадом
 
-    public float fadeDuration = 1.5f; // За сколько секунд шум должен упасть с 10 до 0
+    public float fadeDuration = 1.5f; // Длительность спада
 
-    [Header("Noise Mixing Settings")] // Настройки смешивания шума
-    public bool allowNoiseMixing = true; // Разрешить ли смешивание нескольких шумов
+    [Header("Noise Mixing Settings")] // Настройки смешивания
+    public bool allowNoiseMixing = true; // Разрешить смешивание
 
-    [Range(0, 10)] public int mixBonus = 2; // Бонус, если новый шум пришёл поверх старого
+    [Range(0, 10)] public int mixBonus = 2; // Бонус смешивания
 
-    private float visualNoise = 0f; // Плавное внутреннее значение шума
+    [Header("Locked Noise")] // Заблокированный постоянный шум
+    public bool isNoiseLocked = false; // Заблокирован ли шум
 
-    private float lastNoiseTime = -999f; // Время последнего полученного шума
+    [Range(0, 10)] public int lockedNoiseValue = 0; // Значение заблокированного шума
 
-    private void Start() // Вызывается при старте сцены
+    private float visualNoise = 0f; // Плавное значение шума
+
+    private float lastNoiseTime = -999f; // Время последнего шума
+
+    private void Start() // При старте
     {
-        visualNoise = currentNoise; // Синхронизируем плавное значение с текущим шумом
+        visualNoise = currentNoise; // Синхронизируем значение
 
-        UpdateUI(); // Обновляем интерфейс
+        UpdateUI(); // Обновляем UI
     }
 
-    private void Update() // Вызывается каждый кадр
+    private void Update() // Каждый кадр
     {
-        HandleFade(); // Обрабатываем плавное затухание шума
+        HandleLockedNoise(); // Проверяем заблокированный шум
+
+        HandleFade(); // Обрабатываем спад
     }
 
-    private void HandleFade() // Метод плавного затухания шума
+    private void HandleLockedNoise() // Удерживает шум, если он заблокирован
     {
-        if (!autoFadeToZero) return; // Если автоспад выключен, ничего не делаем
+        if (!isNoiseLocked) return; // Если блокировки нет — выходим
 
-        if (Time.time < lastNoiseTime + fadeDelay) return; // Ждём задержку перед спадом
+        currentNoise = Mathf.Clamp(lockedNoiseValue, 0, maxNoise); // Ставим текущее значение
 
-        if (visualNoise <= 0f) return; // Если шум уже ноль, ничего не делаем
+        visualNoise = currentNoise; // Ставим визуальное значение
 
-        float fadeSpeed = maxNoise / Mathf.Max(0.01f, fadeDuration); // Считаем скорость спада
+        lastNoiseTime = Time.time; // Обновляем время, чтобы спад не начинался
 
-        visualNoise = Mathf.MoveTowards(visualNoise, 0f, fadeSpeed * Time.deltaTime); // Плавно двигаем шум к нулю
-
-        currentNoise = Mathf.RoundToInt(visualNoise); // Округляем значение для текста
-
-        UpdateUI(); // Обновляем шкалу и текст
+        UpdateUI(); // Обновляем UI
     }
 
-    public void SetNoise(int value) // Установить шум напрямую
+    private void HandleFade() // Плавный спад
     {
-        value = Mathf.Clamp(value, 0, maxNoise); // Ограничиваем значение от 0 до 10
+        if (isNoiseLocked) return; // Если шум заблокирован — не спадаем
 
-        currentNoise = value; // Записываем текущий шум
+        if (!autoFadeToZero) return; // Если автоспад выключен — выходим
 
-        visualNoise = value; // Сразу выставляем визуальное значение
+        if (Time.time < lastNoiseTime + fadeDelay) return; // Ждём задержку
 
-        lastNoiseTime = Time.time; // Запоминаем время последнего шума
+        if (visualNoise <= 0f) return; // Если уже ноль — выходим
 
-        UpdateUI(); // Обновляем интерфейс
+        float fadeSpeed = maxNoise / Mathf.Max(0.01f, fadeDuration); // Скорость спада
+
+        visualNoise = Mathf.MoveTowards(visualNoise, 0f, fadeSpeed * Time.deltaTime); // Двигаем к нулю
+
+        currentNoise = Mathf.RoundToInt(visualNoise); // Округляем
+
+        UpdateUI(); // Обновляем UI
     }
 
-    public void AddNoise(int value) // Добавить шум с ограниченным смешиванием
+    public void SetNoise(int value) // Установить шум
     {
-        value = Mathf.Clamp(value, 0, maxNoise); // Ограничиваем входящий шум
+        if (isNoiseLocked) return; // Если шум заблокирован — обычный шум не перебивает
+
+        value = Mathf.Clamp(value, 0, maxNoise); // Ограничиваем
+
+        currentNoise = value; // Записываем шум
+
+        visualNoise = value; // Записываем визуально
+
+        lastNoiseTime = Time.time; // Запоминаем время
+
+        UpdateUI(); // Обновляем UI
+    }
+
+    public void AddNoise(int value) // Добавить шум
+    {
+        if (isNoiseLocked) return; // Если шум заблокирован — обычный шум не перебивает
+
+        value = Mathf.Clamp(value, 0, maxNoise); // Ограничиваем вход
 
         if (!allowNoiseMixing) // Если смешивание выключено
         {
-            SetNoise(Mathf.Max(currentNoise, value)); // Просто показываем самый сильный шум
+            SetNoise(Mathf.Max(currentNoise, value)); // Ставим сильнейший шум
 
             return; // Выходим
         }
 
-        int mixedNoise = Mathf.Max(currentNoise, value); // Берём самый сильный из текущего и нового шума
+        int mixedNoise = Mathf.Max(currentNoise, value); // Берём сильнейший
 
-        if (currentNoise > 0 && value > 0) // Если шум уже был и пришёл новый шум
+        if (currentNoise > 0 && value > 0) // Если шум наложился
         {
-            mixedNoise += mixBonus; // Добавляем небольшой бонус за наложение действий
+            mixedNoise += mixBonus; // Добавляем бонус
         }
 
-        mixedNoise = Mathf.Clamp(mixedNoise, 0, maxNoise); // Не даём шуму стать больше 10
+        mixedNoise = Mathf.Clamp(mixedNoise, 0, maxNoise); // Ограничиваем
 
-        SetNoise(mixedNoise); // Показываем итоговый смешанный шум
+        SetNoise(mixedNoise); // Устанавливаем итог
     }
 
-    private void UpdateUI() // Обновить текст и красную полоску
+    public void LockNoise(int value) // Заблокировать шум на постоянном значении
+    {
+        isNoiseLocked = true; // Включаем блокировку
+
+        lockedNoiseValue = Mathf.Clamp(value, 0, maxNoise); // Записываем значение
+
+        currentNoise = lockedNoiseValue; // Ставим текущий шум
+
+        visualNoise = lockedNoiseValue; // Ставим визуальный шум
+
+        lastNoiseTime = Time.time; // Обновляем время
+
+        UpdateUI(); // Обновляем UI
+    }
+
+    public void UnlockNoise(bool keepCurrentValue = true) // Разблокировать шум
+    {
+        isNoiseLocked = false; // Выключаем блокировку
+
+        if (keepCurrentValue) // Если нужно оставить текущее значение
+        {
+            currentNoise = Mathf.Clamp(currentNoise, 0, maxNoise); // Ограничиваем текущее
+
+            visualNoise = currentNoise; // Синхронизируем визуально
+
+            lastNoiseTime = Time.time; // Даем шкале спадать после задержки
+        }
+        else // Если нужно сразу сбросить
+        {
+            currentNoise = 0; // Ставим ноль
+
+            visualNoise = 0f; // Ставим визуальный ноль
+
+            lastNoiseTime = Time.time; // Обновляем время
+        }
+
+        UpdateUI(); // Обновляем UI
+    }
+
+    private void UpdateUI() // Обновить UI
     {
         if (noiseText != null) // Если текст назначен
         {
-            noiseText.text = currentNoise + "/" + maxNoise; // Пишем формат 4/10
+            noiseText.text = currentNoise + "/" + maxNoise; // Пишем 10/10
         }
 
-        if (noiseFillImage != null) // Если красная полоска назначена
+        if (noiseFillImage != null) // Если полоска назначена
         {
-            noiseFillImage.fillAmount = visualNoise / maxNoise; // Заполняем шкалу от 0 до 1
+            noiseFillImage.fillAmount = visualNoise / maxNoise; // Заполняем полоску
         }
     }
 }
