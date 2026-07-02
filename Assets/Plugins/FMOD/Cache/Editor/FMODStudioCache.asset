@@ -20,6 +20,33 @@ MonoBehaviour:
   - Name: 
     Value: 724
   Exists: 1
+--- !u!114 &-8523396996573345774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Test
+  m_EditorClassIdentifier: 
+  Path: event:/Test
+  Guid:
+    Data1: 111080638
+    Data2: 1185208554
+    Data3: 190129325
+    Data4: -2099138080
+  Banks:
+  - {fileID: -3381737279811903739}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-8392881993502297892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40,6 +67,24 @@ MonoBehaviour:
   - Name: Desktop
     Value: 766
   Exists: 1
+--- !u!114 &-3381737279811903739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/StreamingAssets/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 639186310135803750
+  FileSizes: []
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,17 +98,40 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -8392881993502297892}
-  - {fileID: 8654389611466127150}
-  EditorEvents: []
+  - {fileID: 4680924339435619663}
+  - {fileID: -3381737279811903739}
+  EditorEvents:
+  - {fileID: -8523396996573345774}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 8654389611466127150}
+  - {fileID: -3381737279811903739}
   StringsBanks:
-  - {fileID: -8392881993502297892}
+  - {fileID: 4680924339435619663}
   cacheVersion: 131860
-  cacheTime: 639186271240000000
-  SerializableEventsDict: []
+  cacheTime: 639186310135813748
+  SerializableEventsDict:
+  - key: event:/Test
+    index: 0
+--- !u!114 &4680924339435619663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/StreamingAssets/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 639186310135813748
+  FileSizes:
+  - Name: 
+    Value: 766
+  Exists: 1
 --- !u!114 &7928712737379132139
 MonoBehaviour:
   m_ObjectHideFlags: 0
