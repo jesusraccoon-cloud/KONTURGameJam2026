@@ -20,6 +20,26 @@ MonoBehaviour:
   - Name: 
     Value: 724
   Exists: 1
+--- !u!114 &-8392881993502297892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/KONTUR/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 639186271240000000
+  FileSizes:
+  - Name: Desktop
+    Value: 766
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33,16 +53,16 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -8883905805698317535}
-  - {fileID: 7928712737379132139}
+  - {fileID: -8392881993502297892}
+  - {fileID: 8654389611466127150}
   EditorEvents: []
   EditorParameters: []
   MasterBanks:
-  - {fileID: 7928712737379132139}
+  - {fileID: 8654389611466127150}
   StringsBanks:
-  - {fileID: -8883905805698317535}
+  - {fileID: -8392881993502297892}
   cacheVersion: 131860
-  cacheTime: 639184695280000000
+  cacheTime: 639186271240000000
   SerializableEventsDict: []
 --- !u!114 &7928712737379132139
 MonoBehaviour:
@@ -61,4 +81,24 @@ MonoBehaviour:
   StudioPath: bank:/Master
   lastModified: 639184695280000000
   FileSizes: []
+  Exists: 1
+--- !u!114 &8654389611466127150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/KONTUR/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 639186271240000000
+  FileSizes:
+  - Name: Desktop
+    Value: 1074
   Exists: 1
