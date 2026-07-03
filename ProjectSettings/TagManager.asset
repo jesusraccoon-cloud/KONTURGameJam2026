@@ -6,6 +6,11 @@ TagManager:
   tags:
   - CinemachineTarget
   - DoorHandle
+  - Concrete
+  - Wood
+  - Linoleum
+  - Glass
+  - Carpet
   layers:
   - Default
   - TransparentFX
@@ -15,7 +20,7 @@ TagManager:
   - UI
   - Interactable
   - MovableHeavy
-  - Door
+  - 
   - 
   - 
   - 

@@ -20,33 +20,6 @@ MonoBehaviour:
   - Name: 
     Value: 724
   Exists: 1
---- !u!114 &-8523396996573345774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Test
-  m_EditorClassIdentifier: 
-  Path: event:/Test
-  Guid:
-    Data1: 111080638
-    Data2: 1185208554
-    Data3: 190129325
-    Data4: -2099138080
-  Banks:
-  - {fileID: -3381737279811903739}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
 --- !u!114 &-8392881993502297892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,7 +40,7 @@ MonoBehaviour:
   - Name: Desktop
     Value: 766
   Exists: 1
---- !u!114 &-3381737279811903739
+--- !u!114 &-8056125206213276136
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -76,14 +49,52 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Footsteps
   m_EditorClassIdentifier: 
-  Path: Assets/StreamingAssets/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 639186310135803750
-  FileSizes: []
+  Path: event:/Player/Footsteps
+  Guid:
+    Data1: -1174632225
+    Data2: 1313755896
+    Data3: -984325232
+    Data4: -919973468
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -7039978384953132775}
+  - {fileID: 2868962422214387081}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-7039978384953132775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Footsteps/Locomotion
+  m_EditorClassIdentifier: 
+  Name: Locomotion
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 3315740490
+    data2: 314653472
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Walk
+  - Run
+  - Crouch
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -98,21 +109,21 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 4680924339435619663}
-  - {fileID: -3381737279811903739}
+  - {fileID: 390493745208664655}
+  - {fileID: 4552191581410023176}
   EditorEvents:
-  - {fileID: -8523396996573345774}
+  - {fileID: -8056125206213276136}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -3381737279811903739}
+  - {fileID: 4552191581410023176}
   StringsBanks:
-  - {fileID: 4680924339435619663}
+  - {fileID: 390493745208664655}
   cacheVersion: 131860
-  cacheTime: 639186310135813748
+  cacheTime: 639187071820000000
   SerializableEventsDict:
-  - key: event:/Test
+  - key: event:/Player/Footsteps
     index: 0
---- !u!114 &4680924339435619663
+--- !u!114 &390493745208664655
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,13 +135,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Master.strings.bank
   m_EditorClassIdentifier: 
-  Path: Assets/StreamingAssets/Desktop/Master.strings.bank
+  Path: FMOD/KONTUR/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639186310135813748
+  lastModified: 639187071820000000
   FileSizes:
-  - Name: 
-    Value: 766
+  - Name: Desktop
+    Value: 880
+  Exists: 1
+--- !u!114 &2868962422214387081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Footsteps/Surface
+  m_EditorClassIdentifier: 
+  Name: Surface
+  StudioPath: 
+  Min: 0
+  Max: 4
+  Default: 1
+  ID:
+    data1: 140007625
+    data2: 3548623802
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Concrete
+  - Carpet
+  - Glass
+  - linoleum
+  - Wood
+  Exists: 1
+--- !u!114 &4552191581410023176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/KONTUR/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 639187071820000000
+  FileSizes:
+  - Name: Desktop
+    Value: 1114176
   Exists: 1
 --- !u!114 &7928712737379132139
 MonoBehaviour:
