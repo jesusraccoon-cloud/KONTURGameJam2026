@@ -39498,7 +39498,7 @@ GameObject:
   - component: {fileID: 245863871}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Wood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -201511,7 +201511,7 @@ PrefabInstance:
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
       propertyPath: SprintSpeed
-      value: 3.4
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
@@ -201612,6 +201612,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1881408453}
+    - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1881408454}
+    - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1881408458}
   m_SourcePrefab: {fileID: 100100000, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
 --- !u!1 &1239204838
 GameObject:
@@ -307201,10 +307209,95 @@ MonoBehaviour:
   sprintNoise: 4
   jumpNoise: 5
   walkStepInterval: 0.55
-  sprintStepInterval: 0.35
-  minMoveSpeed: 0.15
+  sprintStepInterval: 0.2
+  minMoveSpeed: 0.2
   sprintSpeedThreshold: 3
   enableJumpNoise: 1
+  showDebugLogs: 0
+--- !u!114 &1881408454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154917099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4168dd34b7999ae4491716d5a9304e0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 1881408446}
+  footstepEvent:
+    Guid:
+      Data1: -1174632225
+      Data2: 1313755896
+      Data3: -984325232
+      Data4: -919973468
+    Path: event:/Player/Footsteps
+  surfaceParameter: Surface
+  locomotionParameter: Locomotion
+  walkStepInterval: 0.55
+  sprintStepInterval: 0.4
+  crouchStepInterval: 0.75
+  firstStepImmediate: 0
+  minMoveSpeed: 1.99
+  sprintSpeedThreshold: 3.5
+  onlyWhenGrounded: 1
+  detectCrouch: 1
+  crouchKey: 306
+  autoDetectSurface: 1
+  defaultSurface: 0
+  surfaceTags:
+  - tag: Concrete
+    surface: 0
+  - tag: Carpet
+    surface: 1
+  - tag: Wood
+    surface: 4
+  - tag: Linoleum
+    surface: 3
+  - tag: Glass
+    surface: 2
+  surfaceRayLength: 1.5
+  surfaceRayUpOffset: 0.3
+  surfaceRayMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  showDebugLogs: 0
+--- !u!114 &1881408458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154917099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f54ecd9add2a0624fbc193409a83a5c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 1881408446}
+  input: {fileID: 0}
+  footsteps: {fileID: 1881408454}
+  jumpEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  landEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  landUsesSurface: 1
+  surfaceParameter: Surface
+  fallbackSurface: 0
+  requireJumpInput: 1
+  minAirTime: 0.12
   showDebugLogs: 0
 --- !u!1 &1882657870
 GameObject:
