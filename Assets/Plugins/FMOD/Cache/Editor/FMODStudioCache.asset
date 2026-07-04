@@ -96,6 +96,87 @@ MonoBehaviour:
   - Run
   - Crouch
   Exists: 1
+--- !u!114 &-7003906365326198114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Breathe
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Breathe
+  Guid:
+    Data1: -183967747
+    Data2: 1113624231
+    Data3: 787520700
+    Data4: -1711686511
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -3982825177419810735}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-3982825177419810735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Breathe/Movement
+  m_EditorClassIdentifier: 
+  Name: Movement
+  StudioPath: 
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 472863422
+    data2: 1682831287
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-1070758260847107354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Land/Surface
+  m_EditorClassIdentifier: 
+  Name: Surface
+  StudioPath: 
+  Min: 0
+  Max: 4
+  Default: 1
+  ID:
+    data1: 140007625
+    data2: 3548623802
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Concrete
+  - Carpet
+  - Glass
+  - linoleum
+  - Wood
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,16 +194,25 @@ MonoBehaviour:
   - {fileID: 4552191581410023176}
   EditorEvents:
   - {fileID: -8056125206213276136}
+  - {fileID: 3969581204241585293}
+  - {fileID: 5143438381744408755}
+  - {fileID: -7003906365326198114}
   EditorParameters: []
   MasterBanks:
   - {fileID: 4552191581410023176}
   StringsBanks:
   - {fileID: 390493745208664655}
   cacheVersion: 131860
-  cacheTime: 639187071820000000
+  cacheTime: 639187344000000000
   SerializableEventsDict:
   - key: event:/Player/Footsteps
     index: 0
+  - key: event:/Player/Jump
+    index: 1
+  - key: event:/Player/Land
+    index: 2
+  - key: event:/Player/Breathe
+    index: 3
 --- !u!114 &390493745208664655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,10 +228,10 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639187071820000000
+  lastModified: 639187344000000000
   FileSizes:
   - Name: Desktop
-    Value: 880
+    Value: 1038
   Exists: 1
 --- !u!114 &2868962422214387081
 MonoBehaviour:
@@ -172,6 +262,33 @@ MonoBehaviour:
   - linoleum
   - Wood
   Exists: 1
+--- !u!114 &3969581204241585293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Jump
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Jump
+  Guid:
+    Data1: -1779624632
+    Data2: 1239773956
+    Data3: -1051013986
+    Data4: -1963053245
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 534
 --- !u!114 &4552191581410023176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,11 +304,39 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639187071820000000
+  lastModified: 639187344000000000
   FileSizes:
   - Name: Desktop
-    Value: 1114176
+    Value: 1403680
   Exists: 1
+--- !u!114 &5143438381744408755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Land
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Land
+  Guid:
+    Data1: 1315781655
+    Data2: 1309945664
+    Data3: -626898526
+    Data4: -1529901910
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -1070758260847107354}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &7928712737379132139
 MonoBehaviour:
   m_ObjectHideFlags: 0

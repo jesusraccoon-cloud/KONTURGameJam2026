@@ -201515,6 +201515,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
+      propertyPath: CameraLagSmoothTime
+      value: 0.073
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
+        type: 3}
       propertyPath: GroundLayers.m_Bits
       value: 1
       objectReference: {fileID: 0}
@@ -201620,6 +201625,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1881408458}
+    - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1881408462}
   m_SourcePrefab: {fileID: 100100000, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
 --- !u!1 &1239204838
 GameObject:
@@ -307281,23 +307290,54 @@ MonoBehaviour:
   footsteps: {fileID: 1881408454}
   jumpEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1779624632
+      Data2: 1239773956
+      Data3: -1051013986
+      Data4: -1963053245
+    Path: event:/Player/Jump
   landEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1315781655
+      Data2: 1309945664
+      Data3: -626898526
+      Data4: -1529901910
+    Path: event:/Player/Land
   landUsesSurface: 1
   surfaceParameter: Surface
   fallbackSurface: 0
   requireJumpInput: 1
   minAirTime: 0.12
+  showDebugLogs: 0
+--- !u!114 &1881408462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154917099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9818c5e397245d54295463ad90cb8368, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  breatheEvent:
+    Guid:
+      Data1: -183967747
+      Data2: 1113624231
+      Data3: 787520700
+      Data4: -1711686511
+    Path: event:/Player/Breathe
+  movementParameter: Movement
+  attachToPlayer: 1
+  readSpeedsFromController: 1
+  walkSpeed: 2.2
+  runSpeed: 4
+  idleSpeedThreshold: 0.15
+  idleValue: 0
+  walkValue: 1
+  runValue: 2
+  smoothTime: 0.25
   showDebugLogs: 0
 --- !u!1 &1882657870
 GameObject:

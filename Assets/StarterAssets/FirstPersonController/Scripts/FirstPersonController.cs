@@ -36,13 +36,21 @@ namespace StarterAssets // Пространство имён StarterAssets
         public float TopClamp = 90.0f; // Максимальный угол взгляда вверх
         public float BottomClamp = -90.0f; // Максимальный угол взгляда вниз
 
+        [Header("Camera Lag")] // Блок задержки камеры
+        public bool CameraLag = true; // Включить плавную задержку камеры за мышью
+        [Range(0f, 0.3f)] public float CameraLagSmoothTime = 0.06f; // Время сглаживания: больше = сильнее задержка
+
         [Header("QTE Lock")] // Блок блокировки управления
         public bool canMove = true; // Можно ли игроку двигаться
         public bool canLook = true; // Можно ли игроку крутить камерой
 
-        private float _cinemachineTargetPitch; // Текущий вертикальный угол камеры
+        private float _cinemachineTargetPitch; // Текущий (сглаженный) вертикальный угол камеры
+        private float _targetPitch; // Желаемый вертикальный угол (куда камера догоняет)
+        private float _currentYaw; // Текущий (сглаженный) горизонтальный угол тела
+        private float _targetYaw; // Желаемый горизонтальный угол (куда тело догоняет)
+        private float _pitchVelocity; // Служебная скорость SmoothDamp по вертикали
+        private float _yawVelocity; // Служебная скорость SmoothDamp по горизонтали
         private float _speed; // Текущая скорость игрока
-        private float _rotationVelocity; // Скорость поворота игрока
         private float _verticalVelocity; // Вертикальная скорость игрока
         private float _terminalVelocity = 53.0f; // Максимальная скорость падения
 
@@ -92,6 +100,10 @@ namespace StarterAssets // Пространство имён StarterAssets
 
             _jumpTimeoutDelta = JumpTimeout; // Инициализируем таймер прыжка
             _fallTimeoutDelta = FallTimeout; // Инициализируем таймер падения
+
+            _targetYaw = transform.eulerAngles.y; // Стартовый горизонтальный угол — как у тела
+            _currentYaw = _targetYaw; // Чтобы камера не дёрнулась в первом кадре
+            _targetPitch = _cinemachineTargetPitch; // Стартовый вертикальный угол
         }
 
         private void Update() // Вызывается каждый кадр
@@ -126,15 +138,26 @@ namespace StarterAssets // Пространство имён StarterAssets
             {
                 float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime; // Для мыши не умножаем на deltaTime
 
-                _cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier; // Меняем вертикальный угол камеры
-                _rotationVelocity = _input.look.x * RotationSpeed * deltaTimeMultiplier; // Считаем горизонтальный поворот
+                _targetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier; // Копим желаемый вертикальный угол
+                _targetYaw += _input.look.x * RotationSpeed * deltaTimeMultiplier; // Копим желаемый горизонтальный угол
 
-                _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp); // Ограничиваем вертикальный угол
-
-                CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f); // Поворачиваем цель камеры
-
-                transform.Rotate(Vector3.up * _rotationVelocity); // Поворачиваем игрока по горизонтали
+                _targetPitch = ClampAngle(_targetPitch, BottomClamp, TopClamp); // Ограничиваем вертикальный угол
             }
+
+            if (CameraLag && CameraLagSmoothTime > 0f) // Если включена задержка камеры
+            {
+                _cinemachineTargetPitch = Mathf.SmoothDampAngle(_cinemachineTargetPitch, _targetPitch, ref _pitchVelocity, CameraLagSmoothTime); // Плавно догоняем вертикаль
+                _currentYaw = Mathf.SmoothDampAngle(_currentYaw, _targetYaw, ref _yawVelocity, CameraLagSmoothTime); // Плавно догоняем горизонталь
+            }
+            else // Если задержка выключена — мгновенно
+            {
+                _cinemachineTargetPitch = _targetPitch; // Вертикаль сразу
+                _currentYaw = _targetYaw; // Горизонталь сразу
+            }
+
+            CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f); // Поворачиваем цель камеры по вертикали
+
+            transform.rotation = Quaternion.Euler(0.0f, _currentYaw, 0.0f); // Поворачиваем игрока по горизонтали
         }
 
         private void Move() // Метод движения игрока
