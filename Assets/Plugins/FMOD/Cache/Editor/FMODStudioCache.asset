@@ -203,7 +203,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 390493745208664655}
   cacheVersion: 131860
-  cacheTime: 639187344000000000
+  cacheTime: 639188580154230619
   SerializableEventsDict:
   - key: event:/Player/Footsteps
     index: 0
@@ -228,7 +228,7 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639187344000000000
+  lastModified: 639188580154230619
   FileSizes:
   - Name: Desktop
     Value: 1038
@@ -304,7 +304,7 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639187344000000000
+  lastModified: 639188580154225447
   FileSizes:
   - Name: Desktop
     Value: 1403680

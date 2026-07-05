@@ -86,6 +86,9 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
 
     public bool lockApartmentDoorAfterExit = true; // Блокировать ли дверь после выхода
 
+    [Header("Elevator Ending")] // Блок концовки с лифтом
+    public ElevatorEndingEvent elevatorEndingEvent; // Ивент лифта, который включается после 6/6
+
     [HideInInspector] public bool finalSequenceStarted = false; // Финал начался
 
     [HideInInspector] public bool apartmentCompleted = false; // Квартира завершена
@@ -145,29 +148,29 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
 
         CompleteEarlyHallDoorBreakState(); // Переводим квартиру в состояние после 4/6
 
-if (!finalStarted && monsterAI != null) monsterAI.ActivateMonster(); // Запускаем патруль только если финал 6/6 ещё не начался
+        if (!finalStarted && monsterAI != null) monsterAI.ActivateMonster(); // Запускаем патруль только если финал 6/6 ещё не начался
 
-if (finalStarted && monsterAI != null && monsterExitBlockPoint != null) monsterAI.GoToPointAndStop(monsterExitBlockPoint); // Если финал уже начался — держим монстра у выхода
+        if (finalStarted && monsterAI != null && monsterExitBlockPoint != null) monsterAI.GoToPointAndStop(monsterExitBlockPoint); // Если финал уже начался — держим монстра у выхода
     }
 
     private IEnumerator EarlyHallDoorBreakRoutine() // Последовательность ранней поломки дверей
-{
-    if (monsterObject != null) monsterObject.SetActive(true); // Включаем монстра
+    {
+        if (monsterObject != null) monsterObject.SetActive(true); // Включаем монстра
 
-    if (monsterPatrol != null) monsterPatrol.StopPatrol(); // Останавливаем патруль перед сценарием
+        if (monsterPatrol != null) monsterPatrol.StopPatrol(); // Останавливаем патруль перед сценарием
 
-    if (hallDoorBreakAudioSource != null && hallDoorBreakSound != null) hallDoorBreakAudioSource.PlayOneShot(hallDoorBreakSound); // Проигрываем звук выбивания дверей
+        if (hallDoorBreakAudioSource != null && hallDoorBreakSound != null) hallDoorBreakAudioSource.PlayOneShot(hallDoorBreakSound); // Проигрываем звук выбивания дверей
 
-    if (hallDoorBreakDelay > 0f) yield return new WaitForSeconds(hallDoorBreakDelay); // Ждём перед поломкой дверей
+        if (hallDoorBreakDelay > 0f) yield return new WaitForSeconds(hallDoorBreakDelay); // Ждём перед поломкой дверей
 
-    CompleteEarlyHallDoorBreakState(); // Переводим квартиру в состояние после 4/6
+        CompleteEarlyHallDoorBreakState(); // Переводим квартиру в состояние после 4/6
 
-    if (!finalStarted && monsterAI != null) monsterAI.ActivateMonster(); // Запускаем патруль только если финал 6/6 ещё не начался
+        if (!finalStarted && monsterAI != null) monsterAI.ActivateMonster(); // Запускаем патруль только если финал 6/6 ещё не начался
 
-    if (finalStarted && monsterAI != null && monsterExitBlockPoint != null) monsterAI.GoToPointAndStop(monsterExitBlockPoint); // Если финал уже начался — отправляем монстра к выходу
+        if (finalStarted && monsterAI != null && monsterExitBlockPoint != null) monsterAI.GoToPointAndStop(monsterExitBlockPoint); // Если финал уже начался — отправляем монстра к выходу
 
-    Debug.Log("4/6 событие: монстр выломал двери"); // Пишем лог
-}
+        Debug.Log("4/6 событие: монстр выломал двери"); // Пишем лог
+    }
 
     private void CompleteEarlyHallDoorBreakState() // Мгновенно применить состояние после 4/6
     {
@@ -220,6 +223,8 @@ if (finalStarted && monsterAI != null && monsterExitBlockPoint != null) monsterA
         if (bathroomExitChaseTrigger != null) bathroomExitChaseTrigger.SetActive(false); // Пока держим триггер ванной выключенным
 
         if (apartmentExitCompleteTrigger != null) apartmentExitCompleteTrigger.SetActive(true); // Включаем триггер завершения квартиры
+
+        if (elevatorEndingEvent != null) elevatorEndingEvent.UnlockElevatorEvent(); // Включаем лифтовую концовку после 6/6
 
         BlockExitWithMonster(); // Отправляем монстра блокировать выход
 
