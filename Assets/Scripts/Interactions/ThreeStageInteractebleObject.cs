@@ -1,101 +1,138 @@
-using UnityEngine; // Подключаем Unity
+using UnityEngine; // Подключаем Unity, чтобы использовать MonoBehaviour, GameObject, Transform, Rigidbody и другие классы
 
 public class ThreeStageInteractableObject : MonoBehaviour, IInteractable, IHitInteractable // Объект с 3 стадиями, работает от E и от удара
 {
-    [Header("Stages")] public GameObject stageWhole; // Визуал первой стадии: целое
-    public GameObject stageBroken; // Визуал второй стадии: поломанное
-    public GameObject stageDestroyed; // Визуал третьей стадии: разбитое, можно оставить пустым
+    [Header("Stages")] // Заголовок в Inspector для настроек стадий
+    public GameObject stageWhole; // Визуал первой стадии: целый объект
+    public GameObject stageBroken; // Визуал второй стадии: поломанный объект
+    public GameObject stageDestroyed; // Визуал третьей стадии: уничтоженный объект, можно оставить пустым
 
-    [Header("Interaction Settings")] public bool canUseE = true; // Можно ли ломать через E
-    public bool canUseHit = true; // Можно ли ломать через удар
-    public int ePressesForNextStage = 1; // Сколько раз нажать E для перехода стадии
-    public int hitsForNextStage = 1; // Сколько ударов нужно для перехода стадии
+    [Header("Interaction Settings")] // Заголовок в Inspector для настроек взаимодействия
+    public bool canUseE = true; // Можно ли переводить объект на следующую стадию через клавишу E
+    public bool canUseHit = true; // Можно ли переводить объект на следующую стадию ударом
+    public int ePressesForNextStage = 1; // Сколько раз нужно нажать E для перехода на следующую стадию
+    public int hitsForNextStage = 1; // Сколько ударов нужно для перехода на следующую стадию
 
-    [Header("Spawn On Stage 1 -> 2")] public GameObject[] spawnAfterFirstBreak; // Что появляется после перехода целое → поломанное
-    public Transform firstSpawnPoint; // Точка появления предметов после первого ломания
+    [Header("Spawn On Stage 1 -> 2")] // Заголовок в Inspector для предметов после первого разрушения
+    public GameObject[] spawnAfterFirstBreak; // Предметы, которые появятся после перехода из целого состояния в поломанное
+    public Transform firstSpawnPoint; // Точка, из которой будут вылетать предметы после первого разрушения
 
-    [Header("Spawn On Stage 2 -> 3")] public GameObject[] spawnAfterDestroy; // Что появляется после перехода поломанное → разбитое
-    public Transform secondSpawnPoint; // Точка появления предметов после полного уничтожения
+    [Header("Spawn On Stage 2 -> 3")] // Заголовок в Inspector для предметов после финального разрушения
+    public GameObject[] spawnAfterDestroy; // Предметы, которые появятся после перехода из поломанного состояния в уничтоженное
+    public Transform secondSpawnPoint; // Точка, из которой будут вылетать предметы после финального разрушения
 
-    [Header("Final Settings")] public bool disableColliderWhenDestroyed = true; // Отключить коллайдер после финальной стадии
-    public Collider objectCollider; // Коллайдер объекта
+    [Header("Throw Settings")] // Заголовок в Inspector для настроек выброса предметов
+    public float throwForce = 3f; // Основная сила, с которой предметы будут вылетать вперед от объекта
+    public float upwardForce = 1.5f; // Насколько сильно предметы будут подлетать вверх
+    public float randomSideForce = 1f; // Насколько сильно предметы будут случайно разлетаться влево и вправо
+    public float spawnScatterRadius = 0.2f; // Насколько случайно будет смещаться точка появления каждого предмета
+    public float torqueForce = 3f; // Сила случайного вращения, чтобы осколки выглядели живее при падении
 
-    private int currentStage = 0; // Текущая стадия: 0 целое, 1 поломанное, 2 разбитое
-    private int currentEPresses = 0; // Счетчик нажатий E
-    private int currentHits = 0; // Счетчик ударов
+    [Header("Final Settings")] // Заголовок в Inspector для настроек финальной стадии
+    public bool disableColliderWhenDestroyed = true; // Нужно ли отключать коллайдер после полного уничтожения объекта
+    public Collider objectCollider; // Коллайдер основного объекта, который можно отключить после уничтожения
 
-    private void Start() // Запускается при старте сцены
+    private int currentStage = 0; // Текущая стадия объекта: 0 — целый, 1 — поломанный, 2 — уничтоженный
+    private int currentEPresses = 0; // Счетчик нажатий E на текущей стадии
+    private int currentHits = 0; // Счетчик ударов на текущей стадии
+
+    private void Start() // Метод запускается один раз при старте сцены
     {
-        ApplyStageVisuals(); // Сразу выставляем правильный визуал
+        ApplyStageVisuals(); // Сразу выставляем правильный визуал в зависимости от текущей стадии
     }
 
-    public void Interact() // Метод вызывается PlayerInteractor при нажатии E
+    public void Interact() // Метод вызывается другим скриптом, когда игрок нажимает E по объекту
     {
-        if (canUseE == false) return; // Если E запрещена, ничего не делаем
-        if (currentStage >= 2) return; // Если объект уже уничтожен, ничего не делаем
+        if (canUseE == false) return; // Если взаимодействие через E запрещено, выходим из метода
+        if (currentStage >= 2) return; // Если объект уже уничтожен, больше ничего не делаем
 
-        currentEPresses++; // Добавляем одно нажатие E
+        currentEPresses++; // Увеличиваем счетчик нажатий E на 1
 
-        if (currentEPresses >= ePressesForNextStage) // Если нажатий достаточно
+        if (currentEPresses >= ePressesForNextStage) // Проверяем, достаточно ли нажатий для перехода на следующую стадию
         {
-            currentEPresses = 0; // Сбрасываем счетчик E
+            currentEPresses = 0; // Сбрасываем счетчик нажатий E
             AdvanceStage(); // Переводим объект на следующую стадию
         }
     }
 
-    public void Hit() // Метод вызывается PlayerInteractor при ударе ЛКМ
+    public void Hit() // Метод вызывается другим скриптом, когда игрок ударяет объект
     {
-        if (canUseHit == false) return; // Если удары запрещены, ничего не делаем
-        if (currentStage >= 2) return; // Если объект уже уничтожен, ничего не делаем
+        if (canUseHit == false) return; // Если взаимодействие ударом запрещено, выходим из метода
+        if (currentStage >= 2) return; // Если объект уже уничтожен, больше ничего не делаем
 
-        currentHits++; // Добавляем один удар
+        currentHits++; // Увеличиваем счетчик ударов на 1
 
-        if (currentHits >= hitsForNextStage) // Если ударов достаточно
+        if (currentHits >= hitsForNextStage) // Проверяем, достаточно ли ударов для перехода на следующую стадию
         {
             currentHits = 0; // Сбрасываем счетчик ударов
             AdvanceStage(); // Переводим объект на следующую стадию
         }
     }
 
-    private void AdvanceStage() // Переход на следующую стадию
+    private void AdvanceStage() // Метод переводит объект на следующую стадию
     {
-        currentStage++; // Увеличиваем стадию на 1
+        currentStage++; // Увеличиваем номер текущей стадии на 1
 
-        if (currentStage == 1) // Если перешли на стадию поломки
+        if (currentStage == 1) // Проверяем, перешел ли объект на стадию поломки
         {
-            SpawnObjects(spawnAfterFirstBreak, firstSpawnPoint); // Создаем предметы первой поломки
+            SpawnObjects(spawnAfterFirstBreak, firstSpawnPoint); // Создаем и выбрасываем предметы первой поломки
         }
 
-        if (currentStage == 2) // Если перешли на стадию уничтожения
+        if (currentStage == 2) // Проверяем, перешел ли объект на стадию полного уничтожения
         {
-            SpawnObjects(spawnAfterDestroy, secondSpawnPoint); // Создаем предметы финального уничтожения
+            SpawnObjects(spawnAfterDestroy, secondSpawnPoint); // Создаем и выбрасываем предметы финального уничтожения
         }
 
-        ApplyStageVisuals(); // Обновляем визуал объекта
+        ApplyStageVisuals(); // Обновляем видимые модели объекта после смены стадии
     }
 
-    private void ApplyStageVisuals() // Включает нужную модель стадии
+    private void ApplyStageVisuals() // Метод включает нужный визуал стадии и выключает остальные
     {
-        if (stageWhole != null) stageWhole.SetActive(currentStage == 0); // Целый визуал активен только на стадии 0
-        if (stageBroken != null) stageBroken.SetActive(currentStage == 1); // Поломанный визуал активен только на стадии 1
-        if (stageDestroyed != null) stageDestroyed.SetActive(currentStage == 2); // Разбитый визуал активен только на стадии 2
+        if (stageWhole != null) stageWhole.SetActive(currentStage == 0); // Включаем целый визуал только на стадии 0
+        if (stageBroken != null) stageBroken.SetActive(currentStage == 1); // Включаем поломанный визуал только на стадии 1
+        if (stageDestroyed != null) stageDestroyed.SetActive(currentStage == 2); // Включаем уничтоженный визуал только на стадии 2
 
-        if (currentStage >= 2 && disableColliderWhenDestroyed == true && objectCollider != null) // Если объект уничтожен и коллайдер нужно отключить
+        if (currentStage >= 2 && disableColliderWhenDestroyed == true && objectCollider != null) // Проверяем, нужно ли отключить коллайдер после уничтожения
         {
-            objectCollider.enabled = false; // Отключаем коллайдер, чтобы он не мешал игроку
+            objectCollider.enabled = false; // Отключаем коллайдер, чтобы уничтоженный объект не мешал игроку
         }
     }
 
-    private void SpawnObjects(GameObject[] objectsToSpawn, Transform spawnPoint) // Создает предметы на полу
+    private void SpawnObjects(GameObject[] objectsToSpawn, Transform spawnPoint) // Метод создает предметы и выбрасывает их недалеко от объекта
     {
-        if (objectsToSpawn == null) return; // Если список пустой, ничего не делаем
-        if (spawnPoint == null) return; // Если точка спавна не назначена, ничего не делаем
+        if (objectsToSpawn == null) return; // Если массив предметов не назначен, выходим из метода
+        if (spawnPoint == null) return; // Если точка появления не назначена, выходим из метода
 
-        for (int i = 0; i < objectsToSpawn.Length; i++) // Проходим по всем предметам
+        for (int i = 0; i < objectsToSpawn.Length; i++) // Проходим по всем предметам, которые нужно создать
         {
-            if (objectsToSpawn[i] == null) continue; // Если предмет не назначен, пропускаем
+            if (objectsToSpawn[i] == null) continue; // Если конкретный предмет не назначен, пропускаем его
 
-            Instantiate(objectsToSpawn[i], spawnPoint.position, spawnPoint.rotation); // Создаем предмет в точке спавна
+            Vector3 randomOffset = new Vector3( // Создаем случайное смещение, чтобы предметы не появлялись строго в одной точке
+                Random.Range(-spawnScatterRadius, spawnScatterRadius), // Случайное смещение по оси X
+                Random.Range(0f, spawnScatterRadius), // Случайное смещение немного вверх по оси Y
+                Random.Range(-spawnScatterRadius, spawnScatterRadius) // Случайное смещение по оси Z
+            );
+
+            GameObject spawnedObject = Instantiate( // Создаем предмет в сцене
+                objectsToSpawn[i], // Берем prefab из массива предметов
+                spawnPoint.position + randomOffset, // Ставим его в точку спавна с небольшим случайным смещением
+                Random.rotation // Даем предмету случайный поворот при появлении
+            );
+
+            Rigidbody spawnedRigidbody = spawnedObject.GetComponent<Rigidbody>(); // Пытаемся найти Rigidbody на созданном предмете
+
+            if (spawnedRigidbody != null) // Проверяем, есть ли Rigidbody у созданного предмета
+            {
+                Vector3 throwDirection = transform.forward; // Берем направление вперед от основного объекта
+
+                throwDirection += transform.right * Random.Range(-randomSideForce, randomSideForce); // Добавляем случайное отклонение влево или вправо
+                throwDirection += Vector3.up * upwardForce; // Добавляем направление вверх, чтобы предметы немного подлетали
+
+                throwDirection.Normalize(); // Нормализуем направление, чтобы сила не становилась слишком большой из-за сложения векторов
+
+                spawnedRigidbody.AddForce(throwDirection * throwForce, ForceMode.Impulse); // Придаем предмету резкий импульс в рассчитанном направлении
+                spawnedRigidbody.AddTorque(Random.insideUnitSphere * torqueForce, ForceMode.Impulse); // Добавляем случайное вращение, чтобы предмет крутился в воздухе
+            }
         }
     }
 }
