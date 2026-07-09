@@ -1,93 +1,104 @@
-using System.Collections; // Подключаем корутины
-using UnityEngine; // Подключаем Unity
+using System.Collections; // Подключаем корутины, чтобы дверь могла плавно двигаться по кадрам
+using UnityEngine; // Подключаем Unity-классы: MonoBehaviour, Transform, Vector3, Time и Debug
 
-public class SlidingElevatorDoor : MonoBehaviour // Скрипт раздвижной/сдвижной двери лифта
+public class SlidingElevatorDoor : MonoBehaviour // Скрипт сдвижной двери лифта
 {
-    [Header("Door Part")] // Блок двери
-    public Transform doorPart; // Та часть двери, которая будет двигаться
+    [Header("Door Part")] // Заголовок в Inspector для части двери
+    public Transform doorPart; // Объект, который реально должен двигаться, например Body двери
 
-    [Header("Positions")] // Блок позиций
-    public Vector3 closedLocalPosition; // Локальная позиция закрытой двери
+    [Header("Close Movement")] // Заголовок в Inspector для настройки закрытия
+    public Vector3 closedLocalOffset = new Vector3(1.2f, 0f, 0f); // Смещение от открытой позиции до закрытой позиции
 
-    public Vector3 openedLocalOffset = new Vector3(-1.2f, 0f, 0f); // Насколько дверь уезжает при открытии
-
-    [Header("Speed")] // Блок скорости
-    public float openSpeed = 2f; // Скорость открытия двери
-
+    [Header("Speed")] // Заголовок в Inspector для скорости
     public float closeSpeed = 2f; // Скорость закрытия двери
 
-    [Header("Start State")] // Блок стартового состояния
-    public bool startOpened = true; // Дверь лифта на старте открыта
+    public float openSpeed = 2f; // Скорость открытия двери, если понадобится открыть обратно
 
-    [Header("Debug")] // Блок отладки
+    [Header("Debug")] // Заголовок в Inspector для отладки
     public bool showDebugLogs = true; // Показывать сообщения в Console
 
-    private Vector3 openedLocalPosition; // Локальная позиция открытой двери
+    private Vector3 openedLocalPosition; // Локальная позиция двери, когда она открыта
 
-    private bool isBusy = false; // Занята ли дверь анимацией
+    private Vector3 closedLocalPosition; // Локальная позиция двери, когда она закрыта
 
-    private void Start() // Запускается при старте сцены
+    private bool isBusy = false; // Показывает, двигается ли дверь прямо сейчас
+
+    private bool isInitialized = false; // Показывает, были ли уже рассчитаны позиции двери
+
+    private void Awake() // Запускается при создании объекта
     {
-        if (doorPart == null) doorPart = transform; // Если часть двери не назначена, двигаем этот объект
-
-        closedLocalPosition = doorPart.localPosition; // Запоминаем закрытую позицию двери
-
-        openedLocalPosition = closedLocalPosition + openedLocalOffset; // Считаем открытую позицию двери
-
-        if (startOpened == true) doorPart.localPosition = openedLocalPosition; // Если дверь должна быть открыта, сразу ставим её в открытую позицию
-
-        if (startOpened == false) doorPart.localPosition = closedLocalPosition; // Если дверь должна быть закрыта, оставляем её закрытой
+        InitializeDoorPositions(); // Настраиваем позиции двери
     }
 
-    public void OpenDoor() // Открыть дверь лифта
+    private void OnEnable() // Запускается каждый раз, когда объект включается в иерархии
     {
-        if (isBusy == true) return; // Если дверь уже двигается, выходим
-
-        StartCoroutine(MoveDoorRoutine(openedLocalPosition, openSpeed)); // Запускаем открытие
+        InitializeDoorPositions(); // Проверяем настройку позиций после включения лифта
     }
 
-    public void CloseDoor() // Закрыть дверь лифта
+    private void InitializeDoorPositions() // Метод рассчитывает открытую и закрытую позиции двери
     {
-        if (isBusy == true) return; // Если дверь уже двигается, выходим
+        if (isInitialized == true) return; // Если позиции уже рассчитаны, повторно их не перезаписываем
 
-        StartCoroutine(MoveDoorRoutine(closedLocalPosition, closeSpeed)); // Запускаем закрытие
+        if (doorPart == null) doorPart = transform; // Если Door Part не назначен, двигаем объект со скриптом
+
+        openedLocalPosition = doorPart.localPosition; // Запоминаем текущую позицию как открытую
+
+        closedLocalPosition = openedLocalPosition + closedLocalOffset; // Считаем закрытую позицию через смещение
+
+        isInitialized = true; // Запоминаем, что дверь настроена
+
+        if (showDebugLogs == true) Debug.Log("SlidingElevatorDoor: открытая позиция = " + openedLocalPosition + ", закрытая позиция = " + closedLocalPosition); // Пишем позиции в Console
     }
 
-    public IEnumerator CloseDoorAndWait() // Закрыть дверь и дождаться конца
+    public void CloseDoor() // Закрыть дверь без ожидания
     {
+        if (isBusy == true) return; // Если дверь уже двигается, не запускаем второй раз
+
+        StartCoroutine(MoveDoorRoutine(closedLocalPosition, closeSpeed)); // Запускаем движение к закрытой позиции
+    }
+
+    public IEnumerator CloseDoorAndWait() // Закрыть дверь и дождаться окончания
+    {
+        InitializeDoorPositions(); // Гарантируем, что позиции рассчитаны
+
         if (isBusy == true) yield break; // Если дверь уже двигается, выходим
 
-        yield return StartCoroutine(MoveDoorRoutine(closedLocalPosition, closeSpeed)); // Закрываем дверь и ждём завершения
+        if (showDebugLogs == true) Debug.Log("SlidingElevatorDoor: начинаю закрывать дверь"); // Пишем лог старта закрытия
+
+        yield return StartCoroutine(MoveDoorRoutine(closedLocalPosition, closeSpeed)); // Двигаем дверь к закрытой позиции и ждем завершения
     }
 
-    public IEnumerator OpenDoorAndWait() // Открыть дверь и дождаться конца
+    public void OpenDoor() // Открыть дверь без ожидания
     {
+        if (isBusy == true) return; // Если дверь уже двигается, не запускаем второй раз
+
+        StartCoroutine(MoveDoorRoutine(openedLocalPosition, openSpeed)); // Запускаем движение к открытой позиции
+    }
+
+    public IEnumerator OpenDoorAndWait() // Открыть дверь и дождаться окончания
+    {
+        InitializeDoorPositions(); // Гарантируем, что позиции рассчитаны
+
         if (isBusy == true) yield break; // Если дверь уже двигается, выходим
 
-        yield return StartCoroutine(MoveDoorRoutine(openedLocalPosition, openSpeed)); // Открываем дверь и ждём завершения
+        yield return StartCoroutine(MoveDoorRoutine(openedLocalPosition, openSpeed)); // Двигаем дверь к открытой позиции и ждем завершения
     }
 
     private IEnumerator MoveDoorRoutine(Vector3 targetLocalPosition, float speed) // Плавное движение двери
     {
-        isBusy = true; // Блокируем повторный запуск
+        isBusy = true; // Помечаем дверь занятой
 
-        Vector3 startLocalPosition = doorPart.localPosition; // Запоминаем текущую позицию двери
-
-        float t = 0f; // Создаём прогресс движения
-
-        while (t < 1f) // Пока движение не завершено
+        while (Vector3.Distance(doorPart.localPosition, targetLocalPosition) > 0.01f) // Двигаемся, пока дверь не дошла почти до цели
         {
-            t += Time.deltaTime * speed; // Увеличиваем прогресс с учётом скорости
+            doorPart.localPosition = Vector3.MoveTowards(doorPart.localPosition, targetLocalPosition, speed * Time.deltaTime); // Двигаем дверь к цели с постоянной скоростью
 
-            doorPart.localPosition = Vector3.Lerp(startLocalPosition, targetLocalPosition, t); // Плавно двигаем дверь
-
-            yield return null; // Ждём следующий кадр
+            yield return null; // Ждем следующий кадр
         }
 
         doorPart.localPosition = targetLocalPosition; // Точно ставим дверь в конечную позицию
 
-        isBusy = false; // Разрешаем новый запуск
+        isBusy = false; // Разрешаем следующий запуск движения
 
-        if (showDebugLogs == true) Debug.Log("Дверь лифта закончила движение"); // Пишем лог
+        if (showDebugLogs == true) Debug.Log("SlidingElevatorDoor: дверь закончила движение, текущая позиция = " + doorPart.localPosition); // Пишем финальную позицию
     }
 }
