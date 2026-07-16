@@ -61,7 +61,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 4552191581410023176}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters:
   - {fileID: -7039978384953132775}
@@ -124,6 +124,60 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-6372427823889813129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Door/DoorClose
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Door/DoorClose
+  Guid:
+    Data1: -1897936269
+    Data2: 1242395485
+    Data3: 115766442
+    Data4: 221835941
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
+--- !u!114 &-5100199245023624873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Door/SmallDoorOpen
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Door/SmallDoorOpen
+  Guid:
+    Data1: 910980525
+    Data2: 1220403696
+    Data3: -1165788032
+    Data4: 186405851
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
 --- !u!114 &-3982825177419810735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +202,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-1106797976275478565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Door/SmallDoorClose
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Door/SmallDoorClose
+  Guid:
+    Data1: 681819090
+    Data2: 1173097677
+    Data3: -13292400
+    Data4: -1366011015
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
 --- !u!114 &-1070758260847107354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,6 +258,33 @@ MonoBehaviour:
   - linoleum
   - Wood
   Exists: 1
+--- !u!114 &-968593249671166856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Lights/Light Off
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Lights/Light Off
+  Guid:
+    Data1: -2087921017
+    Data2: 1288424162
+    Data3: 1765884570
+    Data4: -517688780
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 269
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,13 +305,20 @@ MonoBehaviour:
   - {fileID: 3969581204241585293}
   - {fileID: 5143438381744408755}
   - {fileID: -7003906365326198114}
+  - {fileID: 4248052078293216515}
+  - {fileID: -968593249671166856}
+  - {fileID: 176710144190681147}
+  - {fileID: 5142142090603654503}
+  - {fileID: -6372427823889813129}
+  - {fileID: -5100199245023624873}
+  - {fileID: -1106797976275478565}
   EditorParameters: []
   MasterBanks:
   - {fileID: 4552191581410023176}
   StringsBanks:
   - {fileID: 390493745208664655}
   cacheVersion: 131860
-  cacheTime: 639188580154230619
+  cacheTime: 639198067340000000
   SerializableEventsDict:
   - key: event:/Player/Footsteps
     index: 0
@@ -213,6 +328,47 @@ MonoBehaviour:
     index: 2
   - key: event:/Player/Breathe
     index: 3
+  - key: event:/Ambience/Lights/Light
+    index: 4
+  - key: event:/Ambience/Lights/Light Off
+    index: 5
+  - key: event:/Ambience/Lights/Light ON
+    index: 6
+  - key: event:/Ambience/Door/DoorOpen
+    index: 7
+  - key: event:/Ambience/Door/DoorClose
+    index: 8
+  - key: event:/Ambience/Door/SmallDoorOpen
+    index: 9
+  - key: event:/Ambience/Door/SmallDoorClose
+    index: 10
+--- !u!114 &176710144190681147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Lights/Light ON
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Lights/Light ON
+  Guid:
+    Data1: -1096295427
+    Data2: 1222673732
+    Data3: 1312885180
+    Data4: -668271283
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 179
 --- !u!114 &390493745208664655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,10 +384,10 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639188580154230619
+  lastModified: 639198067340000000
   FileSizes:
   - Name: Desktop
-    Value: 1038
+    Value: 1440
   Exists: 1
 --- !u!114 &2868962422214387081
 MonoBehaviour:
@@ -262,6 +418,30 @@ MonoBehaviour:
   - linoleum
   - Wood
   Exists: 1
+--- !u!114 &2928059199406592043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Light/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 664784307
+    data2: 2168317822
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &3969581204241585293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,6 +469,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 534
+--- !u!114 &4248052078293216515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Lights/Light
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Lights/Light
+  Guid:
+    Data1: -187484068
+    Data2: 1204190415
+    Data3: 1453395629
+    Data4: 734306641
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 2928059199406592043}
+  MinDistance: 1
+  MaxDistance: 7.6
+  Length: 19500
 --- !u!114 &4552191581410023176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,11 +512,38 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639188580154225447
+  lastModified: 639198067340000000
   FileSizes:
   - Name: Desktop
-    Value: 1403680
+    Value: 2406496
   Exists: 1
+--- !u!114 &5142142090603654503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Door/DoorOpen
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Door/DoorOpen
+  Guid:
+    Data1: -1667866079
+    Data2: 1119290880
+    Data3: 566603669
+    Data4: 1448332868
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
 --- !u!114 &5143438381744408755
 MonoBehaviour:
   m_ObjectHideFlags: 0

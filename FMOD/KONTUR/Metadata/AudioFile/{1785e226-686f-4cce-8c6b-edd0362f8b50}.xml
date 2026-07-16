@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{1785e226-686f-4cce-8c6b-edd0362f8b50}">
+		<property name="assetPath">
+			<value>MECHClik-M_Spain-Clicks, Button, Light Switch, Apartment, Malaga, Zoom F6, 05_FTUS_AIOL_192k32b.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>192</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.25986458333333334</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{64d47a68-0926-4226-ac5b-0f9c721261eb}</destination>
+		</relationship>
+	</object>
+</objects>
