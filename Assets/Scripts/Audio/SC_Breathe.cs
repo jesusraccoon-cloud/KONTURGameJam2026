@@ -81,7 +81,7 @@ public class SC_Breathe : MonoBehaviour // Зацикленное дыхание
 
         if (attachToPlayer) // Если привязываем к игроку
         {
-            RuntimeManager.AttachInstanceToGameObject(breatheInstance, transform); // Позиция звука следует за игроком
+            RuntimeManager.AttachInstanceToGameObject(breatheInstance, gameObject); // Позиция звука следует за игроком
         }
         else // Иначе один раз ставим позицию
         {
