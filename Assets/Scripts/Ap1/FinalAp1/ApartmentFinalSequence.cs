@@ -1,12 +1,16 @@
 using UnityEngine; // Подключаем Unity-классы
 using System.Collections; // Подключаем корутины
 
-public class ApartmentFinalSequence : MonoBehaviour // Главный режиссёр сценарных событий квартиры
+public class ApartmentFinalSequence : MonoBehaviour // Главный режиссер сценарных событий квартиры
 {
     [Header("Early Hall Door Break 4/6")] // Блок раннего события на 4/6 кассет или 3/3 шума
     public GameObject normalHallDoors; // Рабочие двери из прихожей в зал
 
     public GameObject brokenHallDoors; // Сломанные двери из прихожей в зал
+
+    public GameObject[] objectsToDisableAfterFourOfSix; // Объекты, которые нужно выключить после 4/6
+
+    public GameObject[] objectsToEnableAfterFourOfSix; // Объекты, которые нужно включить после 4/6
 
     public float hallDoorBreakDelay = 1.5f; // Задержка перед поломкой дверей при обычном 4/6
 
@@ -25,14 +29,18 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
 
     public int noiseReactionsToActivate = 3; // Сколько реакций нужно для досрочной активации
 
-    public float noiseReactionCooldown = 2f; // Защита от слишком частого набора счётчика
+    public float noiseReactionCooldown = 2f; // Защита от слишком частого набора счетчика
 
-    public int currentNoiseReactions = 0; // Текущий счётчик тревоги квартиры
+    public int currentNoiseReactions = 0; // Текущий счетчик тревоги квартиры
 
     private float lastNoiseReactionTime = -999f; // Время последней засчитанной реакции
 
     [Header("Final Objects")] // Блок финальных объектов
     public GameObject fallenWardrobe; // Упавший шкаф
+
+    public GameObject[] objectsToDisableAfterSixOfSix; // Объекты, которые нужно выключить после 6/6
+
+    public GameObject[] objectsToEnableAfterSixOfSix; // Объекты, которые нужно включить после 6/6
 
     [Header("Closet Fall")] // Блок падения шкафа
     public ClosetPhysicalFall closetPhysicalFall; // Скрипт падения шкафа
@@ -118,84 +126,92 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
 
     public void RegisterNoiseReactionForEarlyEvent(int finalNoisePower) // Засчитать реакцию квартиры на шум
     {
-        if (!enableNoiseAlarmActivation) return; // Если активация через шум выключена — выходим
+        if (!enableNoiseAlarmActivation) return; // Если активация через шум выключена, выходим
 
-        if (hallDoorBreakStarted) return; // Если событие 4/6 уже запущено — выходим
+        if (hallDoorBreakStarted) return; // Если событие 4/6 уже запущено, выходим
 
-        if (finalStarted) return; // Если финал 6/6 уже запущен — выходим
+        if (finalStarted) return; // Если финал 6/6 уже запущен, выходим
 
-        if (finalNoisePower < noiseReactionThreshold) return; // Если шум слабее порога — не считаем
+        if (finalNoisePower < noiseReactionThreshold) return; // Если шум слабее порога, не считаем
 
-        if (Time.time - lastNoiseReactionTime < noiseReactionCooldown) return; // Если слишком рано после прошлого шума — не считаем
+        if (Time.time - lastNoiseReactionTime < noiseReactionCooldown) return; // Если прошло мало времени, не считаем
 
         lastNoiseReactionTime = Time.time; // Запоминаем время засчитанной реакции
 
-        currentNoiseReactions = Mathf.Clamp(currentNoiseReactions + 1, 0, noiseReactionsToActivate); // Увеличиваем счётчик 3/3
+        currentNoiseReactions = Mathf.Clamp(currentNoiseReactions + 1, 0, noiseReactionsToActivate); // Увеличиваем счетчик тревоги
 
         Debug.Log("Тревога квартиры: " + currentNoiseReactions + "/" + noiseReactionsToActivate + " | шум: " + finalNoisePower); // Пишем лог тревоги
 
-        if (currentNoiseReactions >= noiseReactionsToActivate) // Если набрали 3/3
+        if (currentNoiseReactions >= noiseReactionsToActivate) // Если набрали нужное количество реакций
         {
-            StartEarlyHallDoorBreakSequence(); // Запускаем то же событие, что и на 4/6 кассет
+            StartEarlyHallDoorBreakSequence(); // Запускаем событие 4/6
         }
     }
 
     public void StartEarlyHallDoorBreakSequence() // Запустить событие выламывания дверей на 4/6 или 3/3 шума
     {
-        if (hallDoorBreakStarted) return; // Если событие уже запускалось — выходим
+        if (hallDoorBreakStarted) return; // Если событие уже запускалось, выходим
 
-        hallDoorBreakStarted = true; // Запоминаем, что событие запущено
+        hallDoorBreakStarted = true; // Запоминаем запуск события
 
-        CompleteEarlyHallDoorBreakState(); // Переводим квартиру в состояние после 4/6
+        CompleteEarlyHallDoorBreakState(); // Применяем состояние после 4/6
 
-        if (!finalStarted && monsterAI != null) monsterAI.ActivateMonster(); // Запускаем патруль только если финал 6/6 ещё не начался
+        if (!finalStarted && monsterAI != null) monsterAI.ActivateMonster(); // Запускаем монстра, если финал еще не начался
 
-        if (finalStarted && monsterAI != null && monsterExitBlockPoint != null) monsterAI.GoToPointAndStop(monsterExitBlockPoint); // Если финал уже начался — держим монстра у выхода
+        if (finalStarted && monsterAI != null && monsterExitBlockPoint != null) monsterAI.GoToPointAndStop(monsterExitBlockPoint); // Если финал уже идет, держим монстра у выхода
     }
 
     private IEnumerator EarlyHallDoorBreakRoutine() // Последовательность ранней поломки дверей
     {
         if (monsterObject != null) monsterObject.SetActive(true); // Включаем монстра
 
-        if (monsterPatrol != null) monsterPatrol.StopPatrol(); // Останавливаем патруль перед сценарием
+        if (monsterPatrol != null) monsterPatrol.StopPatrol(); // Останавливаем патруль
 
         if (hallDoorBreakAudioSource != null && hallDoorBreakSound != null) hallDoorBreakAudioSource.PlayOneShot(hallDoorBreakSound); // Проигрываем звук выбивания дверей
 
-        if (hallDoorBreakDelay > 0f) yield return new WaitForSeconds(hallDoorBreakDelay); // Ждём перед поломкой дверей
+        if (hallDoorBreakDelay > 0f) yield return new WaitForSeconds(hallDoorBreakDelay); // Ждем перед поломкой дверей
 
-        CompleteEarlyHallDoorBreakState(); // Переводим квартиру в состояние после 4/6
+        CompleteEarlyHallDoorBreakState(); // Применяем состояние после 4/6
 
-        if (!finalStarted && monsterAI != null) monsterAI.ActivateMonster(); // Запускаем патруль только если финал 6/6 ещё не начался
+        if (!finalStarted && monsterAI != null) monsterAI.ActivateMonster(); // Запускаем монстра, если финал еще не начался
 
-        if (finalStarted && monsterAI != null && monsterExitBlockPoint != null) monsterAI.GoToPointAndStop(monsterExitBlockPoint); // Если финал уже начался — отправляем монстра к выходу
+        if (finalStarted && monsterAI != null && monsterExitBlockPoint != null) monsterAI.GoToPointAndStop(monsterExitBlockPoint); // Если финал идет, отправляем монстра к выходу
 
         Debug.Log("4/6 событие: монстр выломал двери"); // Пишем лог
     }
 
     private void CompleteEarlyHallDoorBreakState() // Мгновенно применить состояние после 4/6
     {
-        if (hallDoorBreakCompleted) return; // Если состояние уже применено — выходим
+        if (hallDoorBreakCompleted) return; // Если состояние уже применено, выходим
 
-        hallDoorBreakCompleted = true; // Запоминаем, что состояние после 4/6 применено
+        hallDoorBreakCompleted = true; // Запоминаем применение состояния
 
         hallDoorBreakStarted = true; // Считаем, что событие 4/6 уже было
 
-        if (monsterObject != null) monsterObject.SetActive(true); // Гарантированно включаем монстра
+        if (monsterObject != null) monsterObject.SetActive(true); // Включаем монстра
 
-        if (normalHallDoors != null) normalHallDoors.SetActive(false); // Выключаем рабочие двери
+        if (normalHallDoors != null) normalHallDoors.SetActive(false); // Выключаем обычные двери
 
         if (brokenHallDoors != null) brokenHallDoors.SetActive(true); // Включаем сломанные двери
+
+        SetObjectsActive(objectsToDisableAfterFourOfSix, false); // Выключаем дополнительные объекты после 4/6
+
+        SetObjectsActive(objectsToEnableAfterFourOfSix, true); // Включаем дополнительные объекты после 4/6
     }
 
     public void StartFinalSequence() // Запуск финала
     {
-        if (finalStarted) return; // Если финал уже был — выходим
+        if (finalStarted) return; // Если финал уже был, выходим
 
-        CompleteEarlyHallDoorBreakState(); // Если 6/6 запущен сразу через debug — мгновенно подготавливаем состояние после 4/6
+        CompleteEarlyHallDoorBreakState(); // Если 6/6 запущен сразу, сначала применяем состояние после 4/6
 
         finalStarted = true; // Запоминаем запуск финала
 
         finalSequenceStarted = true; // Сообщаем другим скриптам, что финал начался
+
+        SetObjectsActive(objectsToDisableAfterSixOfSix, false); // Выключаем дополнительные объекты после 6/6
+
+        SetObjectsActive(objectsToEnableAfterSixOfSix, true); // Включаем дополнительные объекты после 6/6
 
         if (closetPhysicalFall != null) closetPhysicalFall.canFall = true; // Разрешаем падение шкафа
 
@@ -205,7 +221,7 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
 
         if (brokenDoorOnFloor != null) brokenDoorOnFloor.SetActive(true); // Показываем выбитую дверь
 
-        if (bathroomDoor != null) // Если дверь ванной назначена
+        if (bathroomDoor != null) // Проверяем, назначена ли дверь ванной
         {
             bathroomDoor.CloseDoor(); // Закрываем дверь ванной
 
@@ -224,31 +240,31 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
 
         if (apartmentExitCompleteTrigger != null) apartmentExitCompleteTrigger.SetActive(true); // Включаем триггер завершения квартиры
 
-        if (elevatorEndingEvent != null) elevatorEndingEvent.UnlockElevatorEvent(); // Включаем лифтовую концовку после 6/6
+        if (elevatorEndingEvent != null) elevatorEndingEvent.UnlockElevatorEvent(); // Разблокируем лифтовую концовку
 
         BlockExitWithMonster(); // Отправляем монстра блокировать выход
 
         Debug.Log("Финальная последовательность квартиры запущена"); // Пишем лог
     }
 
-    public void BlockExitWithMonster() // Монстр идёт блокировать выход
+    public void BlockExitWithMonster() // Монстр идет блокировать выход
     {
-        if (exitBlocked) return; // Если уже блокировал — выходим
+        if (exitBlocked) return; // Если выход уже блокировался, выходим
 
         exitBlocked = true; // Запоминаем блокировку
 
         if (monsterObject != null) monsterObject.SetActive(true); // Включаем монстра
 
-        if (monsterPatrol != null) monsterPatrol.StopPatrol(); // Полностью выключаем патруль
+        if (monsterPatrol != null) monsterPatrol.StopPatrol(); // Останавливаем патруль
 
         if (monsterAI != null && monsterExitBlockPoint != null) monsterAI.GoToPointAndStop(monsterExitBlockPoint); // Отправляем монстра к выходу
 
-        Debug.Log("Монстр пошёл блокировать выход"); // Пишем лог
+        Debug.Log("Монстр пошел блокировать выход"); // Пишем лог
     }
 
     public void OnFinalWindowFirstHit() // Первый удар по окну
     {
-        if (windowFirstHitReactionStarted) return; // Если реакция уже была — выходим
+        if (windowFirstHitReactionStarted) return; // Если реакция уже была, выходим
 
         windowFirstHitReactionStarted = true; // Запоминаем реакцию
 
@@ -256,7 +272,7 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
 
         if (finalBrokenDoor != null) finalBrokenDoor.SetActive(true); // Показываем сломанную дверь
 
-        if (fallenWardrobeRigidbody != null) // Если Rigidbody шкафа назначен
+        if (fallenWardrobeRigidbody != null) // Проверяем Rigidbody шкафа
         {
             fallenWardrobeRigidbody.isKinematic = false; // Включаем физику шкафа
 
@@ -274,58 +290,70 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
 
     public void OnPlayerEscapedThroughWindow() // Игрок перелез через окно
     {
-        if (!finalSequenceStarted) return; // Если финал не начался — выходим
+        if (!finalSequenceStarted) return; // Если финал не начался, выходим
 
         playerEscapedThroughWindow = true; // Запоминаем, что игрок перелез
 
         if (bathroomExitChaseTrigger != null) bathroomExitChaseTrigger.SetActive(true); // Включаем триггер погони после ванной
 
-        Debug.Log("Игрок перелез через окно, триггер выхода из ванной включён"); // Пишем лог
+        Debug.Log("Игрок перелез через окно, триггер выхода из ванной включен"); // Пишем лог
     }
 
     public void OnBathroomExitTrigger() // Игрок вышел из ванной
     {
-        if (bathroomExitTriggered) return; // Если уже сработало — выходим
+        if (bathroomExitTriggered) return; // Если уже сработало, выходим
 
-        if (!finalSequenceStarted) return; // Если финал не начался — выходим
+        if (!finalSequenceStarted) return; // Если финал не начался, выходим
 
-        if (!playerEscapedThroughWindow) return; // Если игрок не перелез через окно — выходим
+        if (!playerEscapedThroughWindow) return; // Если игрок не перелез через окно, выходим
 
         bathroomExitTriggered = true; // Запоминаем срабатывание
 
-        if (monsterObject != null) monsterObject.SetActive(true); // Гарантированно включаем монстра
+        if (monsterObject != null) monsterObject.SetActive(true); // Включаем монстра
 
-        if (monsterPatrol != null) monsterPatrol.StopPatrol(); // Гарантированно выключаем патруль
+        if (monsterPatrol != null) monsterPatrol.StopPatrol(); // Останавливаем патруль
 
-        if (monsterAI != null) monsterAI.ForceChasePlayer(); // Запускаем постоянную финальную погоню
+        if (monsterAI != null) monsterAI.ForceChasePlayer(); // Запускаем финальную погоню
 
-        if (bathroomExitChaseTrigger != null) bathroomExitChaseTrigger.SetActive(false); // Отключаем триггер
+        if (bathroomExitChaseTrigger != null) bathroomExitChaseTrigger.SetActive(false); // Выключаем триггер
 
         Debug.Log("Игрок вышел из ванной, монстр начал финальную погоню"); // Пишем лог
     }
 
     public void TryCompleteApartmentAfterExit() // Игрок вышел из квартиры после финала
     {
-        if (apartmentCompleted) return; // Если квартира уже завершена — выходим
+        if (apartmentCompleted) return; // Если квартира уже завершена, выходим
 
-        if (!finalSequenceStarted) // Если финал ещё не начался
+        if (!finalSequenceStarted) // Проверяем, начался ли финал
         {
-            Debug.Log("Квартиру нельзя завершить: финал 6/6 ещё не запущен"); // Пишем лог
+            Debug.Log("Квартиру нельзя завершить: финал 6/6 еще не запущен"); // Пишем лог
 
             return; // Выходим
         }
 
         apartmentCompleted = true; // Запоминаем завершение квартиры
 
-        readyToDisableByTumbler = true; // Разрешаем отключение через тумблер УМПСР
+        readyToDisableByTumbler = true; // Разрешаем отключение через тумблер
 
-        if (apartmentExitDoor != null) // Если входная дверь квартиры назначена
+        if (apartmentExitDoor != null) // Проверяем дверь квартиры
         {
             apartmentExitDoor.CloseDoor(); // Закрываем дверь квартиры
 
             if (lockApartmentDoorAfterExit) apartmentExitDoor.SetLocked(true); // Блокируем дверь квартиры
         }
 
-        Debug.Log("Квартира завершена. Теперь её можно отключить тумблером УМПСР"); // Пишем лог
+        Debug.Log("Квартира завершена. Теперь ее можно отключить тумблером УМПСР"); // Пишем лог
+    }
+
+    private void SetObjectsActive(GameObject[] objects, bool activeState) // Метод включает или выключает список объектов
+    {
+        if (objects == null) return; // Если список не назначен, ничего не делаем
+
+        for (int i = 0; i < objects.Length; i++) // Проходим по всем объектам списка
+        {
+            if (objects[i] == null) continue; // Если ячейка пустая, пропускаем
+
+            objects[i].SetActive(activeState); // Включаем или выключаем объект
+        }
     }
 }

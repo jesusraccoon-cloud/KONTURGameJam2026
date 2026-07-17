@@ -3,22 +3,22 @@ using UnityEngine; // Подключаем Unity-классы
 public class PlayerInteractor : MonoBehaviour // Центральный скрипт взаимодействия игрока
 {
     [Header("References")] // Блок ссылок
-    public Camera playerCamera; // Камера игрока, из которой выпускаются лучи взаимодействия и удара
+    public Camera playerCamera; // Камера игрока, из которой выпускаются лучи
 
     public PlayerHideController playerHideController; // Контроллер пряток игрока
 
-    public ObjectGrabber objectGrabber; // Скрипт захвата и бросания предметов
+    public ObjectGrabber objectGrabber; // Скрипт подбора и отпускания предметов
 
-    [Header("Interaction Settings")] // Блок настроек обычного взаимодействия
+    [Header("Interaction Settings")] // Блок обычного взаимодействия
     public float interactDistance = 3f; // Дистанция взаимодействия через E и Q
 
-    [Header("Hit Settings")] // Блок настроек удара
+    [Header("Hit Settings")] // Блок удара
     public float hitDistance = 2f; // Дистанция удара через ЛКМ
 
-    [Header("Raycast Settings")] // Блок настроек лучей
-    public LayerMask interactLayers = ~0; // Слои, по которым работают лучи взаимодействия и удара
+    [Header("Raycast Settings")] // Блок лучей
+    public LayerMask interactLayers = ~0; // Слои, по которым работает луч
 
-    public QueryTriggerInteraction triggerInteraction = QueryTriggerInteraction.Collide; // Разрешает Raycast попадать в Trigger-коллайдеры
+    public QueryTriggerInteraction triggerInteraction = QueryTriggerInteraction.Collide; // Разрешаем лучу попадать в Trigger-коллайдеры
 
     [Header("Keys")] // Блок кнопок
     public KeyCode interactKey = KeyCode.E; // Кнопка обычного взаимодействия
@@ -28,15 +28,15 @@ public class PlayerInteractor : MonoBehaviour // Центральный скри
     public KeyCode hitKey = KeyCode.Mouse0; // Кнопка удара
 
     [Header("Debug")] // Блок отладки
-    public bool drawDebugRays = true; // Показывать debug-лучи в Scene View
+    public bool drawDebugRays = true; // Показывать debug-лучи
 
-    public bool showDebugLogs = false; // Показывать debug-логи в Console
+    public bool showDebugLogs = false; // Показывать debug-логи
 
-    private IInteractable currentInteractable; // Текущий объект обычного взаимодействия
+    private IInteractable currentInteractable; // Текущий объект для E
 
-    private IHitInteractable currentHitInteractable; // Текущий объект удара
+    private IHitInteractable currentHitInteractable; // Текущий объект для удара
 
-    private WardrobeHideHandle currentWardrobeHideHandle; // Текущий шкаф, в который можно спрятаться
+    private WardrobeHideInteractForwarder currentWardrobeHideForwarder; // Текущая зона пряток для Q
 
     private ILookInteractable currentLookInteractable; // Текущий объект наведения
 
@@ -44,27 +44,18 @@ public class PlayerInteractor : MonoBehaviour // Центральный скри
 
     private void Start() // Запускается один раз при старте сцены
     {
-        if (playerCamera == null) // Если камера не назначена вручную
-        {
-            playerCamera = Camera.main; // Берём главную камеру сцены
-        }
+        if (playerCamera == null) playerCamera = Camera.main; // Если камера не назначена, берем главную камеру
 
-        if (playerHideController == null) // Если контроллер пряток не назначен
-        {
-            playerHideController = GetComponent<PlayerHideController>(); // Ищем PlayerHideController на игроке
-        }
+        if (playerHideController == null) playerHideController = GetComponent<PlayerHideController>(); // Если контроллер пряток не назначен, ищем на игроке
 
-        if (objectGrabber == null && playerCamera != null) // Если ObjectGrabber не назначен, но камера есть
-        {
-            objectGrabber = playerCamera.GetComponent<ObjectGrabber>(); // Ищем ObjectGrabber на камере игрока
-        }
+        if (objectGrabber == null && playerCamera != null) objectGrabber = playerCamera.GetComponent<ObjectGrabber>(); // Если подбор не назначен, ищем на камере
     }
 
     private void Update() // Выполняется каждый кадр
     {
-        FindCurrentInteractable(); // Ищем объект для E и Q
+        FindCurrentInteractable(); // Ищем объект для E, Q и наведения
 
-        FindCurrentHitInteractable(); // Ищем объект для ЛКМ
+        FindCurrentHitInteractable(); // Ищем объект для удара
 
         HandleLook(); // Обрабатываем наведение
 
@@ -77,28 +68,25 @@ public class PlayerInteractor : MonoBehaviour // Центральный скри
         DrawDebugRays(); // Рисуем debug-лучи
     }
 
-    private void HandleInteractInput() // Обработка обычного взаимодействия через E
+    private void HandleInteractInput() // Обработка E
     {
-        if (!Input.GetKeyDown(interactKey)) return; // Если E не нажали — выходим
+        if (!Input.GetKeyDown(interactKey)) return; // Если E не нажали, выходим
 
-        if (playerHideController != null && playerHideController.isHidden) return; // Если игрок спрятан — E не работает наружу
+        if (playerHideController != null && playerHideController.isHidden) return; // Если игрок спрятан, E снаружи не работает
 
-        if (currentInteractable != null) // Если перед игроком есть объект взаимодействия
+        if (currentInteractable != null) // Если перед игроком есть интерактивный объект
         {
             currentInteractable.Interact(); // Вызываем обычное взаимодействие
 
-            return; // Выходим, чтобы не взять предмет в этот же кадр
+            return; // Выходим, чтобы не подобрать предмет в этот же кадр
         }
 
-        if (objectGrabber != null) // Если обычного объекта нет, но ObjectGrabber назначен
-        {
-            objectGrabber.Interact(); // Берём или отпускаем предмет
-        }
+        if (objectGrabber != null) objectGrabber.Interact(); // Если интерактива нет, пробуем взять или отпустить предмет
     }
 
-    private void HandleHideInput() // Обработка пряток через Q
+    private void HandleHideInput() // Обработка Q
     {
-        if (!Input.GetKeyDown(hideKey)) return; // Если Q не нажали — выходим
+        if (!Input.GetKeyDown(hideKey)) return; // Если Q не нажали, выходим
 
         if (playerHideController != null && playerHideController.isHidden) // Если игрок уже спрятан
         {
@@ -107,88 +95,80 @@ public class PlayerInteractor : MonoBehaviour // Центральный скри
             return; // Выходим
         }
 
-        if (currentWardrobeHideHandle != null) // Если перед игроком есть шкаф
+        if (currentWardrobeHideForwarder != null) // Если луч смотрит на зону пряток
         {
-            currentWardrobeHideHandle.TryHide(); // Прячемся в шкаф
+            currentWardrobeHideForwarder.TryHide(); // Запускаем прятки именно через зону
 
             return; // Выходим
         }
     }
 
-    private void HandleHitInput() // Обработка удара через ЛКМ
+    private void HandleHitInput() // Обработка ЛКМ
     {
-        if (!Input.GetKeyDown(hitKey)) return; // Если ЛКМ не нажали — выходим
+        if (!Input.GetKeyDown(hitKey)) return; // Если ЛКМ не нажали, выходим
 
-        if (playerHideController != null && playerHideController.isHidden) return; // Если игрок спрятан — удар наружу не работает
+        if (playerHideController != null && playerHideController.isHidden) return; // Если игрок спрятан, удар не работает
 
-        if (currentHitInteractable != null) // Если перед игроком есть объект, который можно ударить
-        {
-            currentHitInteractable.Hit(); // Вызываем удар
-        }
+        if (currentHitInteractable != null) currentHitInteractable.Hit(); // Если есть объект удара, вызываем Hit
     }
 
-    private void FindCurrentInteractable() // Поиск объекта для обычного взаимодействия
+    private void FindCurrentInteractable() // Поиск объекта перед игроком
     {
-        currentInteractable = null; // Сбрасываем найденный IInteractable
+        currentInteractable = null; // Сбрасываем объект для E
 
-        currentWardrobeHideHandle = null; // Сбрасываем найденный шкаф
+        currentWardrobeHideForwarder = null; // Сбрасываем зону пряток для Q
 
         currentLookInteractable = null; // Сбрасываем объект наведения
 
-        if (playerCamera == null) return; // Если камеры нет — выходим
+        if (playerCamera == null) return; // Если камеры нет, выходим
 
-        if (playerHideController != null && playerHideController.isHidden) return; // Если игрок спрятан — наружный луч не нужен
+        if (playerHideController != null && playerHideController.isHidden) return; // Если игрок спрятан, внешний луч не нужен
 
-        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward); // Создаём луч из камеры вперёд
+        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward); // Создаем луч из камеры вперед
 
         if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactLayers, triggerInteraction)) // Пускаем луч взаимодействия
         {
-            currentInteractable = FindInterfaceInColliderOrParents<IInteractable>(hit.collider); // Ищем обычное взаимодействие
+            currentInteractable = FindInterfaceInColliderOrParents<IInteractable>(hit.collider); // Ищем объект для E
 
-            currentWardrobeHideHandle = hit.collider.GetComponentInParent<WardrobeHideHandle>(); // Ищем шкаф для пряток
+            currentWardrobeHideForwarder = hit.collider.GetComponent<WardrobeHideInteractForwarder>(); // Ищем зону пряток прямо на коллайдере
+
+            if (currentWardrobeHideForwarder == null) currentWardrobeHideForwarder = hit.collider.GetComponentInParent<WardrobeHideInteractForwarder>(); // Если не нашли, ищем выше
 
             currentLookInteractable = FindInterfaceInColliderOrParents<ILookInteractable>(hit.collider); // Ищем объект наведения
 
-            if (showDebugLogs) // Если debug включён
-            {
-                Debug.Log("INTERACT RAY HIT: " + hit.collider.name); // Пишем имя объекта
-            }
+            if (showDebugLogs) Debug.Log("INTERACT RAY HIT: " + hit.collider.name); // Пишем, во что попал луч
+
+            if (showDebugLogs && currentWardrobeHideForwarder != null) Debug.Log("HIDE ZONE FOUND: " + currentWardrobeHideForwarder.name); // Пишем, что нашли зону пряток
         }
     }
 
     private void FindCurrentHitInteractable() // Поиск объекта для удара
     {
-        currentHitInteractable = null; // Сбрасываем найденный IHitInteractable
+        currentHitInteractable = null; // Сбрасываем объект удара
 
-        if (playerCamera == null) return; // Если камеры нет — выходим
+        if (playerCamera == null) return; // Если камеры нет, выходим
 
-        if (playerHideController != null && playerHideController.isHidden) return; // Если игрок спрятан — наружный удар не нужен
+        if (playerHideController != null && playerHideController.isHidden) return; // Если игрок спрятан, удар не нужен
 
-        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward); // Создаём луч из камеры вперёд
+        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward); // Создаем луч из камеры вперед
 
         if (Physics.Raycast(ray, out RaycastHit hit, hitDistance, interactLayers, triggerInteraction)) // Пускаем луч удара
         {
             currentHitInteractable = FindInterfaceInColliderOrParents<IHitInteractable>(hit.collider); // Ищем объект удара
 
-            if (showDebugLogs) // Если debug включён
-            {
-                Debug.Log("HIT RAY HIT: " + hit.collider.name); // Пишем имя объекта
-            }
+            if (showDebugLogs) Debug.Log("HIT RAY HIT: " + hit.collider.name); // Пишем, во что попал луч удара
         }
     }
 
     private T FindInterfaceInColliderOrParents<T>(Collider targetCollider) where T : class // Универсальный поиск интерфейса
     {
-        if (targetCollider == null) return null; // Если коллайдера нет — возвращаем null
+        if (targetCollider == null) return null; // Если коллайдера нет, возвращаем null
 
         T interfaceOnCollider = targetCollider.GetComponent<T>(); // Ищем интерфейс на самом объекте коллайдера
 
-        if (interfaceOnCollider != null) // Если интерфейс найден
-        {
-            return interfaceOnCollider; // Возвращаем найденный интерфейс
-        }
+        if (interfaceOnCollider != null) return interfaceOnCollider; // Если нашли, возвращаем его
 
-        T interfaceInParents = targetCollider.GetComponentInParent<T>(); // Ищем интерфейс в родителях
+        T interfaceInParents = targetCollider.GetComponentInParent<T>(); // Если не нашли, ищем в родителях
 
         return interfaceInParents; // Возвращаем найденное или null
     }
@@ -197,29 +177,23 @@ public class PlayerInteractor : MonoBehaviour // Центральный скри
     {
         if (previousLookInteractable != currentLookInteractable) // Если объект наведения изменился
         {
-            if (previousLookInteractable != null) // Если раньше был объект
-            {
-                previousLookInteractable.LookExit(); // Сообщаем старому объекту, что игрок перестал смотреть
-            }
+            if (previousLookInteractable != null) previousLookInteractable.LookExit(); // Сообщаем старому объекту, что игрок больше не смотрит
 
             previousLookInteractable = currentLookInteractable; // Запоминаем новый объект
         }
 
-        if (currentLookInteractable != null) // Если сейчас есть объект наведения
-        {
-            currentLookInteractable.LookUpdate(); // Обновляем наведение
-        }
+        if (currentLookInteractable != null) currentLookInteractable.LookUpdate(); // Обновляем наведение текущего объекта
     }
 
     private void DrawDebugRays() // Рисует debug-лучи
     {
-        if (!drawDebugRays) return; // Если debug выключен — выходим
+        if (!drawDebugRays) return; // Если debug выключен, выходим
 
-        if (playerCamera == null) return; // Если камеры нет — выходим
+        if (playerCamera == null) return; // Если камеры нет, выходим
 
-        if (playerHideController != null && playerHideController.isHidden) return; // Если игрок спрятан — лучи не рисуем
+        if (playerHideController != null && playerHideController.isHidden) return; // Если игрок спрятан, лучи не рисуем
 
-        Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.forward * interactDistance, Color.green); // Зелёный луч взаимодействия
+        Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.forward * interactDistance, Color.green); // Зеленый луч взаимодействия
 
         Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.forward * hitDistance, Color.red); // Красный луч удара
     }
