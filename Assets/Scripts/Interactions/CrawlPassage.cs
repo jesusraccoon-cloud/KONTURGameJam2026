@@ -18,12 +18,16 @@ public class CrawlPassage : MonoBehaviour, IInteractable // Универсаль
     public Transform sideBExitPoint; // Выход в зал
 
     [Header("Interaction Distance")]
-    public float maxUseDistance = 3f; // На время теста ставим 3
+    public float maxUseDistance = 3f; // Максимальная дистанция использования
 
     [Header("Movement Settings")]
     public float moveToEnterTime = 0.35f; // Время подтягивания
     public float crawlTime = 1.2f; // Время пролезания
     public bool rotatePlayerAfterCrawl = true; // Поворачивать игрока после выхода
+
+    [Header("Sideways Rotation")]
+    [Range(0f, 100f)]
+    public float turnRightChance = 50f; // Вероятность поворота вправо в процентах
 
     [Header("Usage Settings")]
     public bool canUse = true; // Можно ли использовать
@@ -31,7 +35,7 @@ public class CrawlPassage : MonoBehaviour, IInteractable // Универсаль
     public bool isBusy = false; // Сейчас используется
 
     [Header("Noise")]
-    public NoiseEmitter noiseEmitter; // Шум
+    public NoiseEmitter noiseEmitter; // Источник шума
     public float noiseDelay = 0.4f; // Задержка шума
 
     [Header("Debug")]
@@ -73,19 +77,19 @@ public class CrawlPassage : MonoBehaviour, IInteractable // Универсаль
 
         if (nearestDistance > maxUseDistance) // Если игрок далеко
         {
-            if (showDebugLogs) Debug.Log("CrawlPassage: игрок слишком далеко. Увеличь Max Use Distance или подвинь Enter-точки."); // Лог
+            if (showDebugLogs) Debug.Log("CrawlPassage: игрок слишком далеко."); // Лог
             return; // Выходим
         }
 
         if (distanceToA <= distanceToB) // Если игрок ближе к стороне A
         {
             if (showDebugLogs) Debug.Log("CrawlPassage: запускаю переход A -> B."); // Лог
-            StartCoroutine(CrawlRoutine(sideAEnterPoint, sideBExitPoint)); // Ползем A -> B
+            StartCoroutine(CrawlRoutine(sideAEnterPoint, sideBExitPoint)); // Ползём A -> B
         }
         else // Если игрок ближе к стороне B
         {
             if (showDebugLogs) Debug.Log("CrawlPassage: запускаю переход B -> A."); // Лог
-            StartCoroutine(CrawlRoutine(sideBEnterPoint, sideAExitPoint)); // Ползем B -> A
+            StartCoroutine(CrawlRoutine(sideBEnterPoint, sideAExitPoint)); // Ползём B -> A
         }
     }
 
@@ -101,9 +105,21 @@ public class CrawlPassage : MonoBehaviour, IInteractable // Универсаль
 
         yield return MovePlayer(playerRoot.position, enterPoint.position, moveToEnterTime); // Подтягиваем ко входу
 
-        yield return MovePlayer(playerRoot.position, exitPoint.position, crawlTime); // Переносим к выходу
+        Vector3 crawlDirection = exitPoint.position - enterPoint.position; // Получаем направление прохода
 
-        if (rotatePlayerAfterCrawl == true) playerRoot.rotation = exitPoint.rotation; // Поворачиваем игрока
+        crawlDirection.y = 0f; // Убираем вертикальный наклон
+
+        Quaternion forwardRotation = Quaternion.LookRotation(crawlDirection); // Получаем поворот по направлению прохода
+
+        bool turnRight = Random.Range(0f, 100f) < turnRightChance; // Проверяем вероятность поворота вправо
+
+        float sideAngle = turnRight ? 90f : -90f; // Выбираем правый или левый поворот
+
+        playerRoot.rotation = forwardRotation * Quaternion.Euler(0f, sideAngle, 0f); // Поворачиваем игрока боком
+
+        yield return MovePlayer(playerRoot.position, exitPoint.position, crawlTime); // Перемещаем игрока к выходу
+
+        if (rotatePlayerAfterCrawl == true) playerRoot.rotation = exitPoint.rotation; // Поворачиваем игрока после выхода
 
         if (characterController != null) characterController.enabled = true; // Включаем CharacterController
 
@@ -118,7 +134,7 @@ public class CrawlPassage : MonoBehaviour, IInteractable // Универсаль
     {
         float timer = 0f; // Таймер
 
-        while (timer < duration) // Пока идет движение
+        while (timer < duration) // Пока идёт движение
         {
             timer += Time.deltaTime; // Добавляем время
 
@@ -128,7 +144,7 @@ public class CrawlPassage : MonoBehaviour, IInteractable // Универсаль
 
             playerRoot.position = Vector3.Lerp(startPosition, targetPosition, t); // Двигаем игрока
 
-            yield return null; // Ждем кадр
+            yield return null; // Ждём кадр
         }
 
         playerRoot.position = targetPosition; // Ставим точно в точку
@@ -136,8 +152,8 @@ public class CrawlPassage : MonoBehaviour, IInteractable // Универсаль
 
     private IEnumerator EmitNoiseAfterDelay() // Шум с задержкой
     {
-        yield return new WaitForSeconds(noiseDelay); // Ждем
+        yield return new WaitForSeconds(noiseDelay); // Ждём
 
-        if (noiseEmitter != null) noiseEmitter.EmitNoise(); // Создаем шум
+        if (noiseEmitter != null) noiseEmitter.EmitNoise(); // Создаём шум
     }
 }
