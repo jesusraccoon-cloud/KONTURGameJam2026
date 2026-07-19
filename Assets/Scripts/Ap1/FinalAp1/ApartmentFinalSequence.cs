@@ -322,6 +322,22 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
         Debug.Log("Квартира завершена. Теперь ее можно отключить тумблером УМПСР"); // Пишем лог
     }
 
+    public bool CanActivateUniversalTrigger(int requiredStage) // Проверяем, разрешает ли текущая стадия квартиры работу универсального триггера
+    {
+        if (requiredStage <= 0) return true; // Значение 0 означает, что триггер может работать в любой момент
+
+        if (requiredStage == 4) return hallDoorBreakCompleted; // Для стадии 4/6 разрешаем работу только после завершения раннего события
+
+        if (requiredStage == 6) return finalSequenceStarted; // Для стадии 6/6 разрешаем работу только после запуска финала
+
+        return false; // Любое другое значение считаем недопустимым
+    }
+
+    public void OnUniversalTriggerActivated(string triggerID) // Получаем сообщение от универсального триггера после его успешной активации
+    {
+        Debug.Log("ApartmentFinalSequence: активирован триггер " + triggerID); // Пишем в Console, какой именно триггер сработал
+    }
+
     private void SetObjectsActive(GameObject[] objects, bool activeState) // Метод включает или выключает список объектов
     {
         if (objects == null) return; // Если список не назначен, ничего не делаем
