@@ -13,12 +13,17 @@ public class BreakableObject : MonoBehaviour, IHitInteractable // Универс
 
     public float hitDelay = 0.3f; // Минимальная задержка между ударами
 
+    [Header("Apartment Final Sequence Lock")] // Блок ограничения через финал квартиры
+    public bool requireApartmentFinalSequence = false; // Нужно ли разрешать разрушение только после 6/6
+
+    public ApartmentFinalSequence apartmentFinalSequence; // Сюда назначается ApartmentFinalSequence нужной квартиры
+
     [Header("Noise Settings")] // Блок настроек шума
     public NoiseEmitter noiseEmitter; // Источник шума на этом объекте
 
-    [Range(0, 10)] public int hitNoisePower = 7; // Шум обычного удара
+    [Range(0, 10)] public int hitNoisePower = 7; // Сила шума обычного удара
 
-    [Range(0, 10)] public int breakNoisePower = 8; // Шум полного разрушения
+    [Range(0, 10)] public int breakNoisePower = 8; // Сила шума разрушения
 
     public bool makeNoiseOnHit = true; // Создавать ли шум при каждом ударе
 
@@ -27,21 +32,16 @@ public class BreakableObject : MonoBehaviour, IHitInteractable // Универс
     [Header("Object Swap")] // Блок замены моделей
     public GameObject intactObject; // Целая версия объекта
 
-    public GameObject brokenObject; // Сломанная версия объекта
+    public GameObject brokenObject; // Разрушенная версия объекта
 
-    [Header("Objects To Enable After Break")] // Объекты, которые нужно включить после разрушения
-    public GameObject[] objectsToEnableAfterBreak; // Массив объектов для включения
+    [Header("Objects To Enable After Break")] // Блок объектов, которые нужно включить после разрушения
+    public GameObject[] objectsToEnableAfterBreak; // Список объектов для включения
 
-    [Header("Objects To Disable After Break")] // Объекты, которые нужно выключить после разрушения
-    public GameObject[] objectsToDisableAfterBreak; // Массив объектов для выключения
-
-    [Header("Optional Final Sequence Lock")] // Блок ограничения по финальной фазе
-    public bool requireFinalSequence = false; // Нужно ли разрешать разрушение только после финала
-
-    public ApartmentFinalSequence finalSequence; // Ссылка на финальную последовательность квартиры
+    [Header("Objects To Disable After Break")] // Блок объектов, которые нужно выключить после разрушения
+    public GameObject[] objectsToDisableAfterBreak; // Список объектов для выключения
 
     [Header("Events")] // Блок событий
-    public UnityEvent onHit; // Событие при каждом успешном ударе
+    public UnityEvent onHit; // Событие при успешном ударе
 
     public UnityEvent onBreak; // Событие при полном разрушении
 
@@ -52,7 +52,7 @@ public class BreakableObject : MonoBehaviour, IHitInteractable // Универс
 
     private float lastHitTime = -999f; // Время последнего удара
 
-    public int CurrentHits // Публичное свойство для чтения ударов
+    public int CurrentHits // Публичное свойство для чтения количества ударов
     {
         get { return currentHits; } // Возвращаем текущее количество ударов
     }
@@ -77,33 +77,28 @@ public class BreakableObject : MonoBehaviour, IHitInteractable // Универс
 
     public void Hit() // Метод вызывается игроком через IHitInteractable
     {
-        if (!canBeHit) return; // Если объект нельзя бить — выходим
+        if (!canBeHit) return; // Если объект нельзя бить, выходим
 
-        if (isBroken) return; // Если объект уже разрушен — выходим
+        if (isBroken) return; // Если объект уже разрушен, выходим
 
-        if (requireFinalSequence) // Если объект разрешён только в финальной фазе
-        {
-            if (finalSequence == null) return; // Если ссылка на финальную фазу не назначена — выходим
+        if (!CanBreakByApartmentFinalSequence()) return; // Если финал 6/6 еще не начался, запрещаем удар
 
-            if (!finalSequence.finalSequenceStarted) return; // Если финальная фаза ещё не началась — выходим
-        }
-
-        if (Time.time < lastHitTime + hitDelay) return; // Если удар слишком быстрый — игнорируем
+        if (Time.time < lastHitTime + hitDelay) return; // Если удар слишком быстрый, игнорируем
 
         lastHitTime = Time.time; // Запоминаем время удара
 
         currentHits++; // Увеличиваем количество ударов
 
-        if (makeNoiseOnHit && noiseEmitter != null) // Если шум удара включён и NoiseEmitter есть
+        if (makeNoiseOnHit && noiseEmitter != null) // Если шум удара включен и NoiseEmitter есть
         {
-            noiseEmitter.EmitNoise(hitNoisePower); // Создаём шум удара
+            noiseEmitter.EmitNoise(hitNoisePower); // Создаем шум удара
         }
 
-        onHit.Invoke(); // Вызываем событие удара
+        if (onHit != null) onHit.Invoke(); // Вызываем событие удара
 
         if (showDebugLogs) // Если отладка включена
         {
-            Debug.Log(gameObject.name + " удар: " + currentHits + "/" + hitsToBreak); // Пишем прогресс
+            Debug.Log(gameObject.name + " удар: " + currentHits + "/" + hitsToBreak); // Пишем прогресс ударов
         }
 
         if (currentHits >= hitsToBreak) // Если ударов достаточно
@@ -112,9 +107,32 @@ public class BreakableObject : MonoBehaviour, IHitInteractable // Универс
         }
     }
 
+    private bool CanBreakByApartmentFinalSequence() // Проверяем, разрешено ли разрушение по финалу квартиры
+    {
+        if (requireApartmentFinalSequence == false) return true; // Если ограничение выключено, разрешаем бить всегда
+
+        if (apartmentFinalSequence == null) // Если ограничение включено, но ApartmentFinalSequence не назначен
+        {
+            if (showDebugLogs) Debug.Log(gameObject.name + ": ApartmentFinalSequence не назначен, объект нельзя разбить"); // Пишем лог
+
+            return false; // Не разрешаем разрушение без назначенной финальной последовательности
+        }
+
+        if (apartmentFinalSequence.finalSequenceStarted == false) // Если финал 6/6 еще не начался
+        {
+            if (showDebugLogs) Debug.Log(gameObject.name + ": финал 6/6 еще не начался, объект нельзя разбить"); // Пишем лог
+
+            return false; // Запрещаем разрушение до 6/6
+        }
+
+        return true; // Если финал 6/6 начался, разрешаем разрушение
+    }
+
     public void BreakObject() // Метод полного разрушения объекта
     {
-        if (isBroken) return; // Если уже разрушен — выходим
+        if (isBroken) return; // Если уже разрушен, выходим
+
+        if (!CanBreakByApartmentFinalSequence()) return; // Не даем разрушить объект через код до 6/6
 
         isBroken = true; // Помечаем объект разрушенным
 
@@ -126,12 +144,12 @@ public class BreakableObject : MonoBehaviour, IHitInteractable // Универс
 
         DisableObjectsAfterBreak(); // Выключаем нужные объекты
 
-        if (makeNoiseOnBreak && noiseEmitter != null) // Если шум разрушения включён и NoiseEmitter есть
+        if (makeNoiseOnBreak && noiseEmitter != null) // Если шум разрушения включен и NoiseEmitter есть
         {
-            noiseEmitter.EmitNoise(breakNoisePower); // Создаём шум разрушения
+            noiseEmitter.EmitNoise(breakNoisePower); // Создаем шум разрушения
         }
 
-        onBreak.Invoke(); // Вызываем событие разрушения
+        if (onBreak != null) onBreak.Invoke(); // Вызываем событие разрушения
 
         if (showDebugLogs) // Если отладка включена
         {
@@ -143,18 +161,20 @@ public class BreakableObject : MonoBehaviour, IHitInteractable // Универс
     {
         if (intactObject != null) // Если целая модель назначена
         {
-            intactObject.SetActive(!isBroken); // Включаем её только если объект не сломан
+            intactObject.SetActive(!isBroken); // Включаем ее только если объект не сломан
         }
 
         if (brokenObject != null) // Если сломанная модель назначена
         {
-            brokenObject.SetActive(isBroken); // Включаем её только если объект сломан
+            brokenObject.SetActive(isBroken); // Включаем ее только если объект сломан
         }
     }
 
     private void EnableObjectsAfterBreak() // Метод включения объектов после разрушения
     {
-        for (int i = 0; i < objectsToEnableAfterBreak.Length; i++) // Проходим по массиву включаемых объектов
+        if (objectsToEnableAfterBreak == null) return; // Если список пустой, выходим
+
+        for (int i = 0; i < objectsToEnableAfterBreak.Length; i++) // Проходим по списку включаемых объектов
         {
             if (objectsToEnableAfterBreak[i] != null) // Если элемент назначен
             {
@@ -165,7 +185,9 @@ public class BreakableObject : MonoBehaviour, IHitInteractable // Универс
 
     private void DisableObjectsAfterBreak() // Метод выключения объектов после разрушения
     {
-        for (int i = 0; i < objectsToDisableAfterBreak.Length; i++) // Проходим по массиву выключаемых объектов
+        if (objectsToDisableAfterBreak == null) return; // Если список пустой, выходим
+
+        for (int i = 0; i < objectsToDisableAfterBreak.Length; i++) // Проходим по списку выключаемых объектов
         {
             if (objectsToDisableAfterBreak[i] != null) // Если элемент назначен
             {

@@ -11,6 +11,9 @@
         },
         {
             "m_Id": "83075cf5f05b47799a78c2d44c83b7d2"
+        },
+        {
+            "m_Id": "b4554a7f05534095821f3b150d8c7764"
         }
     ],
     "m_Keywords": [],
@@ -1031,9 +1034,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1670.9998779296875,
-            "y": 287.0000305175781,
-            "width": 208.0,
+            "x": -1728.9998779296875,
+            "y": 400.0000305175781,
+            "width": 207.9998779296875,
             "height": 302.0000305175781
         }
     },
@@ -1076,6 +1079,9 @@
         },
         {
             "m_Id": "83075cf5f05b47799a78c2d44c83b7d2"
+        },
+        {
+            "m_Id": "b4554a7f05534095821f3b150d8c7764"
         }
     ]
 }
@@ -1294,10 +1300,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1827.0,
-            "y": 729.0000610351563,
+            "x": -1917.0001220703125,
+            "y": 830.0,
             "width": 161.0,
-            "height": 33.99993896484375
+            "height": 34.0
         }
     },
     "m_Slots": [
@@ -1389,6 +1395,34 @@
         "w": 0.0
     },
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "b4554a7f05534095821f3b150d8c7764",
+    "m_Guid": {
+        "m_GuidSerialized": "2a0f7e61-a2e0-4537-bb67-0880a664bf5d"
+    },
+    "m_Name": "Tile",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Tile",
+    "m_DefaultReferenceName": "_Tile",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 1.0,
+    "m_FloatType": 2,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
+    }
 }
 
 {
