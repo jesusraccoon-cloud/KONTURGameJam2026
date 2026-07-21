@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MI_Wallpaper_02
+  m_Name: M_Wallpaper_02
   m_Shader: {fileID: -6465566751694194690, guid: d609d0a3b3c6dc84181e356c8b284f9e,
     type: 3}
   m_Parent: {fileID: 0}
