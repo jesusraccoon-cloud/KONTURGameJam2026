@@ -20103,7 +20103,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &133831675
 Transform:
   m_ObjectHideFlags: 0
@@ -370126,7 +370126,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1992138665
 Transform:
   m_ObjectHideFlags: 0
@@ -398927,6 +398927,7 @@ GameObject:
   - component: {fileID: 587269418147976838}
   - component: {fileID: 7387332228354055837}
   - component: {fileID: 237650725838564645}
+  - component: {fileID: 7387332228354055838}
   m_Layer: 0
   m_Name: AP_SkirtingBoard52
   m_TagString: Untagged
@@ -398945,6 +398946,7 @@ GameObject:
   - component: {fileID: 4056288533491042790}
   - component: {fileID: 1615550457272527488}
   - component: {fileID: 2563745393592673692}
+  - component: {fileID: 4056288533491042791}
   m_Layer: 0
   m_Name: AP_Corner15
   m_TagString: Untagged
@@ -399488,6 +399490,7 @@ GameObject:
   - component: {fileID: 5760083624026140786}
   - component: {fileID: 2419351868643024878}
   - component: {fileID: 790739185425854676}
+  - component: {fileID: 5760083624026140787}
   m_Layer: 0
   m_Name: AP_SkirtingBoard59
   m_TagString: Untagged
@@ -400186,6 +400189,7 @@ GameObject:
   - component: {fileID: 595657032670227759}
   - component: {fileID: 327063282748097417}
   - component: {fileID: 5432595426827745120}
+  - component: {fileID: 5432595426827745121}
   m_Layer: 0
   m_Name: AP_SkirtingBoard65
   m_TagString: Untagged
@@ -400222,6 +400226,7 @@ GameObject:
   - component: {fileID: 4111175632796919107}
   - component: {fileID: 1430390393540151039}
   - component: {fileID: 2717907881775016784}
+  - component: {fileID: 4111175632796919108}
   m_Layer: 0
   m_Name: AP_SkirtingBoard19
   m_TagString: Untagged
@@ -400456,6 +400461,7 @@ GameObject:
   - component: {fileID: 8068892359160177189}
   - component: {fileID: 7430982222082645182}
   - component: {fileID: 4395616448050858176}
+  - component: {fileID: 8068892359160177190}
   m_Layer: 0
   m_Name: AP_SkirtingBoard63
   m_TagString: Untagged
@@ -402508,6 +402514,7 @@ GameObject:
   - component: {fileID: 144391684303924970}
   - component: {fileID: 1577361165043352569}
   - component: {fileID: 7712162957257788594}
+  - component: {fileID: 7712162957257788595}
   m_Layer: 0
   m_Name: AP_Corner24
   m_TagString: Untagged
@@ -402698,6 +402705,7 @@ GameObject:
   - component: {fileID: 1320463778810873096}
   - component: {fileID: 1953645795622434312}
   - component: {fileID: 4343332556749809940}
+  - component: {fileID: 4343332556749809941}
   m_Layer: 0
   m_Name: AP_SkirtingBoard17
   m_TagString: Untagged
@@ -403307,6 +403315,7 @@ GameObject:
   - component: {fileID: 5678415266885103495}
   - component: {fileID: 2601117019243956529}
   - component: {fileID: 5892268453586113573}
+  - component: {fileID: 5892268453586113574}
   m_Layer: 0
   m_Name: AP_SkirtingBoard29
   m_TagString: Untagged
@@ -404219,6 +404228,7 @@ GameObject:
   - component: {fileID: 3707724967838981548}
   - component: {fileID: 451485636919458427}
   - component: {fileID: 6306534997467117214}
+  - component: {fileID: 6306534997467117215}
   m_Layer: 0
   m_Name: AP_Corner06
   m_TagString: Untagged
@@ -404253,6 +404263,7 @@ GameObject:
   - component: {fileID: 5685921398833285500}
   - component: {fileID: 3985554408957420339}
   - component: {fileID: 8303956147024731789}
+  - component: {fileID: 8303956147024731790}
   m_Layer: 0
   m_Name: AP_Corner08
   m_TagString: Untagged
@@ -405443,6 +405454,7 @@ GameObject:
   - component: {fileID: 6149419714572366822}
   - component: {fileID: 313876812921881160}
   - component: {fileID: 4987736457674500908}
+  - component: {fileID: 6149419714572366823}
   m_Layer: 0
   m_Name: AP_SkirtingBoard55
   m_TagString: Untagged
@@ -406563,6 +406575,7 @@ GameObject:
   - component: {fileID: 4689206657643893356}
   - component: {fileID: 5990669564265625191}
   - component: {fileID: 8128568316963924912}
+  - component: {fileID: 8128568316963924913}
   m_Layer: 0
   m_Name: AP_SkirtingBoard64
   m_TagString: Untagged
@@ -408303,6 +408316,7 @@ GameObject:
   - component: {fileID: 6085765326928776273}
   - component: {fileID: 1804985352292511980}
   - component: {fileID: 6747590249406251642}
+  - component: {fileID: 6747590249406251643}
   m_Layer: 0
   m_Name: AP_SkirtingBoard20
   m_TagString: Untagged
@@ -408413,6 +408427,7 @@ GameObject:
   - component: {fileID: 4052895411104369272}
   - component: {fileID: 6185637626689988780}
   - component: {fileID: 6245351344354640285}
+  - component: {fileID: 6245351344354640286}
   m_Layer: 0
   m_Name: AP_SkirtingBoard35
   m_TagString: Untagged
@@ -408562,6 +408577,7 @@ GameObject:
   - component: {fileID: 1746743969413406222}
   - component: {fileID: 264142188171717139}
   - component: {fileID: 4312993990826804870}
+  - component: {fileID: 4312993990826804871}
   m_Layer: 0
   m_Name: AP_SkirtingBoard18
   m_TagString: Untagged
@@ -408671,6 +408687,7 @@ GameObject:
   - component: {fileID: 3114360657832091377}
   - component: {fileID: 4669245072255025429}
   - component: {fileID: 5776426697421824791}
+  - component: {fileID: 5776426697421824792}
   m_Layer: 0
   m_Name: AP_SkirtingBoard54
   m_TagString: Untagged
@@ -408908,6 +408925,7 @@ GameObject:
   - component: {fileID: 4709580013180905659}
   - component: {fileID: 9034771539462090885}
   - component: {fileID: 4478857626826853797}
+  - component: {fileID: 9034771539462090886}
   m_Layer: 0
   m_Name: AP_SkirtingBoard22
   m_TagString: Untagged
@@ -409125,6 +409143,7 @@ GameObject:
   - component: {fileID: 8969956629364197233}
   - component: {fileID: 2013209980404728774}
   - component: {fileID: 1483144983665322353}
+  - component: {fileID: 8969956629364197234}
   m_Layer: 0
   m_Name: AP_SkirtingBoard39
   m_TagString: Untagged
@@ -411078,6 +411097,7 @@ GameObject:
   - component: {fileID: 8527106441510609525}
   - component: {fileID: 5596431358672538175}
   - component: {fileID: 8159772066999179965}
+  - component: {fileID: 8527106441510609526}
   m_Layer: 0
   m_Name: AP_Corner14
   m_TagString: Untagged
@@ -412009,6 +412029,7 @@ GameObject:
   - component: {fileID: 7335452901325754101}
   - component: {fileID: 4664969108382840185}
   - component: {fileID: 6426288437868396639}
+  - component: {fileID: 7335452901325754102}
   m_Layer: 0
   m_Name: AP_SkirtingBoard06
   m_TagString: Untagged
@@ -412121,6 +412142,7 @@ GameObject:
   - component: {fileID: 7103337192157780916}
   - component: {fileID: 4398779815975949443}
   - component: {fileID: 1358929665517092766}
+  - component: {fileID: 7103337192157780917}
   m_Layer: 0
   m_Name: AP_SkirtingBoard60
   m_TagString: Untagged
@@ -412199,6 +412221,7 @@ GameObject:
   - component: {fileID: 4032377445546442257}
   - component: {fileID: 7724897517136521157}
   - component: {fileID: 4617176451928938752}
+  - component: {fileID: 7724897517136521158}
   m_Layer: 0
   m_Name: AP_SkirtingBoard01
   m_TagString: Untagged
@@ -413888,6 +413911,7 @@ GameObject:
   - component: {fileID: 5389184368036397273}
   - component: {fileID: 2913000675444013847}
   - component: {fileID: 3873386510210922509}
+  - component: {fileID: 5389184368036397274}
   m_Layer: 0
   m_Name: AP_SkirtingBoard62
   m_TagString: Untagged
@@ -415179,6 +415203,7 @@ GameObject:
   - component: {fileID: 8148579697371312491}
   - component: {fileID: 521308403079947034}
   - component: {fileID: 7094541968479169182}
+  - component: {fileID: 8148579697371312492}
   m_Layer: 0
   m_Name: AP_SkirtingBoard73
   m_TagString: Untagged
@@ -415413,6 +415438,7 @@ GameObject:
   - component: {fileID: 2589351839787649684}
   - component: {fileID: 2870956564797419278}
   - component: {fileID: 4555350962087867596}
+  - component: {fileID: 4555350962087867597}
   m_Layer: 0
   m_Name: AP_SkirtingBoard57
   m_TagString: Untagged
@@ -415431,6 +415457,7 @@ GameObject:
   - component: {fileID: 7782107578604666135}
   - component: {fileID: 2661432442664437272}
   - component: {fileID: 6378504427632723648}
+  - component: {fileID: 7782107578604666136}
   m_Layer: 0
   m_Name: AP_Corner10
   m_TagString: Untagged
@@ -415929,6 +415956,7 @@ GameObject:
   - component: {fileID: 6126086992427299466}
   - component: {fileID: 6183850257271681179}
   - component: {fileID: 3765741854974476800}
+  - component: {fileID: 6183850257271681180}
   m_Layer: 0
   m_Name: AP_SkirtingBoard09
   m_TagString: Untagged
@@ -419496,6 +419524,7 @@ GameObject:
   - component: {fileID: 2281576312301396784}
   - component: {fileID: 6385156691883490064}
   - component: {fileID: 5132863932416058762}
+  - component: {fileID: 6385156691883490065}
   m_Layer: 0
   m_Name: AP_SkirtingBoard67
   m_TagString: Untagged
@@ -419530,6 +419559,7 @@ GameObject:
   - component: {fileID: 1575138969034068597}
   - component: {fileID: 6531944996224181360}
   - component: {fileID: 7718668281353074572}
+  - component: {fileID: 7718668281353074573}
   m_Layer: 0
   m_Name: AP_Corner04
   m_TagString: Untagged
@@ -420047,6 +420077,7 @@ GameObject:
   - component: {fileID: 995570663518808495}
   - component: {fileID: 4638327797403719220}
   - component: {fileID: 8738966015298935593}
+  - component: {fileID: 8738966015298935594}
   m_Layer: 0
   m_Name: AP_Corner07
   m_TagString: Untagged
@@ -420212,6 +420243,7 @@ GameObject:
   - component: {fileID: 5985907307802643856}
   - component: {fileID: 4464163976995671777}
   - component: {fileID: 4183165054909317570}
+  - component: {fileID: 5985907307802643857}
   m_Layer: 0
   m_Name: AP_SkirtingBoard40
   m_TagString: Untagged
@@ -421571,6 +421603,7 @@ GameObject:
   - component: {fileID: 6301917072183982046}
   - component: {fileID: 1519948892046704089}
   - component: {fileID: 984294437458606864}
+  - component: {fileID: 6301917072183982047}
   m_Layer: 0
   m_Name: AP_Corner05
   m_TagString: Untagged
@@ -424305,6 +424338,7 @@ GameObject:
   - component: {fileID: 3169644884444081375}
   - component: {fileID: 4894229107237308728}
   - component: {fileID: 8863857557482258493}
+  - component: {fileID: 8863857557482258494}
   m_Layer: 0
   m_Name: AP_SkirtingBoard15
   m_TagString: Untagged
@@ -424904,6 +424938,7 @@ GameObject:
   - component: {fileID: 1914761814656688579}
   - component: {fileID: 4977164384949966751}
   - component: {fileID: 5602990177141159248}
+  - component: {fileID: 5602990177141159249}
   m_Layer: 0
   m_Name: AP_SkirtingBoard47
   m_TagString: Untagged
@@ -425112,6 +425147,7 @@ GameObject:
   - component: {fileID: 2787586824507913792}
   - component: {fileID: 4955251078929107246}
   - component: {fileID: 3669607418964225582}
+  - component: {fileID: 4955251078929107247}
   m_Layer: 0
   m_Name: AP_SkirtingBoard07
   m_TagString: Untagged
@@ -426526,6 +426562,7 @@ GameObject:
   - component: {fileID: 8277801911162168850}
   - component: {fileID: 2633982584077453822}
   - component: {fileID: 5762006895902688117}
+  - component: {fileID: 8277801911162168851}
   m_Layer: 0
   m_Name: AP_SkirtingBoard13
   m_TagString: Untagged
@@ -426544,6 +426581,7 @@ GameObject:
   - component: {fileID: 2038773526865969192}
   - component: {fileID: 8090170271334183760}
   - component: {fileID: 2803487695677150176}
+  - component: {fileID: 8090170271334183761}
   m_Layer: 0
   m_Name: AP_SkirtingBoard42
   m_TagString: Untagged
@@ -427155,6 +427193,7 @@ GameObject:
   - component: {fileID: 7615676929676288692}
   - component: {fileID: 8130200279810743591}
   - component: {fileID: 6770195459230004135}
+  - component: {fileID: 8130200279810743592}
   m_Layer: 0
   m_Name: AP_Corner02
   m_TagString: Untagged
@@ -428154,6 +428193,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 983152734}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4056288533491042791
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115865812440752309}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.45000395, y: 0.4500003, z: 3.144526}
+  m_Center: {x: -0.22500192, y: -0.075002015, z: 1.572263}
 --- !u!114 &4063125883003921651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428874,6 +428934,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7224422483792091436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4111175632796919108
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403344349258634409}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.088626325, y: 0.0886271, z: 0.04431343}
+  m_Center: {x: 0.0025133006, y: -0.0025140343, z: 0.002186939}
 --- !u!1 &4122725314301486841
 GameObject:
   m_ObjectHideFlags: 0
@@ -429871,6 +429952,7 @@ GameObject:
   - component: {fileID: 2352354855551321375}
   - component: {fileID: 4988425531407326202}
   - component: {fileID: 163781876160264604}
+  - component: {fileID: 4988425531407326203}
   m_Layer: 0
   m_Name: AP_SkirtingBoard53
   m_TagString: Untagged
@@ -429934,6 +430016,7 @@ GameObject:
   - component: {fileID: 788126568344165423}
   - component: {fileID: 5310066653054036646}
   - component: {fileID: 794292439670299663}
+  - component: {fileID: 5310066653054036647}
   m_Layer: 0
   m_Name: AP_SkirtingBoard72
   m_TagString: Untagged
@@ -430004,6 +430087,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4312993990826804871
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548138327800987333}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.044313714, y: 0.7051096, z: 0.044313144}
+  m_Center: {x: 0.0035182685, y: -0.0000009536743, z: 0.003518268}
 --- !u!1 &4314838031510116593
 GameObject:
   m_ObjectHideFlags: 0
@@ -430136,6 +430240,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4343332556749809941
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746944583394178706}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.04431332, y: 0.33533773, z: 0.044313144}
+  m_Center: {x: 0.0035182685, y: -0.0000019073486, z: 0.003518268}
 --- !u!1 &4344071286383755940
 GameObject:
   m_ObjectHideFlags: 0
@@ -430163,6 +430288,7 @@ GameObject:
   - component: {fileID: 2544959283158513400}
   - component: {fileID: 7908238046231717307}
   - component: {fileID: 1243111716943600784}
+  - component: {fileID: 7908238046231717308}
   m_Layer: 0
   m_Name: AP_SkirtingBoard38
   m_TagString: Untagged
@@ -430526,6 +430652,7 @@ GameObject:
   - component: {fileID: 565057045852225674}
   - component: {fileID: 4866180589474445943}
   - component: {fileID: 8928169547182946331}
+  - component: {fileID: 8928169547182946332}
   m_Layer: 0
   m_Name: AP_SkirtingBoard26
   m_TagString: Untagged
@@ -431512,7 +431639,7 @@ Transform:
   m_GameObject: {fileID: 71241820532182603}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.8535423, y: 5.23, z: 0.000000059604645}
+  m_LocalPosition: {x: -5.8535423, y: 4.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -431845,6 +431972,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4555350962087867597
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2444531007267777284}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.070476, y: 0.044314165, z: 0.044313144}
+  m_Center: {x: -0.000000059604645, y: 0.0035168366, z: 0.003518268}
 --- !u!33 &4556588507658015407
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -432367,6 +432515,7 @@ GameObject:
   - component: {fileID: 6559087059186019489}
   - component: {fileID: 1927252257344478385}
   - component: {fileID: 7526252211997236658}
+  - component: {fileID: 7526252211997236659}
   m_Layer: 0
   m_Name: AP_SkirtingBoard51
   m_TagString: Untagged
@@ -434235,6 +434384,7 @@ GameObject:
   - component: {fileID: 7092349480996830262}
   - component: {fileID: 519010228086356272}
   - component: {fileID: 6879704772931887981}
+  - component: {fileID: 7092349480996830263}
   m_Layer: 0
   m_Name: AP_SkirtingBoard11
   m_TagString: Untagged
@@ -434636,6 +434786,7 @@ GameObject:
   - component: {fileID: 8758947380631462912}
   - component: {fileID: 3839294768327066700}
   - component: {fileID: 2830489403407198993}
+  - component: {fileID: 8758947380631462913}
   m_Layer: 0
   m_Name: AP_SkirtingBoard37
   m_TagString: Untagged
@@ -434751,6 +434902,7 @@ GameObject:
   - component: {fileID: 3790924743123040831}
   - component: {fileID: 95888696022761340}
   - component: {fileID: 8615970540118938645}
+  - component: {fileID: 8615970540118938646}
   m_Layer: 0
   m_Name: AP_SkirtingBoard50
   m_TagString: Untagged
@@ -435156,7 +435308,7 @@ Transform:
   m_GameObject: {fileID: 4167165821960947764}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.853542, y: 5.23, z: 0}
+  m_LocalPosition: {x: -8.853542, y: 4.62, z: -0.000000059604645}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -435170,6 +435322,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3751202343120585231}
   m_Mesh: {fileID: -7866139658936592348, guid: 34f7c8f6ff947b24ba07b2d8bc3b2692, type: 3}
+--- !u!65 &4955251078929107247
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3751202343120585231}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1012294, y: 0.08862646, z: 0.044313144}
+  m_Center: {x: -0.0011481326, y: -0.00065311784, z: 0.0021869612}
 --- !u!4 &4957965360343398696
 Transform:
   m_ObjectHideFlags: 0
@@ -435295,6 +435468,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4276035530944117431}
   m_Mesh: {fileID: -7046304674409674862, guid: 34f7c8f6ff947b24ba07b2d8bc3b2692, type: 3}
+--- !u!65 &4988425531407326203
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4276035530944117431}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.044313174, y: 0.58167166, z: 0.044313144}
+  m_Center: {x: -0.0035182685, y: -0.0000019073486, z: 0.003518268}
 --- !u!4 &4990724415652969823
 Transform:
   m_ObjectHideFlags: 0
@@ -436868,6 +437062,7 @@ GameObject:
   - component: {fileID: 1171918231082584612}
   - component: {fileID: 7267848095013850022}
   - component: {fileID: 7639917587193585133}
+  - component: {fileID: 7639917587193585134}
   m_Layer: 0
   m_Name: AP_SkirtingBoard46
   m_TagString: Untagged
@@ -437384,6 +437579,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4290177122947895369}
   m_Mesh: {fileID: 6193038625191495495, guid: 34f7c8f6ff947b24ba07b2d8bc3b2692, type: 3}
+--- !u!65 &5310066653054036647
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4290177122947895369}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.044313997, y: 0.34862956, z: 0.044313144}
+  m_Center: {x: 0.0035182685, y: -0.0000019073486, z: 0.003518268}
 --- !u!114 &5313579515708545241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437807,6 +438023,7 @@ GameObject:
   - component: {fileID: 8656494689219619943}
   - component: {fileID: 6839366019695692313}
   - component: {fileID: 6932704318105964649}
+  - component: {fileID: 8656494689219619944}
   m_Layer: 0
   m_Name: AP_SkirtingBoard66
   m_TagString: Untagged
@@ -437914,6 +438131,7 @@ GameObject:
   - component: {fileID: 6421213567496428772}
   - component: {fileID: 5359744588595718731}
   - component: {fileID: 7253936192436602868}
+  - component: {fileID: 7253936192436602869}
   m_Layer: 0
   m_Name: AP_SkirtingBoard49
   m_TagString: Untagged
@@ -437965,6 +438183,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7224422483792091436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5389184368036397274
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2276043250344231758}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.2171855, y: 0.04431426, z: 0.044313144}
+  m_Center: {x: 0, y: -0.0035201763, z: 0.003518268}
 --- !u!65 &5390385496460663585
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -438292,6 +438531,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5432595426827745121
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395728042541560528}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.088627115, y: 0.08862632, z: 0.044313427}
+  m_Center: {x: 0.0025130808, y: 0.0025113968, z: 0.0021869398}
 --- !u!1 &5438975986178264698
 GameObject:
   m_ObjectHideFlags: 0
@@ -438327,6 +438587,7 @@ GameObject:
   - component: {fileID: 1216945818175608548}
   - component: {fileID: 3840427288675965707}
   - component: {fileID: 1840287669982007919}
+  - component: {fileID: 5452768192479266754}
   m_Layer: 0
   m_Name: AP_Corner22
   m_TagString: Untagged
@@ -438334,6 +438595,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &5452768192479266754
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5452768192479266753}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3000024, y: 0.4500003, z: 3.144526}
+  m_Center: {x: 0.15000114, y: -0.075000584, z: 1.572263}
 --- !u!1 &5459964656338812566
 GameObject:
   m_ObjectHideFlags: 0
@@ -438345,6 +438627,7 @@ GameObject:
   - component: {fileID: 1321817227674589893}
   - component: {fileID: 3330884046470936588}
   - component: {fileID: 8560827918059732279}
+  - component: {fileID: 8560827918059732280}
   m_Layer: 0
   m_Name: AP_SkirtingBoard44
   m_TagString: Untagged
@@ -438481,6 +438764,7 @@ GameObject:
   - component: {fileID: 1476039833613989635}
   - component: {fileID: 8753504157423667092}
   - component: {fileID: 870299664437464280}
+  - component: {fileID: 8753504157423667093}
   m_Layer: 0
   m_Name: AP_SkirtingBoard02
   m_TagString: Untagged
@@ -439347,6 +439631,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5602990177141159249
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3715250845652159635}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.226009, y: 0.04431327, z: 0.044313144}
+  m_Center: {x: 0, y: 0.0035163597, z: 0.003518268}
 --- !u!4 &5604864753029695317
 Transform:
   m_ObjectHideFlags: 0
@@ -440144,6 +440449,7 @@ GameObject:
   - component: {fileID: 3659598543686646099}
   - component: {fileID: 3899513069639953465}
   - component: {fileID: 144683654519505293}
+  - component: {fileID: 5745616287152425272}
   m_Layer: 0
   m_Name: AP_SkirtingBoard12
   m_TagString: Untagged
@@ -440151,6 +440457,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &5745616287152425272
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5745616287152425271}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.04431317, y: 1.6719073, z: 0.044313144}
+  m_Center: {x: -0.0035182694, y: -0.0000019073486, z: 0.003518268}
 --- !u!4 &5745820755969126448
 Transform:
   m_ObjectHideFlags: 0
@@ -440200,6 +440527,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7224422483792091436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5760083624026140787
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280720598622453537}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.044313177, y: 3.9419684, z: 0.044313144}
+  m_Center: {x: -0.0035182685, y: -0.0000019669533, z: 0.003518268}
 --- !u!23 &5762006895902688117
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -440253,6 +440601,7 @@ GameObject:
   - component: {fileID: 2648396767011501798}
   - component: {fileID: 1723765537325494665}
   - component: {fileID: 5575525760079951620}
+  - component: {fileID: 5766013759700720563}
   m_Layer: 0
   m_Name: AP_SkirtingBoard03
   m_TagString: Untagged
@@ -440260,6 +440609,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &5766013759700720563
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5766013759700720562}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.08862645, y: 0.08862562, z: 0.044313144}
+  m_Center: {x: -0.0006521717, y: -0.0006533283, z: 0.0021869612}
 --- !u!1 &5769458416308409145
 GameObject:
   m_ObjectHideFlags: 0
@@ -440382,6 +440752,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5776426697421824792
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607267701377070753}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.1318493, y: 0.04431424, z: 0.044313144}
+  m_Center: {x: -0.00000011920929, y: -0.0035201753, z: 0.003518268}
 --- !u!4 &5780562577638896209
 Transform:
   m_ObjectHideFlags: 0
@@ -440408,6 +440799,7 @@ GameObject:
   - component: {fileID: 2554875291294039947}
   - component: {fileID: 8898357291437227040}
   - component: {fileID: 2929450644154096222}
+  - component: {fileID: 8898357291437227041}
   m_Layer: 0
   m_Name: AP_Corner01
   m_TagString: Untagged
@@ -441018,6 +441410,7 @@ GameObject:
   - component: {fileID: 388626383112607206}
   - component: {fileID: 1115162797589895099}
   - component: {fileID: 8499960558837763164}
+  - component: {fileID: 8499960558837763165}
   m_Layer: 0
   m_Name: AP_SkirtingBoard34
   m_TagString: Untagged
@@ -441324,6 +441717,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5892268453586113574
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816819655908336802}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.088625625, y: 0.08862644, z: 0.044313144}
+  m_Center: {x: -0.00065238215, y: 0.0006512161, z: 0.0021869612}
 --- !u!1 &5893332510297630538
 GameObject:
   m_ObjectHideFlags: 0
@@ -441753,6 +442167,7 @@ GameObject:
   - component: {fileID: 4463365055139844740}
   - component: {fileID: 4695856316467283592}
   - component: {fileID: 7620988972169129866}
+  - component: {fileID: 7620988972169129867}
   m_Layer: 0
   m_Name: AP_SkirtingBoard24
   m_TagString: Untagged
@@ -441998,6 +442413,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7224422483792091436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5985907307802643857
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3070895142098274563}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6367068, y: 0.04431319, z: 0.044313144}
+  m_Center: {x: 0.000000014901161, y: -0.0035201763, z: 0.003518268}
 --- !u!114 &5988141078113850901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443245,6 +443681,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7224422483792091436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6149419714572366823
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098782783264273352}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.088625625, y: 0.08862644, z: 0.044313144}
+  m_Center: {x: 0.0006523859, y: -0.0006535984, z: 0.0021869612}
 --- !u!1 &6151323163994928385
 GameObject:
   m_ObjectHideFlags: 0
@@ -443256,6 +443713,7 @@ GameObject:
   - component: {fileID: 1449346852605471600}
   - component: {fileID: 3123998379725289373}
   - component: {fileID: 1038167979224790002}
+  - component: {fileID: 6151323163994928386}
   m_Layer: 0
   m_Name: AP_SkirtingBoard41
   m_TagString: Untagged
@@ -443263,6 +443721,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &6151323163994928386
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6151323163994928385}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.847929, y: 0.044314455, z: 0.044313144}
+  m_Center: {x: -0.00000011920929, y: -0.0035201753, z: 0.003518268}
 --- !u!23 &6156740449450919349
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -443650,6 +444129,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2507356714576184777}
   m_Mesh: {fileID: -8862352228369819339, guid: 34f7c8f6ff947b24ba07b2d8bc3b2692, type: 3}
+--- !u!65 &6183850257271681180
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2507356714576184777}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.1335921, y: 0.04431423, z: 0.044313144}
+  m_Center: {x: 0, y: -0.0035192226, z: 0.003518268}
 --- !u!33 &6185244321547389771
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -443677,6 +444177,7 @@ GameObject:
   - component: {fileID: 4176939948389895151}
   - component: {fileID: 1201228906603567438}
   - component: {fileID: 6436038971316109923}
+  - component: {fileID: 6436038971316109924}
   m_Layer: 0
   m_Name: AP_SkirtingBoard27
   m_TagString: Untagged
@@ -443912,6 +444413,7 @@ GameObject:
   - component: {fileID: 8406925375247255487}
   - component: {fileID: 5115695402009041304}
   - component: {fileID: 4708544984434282033}
+  - component: {fileID: 8406925375247255488}
   m_Layer: 0
   m_Name: AP_Corner12
   m_TagString: Untagged
@@ -444504,6 +445006,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6245351344354640286
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507917293047196657}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.04431432, y: 3.9836068, z: 0.044313144}
+  m_Center: {x: 0.0035182685, y: -0.0000019669533, z: 0.003518268}
 --- !u!4 &6248512796461763281
 Transform:
   m_ObjectHideFlags: 0
@@ -445313,6 +445836,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 983152734}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6301917072183982047
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3305451692394297614}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.30000025, y: 0.3000022, z: 3.144526}
+  m_Center: {x: -0.00000008195639, y: 0.14999919, z: 1.572263}
 --- !u!4 &6302467600880708087
 Transform:
   m_ObjectHideFlags: 0
@@ -445371,6 +445915,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6306534997467117215
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918633661460901182}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.30000204, y: 0.30000058, z: 3.144526}
+  m_Center: {x: -0.15000102, y: -0.0000021532178, z: 1.572263}
 --- !u!65 &6312293976806954910
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -446013,6 +446578,7 @@ GameObject:
   - component: {fileID: 7225595555377774629}
   - component: {fileID: 435989611831593436}
   - component: {fileID: 223155266852707484}
+  - component: {fileID: 7225595555377774630}
   m_Layer: 0
   m_Name: AP_Corner13
   m_TagString: Untagged
@@ -446142,6 +446708,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2877372756661272078}
   m_Mesh: {fileID: -7635456176852797197, guid: 34f7c8f6ff947b24ba07b2d8bc3b2692, type: 3}
+--- !u!65 &6385156691883490065
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2877372756661272078}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.04431503, y: 3.4264145, z: 0.044313144}
+  m_Center: {x: -0.0035182666, y: -0.0000019669533, z: 0.003518268}
 --- !u!4 &6392120041506023611
 Transform:
   m_ObjectHideFlags: 0
@@ -446201,6 +446788,7 @@ GameObject:
   - component: {fileID: 7571070430624989106}
   - component: {fileID: 904270070042047312}
   - component: {fileID: 994099669681521463}
+  - component: {fileID: 7571070430624989107}
   m_Layer: 0
   m_Name: AP_SkirtingBoard14
   m_TagString: Untagged
@@ -446434,6 +447022,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6436038971316109924
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6186162395411013565}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.08862645, y: 0.08862562, z: 0.044313144}
+  m_Center: {x: -0.0006521717, y: -0.00065240444, z: 0.0021869612}
 --- !u!1 &6449310181321616125
 GameObject:
   m_ObjectHideFlags: 0
@@ -447208,6 +447817,7 @@ GameObject:
   - component: {fileID: 3755550175042445302}
   - component: {fileID: 6185244321547389771}
   - component: {fileID: 3532174636828112993}
+  - component: {fileID: 6577386436635773409}
   m_Layer: 0
   m_Name: AP_SkirtingBoard05
   m_TagString: Untagged
@@ -447215,6 +447825,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &6577386436635773409
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6577386436635773408}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.044313148, y: 0.5775715, z: 0.044313144}
+  m_Center: {x: -0.0035182685, y: -0.0000009536743, z: 0.003518268}
 --- !u!1 &6582058605183418531
 GameObject:
   m_ObjectHideFlags: 0
@@ -448190,6 +448821,7 @@ GameObject:
   - component: {fileID: 8611413500833789272}
   - component: {fileID: 7654794666799090578}
   - component: {fileID: 5332210871518465812}
+  - component: {fileID: 8611413500833789273}
   m_Layer: 0
   m_Name: AP_SkirtingBoard61
   m_TagString: Untagged
@@ -448239,6 +448871,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6747590249406251643
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494088393072185734}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.088625625, y: 0.08862645, z: 0.044313144}
+  m_Center: {x: -0.00065236725, y: 0.0006512235, z: 0.0021869612}
 --- !u!23 &6752849631650064688
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -448564,6 +449217,7 @@ GameObject:
   - component: {fileID: 7382979347592676111}
   - component: {fileID: 2209549744360615528}
   - component: {fileID: 703062107134399064}
+  - component: {fileID: 7382979347592676112}
   m_Layer: 0
   m_Name: AP_SkirtingBoard23
   m_TagString: Untagged
@@ -448891,6 +449545,7 @@ GameObject:
   - component: {fileID: 1985478835856329488}
   - component: {fileID: 3983994864604801316}
   - component: {fileID: 4402798261470021203}
+  - component: {fileID: 6843467641981191652}
   m_Layer: 0
   m_Name: AP_SkirtingBoard25
   m_TagString: Untagged
@@ -448898,6 +449553,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &6843467641981191652
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6843467641981191651}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.08862564, y: 0.08862646, z: 0.044313144}
+  m_Center: {x: 0.0006524045, y: -0.00065219396, z: 0.0021869612}
 --- !u!65 &6844828643329236016
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -449076,6 +449752,7 @@ GameObject:
   - component: {fileID: 65138230587702522}
   - component: {fileID: 5161767771469183549}
   - component: {fileID: 1966396095072561365}
+  - component: {fileID: 6881924515715558606}
   m_Layer: 0
   m_Name: AP_Corner23
   m_TagString: Untagged
@@ -449083,6 +449760,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &6881924515715558606
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6881924515715558605}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.25122988, y: 0.4500003, z: 3.144526}
+  m_Center: {x: 0.12175781, y: 0.074999034, z: 1.572264}
 --- !u!114 &6884043573734056438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449449,6 +450147,7 @@ GameObject:
   - component: {fileID: 2049736720742394794}
   - component: {fileID: 2003173463318218353}
   - component: {fileID: 4509136606280990411}
+  - component: {fileID: 6905879830821602544}
   m_Layer: 0
   m_Name: AP_Corner19
   m_TagString: Untagged
@@ -449456,6 +450155,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &6905879830821602544
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905879830821602543}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.30000287, y: 0.48273706, z: 3.144526}
+  m_Center: {x: -0.15000138, y: -0.05863267, z: 1.572263}
 --- !u!4 &6909092842714676791
 Transform:
   m_ObjectHideFlags: 0
@@ -450650,6 +451370,7 @@ GameObject:
   - component: {fileID: 5193045735320960020}
   - component: {fileID: 2480013581990417795}
   - component: {fileID: 3711394769900782795}
+  - component: {fileID: 7068233847999514635}
   m_Layer: 0
   m_Name: AP_SkirtingBoard43
   m_TagString: Untagged
@@ -450657,6 +451378,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &7068233847999514635
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7068233847999514634}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.08862646, y: 0.08862562, z: 0.044313144}
+  m_Center: {x: 0.00065217726, y: 0.00065045984, z: 0.0021869612}
 --- !u!4 &7070387426086180240
 Transform:
   m_ObjectHideFlags: 0
@@ -450732,6 +451474,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7224422483792091436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7092349480996830263
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4785961970432983565}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.088627145, y: 0.08862632, z: 0.04431343}
+  m_Center: {x: -0.002513079, y: -0.0025142764, z: 0.002186939}
 --- !u!1 &7093676467203323935
 GameObject:
   m_ObjectHideFlags: 0
@@ -450881,6 +451644,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7224422483792091436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7103337192157780917
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060257911193783907}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.044314258, y: 2.9448473, z: 0.044313144}
+  m_Center: {x: 0.0035182675, y: -0.000001847744, z: 0.003518268}
 --- !u!1 &7105598760957507426
 GameObject:
   m_ObjectHideFlags: 0
@@ -450956,6 +451740,7 @@ GameObject:
   - component: {fileID: 535615576397061295}
   - component: {fileID: 9149953298279166331}
   - component: {fileID: 1725662744986095563}
+  - component: {fileID: 9149953298279166332}
   m_Layer: 0
   m_Name: AP_SkirtingBoard31
   m_TagString: Untagged
@@ -451141,6 +451926,7 @@ GameObject:
   - component: {fileID: 8577156911297188895}
   - component: {fileID: 6564613067445082428}
   - component: {fileID: 7003611255082466370}
+  - component: {fileID: 8577156911297188896}
   m_Layer: 0
   m_Name: AP_SkirtingBoard08
   m_TagString: Untagged
@@ -451308,6 +452094,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 983152734}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7225595555377774630
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6345700608632755651}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.30000028, y: 0.3315688, z: 3.144526}
+  m_Center: {x: -0.000000074505806, y: 0.13421588, z: 1.572263}
 --- !u!114 &7226209702371726444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451674,6 +452481,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7253936192436602869
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5383930088575161956}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.044314545, y: 1.423132, z: 0.044313144}
+  m_Center: {x: 0.0035182685, y: -0.0000019073486, z: 0.003518268}
 --- !u!4 &7260939375905290086
 Transform:
   m_ObjectHideFlags: 0
@@ -452060,6 +452888,7 @@ GameObject:
   - component: {fileID: 5686414319669200447}
   - component: {fileID: 842339276105803781}
   - component: {fileID: 6229869149914822678}
+  - component: {fileID: 7307506107809942518}
   m_Layer: 0
   m_Name: AP_SkirtingBoard58
   m_TagString: Untagged
@@ -452067,6 +452896,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &7307506107809942518
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7307506107809942517}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.061372593, y: 0.044314336, z: 0.044313144}
+  m_Center: {x: 9.313226e-10, y: 0.0035168375, z: 0.003518268}
 --- !u!65 &7312090425684593056
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -452244,6 +453094,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7224422483792091436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7335452901325754102
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041581314176811048}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2595476, y: 0.04431321, z: 0.044313144}
+  m_Center: {x: 0, y: 0.0035173143, z: 0.003518268}
 --- !u!1 &7342792532375802352
 GameObject:
   m_ObjectHideFlags: 0
@@ -452491,6 +453362,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7224422483792091436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7382979347592676112
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6794123681565996274}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.7776845, y: 0.044313964, z: 0.044313144}
+  m_Center: {x: 0, y: -0.0035192226, z: 0.003518268}
 --- !u!1 &7386177642360695914
 GameObject:
   m_ObjectHideFlags: 0
@@ -452515,6 +453407,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 113446759591390398}
   m_Mesh: {fileID: 100274570257394012, guid: 34f7c8f6ff947b24ba07b2d8bc3b2692, type: 3}
+--- !u!65 &7387332228354055838
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113446759591390398}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.088626444, y: 0.08862562, z: 0.044313144}
+  m_Center: {x: 0.0006521661, y: 0.0006504822, z: 0.0021869612}
 --- !u!1 &7387779208168631207
 GameObject:
   m_ObjectHideFlags: 0
@@ -452650,6 +453563,7 @@ GameObject:
   - component: {fileID: 7315024777582397587}
   - component: {fileID: 4810636472201855356}
   - component: {fileID: 1719260651010643138}
+  - component: {fileID: 7428791400270742859}
   m_Layer: 0
   m_Name: AP_SkirtingBoard30
   m_TagString: Untagged
@@ -452657,6 +453571,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &7428791400270742859
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7428791400270742858}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.044315144, y: 5.691399, z: 0.044313144}
+  m_Center: {x: -0.0035182685, y: -0.00000071525574, z: 0.003518268}
 --- !u!33 &7430982222082645182
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -453000,6 +453935,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7526252211997236659
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4657861001845816970}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.088625625, y: 0.08862644, z: 0.044313144}
+  m_Center: {x: -0.00065238215, y: 0.00065026426, z: 0.0021869612}
 --- !u!114 &7528231804395142167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453263,6 +454219,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7224422483792091436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7571070430624989107
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6398626467390828782}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.18931784, y: 0.044313174, z: 0.044313144}
+  m_Center: {x: 0, y: -0.0035201763, z: 0.003518268}
 --- !u!23 &7572061763588708113
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -453610,6 +454587,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7620988972169129867
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5922301016504537532}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.847929, y: 0.044314876, z: 0.044313144}
+  m_Center: {x: 0, y: 0.00351824, z: 0.003518268}
 --- !u!1 &7629080020050490646
 GameObject:
   m_ObjectHideFlags: 0
@@ -453972,6 +454970,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7639917587193585134
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5224814087233880962}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.088626474, y: 0.08862562, z: 0.044313144}
+  m_Center: {x: -0.000652181, y: -0.00065426336, z: 0.0021869612}
 --- !u!4 &7651476744182719176
 Transform:
   m_ObjectHideFlags: 0
@@ -454501,6 +455520,7 @@ GameObject:
   - component: {fileID: 2681732802555345921}
   - component: {fileID: 8034640253365033013}
   - component: {fileID: 6752849631650064688}
+  - component: {fileID: 8034640253365033014}
   m_Layer: 0
   m_Name: AP_SkirtingBoard45
   m_TagString: Untagged
@@ -455447,6 +456467,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7712162957257788595
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709904664205076605}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.35587484, y: 0.723968, z: 3.144526}
+  m_Center: {x: -0.1220654, y: -0.21198589, z: 1.572263}
 --- !u!4 &7712759260691920593
 Transform:
   m_ObjectHideFlags: 0
@@ -455647,6 +456688,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7718668281353074573
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2886590724991945800}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3000002, y: 0.30000225, z: 3.144526}
+  m_Center: {x: 0, y: -0.15000255, z: 1.572263}
 --- !u!33 &7724897517136521157
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -455655,6 +456717,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2079803888466516052}
   m_Mesh: {fileID: 9130034407128410549, guid: 34f7c8f6ff947b24ba07b2d8bc3b2692, type: 3}
+--- !u!65 &7724897517136521158
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079803888466516052}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6.4789233, y: 0.044315457, z: 0.044313144}
+  m_Center: {x: 0, y: 0.0035173143, z: 0.003518268}
 --- !u!114 &7734845473200050998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455975,6 +457058,7 @@ GameObject:
   - component: {fileID: 2666431574746690436}
   - component: {fileID: 7371089284930110447}
   - component: {fileID: 3166358947913432965}
+  - component: {fileID: 7752606222163524526}
   m_Layer: 0
   m_Name: AP_SkirtingBoard71
   m_TagString: Untagged
@@ -455982,6 +457066,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &7752606222163524526
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7752606222163524525}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.117247224, y: 0.044313937, z: 0.044313144}
+  m_Center: {x: 0.0000000018626451, y: 0.0035163607, z: 0.003518268}
 --- !u!23 &7757375954465735977
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -456058,6 +457163,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 983152734}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7782107578604666136
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2446402294662332198}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3000024, y: 0.30000022, z: 3.144526}
+  m_Center: {x: 0.15000114, y: -0.0000014975667, z: 1.572263}
 --- !u!1 &7787543856207962892
 GameObject:
   m_ObjectHideFlags: 0
@@ -456215,6 +457341,7 @@ GameObject:
   - component: {fileID: 1534610669154436982}
   - component: {fileID: 7094182562156053615}
   - component: {fileID: 5540288033488513350}
+  - component: {fileID: 7817857169540695811}
   m_Layer: 0
   m_Name: AP_SkirtingBoard32
   m_TagString: Untagged
@@ -456222,6 +457349,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &7817857169540695811
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7817857169540695810}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1217036, y: 0.04431333, z: 0.044313144}
+  m_Center: {x: -0.000000029802322, y: -0.0035192226, z: 0.003518268}
 --- !u!4 &7818171907587437544
 Transform:
   m_ObjectHideFlags: 0
@@ -456723,6 +457871,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4360877260328632219}
   m_Mesh: {fileID: -8736736109037941076, guid: 34f7c8f6ff947b24ba07b2d8bc3b2692, type: 3}
+--- !u!65 &7908238046231717308
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4360877260328632219}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.044315144, y: 7.1776814, z: 0.044313144}
+  m_Center: {x: -0.0035182685, y: -0.0000019073486, z: 0.003518268}
 --- !u!1 &7911710036224958759
 GameObject:
   m_ObjectHideFlags: 0
@@ -457442,6 +458611,7 @@ GameObject:
   - component: {fileID: 4476821376001051843}
   - component: {fileID: 7833689576682709698}
   - component: {fileID: 6197986195023199968}
+  - component: {fileID: 8017073605255968087}
   m_Layer: 0
   m_Name: AP_Corner18
   m_TagString: Untagged
@@ -457449,6 +458619,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &8017073605255968087
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8017073605255968086}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.30000222, y: 0.48273703, z: 3.144526}
+  m_Center: {x: -0.15000111, y: 0.05862967, z: 1.572263}
 --- !u!33 &8026605298228748441
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -457465,6 +458656,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7699010680751491895}
   m_Mesh: {fileID: 3716121774924325768, guid: 34f7c8f6ff947b24ba07b2d8bc3b2692, type: 3}
+--- !u!65 &8034640253365033014
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7699010680751491895}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.088625625, y: 0.08862644, z: 0.044313144}
+  m_Center: {x: 0.0006523859, y: -0.00065407524, z: 0.0021869612}
 --- !u!1 &8048875512044046168
 GameObject:
   m_ObjectHideFlags: 0
@@ -457476,6 +458688,7 @@ GameObject:
   - component: {fileID: 405655557615407234}
   - component: {fileID: 1638811031587290685}
   - component: {fileID: 2149067851965846349}
+  - component: {fileID: 8048875512044046169}
   m_Layer: 0
   m_Name: AP_Corner20
   m_TagString: Untagged
@@ -457483,6 +458696,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &8048875512044046169
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8048875512044046168}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3000027, y: 0.45000026, z: 3.144526}
+  m_Center: {x: 0.15000087, y: 0.07499925, z: 1.572263}
 --- !u!4 &8052164547927309881
 Transform:
   m_ObjectHideFlags: 0
@@ -457574,6 +458808,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7224422483792091436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8068892359160177190
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465167131227661119}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.088626444, y: 0.08862562, z: 0.044313144}
+  m_Center: {x: -0.0006521661, y: -0.0006542969, z: 0.0021869612}
 --- !u!1 &8077184467794844823
 GameObject:
   m_ObjectHideFlags: 0
@@ -457585,6 +458840,7 @@ GameObject:
   - component: {fileID: 4080571679014185711}
   - component: {fileID: 3769065109165696388}
   - component: {fileID: 710623475956761242}
+  - component: {fileID: 8077184467794844824}
   m_Layer: 0
   m_Name: AP_Corner16
   m_TagString: Untagged
@@ -457592,6 +458848,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &8077184467794844824
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8077184467794844823}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3000024, y: 0.4500003, z: 3.144526}
+  m_Center: {x: 0.15000114, y: -0.075002015, z: 1.572263}
 --- !u!1 &8086375831433108776
 GameObject:
   m_ObjectHideFlags: 0
@@ -457603,6 +458880,7 @@ GameObject:
   - component: {fileID: 4754013121838465605}
   - component: {fileID: 7020704702424076515}
   - component: {fileID: 7532835839512902658}
+  - component: {fileID: 8086375831433108777}
   m_Layer: 0
   m_Name: AP_SkirtingBoard68
   m_TagString: Untagged
@@ -457610,6 +458888,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &8086375831433108777
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8086375831433108776}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.088626444, y: 0.08862562, z: 0.044313144}
+  m_Center: {x: -0.0006521661, y: -0.0006542969, z: 0.0021869612}
 --- !u!33 &8087535115847334073
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -457626,6 +458925,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3887533380685015496}
   m_Mesh: {fileID: -4439422875964652679, guid: 34f7c8f6ff947b24ba07b2d8bc3b2692, type: 3}
+--- !u!65 &8090170271334183761
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3887533380685015496}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.088625625, y: 0.08862644, z: 0.044313144}
+  m_Center: {x: -0.00065238215, y: 0.0006502624, z: 0.0021869612}
 --- !u!1 &8095994693280902987
 GameObject:
   m_ObjectHideFlags: 0
@@ -457715,6 +459035,7 @@ GameObject:
   - component: {fileID: 8816275316626359825}
   - component: {fileID: 709123421747063857}
   - component: {fileID: 4341145076090882888}
+  - component: {fileID: 8816275316626359826}
   m_Layer: 0
   m_Name: AP_Corner03
   m_TagString: Untagged
@@ -457823,6 +459144,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8128568316963924913
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250916727199885461}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.7776837, y: 0.044313937, z: 0.044313144}
+  m_Center: {x: -0.000000059604645, y: 0.0035163607, z: 0.003518268}
 --- !u!33 &8130200279810743591
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -457831,6 +459173,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3976065105015857395}
   m_Mesh: {fileID: -2157990877998666964, guid: 34f7c8f6ff947b24ba07b2d8bc3b2692, type: 3}
+--- !u!65 &8130200279810743592
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3976065105015857395}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3000002, y: 0.30000225, z: 3.144526}
+  m_Center: {x: 0, y: -0.15000118, z: 1.572263}
 --- !u!23 &8137105317389591081
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -457953,6 +459316,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7224422483792091436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8148579697371312492
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2374693591306391975}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.044313304, y: 0.58167166, z: 0.044313144}
+  m_Center: {x: 0.0035182694, y: -0.0000019073486, z: 0.003518268}
 --- !u!4 &8149969955545033765
 Transform:
   m_ObjectHideFlags: 0
@@ -458572,6 +459956,7 @@ GameObject:
   - component: {fileID: 5967932582062376033}
   - component: {fileID: 4188590632208563807}
   - component: {fileID: 3073728895163268220}
+  - component: {fileID: 8209675861962405704}
   m_Layer: 0
   m_Name: AP_Corner09
   m_TagString: Untagged
@@ -458579,6 +459964,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &8209675861962405704
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8209675861962405703}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3000002, y: 0.30000222, z: 3.144526}
+  m_Center: {x: 0.000000052154064, y: -0.15000159, z: 1.572263}
 --- !u!23 &8214855864630431148
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -458718,6 +460124,7 @@ GameObject:
   - component: {fileID: 992487372756530368}
   - component: {fileID: 1053722465704535401}
   - component: {fileID: 5034261565333216487}
+  - component: {fileID: 8244170991941978877}
   m_Layer: 0
   m_Name: AP_Corner17
   m_TagString: Untagged
@@ -458725,6 +460132,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &8244170991941978877
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8244170991941978876}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.4500008, y: 0.3000023, z: 3.144526}
+  m_Center: {x: -0.074999854, y: 0.14999922, z: 1.572263}
 --- !u!1 &8246352936261118058
 GameObject:
   m_ObjectHideFlags: 0
@@ -458788,6 +460216,7 @@ GameObject:
   - component: {fileID: 6198250304393621489}
   - component: {fileID: 4231692593362026015}
   - component: {fileID: 7180539962057612210}
+  - component: {fileID: 8258108452770761100}
   m_Layer: 0
   m_Name: AP_SkirtingBoard70
   m_TagString: Untagged
@@ -458795,6 +460224,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &8258108452770761100
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8258108452770761099}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.18931639, y: 0.044313937, z: 0.044313144}
+  m_Center: {x: 0.0000000037252903, y: 0.0035163607, z: 0.003518268}
 --- !u!4 &8277801911162168850
 Transform:
   m_ObjectHideFlags: 0
@@ -458810,6 +460260,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7224422483792091436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8277801911162168851
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3884076268823316737}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.08862644, y: 0.08862562, z: 0.044313144}
+  m_Center: {x: 0.0006521642, y: 0.00065048964, z: 0.0021869612}
 --- !u!65 &8283251097528808019
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -458884,6 +460355,7 @@ GameObject:
   - component: {fileID: 939097029000532013}
   - component: {fileID: 5969091900021697165}
   - component: {fileID: 6723221741810041869}
+  - component: {fileID: 8288967019875963670}
   m_Layer: 0
   m_Name: AP_SkirtingBoard16
   m_TagString: Untagged
@@ -458891,6 +460363,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &8288967019875963670
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8288967019875963669}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.11724867, y: 0.0443132, z: 0.044313144}
+  m_Center: {x: 0, y: -0.0035201772, z: 0.003518268}
 --- !u!33 &8289261892815519417
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -458950,6 +460443,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8303956147024731790
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928112664682710072}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.30000222, y: 0.30000022, z: 3.144526}
+  m_Center: {x: -0.15000111, y: -0.0000010207295, z: 1.572264}
 --- !u!4 &8305811974366612499
 Transform:
   m_ObjectHideFlags: 0
@@ -459277,6 +460791,7 @@ GameObject:
   - component: {fileID: 583065421105189055}
   - component: {fileID: 5480704794466035504}
   - component: {fileID: 793943988589330009}
+  - component: {fileID: 8342282511482996499}
   m_Layer: 0
   m_Name: AP_SkirtingBoard28
   m_TagString: Untagged
@@ -459284,6 +460799,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &8342282511482996499
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8342282511482996498}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.7262268, y: 0.044313814, z: 0.044313144}
+  m_Center: {x: 0, y: -0.0035192217, z: 0.003518268}
 --- !u!1 &8345176319509857806
 GameObject:
   m_ObjectHideFlags: 0
@@ -459525,6 +461061,7 @@ GameObject:
   - component: {fileID: 1474762681987467361}
   - component: {fileID: 7468894033351706540}
   - component: {fileID: 6793337396494865275}
+  - component: {fileID: 8387947300927286845}
   m_Layer: 0
   m_Name: AP_Corner21
   m_TagString: Untagged
@@ -459532,6 +461069,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &8387947300927286845
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8387947300927286844}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3000027, y: 0.45000026, z: 3.144526}
+  m_Center: {x: 0.15000087, y: 0.07499901, z: 1.572263}
 --- !u!65 &8392577746986812822
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -459589,6 +461147,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 983152734}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8406925375247255488
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6195266658360038853}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.30000255, y: 0.74942297, z: 3.144526}
+  m_Center: {x: 0.15000121, y: 0.22471036, z: 1.572263}
 --- !u!1 &8409523731639526854
 GameObject:
   m_ObjectHideFlags: 0
@@ -459616,6 +461195,7 @@ GameObject:
   - component: {fileID: 3605806670975649844}
   - component: {fileID: 2192380938239596708}
   - component: {fileID: 7360001305021820618}
+  - component: {fileID: 8412064773540585428}
   m_Layer: 0
   m_Name: AP_SkirtingBoard04
   m_TagString: Untagged
@@ -459623,6 +461203,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &8412064773540585428
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8412064773540585427}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.088626325, y: 0.08862716, z: 0.04431343}
+  m_Center: {x: -0.0025133342, y: 0.002512127, z: 0.002186939}
 --- !u!4 &8420584598708211564
 Transform:
   m_ObjectHideFlags: 0
@@ -459916,6 +461517,7 @@ GameObject:
   - component: {fileID: 8699335836341600368}
   - component: {fileID: 8503265691305267347}
   - component: {fileID: 8469344992321281621}
+  - component: {fileID: 8699335836341600369}
   m_Layer: 0
   m_Name: AP_SkirtingBoard36
   m_TagString: Untagged
@@ -459973,6 +461575,7 @@ GameObject:
   - component: {fileID: 5300277638281855368}
   - component: {fileID: 4917777682205919384}
   - component: {fileID: 4702342093204102074}
+  - component: {fileID: 8492273206685963802}
   m_Layer: 0
   m_Name: AP_SkirtingBoard56
   m_TagString: Untagged
@@ -459980,6 +461583,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &8492273206685963802
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8492273206685963801}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.08862645, y: 0.08862562, z: 0.044313144}
+  m_Center: {x: -0.0006521642, y: -0.0006538275, z: 0.0021869612}
 --- !u!4 &8494419012504020057
 Transform:
   m_ObjectHideFlags: 0
@@ -460076,6 +461700,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8499960558837763165
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5874488864959174338}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.08862564, y: 0.08862646, z: 0.044313144}
+  m_Center: {x: 0.0006524045, y: -0.00065311784, z: 0.0021869612}
 --- !u!33 &8500951127548549743
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -460284,6 +461929,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 983152734}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8527106441510609526
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895293017033380086}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.42794353, y: 0.4500003, z: 3.144526}
+  m_Center: {x: 0.08603058, y: -0.075002015, z: 1.572263}
 --- !u!1 &8527473505759578825
 GameObject:
   m_ObjectHideFlags: 0
@@ -460498,6 +462164,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8560827918059732280
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5459964656338812566}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.63670737, y: 0.044314, z: 0.044313144}
+  m_Center: {x: 0, y: 0.0035163616, z: 0.003518268}
 --- !u!33 &8562735655773036273
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -460617,6 +462304,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7224422483792091436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8577156911297188896
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7215890004469648269}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.044313148, y: 0.75642926, z: 0.044313144}
+  m_Center: {x: -0.0035182685, y: -0.0000009536743, z: 0.003518268}
 --- !u!23 &8581493389516941723
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -460832,6 +462540,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7224422483792091436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8611413500833789273
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6730874831288384155}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.088625625, y: 0.08862644, z: 0.044313144}
+  m_Center: {x: -0.00065238215, y: 0.00065026426, z: 0.0021869612}
 --- !u!1 &8614691952771851494
 GameObject:
   m_ObjectHideFlags: 0
@@ -460914,6 +462643,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8615970540118938646
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4872885834559217234}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.044314407, y: 5.2312627, z: 0.044313144}
+  m_Center: {x: 0.0035182675, y: -0.0000019073486, z: 0.003518268}
 --- !u!33 &8616636918867175500
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -461234,6 +462984,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7224422483792091436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8656494689219619944
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5357739201478112990}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.08862644, y: 0.08862562, z: 0.044313144}
+  m_Center: {x: 0.00065216795, y: 0.00065048964, z: 0.0021869612}
 --- !u!4 &8659789511858868861
 Transform:
   m_ObjectHideFlags: 0
@@ -461321,6 +463092,7 @@ GameObject:
   - component: {fileID: 4227867354454923392}
   - component: {fileID: 6666790283823663326}
   - component: {fileID: 4575546691837664405}
+  - component: {fileID: 8664173100532054702}
   m_Layer: 0
   m_Name: AP_SkirtingBoard48
   m_TagString: Untagged
@@ -461328,6 +463100,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &8664173100532054702
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8664173100532054701}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.04431424, y: 1.423132, z: 0.044313144}
+  m_Center: {x: -0.0035182685, y: -0.0000019073486, z: 0.003518268}
 --- !u!1 &8678883315743225505
 GameObject:
   m_ObjectHideFlags: 0
@@ -462049,6 +463842,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7224422483792091436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8699335836341600369
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8472279949516922234}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.2112236, y: 0.044313964, z: 0.044313144}
+  m_Center: {x: 0, y: -0.0035201763, z: 0.003518268}
 --- !u!23 &8702019636353436474
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -462135,6 +463949,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8738966015298935594
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2970591008182548649}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3000022, y: 0.30000034, z: 3.144526}
+  m_Center: {x: -0.1500011, y: -0.0000020340085, z: 1.572263}
 --- !u!114 &8742203326449921342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462388,6 +464223,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5492542909975282101}
   m_Mesh: {fileID: -1448334424048587823, guid: 34f7c8f6ff947b24ba07b2d8bc3b2692, type: 3}
+--- !u!65 &8753504157423667093
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5492542909975282101}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.08862564, y: 0.08862646, z: 0.044313144}
+  m_Center: {x: 0.0006524045, y: -0.00065311784, z: 0.0021869612}
 --- !u!114 &8757674303615878690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462459,6 +464315,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7224422483792091436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8758947380631462913
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854756795127998689}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.088625625, y: 0.08862644, z: 0.044313144}
+  m_Center: {x: -0.00065238215, y: 0.0006502624, z: 0.0021869612}
 --- !u!33 &8759621612255571096
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -462768,6 +464645,7 @@ GameObject:
   - component: {fileID: 4668484041262688145}
   - component: {fileID: 2765230674847052340}
   - component: {fileID: 4140434202564000190}
+  - component: {fileID: 8787272025487823332}
   m_Layer: 0
   m_Name: AP_Corner11
   m_TagString: Untagged
@@ -462775,6 +464653,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &8787272025487823332
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787272025487823331}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3000022, y: 0.30000034, z: 3.144526}
+  m_Center: {x: -0.1500011, y: -0.0000010803342, z: 1.572263}
 --- !u!114 &8796290998889018872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463060,6 +464959,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 983152734}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8816275316626359826
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8109202442642075154}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3000024, y: 0.30000022, z: 3.144526}
+  m_Center: {x: 0.15000114, y: -0.00000009685754, z: 1.572263}
 --- !u!23 &8817330253926526207
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -463711,6 +465631,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8863857557482258494
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3605505198806416266}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.088625625, y: 0.08862644, z: 0.044313144}
+  m_Center: {x: -0.00065238215, y: 0.0006502624, z: 0.0021869612}
 --- !u!4 &8867857731415596703
 Transform:
   m_ObjectHideFlags: 0
@@ -464035,6 +465976,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5790266249092642762}
   m_Mesh: {fileID: 7852347716844478015, guid: 34f7c8f6ff947b24ba07b2d8bc3b2692, type: 3}
+--- !u!65 &8898357291437227041
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5790266249092642762}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3000002, y: 0.30000225, z: 3.144526}
+  m_Center: {x: 0, y: -0.15000208, z: 1.572264}
 --- !u!4 &8899117717538836426
 Transform:
   m_ObjectHideFlags: 0
@@ -464219,6 +466181,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8928169547182946332
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4376924421690617042}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.044314437, y: 5.6913996, z: 0.044313144}
+  m_Center: {x: 0.0035182675, y: -0.00000071525574, z: 0.003518268}
 --- !u!33 &8929729805498372467
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -464428,6 +466411,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7224422483792091436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8969956629364197234
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691313525125449175}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.08862646, y: 0.08862562, z: 0.044313144}
+  m_Center: {x: 0.00065217726, y: 0.00065045984, z: 0.0021869612}
 --- !u!1 &8970057675809936200
 GameObject:
   m_ObjectHideFlags: 0
@@ -464535,6 +466539,7 @@ GameObject:
   - component: {fileID: 6227575728585632260}
   - component: {fileID: 2929249342665203285}
   - component: {fileID: 914697740666507331}
+  - component: {fileID: 8986630219531883129}
   m_Layer: 0
   m_Name: AP_SkirtingBoard21
   m_TagString: Untagged
@@ -464542,6 +466547,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &8986630219531883129
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8986630219531883128}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.044313386, y: 0.74295723, z: 0.044313144}
+  m_Center: {x: 0.0035182694, y: -0.0000009536743, z: 0.003518268}
 --- !u!4 &8990565047050821131
 Transform:
   m_ObjectHideFlags: 0
@@ -464996,6 +467022,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652721636088546803}
   m_Mesh: {fileID: 8276319402198241947, guid: 34f7c8f6ff947b24ba07b2d8bc3b2692, type: 3}
+--- !u!65 &9034771539462090886
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652721636088546803}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.04431338, y: 0.71021426, z: 0.044313144}
+  m_Center: {x: 0.0035182694, y: -0.0000009536743, z: 0.003518268}
 --- !u!1 &9040821654870291625
 GameObject:
   m_ObjectHideFlags: 0
@@ -465007,6 +467054,7 @@ GameObject:
   - component: {fileID: 4102785190653400777}
   - component: {fileID: 7388079758065227815}
   - component: {fileID: 124559370541713587}
+  - component: {fileID: 9040821654870291626}
   m_Layer: 0
   m_Name: AP_SkirtingBoard33
   m_TagString: Untagged
@@ -465014,6 +467062,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &9040821654870291626
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9040821654870291625}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.9124413, y: 0.0443149, z: 0.044313144}
+  m_Center: {x: 0, y: 0.0035173143, z: 0.003518268}
 --- !u!114 &9045377848641164137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465074,6 +467143,7 @@ GameObject:
   - component: {fileID: 1301142226322120164}
   - component: {fileID: 2753241602560724930}
   - component: {fileID: 7684902537223241915}
+  - component: {fileID: 9058809614309594817}
   m_Layer: 0
   m_Name: AP_SkirtingBoard69
   m_TagString: Untagged
@@ -465081,6 +467151,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &9058809614309594817
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9058809614309594816}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.08862564, y: 0.08862646, z: 0.044313144}
+  m_Center: {x: 0.0006524045, y: -0.0006540715, z: 0.0021869612}
 --- !u!1 &9067854754484831078
 GameObject:
   m_ObjectHideFlags: 0
@@ -465410,6 +467501,7 @@ GameObject:
   - component: {fileID: 245585933256510549}
   - component: {fileID: 5022268167836638257}
   - component: {fileID: 9107287037591270695}
+  - component: {fileID: 9112505956048739425}
   m_Layer: 0
   m_Name: AP_SkirtingBoard10
   m_TagString: Untagged
@@ -465417,6 +467509,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &9112505956048739425
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9112505956048739424}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2556873, y: 0.044313204, z: 0.044313144}
+  m_Center: {x: 0, y: -0.0035192217, z: 0.003518268}
 --- !u!4 &9116159272363526987
 Transform:
   m_ObjectHideFlags: 0
@@ -465511,6 +467624,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7118999561699401256}
   m_Mesh: {fileID: 802871924768243363, guid: 34f7c8f6ff947b24ba07b2d8bc3b2692, type: 3}
+--- !u!65 &9149953298279166332
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7118999561699401256}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.08862646, y: 0.08862562, z: 0.044313144}
+  m_Center: {x: 0.00065217726, y: 0.0006514135, z: 0.0021869612}
 --- !u!114 &9150810824275001177
 MonoBehaviour:
   m_ObjectHideFlags: 0
