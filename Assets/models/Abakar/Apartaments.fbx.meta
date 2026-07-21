@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a6ee913d05ee91f40be481b2368dab65
+guid: 34f7c8f6ff947b24ba07b2d8bc3b2692
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,18 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_Brick
-    second: {fileID: 2100000, guid: 6fc3773cdfe8e0f4791962fcaa69a48a, type: 2}
+      name: M_Apart_Door
+    second: {fileID: 2100000, guid: f410973327d521c448f5026c50329ab8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_Concrete
-    second: {fileID: 2100000, guid: c45cd0a38c8bd874889412360f6e7ea4, type: 2}
+      name: M_Floortile
+    second: {fileID: 2100000, guid: 03a1a61e06484b3498b3bd38795d60fd, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_GreenWall
-    second: {fileID: 2100000, guid: 1112c0d3200621448a554a11d45f6e91, type: 2}
+      name: M_MoldWall
+    second: {fileID: 2100000, guid: c641597354c3a4e47b10fd70058df9ec, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -27,23 +27,28 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_SWindow
-    second: {fileID: 2100000, guid: 4dff7418c4ee92440a3085e925863972, type: 2}
+      name: M_Skirtbord
+    second: {fileID: 2100000, guid: 10d45a46493a06549930c4968c3d705c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Wallpaper01
+    second: {fileID: 2100000, guid: 7cd53ed870a6468438c008ae94140e26, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Wallpaper02
+    second: {fileID: 2100000, guid: ab7075c3617b6d9439ab353f217a7441, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Walltile
+    second: {fileID: 2100000, guid: e1bfe36235f27804ba61a13339e2dbcf, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: M_WoodFloor
     second: {fileID: 2100000, guid: 4dff7418c4ee92440a3085e925863972, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: SW_Apart_Door
-    second: {fileID: 2100000, guid: 220843fe1aa98734dade6ff6f810a500, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: SW_Exit_Door
-    second: {fileID: 2100000, guid: cc7d81458671a91468ae113e9e76d4f4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
