@@ -99,14 +99,14 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
-    - _EdgeSmooth: 3.1
+    - _EdgeSmooth: 0.65
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _Opacity: 0.6
+    - _Opacity: 0.55
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
