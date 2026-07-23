@@ -72399,6 +72399,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!108 &425533782 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 4141417508797730791, guid: 574203dae4f5ecf4f81793051fb5080a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1135284357}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &425754964
 GameObject:
   m_ObjectHideFlags: 0
@@ -224996,6 +225002,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: EntrenceSwitchFloor2
       objectReference: {fileID: 0}
+    - target: {fileID: 6340889162226096516, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6340889162226096516, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6340889162226096516, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6340889162226096516, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6721553576001497920, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
       propertyPath: m_Mesh
@@ -225009,17 +225035,17 @@ PrefabInstance:
     - target: {fileID: 9054944470795429466, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.609
+      value: 21.07
       objectReference: {fileID: 0}
     - target: {fileID: 9054944470795429466, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.679
+      value: 12.417
       objectReference: {fileID: 0}
     - target: {fileID: 9054944470795429466, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.133
+      value: -6.026
       objectReference: {fileID: 0}
     - target: {fileID: 9054944470795429466, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
@@ -361992,6 +362018,11 @@ PrefabInstance:
       objectReference: {fileID: 271453874}
     - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
+      propertyPath: isOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
       propertyPath: soundOrigin
       value: 
       objectReference: {fileID: 1268544027}
@@ -362064,7 +362095,7 @@ PrefabInstance:
         type: 3}
       propertyPath: lightsToToggle.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 425533782}
     - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
       propertyPath: lightsToToggle.Array.data[1]
@@ -362074,6 +362105,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EntrenceSwitchFloor1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6340889162226096516, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6340889162226096516, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6340889162226096516, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6340889162226096516, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6721553576001497920, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
@@ -362088,7 +362139,7 @@ PrefabInstance:
     - target: {fileID: 9054944470795429466, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.612
+      value: 20.724
       objectReference: {fileID: 0}
     - target: {fileID: 9054944470795429466, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
@@ -362098,7 +362149,7 @@ PrefabInstance:
     - target: {fileID: 9054944470795429466, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.133
+      value: -6.019
       objectReference: {fileID: 0}
     - target: {fileID: 9054944470795429466, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
@@ -382168,6 +382219,7 @@ GameObject:
   - component: {fileID: 8317917401229142975}
   - component: {fileID: 8317917401229142977}
   - component: {fileID: 8317917401229142976}
+  - component: {fileID: 8317917401229142978}
   m_Layer: 0
   m_Name: HallwayBathroomDoor
   m_TagString: Untagged
@@ -383860,6 +383912,7 @@ GameObject:
   - component: {fileID: 3468221736279236945}
   - component: {fileID: 3468221736279236946}
   - component: {fileID: 3468221736279236947}
+  - component: {fileID: 3468221736279236948}
   m_Layer: 0
   m_Name: EntrenceBackDoor
   m_TagString: Untagged
@@ -386869,6 +386922,7 @@ GameObject:
   - component: {fileID: 9021099045563266660}
   - component: {fileID: 9021099045563266661}
   - component: {fileID: 9021099045563266662}
+  - component: {fileID: 9021099045563266663}
   m_Layer: 0
   m_Name: EntrenceFrontDoor
   m_TagString: Untagged
@@ -390008,6 +390062,7 @@ GameObject:
   - component: {fileID: 8834071588242368702}
   - component: {fileID: 8834071588242368703}
   - component: {fileID: 8834071588242368704}
+  - component: {fileID: 8834071588242368705}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -403180,6 +403235,7 @@ GameObject:
   - component: {fileID: 4438901646976174034}
   - component: {fileID: 4438901646976174035}
   - component: {fileID: 4438901646976174036}
+  - component: {fileID: 4438901646976174037}
   m_Layer: 0
   m_Name: LeftDoor
   m_TagString: Untagged
@@ -404144,6 +404200,35 @@ MonoBehaviour:
   useSecondRoom: 0
   showNoiseOnUI: 1
   mixNoiseOnUI: 1
+  showDebugLogs: 0
+--- !u!114 &3468221736279236948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960947501023912430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7cb10c26c21841b86a5436d18404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: -1667866079
+      Data2: 1119290880
+      Data3: 566603669
+      Data4: 1448332868
+    Path: event:/Ambience/Door/DoorOpen
+  closeEvent:
+    Guid:
+      Data1: -1897936269
+      Data2: 1242395485
+      Data3: 115766442
+      Data4: 221835941
+    Path: event:/Ambience/Door/DoorClose
+  attachToDoor: 1
   showDebugLogs: 0
 --- !u!4 &3468966293285156484
 Transform:
@@ -408639,6 +408724,7 @@ GameObject:
   - component: {fileID: 9096453684763753753}
   - component: {fileID: 9096453684763753754}
   - component: {fileID: 9096453684763753755}
+  - component: {fileID: 9096453684763753756}
   m_Layer: 0
   m_Name: HallwayRoom1Door
   m_TagString: Untagged
@@ -413378,6 +413464,35 @@ MonoBehaviour:
   showNoiseOnUI: 1
   mixNoiseOnUI: 1
   showDebugLogs: 0
+--- !u!114 &4438901646976174037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3347644317509759160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7cb10c26c21841b86a5436d18404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: -1667866079
+      Data2: 1119290880
+      Data3: 566603669
+      Data4: 1448332868
+    Path: event:/Ambience/Door/DoorOpen
+  closeEvent:
+    Guid:
+      Data1: -1897936269
+      Data2: 1242395485
+      Data3: 115766442
+      Data4: 221835941
+    Path: event:/Ambience/Door/DoorClose
+  attachToDoor: 1
+  showDebugLogs: 0
 --- !u!4 &4442130278925553285
 Transform:
   m_ObjectHideFlags: 0
@@ -414596,6 +414711,7 @@ GameObject:
   - component: {fileID: 7054852544972699508}
   - component: {fileID: 7054852544972699509}
   - component: {fileID: 7054852544972699510}
+  - component: {fileID: 7054852544972699511}
   m_Layer: 0
   m_Name: RightDoor
   m_TagString: Untagged
@@ -426338,6 +426454,7 @@ GameObject:
   - component: {fileID: 9075328153157142207}
   - component: {fileID: 9075328153157142209}
   - component: {fileID: 9075328153157142208}
+  - component: {fileID: 9075328153157142210}
   m_Layer: 0
   m_Name: HallBalconyDoor
   m_TagString: Untagged
@@ -435283,6 +435400,35 @@ MonoBehaviour:
   useSecondRoom: 0
   showNoiseOnUI: 1
   mixNoiseOnUI: 1
+  showDebugLogs: 0
+--- !u!114 &7054852544972699511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4568524354322548780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7cb10c26c21841b86a5436d18404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: -1667866079
+      Data2: 1119290880
+      Data3: 566603669
+      Data4: 1448332868
+    Path: event:/Ambience/Door/DoorOpen
+  closeEvent:
+    Guid:
+      Data1: -1897936269
+      Data2: 1242395485
+      Data3: 115766442
+      Data4: 221835941
+    Path: event:/Ambience/Door/DoorClose
+  attachToDoor: 1
   showDebugLogs: 0
 --- !u!4 &7055614898260497964
 Transform:
@@ -445153,6 +445299,35 @@ MonoBehaviour:
   isLocked: 0
   requiresTumbler: 0
   requiredTumbler: {fileID: 0}
+--- !u!114 &8317917401229142978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759992413765088941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7cb10c26c21841b86a5436d18404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: -1667866079
+      Data2: 1119290880
+      Data3: 566603669
+      Data4: 1448332868
+    Path: event:/Ambience/Door/DoorOpen
+  closeEvent:
+    Guid:
+      Data1: -1897936269
+      Data2: 1242395485
+      Data3: 115766442
+      Data4: 221835941
+    Path: event:/Ambience/Door/DoorClose
+  attachToDoor: 1
+  showDebugLogs: 0
 --- !u!114 &8320930203667804423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446989,6 +447164,7 @@ GameObject:
   - component: {fileID: 8559768303081534452}
   - component: {fileID: 8559768303081534454}
   - component: {fileID: 8559768303081534453}
+  - component: {fileID: 8559768303081534455}
   m_Layer: 0
   m_Name: KitchenHallwayDoor
   m_TagString: Untagged
@@ -447072,6 +447248,35 @@ MonoBehaviour:
   isLocked: 0
   requiresTumbler: 0
   requiredTumbler: {fileID: 0}
+--- !u!114 &8559768303081534455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8559768303081534451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7cb10c26c21841b86a5436d18404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: -1667866079
+      Data2: 1119290880
+      Data3: 566603669
+      Data4: 1448332868
+    Path: event:/Ambience/Door/DoorOpen
+  closeEvent:
+    Guid:
+      Data1: -1897936269
+      Data2: 1242395485
+      Data3: 115766442
+      Data4: 221835941
+    Path: event:/Ambience/Door/DoorClose
+  attachToDoor: 1
+  showDebugLogs: 0
 --- !u!33 &8562735655806051459
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -450343,6 +450548,35 @@ MonoBehaviour:
   showNoiseOnUI: 1
   mixNoiseOnUI: 1
   showDebugLogs: 0
+--- !u!114 &8834071588242368705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741045374599168314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7cb10c26c21841b86a5436d18404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: -1667866079
+      Data2: 1119290880
+      Data3: 566603669
+      Data4: 1448332868
+    Path: event:/Ambience/Door/DoorOpen
+  closeEvent:
+    Guid:
+      Data1: -1897936269
+      Data2: 1242395485
+      Data3: 115766442
+      Data4: 221835941
+    Path: event:/Ambience/Door/DoorClose
+  attachToDoor: 1
+  showDebugLogs: 0
 --- !u!4 &8840500222967495127
 Transform:
   m_ObjectHideFlags: 0
@@ -452286,6 +452520,35 @@ MonoBehaviour:
   showNoiseOnUI: 1
   mixNoiseOnUI: 1
   showDebugLogs: 0
+--- !u!114 &9021099045563266663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315541925169403455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7cb10c26c21841b86a5436d18404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: -1667866079
+      Data2: 1119290880
+      Data3: 566603669
+      Data4: 1448332868
+    Path: event:/Ambience/Door/DoorOpen
+  closeEvent:
+    Guid:
+      Data1: -1897936269
+      Data2: 1242395485
+      Data3: 115766442
+      Data4: 221835941
+    Path: event:/Ambience/Door/DoorClose
+  attachToDoor: 1
+  showDebugLogs: 0
 --- !u!114 &9028112092372623458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452823,6 +453086,35 @@ MonoBehaviour:
   showNoiseOnUI: 1
   mixNoiseOnUI: 1
   showDebugLogs: 0
+--- !u!114 &9075328153157142210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6054768925499776825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7cb10c26c21841b86a5436d18404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: -1667866079
+      Data2: 1119290880
+      Data3: 566603669
+      Data4: 1448332868
+    Path: event:/Ambience/Door/DoorOpen
+  closeEvent:
+    Guid:
+      Data1: -1897936269
+      Data2: 1242395485
+      Data3: 115766442
+      Data4: 221835941
+    Path: event:/Ambience/Door/DoorClose
+  attachToDoor: 1
+  showDebugLogs: 0
 --- !u!23 &9080098148015407509
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -453075,6 +453367,35 @@ MonoBehaviour:
   useSecondRoom: 0
   showNoiseOnUI: 1
   mixNoiseOnUI: 1
+  showDebugLogs: 0
+--- !u!114 &9096453684763753756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3912791557179066160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7cb10c26c21841b86a5436d18404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: -1667866079
+      Data2: 1119290880
+      Data3: 566603669
+      Data4: 1448332868
+    Path: event:/Ambience/Door/DoorOpen
+  closeEvent:
+    Guid:
+      Data1: -1897936269
+      Data2: 1242395485
+      Data3: 115766442
+      Data4: 221835941
+    Path: event:/Ambience/Door/DoorClose
+  attachToDoor: 1
   showDebugLogs: 0
 --- !u!65 &9097881835808684168
 BoxCollider:
