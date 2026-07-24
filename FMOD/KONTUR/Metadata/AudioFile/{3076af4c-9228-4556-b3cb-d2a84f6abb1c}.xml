@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{3076af4c-9228-4556-b3cb-d2a84f6abb1c}">
+		<property name="assetPath">
+			<value>ConvReverb/BM7 Marble Foyer.aif</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>4.5</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{64d47a68-0926-4226-ac5b-0f9c721261eb}</destination>
+		</relationship>
+	</object>
+</objects>

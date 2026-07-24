@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{2033aa07-5f9e-4ac9-96aa-215c1f6fd742}">
+		<property name="assetPath">
+			<value>ConvReverb/TVC33 A Vocal Room.aif</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.0466666666666666</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{64d47a68-0926-4226-ac5b-0f9c721261eb}</destination>
+		</relationship>
+	</object>
+</objects>
