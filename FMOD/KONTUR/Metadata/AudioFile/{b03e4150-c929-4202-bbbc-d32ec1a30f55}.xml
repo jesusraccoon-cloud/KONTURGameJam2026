@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{b03e4150-c929-4202-bbbc-d32ec1a30f55}">
+		<property name="assetPath">
+			<value>ConvReverb/L960 Big Bathroom.aif</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.92405895691609974</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{64d47a68-0926-4226-ac5b-0f9c721261eb}</destination>
+		</relationship>
+	</object>
+</objects>

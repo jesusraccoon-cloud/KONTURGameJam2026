@@ -65,7 +65,7 @@
 			<destination>{b847e9e2-fe5f-4791-97c1-647675dbd037}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{1b01e86b-a998-4e15-b8fe-eb140d532eab}</destination>
+			<destination>{8815e8e3-c665-4bab-bfbb-a792067a6bfd}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{32f3da5c-7593-47b2-9cb7-58847c3d7abf}">
@@ -165,7 +165,6 @@
 		<property name="timelockedOffset">
 			<value>1.5</value>
 		</property>
-		<property name="name" />
 		<property name="looping">
 			<value>true</value>
 		</property>
@@ -225,7 +224,6 @@
 		<property name="length">
 			<value>14.503260416666667</value>
 		</property>
-		<property name="name" />
 		<property name="volume">
 			<value>-27</value>
 		</property>
@@ -402,7 +400,7 @@
 			<value>0</value>
 		</property>
 		<property name="value">
-			<value>0</value>
+			<value>-6</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{ac9937ee-8f68-4b19-9e66-6d5511d74f88}">
@@ -410,7 +408,7 @@
 			<value>1</value>
 		</property>
 		<property name="value">
-			<value>-8</value>
+			<value>-10</value>
 		</property>
 	</object>
 	<object class="Automator" id="{10f0c033-5198-4f6e-8bbb-645e427cd4b9}">
@@ -443,7 +441,7 @@
 			<value>0.9970149253731343</value>
 		</property>
 		<property name="value">
-			<value>600</value>
+			<value>130</value>
 		</property>
 	</object>
 </objects>

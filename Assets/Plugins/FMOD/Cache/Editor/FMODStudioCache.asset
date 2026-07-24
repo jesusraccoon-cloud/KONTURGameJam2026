@@ -69,6 +69,90 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-7937758561403193668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Entrance/StreetSound
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Entrance/StreetSound
+  Guid:
+    Data1: -980916719
+    Data2: 1180865835
+    Data3: 1224203139
+    Data4: 1360563449
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -497785548090678607}
+  MinDistance: 0
+  MaxDistance: 6
+  Length: 210000
+--- !u!114 &-7548761212712199174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Entrance/Door1
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Entrance/Door1
+  Guid:
+    Data1: -486992989
+    Data2: 1151239153
+    Data3: 630021013
+    Data4: 1832893082
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -4610002411801351966}
+  MinDistance: 1
+  MaxDistance: 4.4
+  Length: 77053
+--- !u!114 &-7417469227124433283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Entrance/Street2
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Entrance/Street2
+  Guid:
+    Data1: -1885609245
+    Data2: 1144865456
+    Data3: 1215077807
+    Data4: -346634725
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 1446152514084877850}
+  MinDistance: 0
+  MaxDistance: 4.6
+  Length: 306000
 --- !u!114 &-7039978384953132775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +262,54 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2000
+--- !u!114 &-4610002411801351966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Door1/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 664784307
+    data2: 2168317822
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-4171410835055340145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Door3/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 664784307
+    data2: 2168317822
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-3982825177419810735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,6 +417,110 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 269
+--- !u!114 &-926447841081324687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Entrance/Door3
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Entrance/Door3
+  Guid:
+    Data1: -766541090
+    Data2: 1105730328
+    Data3: -1349758027
+    Data4: -1703767432
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -4171410835055340145}
+  MinDistance: 1
+  MaxDistance: 6.2000003
+  Length: 108094
+--- !u!114 &-497785548090678607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/StreetSound/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 664784307
+    data2: 2168317822
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-420823812172178879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Door2/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 664784307
+    data2: 2168317822
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-291676602884121945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Entrance/Door2
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Entrance/Door2
+  Guid:
+    Data1: 148635737
+    Data2: 1188677964
+    Data3: 2126117531
+    Data4: 1947493832
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -420823812172178879}
+  MinDistance: 1
+  MaxDistance: 7
+  Length: 141087
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,13 +548,22 @@ MonoBehaviour:
   - {fileID: -6372427823889813129}
   - {fileID: -5100199245023624873}
   - {fileID: -1106797976275478565}
+  - {fileID: -7548761212712199174}
+  - {fileID: -291676602884121945}
+  - {fileID: -926447841081324687}
+  - {fileID: -7937758561403193668}
+  - {fileID: -7417469227124433283}
+  - {fileID: 6372764328299172821}
+  - {fileID: 8026102434479009610}
+  - {fileID: 2161738952148699194}
+  - {fileID: 7527099755692281281}
   EditorParameters: []
   MasterBanks:
   - {fileID: 4552191581410023176}
   StringsBanks:
   - {fileID: 390493745208664655}
   cacheVersion: 131860
-  cacheTime: 639198067340000000
+  cacheTime: 639204672780000000
   SerializableEventsDict:
   - key: event:/Player/Footsteps
     index: 0
@@ -342,6 +587,24 @@ MonoBehaviour:
     index: 9
   - key: event:/Ambience/Door/SmallDoorClose
     index: 10
+  - key: event:/Ambience/Entrance/Door1
+    index: 11
+  - key: event:/Ambience/Entrance/Door2
+    index: 12
+  - key: event:/Ambience/Entrance/Door3
+    index: 13
+  - key: event:/Ambience/Entrance/StreetSound
+    index: 14
+  - key: event:/Ambience/Entrance/Street2
+    index: 15
+  - key: event:/Ambience/Entrance/2dEntranceAmbient
+    index: 16
+  - key: snapshot:/S_Entrance
+    index: 17
+  - key: snapshot:/S_Apart
+    index: 18
+  - key: event:/Ambience/Apart/2dApart
+    index: 19
 --- !u!114 &176710144190681147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,11 +647,62 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639198067340000000
+  lastModified: 639204672780000000
   FileSizes:
   - Name: Desktop
-    Value: 1440
+    Value: 2202
   Exists: 1
+--- !u!114 &1446152514084877850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Street2/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 664784307
+    data2: 2168317822
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &2161738952148699194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: snapshot:/S_Apart
+  m_EditorClassIdentifier: 
+  Path: snapshot:/S_Apart
+  Guid:
+    Data1: 222150759
+    Data2: 1167729427
+    Data3: -880315233
+    Data4: -1718532517
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
 --- !u!114 &2868962422214387081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,10 +826,10 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639198067340000000
+  lastModified: 639204672780000000
   FileSizes:
   - Name: Desktop
-    Value: 2406496
+    Value: 25241984
   Exists: 1
 --- !u!114 &5142142090603654503
 MonoBehaviour:
@@ -572,6 +886,60 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &6372764328299172821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Entrance/2dEntranceAmbient
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Entrance/2dEntranceAmbient
+  Guid:
+    Data1: 1288889568
+    Data2: 1312544125
+    Data3: 1227716254
+    Data4: -1731634321
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 161332
+--- !u!114 &7527099755692281281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Apart/2dApart
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Apart/2dApart
+  Guid:
+    Data1: -1575418359
+    Data2: 1137341631
+    Data3: -995441481
+    Data4: 1261764480
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 59658
 --- !u!114 &7928712737379132139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -590,6 +958,33 @@ MonoBehaviour:
   lastModified: 639184695280000000
   FileSizes: []
   Exists: 1
+--- !u!114 &8026102434479009610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: snapshot:/S_Entrance
+  m_EditorClassIdentifier: 
+  Path: snapshot:/S_Entrance
+  Guid:
+    Data1: 1592202618
+    Data2: 1230216383
+    Data3: -1703159893
+    Data4: 1173238523
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
 --- !u!114 &8654389611466127150
 MonoBehaviour:
   m_ObjectHideFlags: 0

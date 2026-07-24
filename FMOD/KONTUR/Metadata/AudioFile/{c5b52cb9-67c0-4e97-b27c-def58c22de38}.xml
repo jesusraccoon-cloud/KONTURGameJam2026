@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{c5b52cb9-67c0-4e97-b27c-def58c22de38}">
+		<property name="assetPath">
+			<value>ConvReverb/BM7 Small Wooden.aif</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>4.4945000000000004</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{64d47a68-0926-4226-ac5b-0f9c721261eb}</destination>
+		</relationship>
+	</object>
+</objects>

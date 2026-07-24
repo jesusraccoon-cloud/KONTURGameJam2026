@@ -176,10 +176,14 @@ public class SC_Footsteps : MonoBehaviour // Скрипт звука шагов 
             {
                 if (!string.IsNullOrEmpty(surfaceTags[i].tag) && hit.collider.CompareTag(surfaceTags[i].tag)) // Если тег совпал
                 {
+                    if (showDebugLogs) Debug.Log($"[Surface] попал в '{hit.collider.name}' tag='{hit.collider.tag}' → {surfaceTags[i].surface}"); // Диагностика
                     return surfaceTags[i].surface; // Возвращаем поверхность из маппинга
                 }
             }
+
+            if (showDebugLogs) Debug.LogWarning($"[Surface] попал в '{hit.collider.name}' tag='{hit.collider.tag}', но такого тега нет в surfaceTags → default {defaultSurface}"); // Диагностика
         }
+        else if (showDebugLogs) Debug.LogWarning($"[Surface] луч из {origin} вниз на {surfaceRayLength}м ни во что не попал (mask/длина/высота?) → default {defaultSurface}"); // Диагностика
 
         return defaultSurface; // Ничего не нашли — поверхность по умолчанию
     }
@@ -198,14 +202,16 @@ public class SC_Footsteps : MonoBehaviour // Скрипт звука шагов 
 
         instance.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position)); // Позиция шага в пространстве
 
-        instance.setParameterByNameWithLabel(surfaceParameter, GetSurfaceLabel(surface)); // Ставим поверхность по лейблу
+        string surfaceLabel = GetSurfaceLabel(surface); // Лейбл поверхности для FMOD
+
+        FMOD.RESULT rSurf = instance.setParameterByNameWithLabel(surfaceParameter, surfaceLabel); // Ставим поверхность и ловим результат
 
         instance.setParameterByNameWithLabel(locomotionParameter, GetLocomotionLabel(locomotion)); // Ставим тип движения по лейблу
 
         instance.start(); // Запускаем звук
         instance.release(); // Освобождаем экземпляр после завершения (one-shot)
 
-        if (showDebugLogs) Debug.Log("Шаг: " + surface + " / " + locomotion); // Лог шага
+        if (showDebugLogs) Debug.Log($"Шаг: surface={surface} label='{surfaceLabel}' param='{surfaceParameter}' FMOD={rSurf} / {locomotion}"); // Лог шага + результат FMOD
     }
 
     public static string GetSurfaceLabel(FootstepSurface surface) // Enum поверхности -> лейбл FMOD (статик, чтобы вызывать без экземпляра)
