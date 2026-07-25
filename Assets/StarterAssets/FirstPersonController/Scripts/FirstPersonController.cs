@@ -125,6 +125,35 @@ namespace StarterAssets // Пространство имён StarterAssets
             }
         }
 
+        public void SetControlEnabled(bool enabledState) // Включает или выключает движение и обзор игрока
+        {
+            canMove = enabledState; // Разрешаем или запрещаем движение
+
+            canLook = enabledState; // Разрешаем или запрещаем вращение камеры
+        }
+
+        public void SetViewRotation(float yaw, float pitch = 0f) // Устанавливает и запоминает точный поворот игрока и камеры
+        {
+            _targetYaw = yaw; // Запоминаем новый желаемый горизонтальный угол
+
+            _currentYaw = yaw; // Сразу выставляем текущий горизонтальный угол
+
+            _targetPitch = ClampAngle(pitch, BottomClamp, TopClamp); // Ограничиваем и запоминаем вертикальный угол
+
+            _cinemachineTargetPitch = _targetPitch; // Сразу выставляем текущий вертикальный угол
+
+            _yawVelocity = 0f; // Сбрасываем старую скорость сглаживания по горизонтали
+
+            _pitchVelocity = 0f; // Сбрасываем старую скорость сглаживания по вертикали
+
+            transform.rotation = Quaternion.Euler(0f, _currentYaw, 0f); // Поворачиваем тело игрока
+
+            if (CinemachineCameraTarget != null) // Если цель камеры назначена
+            {
+                CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0f, 0f); // Поворачиваем камеру по вертикали
+            }
+        }
+
         private void GroundedCheck() // Проверка земли
         {
             Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z); // Создаём позицию сферы проверки

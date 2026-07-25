@@ -1,5 +1,6 @@
 using UnityEngine; // Подключаем Unity-классы
 using System.Collections; // Подключаем корутины
+using StarterAssets; // Подключаем FirstPersonController
 
 public class PlayerHideController : MonoBehaviour // Контроллер входа и выхода игрока из укрытий
 {
@@ -10,6 +11,8 @@ public class PlayerHideController : MonoBehaviour // Контроллер вхо
 
     [Header("Player")] // Блок игрока
     public CharacterController characterController; // CharacterController игрока
+
+    public FirstPersonController firstPersonController; // Контроллер движения и камеры игрока
 
     public Behaviour[] movementScriptsToDisable; // Скрипты управления, которые отключаются внутри шкафа
 
@@ -25,6 +28,13 @@ public class PlayerHideController : MonoBehaviour // Контроллер вхо
     public float maxWalkIntoTime = 2f; // Максимальное время входа
 
     public bool disableCharacterControllerWhileWalking = true; // Отключать CharacterController, чтобы не застревать
+
+    [Header("Turn Toward Wardrobe Doors")] // Блок автоматического разворота внутри шкафа
+    public bool turnTowardDoorsAfterEntering = true; // Разворачивать ли игрока лицом к дверям после входа
+
+    public float turnTowardDoorsSpeed = 360f; // Скорость разворота в градусах в секунду
+
+    public float maxTurnTowardDoorsTime = 1f; // Максимальное время разворота
 
     [Header("Exit Movement")] // Блок выхода из шкафа
     public bool walkOutOfWardrobe = true; // Если true, игрок выходит из шкафа плавно
@@ -58,6 +68,17 @@ public class PlayerHideController : MonoBehaviour // Контроллер вхо
     private void Reset() // Автонастройка при добавлении скрипта
     {
         characterController = GetComponent<CharacterController>(); // Ищем CharacterController на игроке
+
+        firstPersonController = GetComponent<FirstPersonController>(); // Ищем FirstPersonController на игроке
+    }
+
+    private void Awake() // Автоматически находит обязательные ссылки перед началом игры
+    {
+        if (characterController == null) characterController = GetComponent<CharacterController>(); // Если ссылка не назначена, ищем CharacterController
+
+        if (firstPersonController == null) firstPersonController = GetComponent<FirstPersonController>(); // Если ссылка не назначена, ищем FirstPersonController
+
+        if (firstPersonController == null) firstPersonController = GetComponentInParent<FirstPersonController>(); // Дополнительно ищем FirstPersonController выше по иерархии
     }
 
     public void TryEnterWardrobe(WardrobeHideHandle wardrobe) // Попытка войти в шкаф по Q
@@ -102,9 +123,15 @@ public class PlayerHideController : MonoBehaviour // Контроллер вхо
 
         SetMovement(false); // Отключаем управление игроком
 
+        SetFirstPersonControl(false); // Запрещаем игроку двигаться и сбивать автоматический поворот мышью
+
         if (walkIntoWardrobe == true) yield return StartCoroutine(WalkToPoint(wardrobe.hidePoint, walkIntoSpeed, rotateIntoSpeed, walkStopDistance, maxWalkIntoTime)); // Плавно заводим игрока внутрь
 
         if (walkIntoWardrobe == false) TeleportPlayer(wardrobe.hidePoint.position, wardrobe.hidePoint.rotation); // Или телепортируем внутрь
+
+        if (turnTowardDoorsAfterEntering == true) yield return StartCoroutine(TurnTowardPoint(wardrobe.exitPoint, turnTowardDoorsSpeed, maxTurnTowardDoorsTime)); // Автоматически разворачиваем игрока лицом к дверям
+
+        SyncFirstPersonView(); // Запоминаем новый поворот в контроллере камеры, чтобы он не вернул старый угол
 
         isHidden = true; // Помечаем игрока спрятанным
 
@@ -141,7 +168,11 @@ public class PlayerHideController : MonoBehaviour // Контроллер вхо
             if (walkOutOfWardrobe == false) TeleportPlayer(wardrobeToExit.exitPoint.position, wardrobeToExit.exitPoint.rotation); // Или телепортируем наружу
         }
 
+        SyncFirstPersonView(); // Перед возвратом управления запоминаем итоговый поворот после выхода
+
         SetMovement(true); // Возвращаем управление игроку
+
+        SetFirstPersonControl(true); // Снова разрешаем движение и обзор
 
         if (wardrobeToExit != null) yield return StartCoroutine(wardrobeToExit.CloseDoorsAfterExit()); // Просим шкаф закрыть двери после выхода
 
@@ -174,6 +205,32 @@ public class PlayerHideController : MonoBehaviour // Контроллер вхо
         transform.SetPositionAndRotation(targetPoint.position, targetPoint.rotation); // Точно ставим игрока в конечную точку
 
         if (disableCharacterControllerWhileWalking == true && characterController != null && controllerWasEnabled == true) characterController.enabled = true; // Возвращаем CharacterController
+    }
+
+    private IEnumerator TurnTowardPoint(Transform targetPoint, float turnSpeed, float maxTurnTime) // Плавно разворачивает игрока лицом к указанной точке
+    {
+        if (targetPoint == null) yield break; // Если точки нет, разворот выполнить нельзя
+
+        Vector3 lookDirection = targetPoint.position - transform.position; // Получаем направление от игрока к точке перед дверями
+
+        lookDirection.y = 0f; // Убираем вертикальный наклон, чтобы игрок не заваливался вверх или вниз
+
+        if (lookDirection.sqrMagnitude < 0.0001f) yield break; // Если точки почти совпали, направление определить нельзя
+
+        Quaternion targetRotation = Quaternion.LookRotation(lookDirection.normalized, Vector3.up); // Создаем поворот лицом к дверям
+
+        float timer = 0f; // Таймер разворота
+
+        while (Quaternion.Angle(transform.rotation, targetRotation) > 0.1f && timer < maxTurnTime) // Поворачиваемся до нужного угла или окончания времени
+        {
+            timer += Time.deltaTime; // Увеличиваем таймер
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * Time.deltaTime); // Плавно поворачиваем игрока
+
+            yield return null; // Ждем следующий кадр
+        }
+
+        transform.rotation = targetRotation; // В конце точно ставим нужный поворот
     }
 
     public bool WouldMonsterSeeHideNow() // Проверяет, видит ли монстр вход
@@ -213,7 +270,23 @@ public class PlayerHideController : MonoBehaviour // Контроллер вхо
 
             if (movementScriptsToDisable[i] is PlayerInteractor) continue; // PlayerInteractor не выключаем, чтобы Q работала
 
+            if (movementScriptsToDisable[i] == firstPersonController) continue; // FirstPersonController не выключаем целиком, потому что его состояние контролируем отдельно
+
             movementScriptsToDisable[i].enabled = enabledState; // Включаем или выключаем скрипт
         }
+    }
+
+    private void SetFirstPersonControl(bool enabledState) // Включает или выключает ввод движения и обзора
+    {
+        if (firstPersonController == null) return; // Если контроллер игрока не найден, выходим
+
+        firstPersonController.SetControlEnabled(enabledState); // Передаем новое состояние контроллеру игрока
+    }
+
+    private void SyncFirstPersonView() // Синхронизирует внутренние углы камеры с фактическим поворотом игрока
+    {
+        if (firstPersonController == null) return; // Если контроллер игрока не найден, выходим
+
+        firstPersonController.SetViewRotation(transform.eulerAngles.y, 0f); // Запоминаем текущий горизонтальный угол и выравниваем взгляд
     }
 }
