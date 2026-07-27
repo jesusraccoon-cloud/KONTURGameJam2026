@@ -32,3 +32,6 @@ ExportedObj/
 *.VC.db
 
 *.lscache
+
+# FMOD Studio
+fmod_editor.log
