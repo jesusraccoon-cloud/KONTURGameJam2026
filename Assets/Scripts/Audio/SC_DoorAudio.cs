@@ -1,5 +1,6 @@
 using UnityEngine; // Подключаем Unity-классы
-using FMODUnity; // Подключаем FMOD (EventReference, RuntimeManager)
+using FMODUnity; // Подключаем FMOD (EventReference, RuntimeManager, RuntimeUtils)
+using FMOD.Studio; // Подключаем EventInstance
 
 // Играет FMOD-события при открытии и закрытии двери UniversalDoor.
 // Следит за её состоянием IsOpen и срабатывает на переходах — работает
@@ -15,6 +16,11 @@ public class SC_DoorAudio : MonoBehaviour
     public EventReference closeEvent; // Событие закрытия
 
     public bool attachToDoor = true; // Звук из позиции двери и следует за ней (для качающейся створки)
+
+    [Header("Occlusion")] // Блок окклюзии
+    public bool occludeDoorSounds = true; // Приглушать скрип, если дверь за стеной от игрока (замер в момент проигрывания)
+
+    public string occlusionParameter = "Occlusion"; // Непрерывный параметр 0..1 в событиях двери
 
     [Header("Debug")] // Блок отладки
     public bool showDebugLogs = false; // Показывать логи
@@ -71,14 +77,27 @@ public class SC_DoorAudio : MonoBehaviour
             return; // Выходим
         }
 
+        EventInstance inst = RuntimeManager.CreateInstance(e); // Создаём экземпляр (нужен, чтобы задать окклюзию до старта)
+
+        Vector3 pos = door.transform.position; // Позиция двери
+
         if (attachToDoor) // Если звук привязан к двери
         {
-            RuntimeManager.PlayOneShotAttached(e, door.gameObject); // Звук из позиции двери, следует за створкой
+            RuntimeManager.AttachInstanceToGameObject(inst, door.gameObject); // Звук из позиции двери, следует за створкой
         }
         else // Иначе разово в точке двери
         {
-            RuntimeManager.PlayOneShot(e, door.transform.position); // Звук в позиции двери
+            inst.set3DAttributes(RuntimeUtils.To3DAttributes(pos)); // Звук в позиции двери
         }
+
+        if (occludeDoorSounds) // Если нужна окклюзия
+        {
+            float occ = SC_OcclusionListener.Sample(pos, door.transform); // Замеряем окклюзию в точке двери (игнорируя саму дверь)
+            inst.setParameterByName(occlusionParameter, occ); // Ставим её на разовый инстанс
+        }
+
+        inst.start(); // Запускаем
+        inst.release(); // Освобождаем (one-shot доиграет и очистится)
 
         if (showDebugLogs) Debug.Log(gameObject.name + ": дверь — " + label); // Лог
     }

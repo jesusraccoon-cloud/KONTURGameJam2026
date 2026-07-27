@@ -97,6 +97,30 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 6
   Length: 210000
+--- !u!114 &-7840766351913262918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/WaterDrops/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 664784307
+    data2: 2168317822
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-7548761212712199174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,14 +224,63 @@ MonoBehaviour:
     Data4: -1711686511
   Banks:
   - {fileID: 4552191581410023176}
-  IsStream: 0
+  IsStream: 1
   Is3D: 1
   IsOneShot: 0
   Parameters:
   - {fileID: -3982825177419810735}
+  - {fileID: 2802758251877826373}
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-6706749181788547616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/DoorOpen/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 664784307
+    data2: 2168317822
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-6402410570793279164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Light2/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 664784307
+    data2: 2168317822
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-6372427823889813129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,9 +304,10 @@ MonoBehaviour:
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: -5019743979567406978}
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 9
   Length: 2000
 --- !u!114 &-5100199245023624873
 MonoBehaviour:
@@ -260,8 +334,32 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 9.2
   Length: 2000
+--- !u!114 &-5019743979567406978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/DoorClose/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 664784307
+    data2: 2168317822
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-4610002411801351966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,6 +432,90 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-3680594369633479694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Lights/BrokenLight
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Lights/BrokenLight
+  Guid:
+    Data1: 1016462861
+    Data2: 1310486368
+    Data3: 817795491
+    Data4: 999808383
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 4980667345281820645}
+  MinDistance: 0.3
+  MaxDistance: 3.6000001
+  Length: 30340
+--- !u!114 &-2748380295556093473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Apart/BathroomSound
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Apart/BathroomSound
+  Guid:
+    Data1: 404327131
+    Data2: 1106457429
+    Data3: -480379974
+    Data4: -1256442237
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 1947904214544387957}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 152873
+--- !u!114 &-1175765840282098057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Entrance/WaterDrops
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Entrance/WaterDrops
+  Guid:
+    Data1: -1582092297
+    Data2: 1181633141
+    Data3: -1922397258
+    Data4: 1909622458
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -7840766351913262918}
+  MinDistance: 1
+  MaxDistance: 9.2
+  Length: 45040
 --- !u!114 &-1106797976275478565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,7 +541,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 9
   Length: 2000
 --- !u!114 &-1070758260847107354
 MonoBehaviour:
@@ -557,13 +739,18 @@ MonoBehaviour:
   - {fileID: 8026102434479009610}
   - {fileID: 2161738952148699194}
   - {fileID: 7527099755692281281}
-  EditorParameters: []
+  - {fileID: -3680594369633479694}
+  - {fileID: -2748380295556093473}
+  - {fileID: 5352726842180284405}
+  - {fileID: -1175765840282098057}
+  EditorParameters:
+  - {fileID: 3038740214914519220}
   MasterBanks:
   - {fileID: 4552191581410023176}
   StringsBanks:
   - {fileID: 390493745208664655}
   cacheVersion: 131860
-  cacheTime: 639205392773119077
+  cacheTime: 639207155880000000
   SerializableEventsDict:
   - key: event:/Player/Footsteps
     index: 0
@@ -605,6 +792,14 @@ MonoBehaviour:
     index: 18
   - key: event:/Ambience/Apart/2dApart
     index: 19
+  - key: event:/Ambience/Lights/BrokenLight
+    index: 20
+  - key: event:/Ambience/Apart/BathroomSound
+    index: 21
+  - key: event:/Ambience/Lights/Light2
+    index: 22
+  - key: event:/Ambience/Entrance/WaterDrops
+    index: 23
 --- !u!114 &176710144190681147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -647,10 +842,10 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639205392773119077
+  lastModified: 639207155880000000
   FileSizes:
   - Name: Desktop
-    Value: 2202
+    Value: 2420
   Exists: 1
 --- !u!114 &1446152514084877850
 MonoBehaviour:
@@ -663,6 +858,54 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/Street2/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 664784307
+    data2: 2168317822
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &1620959684842654556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/2dApart/Fear
+  m_EditorClassIdentifier: 
+  Name: Fear
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3184907039
+    data2: 1057073483
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &1947904214544387957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BathroomSound/Occlusion
   m_EditorClassIdentifier: 
   Name: Occlusion
   StudioPath: 
@@ -703,6 +946,30 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &2802758251877826373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Breathe/Fear
+  m_EditorClassIdentifier: 
+  Name: Fear
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3184907039
+    data2: 1057073483
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &2868962422214387081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -754,6 +1021,30 @@ MonoBehaviour:
     data2: 2168317822
   Type: 0
   IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &3038740214914519220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Fear
+  m_EditorClassIdentifier: 
+  Name: Fear
+  StudioPath: parameter:/Fear
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3184907039
+    data2: 1057073483
+  Type: 0
+  IsGlobal: 1
   Labels: []
   Exists: 1
 --- !u!114 &3969581204241585293
@@ -826,10 +1117,34 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639205392773108961
+  lastModified: 639207155880000000
   FileSizes:
   - Name: Desktop
-    Value: 25241984
+    Value: 32245408
+  Exists: 1
+--- !u!114 &4980667345281820645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BrokenLight/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 664784307
+    data2: 2168317822
+  Type: 0
+  IsGlobal: 0
+  Labels: []
   Exists: 1
 --- !u!114 &5142142090603654503
 MonoBehaviour:
@@ -854,9 +1169,10 @@ MonoBehaviour:
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: -6706749181788547616}
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 9
   Length: 2000
 --- !u!114 &5143438381744408755
 MonoBehaviour:
@@ -886,6 +1202,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &5352726842180284405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Lights/Light2
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Lights/Light2
+  Guid:
+    Data1: -1145359973
+    Data2: 1229092902
+    Data3: -1668973663
+    Data4: -1735350769
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -6402410570793279164}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 16087
 --- !u!114 &6372764328299172821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -936,7 +1280,8 @@ MonoBehaviour:
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
-  Parameters: []
+  Parameters:
+  - {fileID: 1620959684842654556}
   MinDistance: 1
   MaxDistance: 20
   Length: 59658

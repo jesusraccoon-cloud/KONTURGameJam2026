@@ -16496,6 +16496,7 @@ Transform:
   - {fileID: 430154911}
   - {fileID: 1663221229}
   - {fileID: 1852811396}
+  - {fileID: 261782058}
   m_Father: {fileID: 1063578361}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &136025047
@@ -36970,6 +36971,98 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 896460827}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &261782057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 261782058}
+  - component: {fileID: 261782060}
+  - component: {fileID: 261782059}
+  m_Layer: 0
+  m_Name: WaterDrip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &261782058
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261782057}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.262, y: 7.185, z: -10.906}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 135384427}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &261782059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261782057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f07e633c7b9b7a48b40b590b625d5b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emitter: {fileID: 0}
+  listener: {fileID: 0}
+  occlusionParameter: Occlusion
+  autoDetectAllWalls: 1
+  playerRoot: {fileID: 0}
+  occlusionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  sourceHeightOffset: 0
+  rayCount: 3
+  raySpread: 0.5
+  maxOcclusion: 1
+  checkInterval: 0.1
+  smoothInScript: 1
+  smoothSpeed: 4
+  showDebugRays: 0
+--- !u!114 &261782060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261782057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1582092297
+      Data2: 1181633141
+      Data3: -1922397258
+      Data4: 1909622458
+    Path: event:/Ambience/Entrance/WaterDrops
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 9.2
 --- !u!43 &263291894
 Mesh:
   m_ObjectHideFlags: 0
@@ -37947,6 +38040,7 @@ GameObject:
   - component: {fileID: 271983407}
   - component: {fileID: 271983406}
   - component: {fileID: 271983405}
+  - component: {fileID: 271983408}
   m_Layer: 0
   m_Name: ChandelierLight
   m_TagString: Untagged
@@ -38091,6 +38185,32 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &271983408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271983403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 360cb4349aec3e54cba13dbbb712689c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLight: {fileID: 0}
+  humEvent:
+    Guid:
+      Data1: -1145359973
+      Data2: 1229092902
+      Data3: -1668973663
+      Data4: -1735350769
+    Path: event:/Ambience/Lights/Light2
+  attachToLamp: 1
+  fadeOutOnStop: 0
+  alsoRequireIntensity: 0
+  minIntensity: 0.05
+  occlusionParameter: Occlusion
+  showDebugLogs: 0
 --- !u!43 &272288742
 Mesh:
   m_ObjectHideFlags: 0
@@ -68607,6 +68727,7 @@ GameObject:
   - component: {fileID: 481491795}
   - component: {fileID: 481491797}
   - component: {fileID: 481491794}
+  - component: {fileID: 481491800}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Untagged
@@ -68904,7 +69025,7 @@ MonoBehaviour:
   minForwardDot: 0.2
   doorLayers:
     serializedVersion: 2
-    m_Bits: 257
+    m_Bits: 1
   drawDebugRay: 1
   drawDebugSphere: 1
 --- !u!114 &481491797
@@ -68964,6 +69085,32 @@ MonoBehaviour:
   agent: {fileID: 481491784}
   repathInterval: 0.2
   minTargetMoveDistance: 0.35
+--- !u!114 &481491800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481491782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54c0b4b2cc4d4d04e869d6d3a0ea9b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monster: {fileID: 481491791}
+  player: {fileID: 1398795491}
+  fearParameter: Fear
+  useDistanceFear: 1
+  nearDistance: 2
+  farDistance: 10
+  useStateFear: 1
+  chaseFear: 1
+  attackFear: 1
+  investigateFear: 0.2
+  maxFear: 1
+  riseSpeed: 3
+  fallSpeed: 1
+  showDebugLogs: 0
 --- !u!4 &483894259 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5842203755571073467, guid: 035820e0e41e76f4cb0ed9f3017b66da,
@@ -89202,6 +89349,7 @@ GameObject:
   - component: {fileID: 617925606}
   - component: {fileID: 617925605}
   - component: {fileID: 617925604}
+  - component: {fileID: 617925607}
   m_Layer: 0
   m_Name: WallLamp1
   m_TagString: Untagged
@@ -89218,7 +89366,7 @@ Transform:
   m_GameObject: {fileID: 617925602}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 38.074, y: 364.839, z: -530.589}
+  m_LocalPosition: {x: 38.05, y: 364.839, z: -530.589}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -89346,6 +89494,32 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &617925607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617925602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 360cb4349aec3e54cba13dbbb712689c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLight: {fileID: 0}
+  humEvent:
+    Guid:
+      Data1: 1016462861
+      Data2: 1310486368
+      Data3: 817795491
+      Data4: 999808383
+    Path: event:/Ambience/Lights/BrokenLight
+  attachToLamp: 1
+  fadeOutOnStop: 0
+  alsoRequireIntensity: 0
+  minIntensity: 0.05
+  occlusionParameter: Occlusion
+  showDebugLogs: 0
 --- !u!1 &618110419
 GameObject:
   m_ObjectHideFlags: 0
@@ -172830,6 +173004,8 @@ MonoBehaviour:
       Data4: 221835941
     Path: event:/Ambience/Door/DoorClose
   attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
   showDebugLogs: 0
 --- !u!43 &1167770406
 Mesh:
@@ -172996,6 +173172,98 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1168730239
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1168730240}
+  - component: {fileID: 1168730241}
+  - component: {fileID: 1168730242}
+  m_Layer: 0
+  m_Name: BathroomSound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1168730240
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168730239}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3906, y: -0.417, z: -0.0706}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1210598241}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1168730241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168730239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 404327131
+      Data2: 1106457429
+      Data3: -480379974
+      Data4: -1256442237
+    Path: event:/Ambience/Apart/BathroomSound
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 5
+--- !u!114 &1168730242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168730239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f07e633c7b9b7a48b40b590b625d5b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emitter: {fileID: 0}
+  listener: {fileID: 0}
+  occlusionParameter: Occlusion
+  autoDetectAllWalls: 1
+  playerRoot: {fileID: 0}
+  occlusionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  sourceHeightOffset: 0
+  rayCount: 3
+  raySpread: 0.5
+  maxOcclusion: 1
+  checkInterval: 0.1
+  smoothInScript: 1
+  smoothSpeed: 4
+  showDebugRays: 0
 --- !u!1 &1169393276
 GameObject:
   m_ObjectHideFlags: 0
@@ -180057,6 +180325,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2099400313}
+  - {fileID: 1168730240}
   m_Father: {fileID: 192860845}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1211027809 stripped
@@ -202562,6 +202831,8 @@ MonoBehaviour:
       Data4: 221835941
     Path: event:/Ambience/Door/DoorClose
   attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
   showDebugLogs: 0
 --- !u!1001 &1381267281
 PrefabInstance:
@@ -229058,6 +229329,8 @@ MonoBehaviour:
       Data4: 221835941
     Path: event:/Ambience/Door/DoorClose
   attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
   showDebugLogs: 0
 --- !u!43 &1542246891
 Mesh:
@@ -244565,6 +244838,8 @@ MonoBehaviour:
       Data4: 221835941
     Path: event:/Ambience/Door/DoorClose
   attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
   showDebugLogs: 0
 --- !u!1 &1647603166
 GameObject:
@@ -244983,6 +245258,8 @@ MonoBehaviour:
       Data4: 221835941
     Path: event:/Ambience/Door/DoorClose
   attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
   showDebugLogs: 0
 --- !u!1 &1651214414
 GameObject:
@@ -282178,6 +282455,8 @@ MonoBehaviour:
       Data4: 221835941
     Path: event:/Ambience/Door/DoorClose
   attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
   showDebugLogs: 0
 --- !u!1 &1893785907
 GameObject:
@@ -284409,6 +284688,8 @@ MonoBehaviour:
       Data4: 221835941
     Path: event:/Ambience/Door/DoorClose
   attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
   showDebugLogs: 0
 --- !u!43 &1918273800
 Mesh:
@@ -288596,6 +288877,8 @@ MonoBehaviour:
       Data4: 221835941
     Path: event:/Ambience/Door/DoorClose
   attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
   showDebugLogs: 0
 --- !u!1 &1950199339
 GameObject:
@@ -331906,6 +332189,7 @@ GameObject:
   - component: {fileID: 7260274512571165869}
   - component: {fileID: 7260274512571165870}
   - component: {fileID: 7260274512571165871}
+  - component: {fileID: 7260274512571165872}
   m_Layer: 0
   m_Name: LeftDoor
   m_TagString: Untagged
@@ -340414,6 +340698,8 @@ MonoBehaviour:
       Data4: 221835941
     Path: event:/Ambience/Door/DoorClose
   attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
   showDebugLogs: 0
 --- !u!1 &3339998940424129570
 GameObject:
@@ -341182,6 +341468,8 @@ MonoBehaviour:
       Data4: 221835941
     Path: event:/Ambience/Door/DoorClose
   attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
   showDebugLogs: 0
 --- !u!4 &3468966293285156484
 Transform:
@@ -347960,6 +348248,8 @@ MonoBehaviour:
       Data4: 221835941
     Path: event:/Ambience/Door/DoorClose
   attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
   showDebugLogs: 0
 --- !u!4 &4442130278925553285
 Transform:
@@ -364322,6 +364612,8 @@ MonoBehaviour:
       Data4: 221835941
     Path: event:/Ambience/Door/DoorClose
   attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
   showDebugLogs: 0
 --- !u!4 &7055614898260497964
 Transform:
@@ -365415,6 +365707,37 @@ MonoBehaviour:
   useSecondRoom: 0
   showNoiseOnUI: 1
   mixNoiseOnUI: 1
+  showDebugLogs: 0
+--- !u!114 &7260274512571165872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059206802348095488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7cb10c26c21841b86a5436d18404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: -1667866079
+      Data2: 1119290880
+      Data3: 566603669
+      Data4: 1448332868
+    Path: event:/Ambience/Door/DoorOpen
+  closeEvent:
+    Guid:
+      Data1: -1897936269
+      Data2: 1242395485
+      Data3: 115766442
+      Data4: 221835941
+    Path: event:/Ambience/Door/DoorClose
+  attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
   showDebugLogs: 0
 --- !u!1 &7261572723330211687
 GameObject:
@@ -366819,6 +367142,7 @@ GameObject:
   - component: {fileID: 7579496298650482873}
   - component: {fileID: 7579496298650482874}
   - component: {fileID: 7579496298650482875}
+  - component: {fileID: 7579496298650482876}
   m_Layer: 0
   m_Name: RightDoor
   m_TagString: Untagged
@@ -366901,6 +367225,37 @@ MonoBehaviour:
   useSecondRoom: 0
   showNoiseOnUI: 1
   mixNoiseOnUI: 1
+  showDebugLogs: 0
+--- !u!114 &7579496298650482876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7579496298650482872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7cb10c26c21841b86a5436d18404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: -1667866079
+      Data2: 1119290880
+      Data3: 566603669
+      Data4: 1448332868
+    Path: event:/Ambience/Door/DoorOpen
+  closeEvent:
+    Guid:
+      Data1: -1897936269
+      Data2: 1242395485
+      Data3: 115766442
+      Data4: 221835941
+    Path: event:/Ambience/Door/DoorClose
+  attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
   showDebugLogs: 0
 --- !u!4 &7585714763666852507
 Transform:
@@ -371696,6 +372051,8 @@ MonoBehaviour:
       Data4: 221835941
     Path: event:/Ambience/Door/DoorClose
   attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
   showDebugLogs: 0
 --- !u!114 &8320930203667804423
 MonoBehaviour:
@@ -373282,6 +373639,8 @@ MonoBehaviour:
       Data4: 221835941
     Path: event:/Ambience/Door/DoorClose
   attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
   showDebugLogs: 0
 --- !u!33 &8562735655806051459
 MeshFilter:
@@ -376117,6 +376476,8 @@ MonoBehaviour:
       Data4: 221835941
     Path: event:/Ambience/Door/DoorClose
   attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
   showDebugLogs: 0
 --- !u!4 &8840500222967495127
 Transform:
@@ -377768,6 +378129,8 @@ MonoBehaviour:
       Data4: 221835941
     Path: event:/Ambience/Door/DoorClose
   attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
   showDebugLogs: 0
 --- !u!114 &9028112092372623458
 MonoBehaviour:
@@ -378313,6 +378676,8 @@ MonoBehaviour:
       Data4: 221835941
     Path: event:/Ambience/Door/DoorClose
   attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
   showDebugLogs: 0
 --- !u!23 &9080098148015407509
 MeshRenderer:
@@ -378558,6 +378923,8 @@ MonoBehaviour:
       Data4: 221835941
     Path: event:/Ambience/Door/DoorClose
   attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
   showDebugLogs: 0
 --- !u!23 &9106498959580059991
 MeshRenderer:

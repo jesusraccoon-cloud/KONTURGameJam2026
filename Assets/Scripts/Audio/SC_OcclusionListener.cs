@@ -19,6 +19,15 @@ public class SC_OcclusionListener : MonoBehaviour
         Sources.Remove(s); // Убираем из списка
     }
 
+    public static SC_OcclusionListener Instance { get; private set; } // Активный слушатель (для разовых замеров из других скриптов)
+
+    // Разовый замер окклюзии в точке — для one-shot звуков (дверь, шаги монстра и т.п.).
+    // Возвращает 0..1. Если слушателя нет — 0 (без окклюзии).
+    public static float Sample(Vector3 point, Transform sourceTransform)
+    {
+        return Instance != null ? Instance.SampleOcclusionAt(point, sourceTransform) : 0f; // Считаем через активный слушатель
+    }
+
     [Header("Listener")] // Блок слушателя
     public Transform listenerPoint; // Откуда пускаем лучи (если пусто — этот объект)
 
@@ -54,6 +63,23 @@ public class SC_OcclusionListener : MonoBehaviour
     private readonly Dictionary<IOccludable, float> _current = new Dictionary<IOccludable, float>(); // Сглаженное по источнику
 
     private float _timer; // Таймер до пересчёта
+
+    private void Awake() // При создании
+    {
+        Instance = this; // Запоминаем активный слушатель для разовых замеров
+    }
+
+    public float SampleOcclusionAt(Vector3 point, Transform sourceTransform) // Разовый замер окклюзии в точке
+    {
+        Transform lisT = listenerPoint != null ? listenerPoint : transform; // Трансформ слушателя
+        Vector3 lis = lisT.position; // Позиция слушателя
+
+        Vector3 sp = point + Vector3.up * sourceHeightOffset; // Точка источника
+
+        if ((sp - lis).sqrMagnitude > maxDistance * maxDistance) return 0f; // Вне радиуса — окклюзии нет
+
+        return ComputeOcclusion(sp, lis, lisT, sourceTransform); // Считаем лучами
+    }
 
     private void Update() // Каждый кадр
     {
