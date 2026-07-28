@@ -1,4 +1,5 @@
 using UnityEngine; // Подключаем Unity-классы
+using UnityEngine.AI; // Подключаем NavMeshObstacle
 using System.Collections; // Подключаем корутины
 
 public class UniversalDoor : MonoBehaviour // Основной скрипт двери, теперь сам не является IInteractable
@@ -10,7 +11,13 @@ public class UniversalDoor : MonoBehaviour // Основной скрипт дв
     [Header("Door Settings")] // Блок настроек двери
     public bool isOpen = false; // Открыта ли дверь
 
-    public bool IsOpen => isOpen; // Публичная проверка состояния двери
+    public bool IsOpen => isOpen; // Публичная проверка логического состояния двери
+
+    public bool IsBusy => isBusy; // Публичная проверка занятости двери
+
+    public bool IsFullyOpen => isOpen && Quaternion.Angle(transform.localRotation, openedRotation) <= fullyOpenAngleTolerance; // Полотно физически дошло до открытого положения
+
+    public bool CanMonsterOpenNow => canMonsterOpen && !isBusy && !isOpen && !isLocked && CanOpenDoor(); // Может ли монстр начать открытие сейчас
 
     public DoorOpenDirection openDirection = DoorOpenDirection.Forward; // Куда открывается дверь
 
@@ -19,6 +26,7 @@ public class UniversalDoor : MonoBehaviour // Основной скрипт дв
 
     [Header("Open Angle")] // Блок угла открытия
     public float openAngle = 90f; // Угол открытия
+    public float fullyOpenAngleTolerance = 2f; // Погрешность угла полного открытия
 
     [Header("Open / Close Speed")] // Блок скоростей
     public float openSpeed = 5f; // Скорость открытия
@@ -40,6 +48,7 @@ public class UniversalDoor : MonoBehaviour // Основной скрипт дв
 
     [Header("Monster Access")] // Блок доступа монстра
     public bool canMonsterOpen = true; // Может ли монстр открыть дверь
+    public NavMeshObstacle navMeshObstacle; // Препятствие для обхода открытого полотна
 
     [Header("Noise")] // Блок шума
     public NoiseEmitter noiseEmitter; // Источник шума двери
@@ -61,6 +70,13 @@ public class UniversalDoor : MonoBehaviour // Основной скрипт дв
     private Quaternion outsideHandlePressedRotation; // Нажатый поворот внешней ручки
     private Quaternion insideHandlePressedRotation; // Нажатый поворот внутренней ручки
     private bool isBusy = false; // Занята ли дверь анимацией
+
+    private void OnValidate() // Вызывается при изменении значений в Inspector
+    {
+        if (navMeshObstacle == null) navMeshObstacle = GetComponent<NavMeshObstacle>(); // Ищем NavMeshObstacle на этом объекте
+
+        SyncNavMeshObstacleWithBoxCollider(); // Копируем форму Box Collider в obstacle
+    }
 
     private void Start() // Запуск при старте сцены
     {
@@ -90,12 +106,45 @@ public class UniversalDoor : MonoBehaviour // Основной скрипт дв
 
         if (noiseEmitter == null) noiseEmitter = GetComponent<NoiseEmitter>(); // Если шум не назначен, ищем его на этом объекте
 
+        if (navMeshObstacle == null) navMeshObstacle = GetComponent<NavMeshObstacle>(); // Ищем NavMeshObstacle на этом объекте
+
+        SyncNavMeshObstacleWithBoxCollider(); // Синхронизируем obstacle с дверным Box Collider
+
+        if (navMeshObstacle != null) navMeshObstacle.carving = false; // Закрытая дверь не вырезает проход из NavMesh
+
         SetupDoorInteractZone(); // Настраиваем отдельную зону взаимодействия
     }
 
     private void Update() // Каждый кадр
     {
         UpdateDoorRotation(); // Плавно двигаем дверь
+
+        UpdateNavMeshObstacle(); // Обновляем режим обхода полотна
+    }
+
+    private void SyncNavMeshObstacleWithBoxCollider() // Копировать форму дверного коллайдера в obstacle
+    {
+        if (navMeshObstacle == null) return; // Если obstacle отсутствует, выходим
+
+        BoxCollider boxCollider = GetComponent<BoxCollider>(); // Ищем Box Collider полотна
+
+        if (boxCollider == null) return; // Если Box Collider отсутствует, выходим
+
+        navMeshObstacle.shape = NavMeshObstacleShape.Box; // Используем прямоугольную форму
+        navMeshObstacle.center = boxCollider.center; // Копируем локальный центр
+        navMeshObstacle.size = boxCollider.size; // Копируем локальный размер
+        navMeshObstacle.carveOnlyStationary = true; // Carving работает только на остановившемся полотне
+    }
+
+    private void UpdateNavMeshObstacle() // Переключить carving после полного открытия
+    {
+        if (navMeshObstacle == null) return; // Если obstacle отсутствует, выходим
+
+        bool shouldCarve = IsFullyOpen; // Полностью открытая дверь должна учитываться при построении пути
+
+        if (navMeshObstacle.carving == shouldCarve) return; // Если состояние уже правильное, выходим
+
+        navMeshObstacle.carving = shouldCarve; // Закрытая или движущаяся дверь: false; полностью открытая: true
     }
 
     private void SetupDoorInteractZone() // Настройка отдельной зоны взаимодействия
@@ -170,11 +219,13 @@ public class UniversalDoor : MonoBehaviour // Основной скрипт дв
         canMonsterOpen = value; // Записываем доступ монстра
     }
 
-    public void OpenDoorForMonster() // Открыть дверь монстром
+    public bool OpenDoorForMonster() // Попытаться открыть дверь монстром
     {
-        if (!canMonsterOpen || isBusy || isOpen || isLocked || !CanOpenDoor()) return; // Проверяем запреты
+        if (!CanMonsterOpenNow) return false; // Если открыть нельзя, сообщаем об отказе
 
-        StartCoroutine(InteractSequence(true)); // Запускаем открытие
+        StartCoroutine(InteractSequence(true)); // Запускаем штатное открытие
+
+        return true; // Сообщаем, что открытие началось
     }
 
     private IEnumerator InteractSequence(bool targetOpenState) // Последовательность открытия/закрытия

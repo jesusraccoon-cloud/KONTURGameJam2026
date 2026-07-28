@@ -1,50 +1,89 @@
-using UnityEngine; // Подключаем Unity
+using UnityEngine; // Подключаем основные классы Unity
 
-public class MonsterVision : MonoBehaviour // Отвечает только за зрение монстра
+public class MonsterVision : MonoBehaviour // Отвечает за зрение и ближнюю осведомлённость монстра
 {
-    public Transform player; // Ссылка на игрока
+    [Header("References")] // Ссылки на игрока
+    public Transform player; // Корневой Transform игрока
+    public PlayerHideController playerHide; // Система пряток игрока
 
-    public PlayerHideController playerHide; // Ссылка на систему пряток игрока
+    [Header("Normal Vision")] // Обычное зрение перед монстром
+    public float viewDistance = 8f; // Максимальная дистанция обычного зрения
+    public float viewAngle = 115f; // Полный угол обычного сектора зрения
 
-    public float viewDistance = 8f; // Дистанция зрения
+    [Header("Close Awareness 360")] // Круговое обнаружение вблизи
+    public bool useCloseAwareness = true; // Использовать ближнее обнаружение за спиной
+    public float closeAwarenessRadius = 1.5f; // Радиус гарантированного обнаружения игрока
+    public bool drawCloseAwareness = true; // Показывать радиус в Scene
 
-    public float viewAngle = 115f; // Угол зрения
+    [Header("Line Of Sight")] // Проверка стен и дверей
+    public float rayStartHeight = 1.4f; // Высота начала луча от монстра
+    public float playerTargetHeight = 1f; // Высота точки на теле игрока
+    public LayerMask obstacleMask = ~0; // Слои игрока, стен, дверей и препятствий
 
-    public LayerMask obstacleMask = ~0; // Слои препятствий
-
-    public bool CanSeePlayer() // Проверить, видит ли монстр игрока с учётом пряток
+    public bool CanSeePlayer() // Проверить обнаружение игрока с учётом пряток
     {
-        return CheckCanSeePlayer(false); // Проверяем зрение и учитываем, что спрятанного игрока не видно
+        return CheckPlayerDetection(false); // Спрятанный игрок не обнаруживается
     }
 
-    public bool CanSeePlayerIgnoringHide() // Проверить, видел бы монстр игрока без учёта шкафа
+    public bool CanSeePlayerIgnoringHide() // Проверить обнаружение без учёта пряток
     {
-        return CheckCanSeePlayer(true); // Проверяем зрение и игнорируем состояние isHidden
+        return CheckPlayerDetection(true); // Используется специальной логикой при необходимости
     }
 
-    private bool CheckCanSeePlayer(bool ignoreHideState) // Общая проверка зрения
+    private bool CheckPlayerDetection(bool ignoreHideState) // Общая проверка зрения и ближней зоны
     {
-        if (player == null) return false; // Если игрок не назначен — не видим
+        if (player == null) return false; // Без назначенного игрока обнаружение невозможно
+        if (!ignoreHideState && playerHide != null && playerHide.isHidden) return false; // Спрятанного игрока игнорируем
 
-        if (!ignoreHideState && playerHide != null && playerHide.isHidden) return false; // Если игрок спрятан и мы не игнорируем прятки — не видим
+        Vector3 flatDirection = player.position - transform.position; // Получаем направление к игроку
+        flatDirection.y = 0f; // Не учитываем разницу высоты для дистанции и угла
 
-        float distance = Vector3.Distance(transform.position, player.position); // Считаем дистанцию до игрока
+        float sqrDistance = flatDirection.sqrMagnitude; // Считаем квадрат дистанции без квадратного корня
+        float closeRadiusSqr = closeAwarenessRadius * closeAwarenessRadius; // Рассчитываем квадрат ближнего радиуса
+        float viewDistanceSqr = viewDistance * viewDistance; // Рассчитываем квадрат дистанции зрения
 
-        if (distance > viewDistance) return false; // Если игрок слишком далеко — не видим
+        bool insideCloseRadius = useCloseAwareness && sqrDistance <= closeRadiusSqr; // Проверяем круговую ближнюю зону
 
-        Vector3 directionToPlayer = (player.position - transform.position).normalized; // Считаем направление к игроку
-
-        float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer); // Считаем угол до игрока
-
-        if (angleToPlayer > viewAngle * 0.5f) return false; // Если игрок вне сектора зрения — не видим
-
-        Vector3 rayStart = transform.position + Vector3.up * 1.4f; // Поднимаем луч до уровня головы монстра
-
-        if (Physics.Raycast(rayStart, directionToPlayer, out RaycastHit hit, viewDistance, obstacleMask, QueryTriggerInteraction.Ignore)) // Пускаем луч зрения
+        if (!insideCloseRadius) // Если игрок не находится в ближней зоне
         {
-            if (!hit.transform.IsChildOf(player) && hit.transform != player) return false; // Если луч упёрся не в игрока — не видим
+            if (sqrDistance > viewDistanceSqr) return false; // Игрок находится слишком далеко
+
+            if (flatDirection.sqrMagnitude > 0.0001f) // Проверяем корректность направления
+            {
+                float angle = Vector3.Angle(transform.forward, flatDirection.normalized); // Считаем угол до игрока
+                if (angle > viewAngle * 0.5f) return false; // За пределами обычного сектора игрок не виден
+            }
         }
 
-        return true; // Игрок виден
+        return HasClearLineToPlayer(); // В ближней и обычной зоне обязательно проверяем стену
+    }
+
+    private bool HasClearLineToPlayer() // Проверяет отсутствие стены между монстром и игроком
+    {
+        Vector3 rayStart = transform.position + Vector3.up * rayStartHeight; // Поднимаем начало луча до головы монстра
+        Vector3 targetPoint = player.position + Vector3.up * playerTargetHeight; // Направляем луч в корпус игрока
+        Vector3 direction = targetPoint - rayStart; // Получаем направление луча
+        float distance = direction.magnitude; // Получаем точную длину луча
+
+        if (distance <= 0.01f) return true; // При почти нулевой дистанции игрок обнаружен
+
+        if (!Physics.Raycast(rayStart, direction / distance, out RaycastHit hit, distance + 0.1f, obstacleMask, QueryTriggerInteraction.Ignore))
+        {
+            return true; // Если луч ни во что не упёрся, путь к игроку свободен
+        }
+
+        if (hit.transform == player) return true; // Луч попал в корневой объект игрока
+        if (hit.transform.IsChildOf(player)) return true; // Луч попал в дочерний коллайдер игрока
+
+        return false; // Первым объектом стала стена, дверь или другое препятствие
+    }
+
+    private void OnDrawGizmosSelected() // Рисует ближний радиус в Scene
+    {
+        if (!drawCloseAwareness) return; // Если отображение выключено, ничего не рисуем
+        if (!useCloseAwareness) return; // Если механика выключена, радиус не показываем
+
+        Gizmos.color = Color.yellow; // Выбираем жёлтый цвет
+        Gizmos.DrawWireSphere(transform.position, closeAwarenessRadius); // Рисуем круговую зону обнаружения
     }
 }

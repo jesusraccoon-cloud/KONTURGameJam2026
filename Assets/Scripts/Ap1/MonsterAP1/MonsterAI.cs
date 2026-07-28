@@ -1,330 +1,196 @@
-using UnityEngine; // Подключаем Unity
+using UnityEngine; // Подключаем основные Unity-классы
 
-public class MonsterAI : MonoBehaviour // Центральный фасад монстра для внешних систем
+public class MonsterAI : MonoBehaviour // Центральный контроллер поведения монстра
 {
-    [Header("Main State")] // Блок основного состояния
-    public bool isActivated = false; // Активен ли монстр
+    [Header("Main State")] public bool isActivated = false; // Активен ли монстр
+    public MonsterState currentState = MonsterState.Disabled; // Текущее состояние
 
-    public MonsterState currentState = MonsterState.Disabled; // Текущее состояние монстра
+    [Header("References")] public Transform player; // Игрок
+    public PlayerHideController playerHide; // Система пряток
+    public MonsterMovement movement; // Движение
+    public MonsterVision vision; // Зрение
+    public MonsterHearing hearing; // Слух и осмотр
+    public MonsterDoorOpener doorOpener; // Открытие дверей
+    public MonsterAttack attack; // Атака
+    public MonsterPatrol patrol; // Патруль
+    public MonsterFinalController finalController; // Финальные режимы
 
-    [Header("References")] // Блок ссылок
-    public Transform player; // Ссылка на игрока
+    [Header("Chase And Search")] public float loseTime = 5f; // Максимальное время движения к последней позиции
+    public float lastSeenArriveDistance = 0.5f; // Дистанция прибытия к последней позиции
 
-    public PlayerHideController playerHide; // Ссылка на прятки игрока
+    private Vector3 lastSeenPosition; // Последняя известная позиция игрока
+    private float loseTimer; // Таймер после потери игрока
 
-    public MonsterMovement movement; // Система движения
+    private void Reset() => AutoFindComponents(); // Автозаполнение при добавлении
+    private void Awake() { AutoFindComponents(); SyncSharedReferences(); } // Заполняем ссылки при запуске
 
-    public MonsterVision vision; // Система зрения
-
-    public MonsterHearing hearing; // Система слуха
-
-    public MonsterDoorOpener doorOpener; // Система открытия дверей
-
-    public MonsterAttack attack; // Система атаки
-
-    public MonsterPatrol patrol; // Система патруля
-
-    public MonsterFinalController finalController; // Система финальных режимов
-
-    [Header("Chase")] // Блок обычной погони
-    public float loseTime = 3f; // Время потери игрока
-
-    private Vector3 lastSeenPosition; // Последняя позиция игрока
-
-    private float loseTimer = 0f; // Таймер потери игрока
-
-    private void Reset() // Автозаполнение при добавлении скрипта
+    private void Update() // Обновляет поведение каждый кадр
     {
-        movement = GetComponent<MonsterMovement>(); // Ищем движение
+        if (!isActivated) { HandleDisabledState(); return; } // Выключенный монстр ничего не делает
+        if (attack != null && attack.IsAttacking) { currentState = MonsterState.Attack; return; } // Во время атаки ждём
+        if (doorOpener != null && doorOpener.IsHandlingDoor) return; // Во время открытия двери ждём
 
-        vision = GetComponent<MonsterVision>(); // Ищем зрение
-
-        hearing = GetComponent<MonsterHearing>(); // Ищем слух
-
-        doorOpener = GetComponent<MonsterDoorOpener>(); // Ищем открытие дверей
-
-        attack = GetComponent<MonsterAttack>(); // Ищем атаку
-
-        patrol = GetComponent<MonsterPatrol>(); // Ищем патруль
-
-        finalController = GetComponent<MonsterFinalController>(); // Ищем финальный контроллер
-    }
-
-    private void Awake() // Запуск объекта
-    {
-        AutoFindComponents(); // Автоматически находим компоненты
-
-        SyncSharedReferences(); // Прокидываем общие ссылки в дочерние системы
-    }
-
-    private void Update() // Каждый кадр
-    {
-        if (!isActivated) // Если монстр не активен
-        {
-            HandleDisabledState(); // Обрабатываем выключенное состояние
-
-            return; // Выходим
-        }
-
-        if (attack != null && attack.IsAttacking) // Если идёт атака
-        {
-            currentState = MonsterState.Attack; // Ставим состояние атаки
-
-            return; // Не выполняем другую логику
-        }
-
-        if (finalController != null && finalController.IsFinalModeActive) // Если активен финальный режим
+        if (finalController != null && finalController.IsFinalModeActive) // Проверяем финальный режим
         {
             currentState = MonsterState.FinalMode; // Ставим финальное состояние
-
             finalController.Tick(); // Обновляем финальный режим
-
-            return; // Обычная логика не работает во время финала
+            return; // Обычную логику не выполняем
         }
 
-        if (doorOpener != null) doorOpener.TryOpenDoorAhead(); // Пробуем открыть дверь перед монстром
+        if (doorOpener != null && doorOpener.TryOpenDoorAhead()) return; // Закрытая дверь найдена: ждём
+        if (vision != null && vision.CanSeePlayer()) StartChaseInternal(); // Видим игрока: включаем погоню
 
-        if (vision != null && vision.CanSeePlayer()) // Если монстр видит игрока
-        {
-            StartChaseInternal(); // Запускаем обычную погоню
-        }
+        if (currentState == MonsterState.Chase) { TickChase(); return; } // Обновляем погоню
+        if (hearing != null && hearing.IsBusy) { currentState = MonsterState.InvestigateNoise; hearing.Tick(); return; } // Обновляем поиск
+        if (patrol != null && patrol.isPatrolActive) { currentState = MonsterState.Patrol; return; } // Патруль работает сам
 
-        if (currentState == MonsterState.Chase) // Если идёт обычная погоня
-        {
-            TickChase(); // Обновляем погоню
-
-            return; // Выходим
-        }
-
-        if (hearing != null && hearing.IsBusy) // Если слуховая система занята
-        {
-            currentState = MonsterState.InvestigateNoise; // Ставим состояние шума
-
-            hearing.Tick(); // Обновляем слуховую реакцию
-
-            return; // Выходим
-        }
-
-        if (patrol != null && patrol.isPatrolActive) // Если патруль активен
-        {
-            currentState = MonsterState.Patrol; // Ставим состояние патруля
-
-            return; // Патруль сам обновляется в MonsterPatrol
-        }
-
-        currentState = MonsterState.Idle; // Если ничего не происходит — монстр стоит
+        currentState = MonsterState.Idle; // Иначе монстр стоит
     }
 
-    private void AutoFindComponents() // Найти компоненты автоматически
+    private void AutoFindComponents() // Находит компоненты на Monster
     {
         if (movement == null) movement = GetComponent<MonsterMovement>(); // Находим движение
-
         if (vision == null) vision = GetComponent<MonsterVision>(); // Находим зрение
-
         if (hearing == null) hearing = GetComponent<MonsterHearing>(); // Находим слух
-
-        if (doorOpener == null) doorOpener = GetComponent<MonsterDoorOpener>(); // Находим открытие дверей
-
+        if (doorOpener == null) doorOpener = GetComponent<MonsterDoorOpener>(); // Находим двери
         if (attack == null) attack = GetComponent<MonsterAttack>(); // Находим атаку
-
         if (patrol == null) patrol = GetComponent<MonsterPatrol>(); // Находим патруль
-
         if (finalController == null) finalController = GetComponent<MonsterFinalController>(); // Находим финальный контроллер
     }
 
-    private void SyncSharedReferences() // Синхронизировать ссылки между системами
+    private void SyncSharedReferences() // Передаёт общие ссылки
     {
         if (vision != null) vision.player = player; // Передаём игрока в зрение
-
-        if (vision != null) vision.playerHide = playerHide; // Передаём прятки в зрение
-
+        if (vision != null) vision.playerHide = playerHide; // Передаём прятки
         if (attack != null) attack.player = player; // Передаём игрока в атаку
-
         if (finalController != null) finalController.player = player; // Передаём игрока в финальный контроллер
     }
 
-    private void HandleDisabledState() // Логика выключенного монстра
+    private void HandleDisabledState() // Обрабатывает выключенного монстра
     {
-        currentState = MonsterState.Disabled; // Ставим состояние Disabled
-
+        currentState = MonsterState.Disabled; // Ставим Disabled
         if (patrol != null) patrol.isPatrolActive = false; // Выключаем патруль
-
         if (movement != null) movement.Stop(); // Останавливаем движение
     }
 
-    private void StartChaseInternal() // Внутренний запуск обычной погони
+    private void StartChaseInternal() // Начинает или продолжает погоню
     {
-        if (player == null) return; // Если игрока нет — выходим
-
-        if (hearing != null) hearing.StopHearingLogic(); // Отключаем реакцию на шум
-
-        if (finalController != null) finalController.StopFinalMode(); // Отключаем финальный режим, если это обычная погоня
-
+        if (player == null) return; // Без игрока выходим
+        if (hearing != null) hearing.StopHearingLogic(); // Прерываем осмотр
+        if (finalController != null) finalController.StopFinalMode(); // Прерываем обычным преследованием финал
         if (patrol != null) patrol.isPatrolActive = false; // Выключаем патруль
-
-        if (movement != null) movement.RestoreDefaultSpeed(); // Возвращаем стандартную скорость
-
-        currentState = MonsterState.Chase; // Ставим состояние погони
-
-        loseTimer = 0f; // Сбрасываем таймер потери
-
+        if (movement != null) movement.RestoreDefaultSpeed(); // Возвращаем скорость
+        currentState = MonsterState.Chase; // Включаем погоню
+        loseTimer = 0f; // Сбрасываем потерю
         lastSeenPosition = player.position; // Запоминаем позицию игрока
     }
 
-    private void TickChase() // Обновить обычную погоню
+    private void TickChase() // Обновляет погоню и потерю игрока
     {
-        if (player == null) return; // Если игрока нет — выходим
+        if (player == null) return; // Без игрока выходим
 
-        if (attack != null && attack.IsPlayerInAttackDistance()) // Если игрок в зоне атаки
+        if (attack != null && attack.IsPlayerInAttackDistance()) // Проверяем дистанцию атаки
         {
             StartAttackInternal(); // Запускаем атаку
-
-            return; // Выходим
+            return; // Завершаем кадр
         }
 
-        if (vision != null && vision.CanSeePlayer()) // Если игрок всё ещё виден
+        if (vision != null && vision.CanSeePlayer()) // Игрок виден
         {
-            loseTimer = 0f; // Сбрасываем таймер потери
-
-            lastSeenPosition = player.position; // Обновляем последнюю позицию игрока
-
+            loseTimer = 0f; // Сбрасываем таймер
+            lastSeenPosition = player.position; // Обновляем позицию
             if (movement != null) movement.MoveTo(player.position); // Идём за игроком
-
-            return; // Выходим
+            return; // Завершаем кадр
         }
 
-        loseTimer += Time.deltaTime; // Увеличиваем таймер потери
+        loseTimer += Time.deltaTime; // Увеличиваем таймер после потери
+        if (movement != null) movement.MoveTo(lastSeenPosition); // Идём к последней позиции
 
-        if (loseTimer < loseTime) // Если монстр ещё помнит игрока
-        {
-            if (movement != null) movement.MoveTo(lastSeenPosition); // Идём к последней позиции
+        bool arrived = movement != null && movement.HasArrived(lastSeenArriveDistance); // Проверяем прибытие
+        if (!arrived && loseTimer < loseTime) return; // Пока не дошли и время не вышло — продолжаем путь
 
-            return; // Выходим
-        }
-
-        currentState = MonsterState.Patrol; // Возвращаемся в патруль
-
-        if (movement != null) movement.RestoreDefaultSpeed(); // Возвращаем стандартную скорость
-
-        if (patrol != null) patrol.StartPatrol(); // Запускаем патруль
+        StartLostPlayerSearch(); // Останавливаемся и осматриваемся
     }
 
-    private void StartAttackInternal() // Внутренний запуск атаки
+    private void StartLostPlayerSearch() // Запускает осмотр после потери игрока
     {
-        currentState = MonsterState.Attack; // Ставим состояние атаки
-
-        if (patrol != null) patrol.isPatrolActive = false; // Выключаем патруль
-
+        currentState = MonsterState.InvestigateNoise; // Включаем состояние поиска
+        if (patrol != null) patrol.isPatrolActive = false; // Не даём патрулю включиться
         if (movement != null) movement.Stop(); // Останавливаем монстра
+        if (hearing != null) hearing.SearchAtPosition(lastSeenPosition); // Осматриваем последнюю позицию
+        else if (patrol != null) patrol.StartPatrol(); // Без слуха возвращаем патруль
+    }
 
-        if (hearing != null) hearing.StopHearingLogic(); // Отключаем шум
-
-        if (finalController != null) finalController.StopFinalMode(); // Отключаем финальный режим
-
+    private void StartAttackInternal() // Запускает атаку
+    {
+        currentState = MonsterState.Attack; // Ставим атаку
+        if (patrol != null) patrol.isPatrolActive = false; // Выключаем патруль
+        if (movement != null) movement.Stop(); // Останавливаем монстра
+        if (hearing != null) hearing.StopHearingLogic(); // Прерываем поиск
+        if (finalController != null) finalController.StopFinalMode(); // Прерываем финальный режим
         if (attack != null) attack.StartAttack(); // Запускаем атаку
     }
 
-    public void ActivateMonster() // Публичная активация монстра
+    public void ActivateMonster() // Активирует монстра
     {
-        if (!gameObject.activeInHierarchy) return; // Если объект выключен — выходим
-
-        isActivated = true; // Активируем монстра
-
-        currentState = MonsterState.Patrol; // Ставим состояние патруля
-
-        if (hearing != null) hearing.StopHearingLogic(); // Очищаем реакцию на шум
-
-        if (finalController != null) finalController.StopFinalMode(); // Сначала сбрасываем финальные режимы
-
-        if (movement != null) movement.RestoreDefaultSpeed(); // Возвращаем стандартную скорость
-
-        if (movement != null) movement.Resume(); // Разрешаем движение
-
+        if (!gameObject.activeInHierarchy) return; // Выключенный объект не активируем
+        isActivated = true; // Включаем монстра
+        currentState = MonsterState.Patrol; // Ставим патруль
+        if (hearing != null) hearing.StopHearingLogic(); // Очищаем поиск
+        if (finalController != null) finalController.StopFinalMode(); // Сбрасываем финал
+        if (movement != null) { movement.RestoreDefaultSpeed(); movement.Resume(); } // Возвращаем движение
         if (patrol != null) patrol.StartPatrol(); // Запускаем патруль
     }
 
-    public void ReactToNoise(Vector3 noisePosition, int noisePower) // Публичная реакция на шум
+    public void ReactToNoise(Vector3 noisePosition, int noisePower) // Передаёт шум
     {
-        if (currentState == MonsterState.Chase) return; // Если монстр гонится — шум игнорируем
-
-        if (finalController != null && finalController.IsFinalModeActive) return; // Если финальный режим — шум игнорируем
-
-        if (hearing == null) return; // Если слуха нет — выходим
-
-        hearing.ReactToNoise(noisePosition, noisePower, isActivated); // Передаём шум в слух, но движение разрешаем только после активации
+        if (currentState == MonsterState.Chase) return; // Во время погони шум игнорируем
+        if (doorOpener != null && doorOpener.IsHandlingDoor) return; // Во время двери шум не перебивает действие
+        if (finalController != null && finalController.IsFinalModeActive) return; // В финале шум игнорируем
+        if (hearing != null) hearing.ReactToNoise(noisePosition, noisePower, isActivated); // Передаём шум
     }
 
-    public void HearNoise(Vector3 noisePosition) // Старый метод для совместимости
+    public void HearNoise(Vector3 noisePosition) => ReactToNoise(noisePosition, 6); // Старый метод совместимости
+
+    public void GoToPointAndStop(Transform targetPoint) // Идти к специальной точке
     {
-        ReactToNoise(noisePosition, 6); // Старый шум считаем силой 6
-    }
-
-    public void GoToPointAndStop(Transform targetPoint) // Публичный метод: идти к точке и остановиться
-    {
-        if (targetPoint == null) return; // Если точки нет — выходим
-
-        isActivated = true; // Активируем монстра
-
-        currentState = MonsterState.FinalMode; // Ставим финальный режим
-
-        if (hearing != null) hearing.StopHearingLogic(); // Отключаем шум
-
+        if (targetPoint == null) return; // Без точки выходим
+        isActivated = true; currentState = MonsterState.FinalMode; // Активируем финал
+        if (hearing != null) hearing.StopHearingLogic(); // Отключаем слух
         if (patrol != null) patrol.isPatrolActive = false; // Отключаем патруль
-
-        if (finalController != null) finalController.GoToPointAndStop(targetPoint); // Запускаем движение к точке
+        if (finalController != null) finalController.GoToPointAndStop(targetPoint); // Передаём команду
     }
 
-    public void StartFinalKitchenChase() // Публичный метод: финальная кухонная погоня
+    public void StartFinalKitchenChase() // Финальная погоня на кухне
     {
-        isActivated = true; // Активируем монстра
-
-        currentState = MonsterState.FinalMode; // Ставим финальный режим
-
-        if (hearing != null) hearing.StopHearingLogic(); // Отключаем шум
-
+        isActivated = true; currentState = MonsterState.FinalMode; // Активируем финал
+        if (hearing != null) hearing.StopHearingLogic(); // Отключаем слух
         if (patrol != null) patrol.isPatrolActive = false; // Отключаем патруль
-
-        if (finalController != null) finalController.StartKitchenChase(); // Запускаем кухонную погоню
+        if (finalController != null) finalController.StartKitchenChase(); // Запускаем режим
     }
 
-    public void StartFinalWindowThreat(Transform targetPoint) // Публичный метод: угроза у окна
+    public void StartFinalWindowThreat(Transform targetPoint) // Угроза у окна
     {
-        if (targetPoint == null) return; // Если точки нет — выходим
-
-        isActivated = true; // Активируем монстра
-
-        currentState = MonsterState.FinalMode; // Ставим финальный режим
-
-        if (hearing != null) hearing.StopHearingLogic(); // Отключаем шум
-
+        if (targetPoint == null) return; // Без точки выходим
+        isActivated = true; currentState = MonsterState.FinalMode; // Активируем финал
+        if (hearing != null) hearing.StopHearingLogic(); // Отключаем слух
         if (patrol != null) patrol.isPatrolActive = false; // Отключаем патруль
-
-        if (finalController != null) finalController.StartWindowThreat(targetPoint); // Запускаем угрозу у окна
+        if (finalController != null) finalController.StartWindowThreat(targetPoint); // Запускаем режим
     }
 
-    public void ForceChasePlayer() // Публичный метод: постоянная финальная погоня после ванной
+    public void ForceChasePlayer() // Постоянная погоня после ванной
     {
-        isActivated = true; // Активируем монстра
-
-        currentState = MonsterState.FinalMode; // Ставим финальный режим
-
-        if (hearing != null) hearing.StopHearingLogic(); // Отключаем шум
-
+        isActivated = true; currentState = MonsterState.FinalMode; // Активируем финал
+        if (hearing != null) hearing.StopHearingLogic(); // Отключаем слух
         if (patrol != null) patrol.isPatrolActive = false; // Отключаем патруль
-
-        if (finalController != null) finalController.StartBathroomChase(); // Запускаем погоню после ванной
+        if (finalController != null) finalController.StartBathroomChase(); // Запускаем режим
     }
 
-    public void StandAtFinalBlockPoint() // Публичный метод: стоять на финальной точке
+    public void StandAtFinalBlockPoint() // Стоять на финальной точке
     {
-        isActivated = true; // Монстр остаётся активным
-
-        currentState = MonsterState.FinalMode; // Ставим финальный режим
-
-        if (hearing != null) hearing.StopHearingLogic(); // Отключаем шум
-
+        isActivated = true; currentState = MonsterState.FinalMode; // Активируем финал
+        if (hearing != null) hearing.StopHearingLogic(); // Отключаем слух
         if (patrol != null) patrol.isPatrolActive = false; // Отключаем патруль
-
-        if (finalController != null) finalController.StandAtCurrentPoint(); // Ставим монстра стоять
+        if (finalController != null) finalController.StandAtCurrentPoint(); // Оставляем монстра стоять
     }
 }
