@@ -1,4 +1,5 @@
 using UnityEngine; // Подключаем Unity-классы: MonoBehaviour, Transform, Vector3, Debug
+using FMODUnity; // Подключаем FMOD (EventReference, RuntimeManager)
 
 public class CassettePickup : MonoBehaviour, IInteractable // Кассета является интерактивным объектом
 {
@@ -14,6 +15,9 @@ public class CassettePickup : MonoBehaviour, IInteractable // Кассета я�
     [SerializeField] private NoiseEmitter noiseEmitter; // Источник шума кассеты
 
     [SerializeField] [Range(1, 10)] private int ejectNoisePower = 5; // Сила шума выезда кассеты
+
+    [Header("FMOD")] // Блок звука FMOD
+    [SerializeField] private EventReference pickupEvent; // Звук подбора/выезда кассеты
 
     [Header("Optional Auto Find")] // Блок автопоиска
     [SerializeField] private bool autoFindInventoryUI = true; // Автоматически искать UI кассет
@@ -100,6 +104,11 @@ public class CassettePickup : MonoBehaviour, IInteractable // Кассета я�
         targetPosition = ejectPoint.position; // Запоминаем позицию выезда
 
         isPickingUp = true; // Включаем движение кассеты
+
+        if (!pickupEvent.IsNull) // Если FMOD-событие назначено
+        {
+            RuntimeManager.PlayOneShot(pickupEvent, transform.position); // Проигрываем звук подбора в позиции кассеты
+        }
 
         if (noiseEmitter != null) // Если источник шума назначен
         {

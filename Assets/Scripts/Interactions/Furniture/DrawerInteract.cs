@@ -36,6 +36,8 @@ public class DrawerInteract : MonoBehaviour, IInteractable // Скрипт дл�
 
     private bool isOpen = false; // Открыт ли ящик.
 
+    public bool IsOpen => isOpen; // Открытое состояние наружу (для звука через SC_DrawerAudio).
+
     private void Start() // Запуск сцены.
     {
         closedLocalPosition = transform.localPosition; // Запоминаем закрытую позицию.

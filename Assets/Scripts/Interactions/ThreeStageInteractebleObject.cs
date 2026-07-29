@@ -1,4 +1,5 @@
 using UnityEngine; // Подключаем Unity, чтобы использовать MonoBehaviour, GameObject, Collider и другие классы.
+using UnityEngine.Events; // Подключаем UnityEvent, чтобы вешать реакции (например, звук) в инспекторе.
 
 public class ThreeStageInteractableObject : MonoBehaviour, IInteractable, IHitInteractable // Объект с тремя стадиями, который работает от E и от удара.
 {
@@ -38,6 +39,13 @@ public class ThreeStageInteractableObject : MonoBehaviour, IInteractable, IHitIn
     public bool disableColliderWhenDestroyed = true; // Нужно ли отключать основной коллайдер после полного уничтожения объекта.
 
     public Collider objectCollider; // Коллайдер основного объекта, который можно отключить после уничтожения.
+
+
+    [Header("Events")] // Заголовок для реакций (звук FMOD через SC_InteractSound и т.п.).
+
+    public UnityEvent onInteract; // Вызывается при каждом успешном взаимодействии (E или удар).
+
+    public UnityEvent onStageChanged; // Вызывается при переходе на следующую стадию.
 
 
     [Header("Debug")] // Заголовок в Inspector для просмотра текущего состояния.
@@ -95,6 +103,8 @@ public class ThreeStageInteractableObject : MonoBehaviour, IInteractable, IHitIn
 
         if (IsDestroyed) return; // Если объект уже уничтожен, больше ничего не делаем.
 
+        onInteract.Invoke(); // Сообщаем подписчикам (звук FMOD и т.п.) о взаимодействии.
+
         ActivateNextObject(); // Включаем один следующий предмет после каждого успешного нажатия E.
 
         currentEPresses++; // Увеличиваем счётчик нажатий E на один.
@@ -115,6 +125,8 @@ public class ThreeStageInteractableObject : MonoBehaviour, IInteractable, IHitIn
         if (canUseHit == false) return; // Если взаимодействие ударом запрещено, прекращаем выполнение.
 
         if (IsDestroyed) return; // Если объект уже уничтожен, больше ничего не делаем.
+
+        onInteract.Invoke(); // Сообщаем подписчикам (звук FMOD и т.п.) о взаимодействии.
 
         ActivateNextObject(); // Включаем один следующий предмет после каждого успешного удара.
 
@@ -177,6 +189,8 @@ public class ThreeStageInteractableObject : MonoBehaviour, IInteractable, IHitIn
         currentStage = Mathf.Clamp(currentStage, 0, 2); // Ограничиваем текущую стадию значением два.
 
         ApplyStageVisuals(); // Обновляем видимые модели объекта после смены стадии.
+
+        onStageChanged.Invoke(); // Сообщаем подписчикам о смене стадии (можно повесить отдельный звук).
     }
 
 

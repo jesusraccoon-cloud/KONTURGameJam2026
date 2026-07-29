@@ -2114,6 +2114,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &29303340
@@ -4480,6 +4486,13 @@ MonoBehaviour:
   inventoryUI: {fileID: 2001863568}
   noiseEmitter: {fileID: 61390770}
   ejectNoisePower: 5
+  pickupEvent:
+    Guid:
+      Data1: -1565866939
+      Data2: 1128080740
+      Data3: 809370274
+      Data4: -2049457270
+    Path: event:/Objects/Tape
   autoFindInventoryUI: 1
   autoFindEjectPoint: 1
   ejectPointName: EjectPoint
@@ -4955,6 +4968,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &75247051
@@ -7190,6 +7209,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &96462870
@@ -8619,6 +8644,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &116801949
@@ -14642,6 +14673,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &170572912
@@ -22561,6 +22598,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 257494626}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &257494626
@@ -23756,6 +23799,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &273816131
@@ -26987,6 +27036,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &322019763
@@ -31826,6 +31881,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &383696042
@@ -48844,6 +48905,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &561817188
@@ -51231,6 +51298,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 1740138268}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!1 &594593270
@@ -54143,6 +54216,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 616186168}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &616186168
@@ -54958,6 +55037,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &622758878
@@ -56396,6 +56481,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 639172388}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &639172388
@@ -61055,6 +61146,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &697327634
@@ -61464,9 +61561,59 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
+      propertyPath: turnOnEvent.Path
+      value: event:/Ambience/Lights/Light ON
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Path
+      value: event:/Ambience/Lights/Light Off
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
       propertyPath: switchNoiseEmitter
       value: 
       objectReference: {fileID: 699960088}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOnEvent.Guid.Data1
+      value: -1096295427
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOnEvent.Guid.Data2
+      value: 1222673732
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOnEvent.Guid.Data3
+      value: 1312885180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOnEvent.Guid.Data4
+      value: -668271283
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Guid.Data1
+      value: -2087921017
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Guid.Data2
+      value: 1288424162
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Guid.Data3
+      value: 1765884570
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Guid.Data4
+      value: -517688780
+      objectReference: {fileID: 0}
     - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
       propertyPath: lightsToToggle.Array.size
@@ -63020,6 +63167,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &717376980
@@ -66074,6 +66227,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &744260910
@@ -69759,6 +69918,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 1648224412}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!1001 &793969689
@@ -77810,6 +77975,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &888862523
@@ -80946,9 +81117,59 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
+      propertyPath: turnOnEvent.Path
+      value: event:/Ambience/Lights/Light ON
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Path
+      value: event:/Ambience/Lights/Light Off
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
       propertyPath: switchNoiseEmitter
       value: 
       objectReference: {fileID: 916898330}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOnEvent.Guid.Data1
+      value: -1096295427
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOnEvent.Guid.Data2
+      value: 1222673732
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOnEvent.Guid.Data3
+      value: 1312885180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOnEvent.Guid.Data4
+      value: -668271283
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Guid.Data1
+      value: -2087921017
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Guid.Data2
+      value: 1288424162
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Guid.Data3
+      value: 1765884570
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Guid.Data4
+      value: -517688780
+      objectReference: {fileID: 0}
     - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
       propertyPath: lightsToToggle.Array.size
@@ -84346,6 +84567,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1984183501}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d218c90c1522eb14abf631d82d5c7cae,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1984183502}
   m_SourcePrefab: {fileID: 100100000, guid: d218c90c1522eb14abf631d82d5c7cae, type: 3}
 --- !u!1 &951667528
 GameObject:
@@ -86337,6 +86562,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 985685316}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &985685316
@@ -89195,6 +89426,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &1000298044
@@ -91397,9 +91634,59 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
+      propertyPath: turnOnEvent.Path
+      value: event:/Ambience/Lights/Light ON
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Path
+      value: event:/Ambience/Lights/Light Off
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
       propertyPath: switchNoiseEmitter
       value: 
       objectReference: {fileID: 1015762079}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOnEvent.Guid.Data1
+      value: -1096295427
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOnEvent.Guid.Data2
+      value: 1222673732
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOnEvent.Guid.Data3
+      value: 1312885180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOnEvent.Guid.Data4
+      value: -668271283
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Guid.Data1
+      value: -2087921017
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Guid.Data2
+      value: 1288424162
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Guid.Data3
+      value: 1765884570
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Guid.Data4
+      value: -517688780
+      objectReference: {fileID: 0}
     - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
       propertyPath: lightsToToggle.Array.size
@@ -93808,6 +94095,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 1037690360}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &1037690360
@@ -94852,9 +95145,59 @@ PrefabInstance:
       objectReference: {fileID: 1077312135}
     - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
+      propertyPath: turnOnEvent.Path
+      value: event:/Ambience/Lights/Light ON
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Path
+      value: event:/Ambience/Lights/Light Off
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
       propertyPath: switchNoiseEmitter
       value: 
       objectReference: {fileID: 1058691736}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOnEvent.Guid.Data1
+      value: -1096295427
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOnEvent.Guid.Data2
+      value: 1222673732
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOnEvent.Guid.Data3
+      value: 1312885180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOnEvent.Guid.Data4
+      value: -668271283
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Guid.Data1
+      value: -2087921017
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Guid.Data2
+      value: 1288424162
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Guid.Data3
+      value: 1765884570
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Guid.Data4
+      value: -517688780
+      objectReference: {fileID: 0}
     - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
       propertyPath: lightsToToggle.Array.size
@@ -98836,6 +99179,13 @@ MonoBehaviour:
   inventoryUI: {fileID: 2001863568}
   noiseEmitter: {fileID: 1115522006}
   ejectNoisePower: 5
+  pickupEvent:
+    Guid:
+      Data1: -1565866939
+      Data2: 1128080740
+      Data3: 809370274
+      Data4: -2049457270
+    Path: event:/Objects/Tape
   autoFindInventoryUI: 1
   autoFindEjectPoint: 1
   ejectPointName: EjectPoint
@@ -103219,9 +103569,59 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
+      propertyPath: turnOnEvent.Path
+      value: event:/Ambience/Lights/Light ON
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Path
+      value: event:/Ambience/Lights/Light Off
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
       propertyPath: switchNoiseEmitter
       value: 
       objectReference: {fileID: 1151052383}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOnEvent.Guid.Data1
+      value: -1096295427
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOnEvent.Guid.Data2
+      value: 1222673732
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOnEvent.Guid.Data3
+      value: 1312885180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOnEvent.Guid.Data4
+      value: -668271283
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Guid.Data1
+      value: -2087921017
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Guid.Data2
+      value: 1288424162
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Guid.Data3
+      value: 1765884570
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Guid.Data4
+      value: -517688780
+      objectReference: {fileID: 0}
     - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
       propertyPath: lightsToToggle.Array.size
@@ -105824,6 +106224,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &1177036027
@@ -107815,6 +108221,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &1189421449
@@ -108386,6 +108798,13 @@ MonoBehaviour:
   inventoryUI: {fileID: 0}
   noiseEmitter: {fileID: 1196619520}
   ejectNoisePower: 5
+  pickupEvent:
+    Guid:
+      Data1: -1565866939
+      Data2: 1128080740
+      Data3: 809370274
+      Data4: -2049457270
+    Path: event:/Objects/Tape
   autoFindInventoryUI: 1
   autoFindEjectPoint: 1
   ejectPointName: EjectPoint
@@ -109608,6 +110027,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &1207775361
@@ -110059,6 +110484,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 1213704520}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &1213704520
@@ -110307,6 +110738,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &1215110584
@@ -110898,6 +111335,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 1217944155}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &1217944155
@@ -113024,6 +113467,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &1248075462
@@ -135151,6 +135600,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &1468077222
@@ -140518,6 +140973,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &1514686282
@@ -142562,6 +143023,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 1540525679}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &1540525679
@@ -150562,6 +151029,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &1636370937
@@ -151437,6 +151910,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &1640954587
@@ -155318,6 +155797,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &1671968767
@@ -165669,6 +166154,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &1790930446
@@ -175877,6 +176368,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 1886409688}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &1886409688
@@ -183701,8 +184198,35 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
+--- !u!114 &1984183502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984183499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3810ca3e04b44074bb338f91c578b8dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound:
+    Guid:
+      Data1: 1000532558
+      Data2: 1107216803
+      Data3: -34867312
+      Data4: 514900926
+    Path: event:/Objects/GlassBrake
+  attachToObject: 1
+  showDebugLogs: 0
 --- !u!1 &1986138113
 GameObject:
   m_ObjectHideFlags: 0
@@ -196004,7 +196528,7 @@ PrefabInstance:
     - target: {fileID: 9147213786725816854, guid: dc0264777ac48214eaea66998e38a9dd,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 1162
+      value: 1165
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -199012,6 +199536,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!65 &2143535366
@@ -203171,6 +203701,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!23 &821960656041411584
@@ -206343,7 +206879,7 @@ PrefabInstance:
     - target: {fileID: 9147213786725816854, guid: dc0264777ac48214eaea66998e38a9dd,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 1162
+      value: 1165
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -208128,6 +208664,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!1 &1812631877486831073
@@ -217037,6 +217579,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!23 &3726778933997554228
@@ -217453,6 +218001,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!1 &3817483535410239461
@@ -218720,6 +219274,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!4 &3997519243684374668
@@ -223148,6 +223708,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 3365351548206654044}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!23 &4801914243031170830
@@ -223499,7 +224065,7 @@ PrefabInstance:
     - target: {fileID: 5693479603827539038, guid: 673a1bbe66d9de347a28c5742bffaa27,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 1329
+      value: 1332
       objectReference: {fileID: 0}
     - target: {fileID: 6149323365812896111, guid: 673a1bbe66d9de347a28c5742bffaa27,
         type: 3}
@@ -225917,6 +226483,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!23 &5381854885048908318
@@ -231552,6 +232124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5779011195255556757}
   - component: {fileID: 6591295942740594736}
+  - component: {fileID: 6591295942740594737}
   m_Layer: 0
   m_Name: MirrorHallwayCrakVHS
   m_TagString: Untagged
@@ -231582,8 +232155,47 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6591295942740594737}
+        m_TargetAssemblyTypeName: SC_InteractSound, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
+--- !u!114 &6591295942740594737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6591295942740594735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3810ca3e04b44074bb338f91c578b8dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound:
+    Guid:
+      Data1: 1000532558
+      Data2: 1107216803
+      Data3: -34867312
+      Data4: 514900926
+    Path: event:/Objects/GlassBrake
+  attachToObject: 0
+  showDebugLogs: 1
 --- !u!33 &6595649921991873062
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -232380,6 +232992,13 @@ MonoBehaviour:
   inventoryUI: {fileID: 0}
   noiseEmitter: {fileID: 6714134584831761651}
   ejectNoisePower: 5
+  pickupEvent:
+    Guid:
+      Data1: -1565866939
+      Data2: 1128080740
+      Data3: 809370274
+      Data4: -2049457270
+    Path: event:/Objects/Tape
   autoFindInventoryUI: 1
   autoFindEjectPoint: 1
   ejectPointName: EjectPoint
@@ -236000,6 +236619,13 @@ MonoBehaviour:
   inventoryUI: {fileID: 2001863568}
   noiseEmitter: {fileID: 7338087980432115118}
   ejectNoisePower: 5
+  pickupEvent:
+    Guid:
+      Data1: -1565866939
+      Data2: 1128080740
+      Data3: 809370274
+      Data4: -2049457270
+    Path: event:/Objects/Tape
   autoFindInventoryUI: 1
   autoFindEjectPoint: 1
   ejectPointName: EjectPoint
@@ -238253,6 +238879,13 @@ MonoBehaviour:
   inventoryUI: {fileID: 2001863568}
   noiseEmitter: {fileID: 7833415654296128650}
   ejectNoisePower: 5
+  pickupEvent:
+    Guid:
+      Data1: -1565866939
+      Data2: 1128080740
+      Data3: 809370274
+      Data4: -2049457270
+    Path: event:/Objects/Tape
   autoFindInventoryUI: 1
   autoFindEjectPoint: 1
   ejectPointName: EjectPoint
@@ -239343,6 +239976,12 @@ MonoBehaviour:
   disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 8116573647175282796}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
 --- !u!1 &8077184467761800933
@@ -243829,9 +244468,59 @@ PrefabInstance:
       objectReference: {fileID: 959476737}
     - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
+      propertyPath: turnOnEvent.Path
+      value: event:/Ambience/Lights/Light ON
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Path
+      value: event:/Ambience/Lights/Light Off
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
       propertyPath: switchNoiseEmitter
       value: 
       objectReference: {fileID: 8848753409111294324}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOnEvent.Guid.Data1
+      value: -1096295427
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOnEvent.Guid.Data2
+      value: 1222673732
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOnEvent.Guid.Data3
+      value: 1312885180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOnEvent.Guid.Data4
+      value: -668271283
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Guid.Data1
+      value: -2087921017
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Guid.Data2
+      value: 1288424162
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Guid.Data3
+      value: 1765884570
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      propertyPath: turnOffEvent.Guid.Data4
+      value: -517688780
+      objectReference: {fileID: 0}
     - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
       propertyPath: lightsToToggle.Array.size

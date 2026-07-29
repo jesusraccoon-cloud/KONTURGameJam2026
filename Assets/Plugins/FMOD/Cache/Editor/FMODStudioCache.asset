@@ -233,6 +233,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-6986333166227252385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/MoldPassage
+  m_EditorClassIdentifier: 
+  Path: event:/Player/MoldPassage
+  Guid:
+    Data1: 155109245
+    Data2: 1321428199
+    Data3: -1591497039
+    Data4: 64462129
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3148
 --- !u!114 &-6706749181788547616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,6 +271,30 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/DoorOpen/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 664784307
+    data2: 2168317822
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-6560350544331780925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Mold/Occlusion
   m_EditorClassIdentifier: 
   Name: Occlusion
   StudioPath: 
@@ -384,6 +435,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-4239528673032668459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Door/ClosetClose
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Door/ClosetClose
+  Guid:
+    Data1: -1619558422
+    Data2: 1277590986
+    Data3: 2060584890
+    Data4: -733862918
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
 --- !u!114 &-4171410835055340145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,6 +538,33 @@ MonoBehaviour:
   MinDistance: 0.3
   MaxDistance: 3.6000001
   Length: 30340
+--- !u!114 &-3344607275174302378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Door/Drawer
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Door/Drawer
+  Guid:
+    Data1: 881903666
+    Data2: 1183796599
+    Data3: 2076635571
+    Data4: -1175699237
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2009
 --- !u!114 &-2748380295556093473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -651,6 +756,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-447191189967264753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Door/Closet Small
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Door/Closet Small
+  Guid:
+    Data1: 1874634771
+    Data2: 1226541702
+    Data3: 242884493
+    Data4: -1215000243
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2427
 --- !u!114 &-420823812172178879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -743,6 +875,17 @@ MonoBehaviour:
   - {fileID: -2748380295556093473}
   - {fileID: 5352726842180284405}
   - {fileID: -1175765840282098057}
+  - {fileID: 534891873104745030}
+  - {fileID: 5208966407094476936}
+  - {fileID: 6423867911238367399}
+  - {fileID: -4239528673032668459}
+  - {fileID: -447191189967264753}
+  - {fileID: 5479857797228016820}
+  - {fileID: 8907543435150297842}
+  - {fileID: -3344607275174302378}
+  - {fileID: 8303592878790352136}
+  - {fileID: 8796605848192628263}
+  - {fileID: -6986333166227252385}
   EditorParameters:
   - {fileID: 3038740214914519220}
   MasterBanks:
@@ -750,7 +893,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 390493745208664655}
   cacheVersion: 131860
-  cacheTime: 639207915789880215
+  cacheTime: 639209654800000000
   SerializableEventsDict:
   - key: event:/Player/Footsteps
     index: 0
@@ -800,6 +943,28 @@ MonoBehaviour:
     index: 22
   - key: event:/Ambience/Entrance/WaterDrops
     index: 23
+  - key: event:/Objects/Tape
+    index: 24
+  - key: event:/Objects/GlassBrake
+    index: 25
+  - key: event:/Ambience/Door/ClosetOpen
+    index: 26
+  - key: event:/Ambience/Door/ClosetClose
+    index: 27
+  - key: event:/Ambience/Door/Closet Small
+    index: 28
+  - key: event:/Ambience/Door/FridgeOpen
+    index: 29
+  - key: event:/Ambience/Door/FridgeClose
+    index: 30
+  - key: event:/Ambience/Door/Drawer
+    index: 31
+  - key: event:/Ambience/Door/DrawerClose
+    index: 32
+  - key: event:/Ambience/Apart/Mold
+    index: 33
+  - key: event:/Player/MoldPassage
+    index: 34
 --- !u!114 &176710144190681147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -842,11 +1007,38 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639207915789880215
+  lastModified: 639209654800000000
   FileSizes:
   - Name: Desktop
-    Value: 2420
+    Value: 2904
   Exists: 1
+--- !u!114 &534891873104745030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Objects/Tape
+  m_EditorClassIdentifier: 
+  Path: event:/Objects/Tape
+  Guid:
+    Data1: -1565866939
+    Data2: 1128080740
+    Data3: 809370274
+    Data4: -2049457270
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 875
 --- !u!114 &1446152514084877850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1117,10 +1309,10 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639207915789870211
+  lastModified: 639209654800000000
   FileSizes:
   - Name: Desktop
-    Value: 32245408
+    Value: 35075680
   Exists: 1
 --- !u!114 &4980667345281820645
 MonoBehaviour:
@@ -1202,6 +1394,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &5208966407094476936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Objects/GlassBrake
+  m_EditorClassIdentifier: 
+  Path: event:/Objects/GlassBrake
+  Guid:
+    Data1: 1000532558
+    Data2: 1107216803
+    Data3: -34867312
+    Data4: 514900926
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
 --- !u!114 &5352726842180284405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1230,6 +1449,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 16087
+--- !u!114 &5479857797228016820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Door/FridgeOpen
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Door/FridgeOpen
+  Guid:
+    Data1: 303946602
+    Data2: 1226283350
+    Data3: -1549403737
+    Data4: 692269019
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3155
 --- !u!114 &6372764328299172821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1257,6 +1503,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 161332
+--- !u!114 &6423867911238367399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Door/ClosetOpen
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Door/ClosetOpen
+  Guid:
+    Data1: 1291886350
+    Data2: 1286667250
+    Data3: -1937246838
+    Data4: 1113831487
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2839
 --- !u!114 &7527099755692281281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1330,6 +1603,33 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &8303592878790352136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Door/DrawerClose
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Door/DrawerClose
+  Guid:
+    Data1: 1821867891
+    Data2: 1320119187
+    Data3: 530843307
+    Data4: 2128578552
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2418
 --- !u!114 &8654389611466127150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1350,3 +1650,58 @@ MonoBehaviour:
   - Name: Desktop
     Value: 1074
   Exists: 1
+--- !u!114 &8796605848192628263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Apart/Mold
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Apart/Mold
+  Guid:
+    Data1: -1075255352
+    Data2: 1226413166
+    Data3: 1870889360
+    Data4: 1395338088
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -6560350544331780925}
+  MinDistance: 1
+  MaxDistance: 7.6
+  Length: 60060
+--- !u!114 &8907543435150297842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambience/Door/FridgeClose
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience/Door/FridgeClose
+  Guid:
+    Data1: 1963597777
+    Data2: 1285583378
+    Data3: -112233332
+    Data4: 1870980432
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4877
