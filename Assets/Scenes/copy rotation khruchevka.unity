@@ -2027,18 +2027,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &29303340
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4824,18 +4818,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &75247051
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7065,18 +7053,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &96462870
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8500,18 +8482,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &116801949
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14859,18 +14835,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &170572912
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22987,24 +22957,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  firstSpawnPoint: {fileID: 593698}
-  spawnAfterDestroy:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  secondSpawnPoint: {fileID: 1185646810}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 257494626}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &257494626
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24194,18 +24152,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &273816131
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27397,18 +27349,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &322019763
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31912,18 +31858,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &383696042
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38853,6 +38793,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1457415590}
   - {fileID: 537957887}
   - {fileID: 1454081311}
   - {fileID: 494195679}
@@ -38860,6 +38801,7 @@ Transform:
   - {fileID: 1651366151}
   - {fileID: 1552800897}
   - {fileID: 51300794}
+  - {fileID: 2108765365}
   m_Father: {fileID: 167222550}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &467340031
@@ -46410,6 +46352,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1061685925}
   - {fileID: 835299329}
   - {fileID: 1490973496}
   - {fileID: 1423006130}
@@ -48563,18 +48506,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &561817188
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53430,24 +53367,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  firstSpawnPoint: {fileID: 1133884201}
-  spawnAfterDestroy:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  secondSpawnPoint: {fileID: 1630446823}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 616186168}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &616186168
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54201,18 +54126,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &622758878
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -55645,24 +55564,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  firstSpawnPoint: {fileID: 1496766157}
-  spawnAfterDestroy:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  secondSpawnPoint: {fileID: 2017428032}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 639172388}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &639172388
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -59903,18 +59810,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &697327634
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -61874,18 +61775,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &717376980
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -64547,18 +64442,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &744260910
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -76040,18 +75929,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &888862523
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -84300,24 +84183,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  firstSpawnPoint: {fileID: 299508995}
-  spawnAfterDestroy:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  secondSpawnPoint: {fileID: 2038980714}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 985685316}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &985685316
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -87170,18 +87041,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &1000298044
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -91789,24 +91654,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  firstSpawnPoint: {fileID: 589493203}
-  spawnAfterDestroy:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  secondSpawnPoint: {fileID: 551303847}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 1037690360}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &1037690360
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -92282,42 +92135,52 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 6906117280044319847}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 85eb176246da6174098133c98e402f36,
         type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 85eb176246da6174098133c98e402f36,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 85eb176246da6174098133c98e402f36,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.129
+      value: -8.854004
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85eb176246da6174098133c98e402f36,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.412
+      value: 10.068419
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85eb176246da6174098133c98e402f36,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.4462
+      value: -0.0007009506
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85eb176246da6174098133c98e402f36,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85eb176246da6174098133c98e402f36,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85eb176246da6174098133c98e402f36,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000015454312
+      value: 3.5527137e-15
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85eb176246da6174098133c98e402f36,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000015454313
+      value: -0.000000021855698
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85eb176246da6174098133c98e402f36,
         type: 3}
@@ -92349,6 +92212,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85eb176246da6174098133c98e402f36, type: 3}
+--- !u!4 &1042891580 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 85eb176246da6174098133c98e402f36,
+    type: 3}
+  m_PrefabInstance: {fileID: 1042891579}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1043156545
 Mesh:
   m_ObjectHideFlags: 0
@@ -93147,7 +93016,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1868928438}
+    m_TransformParent: {fileID: 1457415590}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d22f1e6c4e10e9b449ef8707b05ffa80,
         type: 3}
@@ -93172,17 +93041,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: d22f1e6c4e10e9b449ef8707b05ffa80,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d22f1e6c4e10e9b449ef8707b05ffa80,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d22f1e6c4e10e9b449ef8707b05ffa80,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d22f1e6c4e10e9b449ef8707b05ffa80,
         type: 3}
@@ -93398,22 +93267,32 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 531003391}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 20350937626af5e4c91d2339b3953b68,
         type: 3}
+      propertyPath: m_LocalScale.y
+      value: 136.02605
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 20350937626af5e4c91d2339b3953b68,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 136.02605
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 20350937626af5e4c91d2339b3953b68,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 27.416494
+      value: 0.78074646
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 20350937626af5e4c91d2339b3953b68,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.802189
+      value: 1.9837341
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 20350937626af5e4c91d2339b3953b68,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.149262
+      value: -2.4804688
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 20350937626af5e4c91d2339b3953b68,
         type: 3}
@@ -93428,7 +93307,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 20350937626af5e4c91d2339b3953b68,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 20350937626af5e4c91d2339b3953b68,
         type: 3}
@@ -93460,6 +93339,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20350937626af5e4c91d2339b3953b68, type: 3}
+--- !u!4 &1061685925 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 20350937626af5e4c91d2339b3953b68,
+    type: 3}
+  m_PrefabInstance: {fileID: 1061685924}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1063454519
 GameObject:
   m_ObjectHideFlags: 0
@@ -94598,22 +94483,22 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 2108765365}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 057051483dd7f0a48ac552ef07b4b782,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.131
+      value: -7.1194496
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 057051483dd7f0a48ac552ef07b4b782,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.412676
+      value: -2.3588562
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 057051483dd7f0a48ac552ef07b4b782,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.106
+      value: -0.041381836
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 057051483dd7f0a48ac552ef07b4b782,
         type: 3}
@@ -94623,7 +94508,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 057051483dd7f0a48ac552ef07b4b782,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 057051483dd7f0a48ac552ef07b4b782,
         type: 3}
@@ -94633,7 +94518,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 057051483dd7f0a48ac552ef07b4b782,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 057051483dd7f0a48ac552ef07b4b782,
         type: 3}
@@ -94674,6 +94559,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 215132320}
   m_SourcePrefab: {fileID: 100100000, guid: 057051483dd7f0a48ac552ef07b4b782, type: 3}
+--- !u!4 &1076696667 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 057051483dd7f0a48ac552ef07b4b782,
+    type: 3}
+  m_PrefabInstance: {fileID: 1076696666}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1077312133
 GameObject:
   m_ObjectHideFlags: 0
@@ -103567,18 +103458,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &1177036027
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -105508,18 +105393,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &1189421449
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -107307,18 +107186,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &1207775361
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -107764,24 +107637,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  firstSpawnPoint: {fileID: 1013863762}
-  spawnAfterDestroy:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  secondSpawnPoint: {fileID: 1234574773}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 1213704520}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &1213704520
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -108024,18 +107885,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &1215110584
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -108621,24 +108476,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  firstSpawnPoint: {fileID: 1134329754}
-  spawnAfterDestroy:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  secondSpawnPoint: {fileID: 1831689174}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 1217944155}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &1217944155
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -110759,18 +110602,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &1248075462
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -131388,14 +131225,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1457415589}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -43.887405, y: -364.719, z: 531.836}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 33864471}
   - {fileID: 1759916642}
-  m_Father: {fileID: 1868928438}
+  - {fileID: 1060910961}
+  m_Father: {fileID: 467046980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1459596171
 GameObject:
@@ -132640,18 +132478,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &1468077222
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -138075,18 +137907,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &1514686282
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -140039,24 +139865,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  firstSpawnPoint: {fileID: 1868132828}
-  spawnAfterDestroy:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  secondSpawnPoint: {fileID: 191482916}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 1540525679}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &1540525679
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -148052,18 +147866,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &1636370937
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -148933,18 +148741,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &1640954587
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -152437,18 +152239,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &1671968767
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -154306,12 +154102,17 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 638927468221726612}
     m_Modifications:
     - target: {fileID: 258461689141455900, guid: dd150715db774984698df3d56a2280ab,
         type: 3}
       propertyPath: m_Name
-      value: wardrobe (2)
+      value: BrokenWardrobe
+      objectReference: {fileID: 0}
+    - target: {fileID: 258461689141455900, guid: dd150715db774984698df3d56a2280ab,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 258461689141455900, guid: dd150715db774984698df3d56a2280ab,
         type: 3}
@@ -154320,53 +154121,68 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 638927469283554982, guid: dd150715db774984698df3d56a2280ab,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9082598
+      objectReference: {fileID: 0}
+    - target: {fileID: 638927469283554982, guid: dd150715db774984698df3d56a2280ab,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.80275387
+      objectReference: {fileID: 0}
+    - target: {fileID: 638927469283554982, guid: dd150715db774984698df3d56a2280ab,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.83106035
+      objectReference: {fileID: 0}
+    - target: {fileID: 638927469283554982, guid: dd150715db774984698df3d56a2280ab,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.109762
+      value: 0.110372014
       objectReference: {fileID: 0}
     - target: {fileID: 638927469283554982, guid: dd150715db774984698df3d56a2280ab,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.775
+      value: 0.8021129
       objectReference: {fileID: 0}
     - target: {fileID: 638927469283554982, guid: dd150715db774984698df3d56a2280ab,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.619
+      value: 1.0930055
       objectReference: {fileID: 0}
     - target: {fileID: 638927469283554982, guid: dd150715db774984698df3d56a2280ab,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: -0.5428704
       objectReference: {fileID: 0}
     - target: {fileID: 638927469283554982, guid: dd150715db774984698df3d56a2280ab,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.45309135
       objectReference: {fileID: 0}
     - target: {fileID: 638927469283554982, guid: dd150715db774984698df3d56a2280ab,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9914449
+      value: 0.40710378
       objectReference: {fileID: 0}
     - target: {fileID: 638927469283554982, guid: dd150715db774984698df3d56a2280ab,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.13052624
+      value: 0.5781579
       objectReference: {fileID: 0}
     - target: {fileID: 638927469283554982, guid: dd150715db774984698df3d56a2280ab,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -15
+      value: 1.215
       objectReference: {fileID: 0}
     - target: {fileID: 638927469283554982, guid: dd150715db774984698df3d56a2280ab,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 194.952
       objectReference: {fileID: 0}
     - target: {fileID: 638927469283554982, guid: dd150715db774984698df3d56a2280ab,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -94.539
       objectReference: {fileID: 0}
     - target: {fileID: 1132569184866083656, guid: dd150715db774984698df3d56a2280ab,
         type: 3}
@@ -154388,6 +154204,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd150715db774984698df3d56a2280ab, type: 3}
+--- !u!4 &1693855542 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 638927469283554982, guid: dd150715db774984698df3d56a2280ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 1693855541}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1699052803
 Mesh:
   m_ObjectHideFlags: 0
@@ -162519,18 +162341,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &1790930446
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -169702,8 +169518,6 @@ Transform:
   m_Children:
   - {fileID: 679312047710378136}
   - {fileID: 1830164841}
-  - {fileID: 1060910961}
-  - {fileID: 1457415590}
   m_Father: {fileID: 1285772230}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1870094254
@@ -172745,24 +172559,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  firstSpawnPoint: {fileID: 2023739309}
-  spawnAfterDestroy:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  secondSpawnPoint: {fileID: 1646306336}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 1886409688}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &1886409688
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -175452,22 +175254,22 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 2108765365}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 057051483dd7f0a48ac552ef07b4b782,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.131
+      value: -7.1194496
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 057051483dd7f0a48ac552ef07b4b782,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.36
+      value: -2.4115295
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 057051483dd7f0a48ac552ef07b4b782,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.078
+      value: 1.9866333
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 057051483dd7f0a48ac552ef07b4b782,
         type: 3}
@@ -175477,7 +175279,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 057051483dd7f0a48ac552ef07b4b782,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 057051483dd7f0a48ac552ef07b4b782,
         type: 3}
@@ -175487,7 +175289,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 057051483dd7f0a48ac552ef07b4b782,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 057051483dd7f0a48ac552ef07b4b782,
         type: 3}
@@ -175551,6 +175353,12 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7752794462340407763, guid: 057051483dd7f0a48ac552ef07b4b782, type: 3}
+--- !u!4 &1933374197 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 057051483dd7f0a48ac552ef07b4b782,
+    type: 3}
+  m_PrefabInstance: {fileID: 1933374194}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1933445901
 GameObject:
   m_ObjectHideFlags: 0
@@ -180197,18 +180005,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!1 &1984480039
 GameObject:
   m_ObjectHideFlags: 0
@@ -192646,6 +192448,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5030664302838122538, guid: 616c7963ad9325645ba480eee49e1f1b,
         type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5030664302838122538, guid: 616c7963ad9325645ba480eee49e1f1b,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 49.278954
       objectReference: {fileID: 0}
@@ -192885,6 +192692,39 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &2108765364
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2108765365}
+  m_Layer: 0
+  m_Name: Water
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2108765365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108765364}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1076696667}
+  - {fileID: 1933374197}
+  m_Father: {fileID: 467046980}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2109643485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -193036,7 +192876,7 @@ PrefabInstance:
     - target: {fileID: 9147213786725816854, guid: dc0264777ac48214eaea66998e38a9dd,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 1159
+      value: 1162
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -196040,18 +195880,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!65 &2143535366
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -200021,18 +199855,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!23 &821960656041411584
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -203133,11 +202961,15 @@ PrefabInstance:
     - target: {fileID: 9147213786725816854, guid: dc0264777ac48214eaea66998e38a9dd,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 1159
+      value: 1162
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6678778370327526241, guid: dc0264777ac48214eaea66998e38a9dd,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1693855542}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc0264777ac48214eaea66998e38a9dd, type: 3}
 --- !u!4 &1341773138068073176
@@ -204902,18 +204734,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!1 &1812631877486831073
 GameObject:
   m_ObjectHideFlags: 0
@@ -213692,18 +213518,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!23 &3726778933997554228
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -214114,18 +213934,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!1 &3817483535410239461
 GameObject:
   m_ObjectHideFlags: 0
@@ -215387,18 +215201,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!4 &3997519243684374668
 Transform:
   m_ObjectHideFlags: 0
@@ -219746,24 +219554,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  firstSpawnPoint: {fileID: 6100986698752445563}
-  spawnAfterDestroy:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  secondSpawnPoint: {fileID: 8589021222865490898}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 3365351548206654044}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!23 &4801914243031170830
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -220095,7 +219891,7 @@ PrefabInstance:
     - target: {fileID: 5693479603827539038, guid: 673a1bbe66d9de347a28c5742bffaa27,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 1326
+      value: 1329
       objectReference: {fileID: 0}
     - target: {fileID: 6149323365812896111, guid: 673a1bbe66d9de347a28c5742bffaa27,
         type: 3}
@@ -222486,18 +222282,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!23 &5381854885048908318
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -228115,18 +227905,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak: []
-  firstSpawnPoint: {fileID: 0}
-  spawnAfterDestroy: []
-  secondSpawnPoint: {fileID: 0}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 0}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!33 &6595649921991873062
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -229968,6 +229752,7 @@ Transform:
   - {fileID: 3916906923397697071}
   - {fileID: 3620586760244605976}
   - {fileID: 801922005375659223}
+  - {fileID: 1042891580}
   m_Father: {fileID: 2089641754}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &6910329084666104094
@@ -235813,24 +235598,12 @@ MonoBehaviour:
   canUseHit: 1
   ePressesForNextStage: 1
   hitsForNextStage: 1
-  spawnAfterFirstBreak:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  firstSpawnPoint: {fileID: 8794802026345678251}
-  spawnAfterDestroy:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  secondSpawnPoint: {fileID: 8613007185522452453}
-  throwForce: 3
-  upwardForce: 1.5
-  randomSideForce: 1
-  spawnScatterRadius: 0.2
-  torqueForce: 3
+  objectsToActivate: []
+  disableObjectsOnStart: 1
   disableColliderWhenDestroyed: 1
   objectCollider: {fileID: 8116573647175282796}
   currentStage: 0
+  nextObjectIndex: 0
 --- !u!1 &8077184467761800933
 GameObject:
   m_ObjectHideFlags: 0
@@ -242861,8 +242634,6 @@ SceneRoots:
   - {fileID: 2683465717161483746}
   - {fileID: 6223582169160256378}
   - {fileID: 1940945301}
-  - {fileID: 1076696666}
-  - {fileID: 1933374194}
   - {fileID: 713475404}
   - {fileID: 1894252408}
   - {fileID: 1972242287}
@@ -242872,11 +242643,8 @@ SceneRoots:
   - {fileID: 1022526613}
   - {fileID: 1803189168}
   - {fileID: 1838806982}
-  - {fileID: 1693855541}
   - {fileID: 870867794}
   - {fileID: 1729929450}
   - {fileID: 1182775975}
-  - {fileID: 1042891579}
   - {fileID: 92133540}
-  - {fileID: 1061685924}
   - {fileID: 1386653327}
