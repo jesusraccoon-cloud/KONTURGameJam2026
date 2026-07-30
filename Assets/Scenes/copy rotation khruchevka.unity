@@ -9725,6 +9725,10 @@ MonoBehaviour:
   playOnStart: 1
   occludable: 1
   occlusionParameter: Occlusion
+  useDistanceCulling: 0
+  maxHearDistance: 25
+  cullingHysteresis: 2
+  listenerOverride: {fileID: 0}
   showDebugLogs: 0
 --- !u!1 &126850261
 GameObject:
@@ -21354,6 +21358,10 @@ MonoBehaviour:
   playOnStart: 1
   occludable: 1
   occlusionParameter: Occlusion
+  useDistanceCulling: 0
+  maxHearDistance: 25
+  cullingHysteresis: 2
+  listenerOverride: {fileID: 0}
   showDebugLogs: 0
 --- !u!1 &257494623
 GameObject:
@@ -22388,6 +22396,10 @@ MonoBehaviour:
   fadeOutOnStop: 0
   alsoRequireIntensity: 0
   minIntensity: 0.05
+  useDistanceCulling: 0
+  maxHearDistance: 20
+  cullingHysteresis: 2
+  listenerOverride: {fileID: 0}
   occlusionParameter: Occlusion
   showDebugLogs: 0
 --- !u!43 &272288742
@@ -26906,6 +26918,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 916898329}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &332410144 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5e3d381ddab227349aed5b9309070e56,
+    type: 3}
+  m_PrefabInstance: {fileID: 793969689}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &333705341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29844,6 +29862,10 @@ MonoBehaviour:
   playOnStart: 1
   occludable: 1
   occlusionParameter: Occlusion
+  useDistanceCulling: 0
+  maxHearDistance: 25
+  cullingHysteresis: 2
+  listenerOverride: {fileID: 0}
   showDebugLogs: 0
 --- !u!1 &369015435
 GameObject:
@@ -33057,6 +33079,10 @@ MonoBehaviour:
   playOnStart: 1
   occludable: 1
   occlusionParameter: Occlusion
+  useDistanceCulling: 0
+  maxHearDistance: 25
+  cullingHysteresis: 2
+  listenerOverride: {fileID: 0}
   showDebugLogs: 0
 --- !u!43 &401161383
 Mesh:
@@ -34871,6 +34897,10 @@ MonoBehaviour:
   playOnStart: 0
   occludable: 1
   occlusionParameter: Occlusion
+  useDistanceCulling: 0
+  maxHearDistance: 25
+  cullingHysteresis: 2
+  listenerOverride: {fileID: 0}
   showDebugLogs: 0
 --- !u!4 &430154911
 Transform:
@@ -52438,6 +52468,10 @@ MonoBehaviour:
   fadeOutOnStop: 0
   alsoRequireIntensity: 0
   minIntensity: 0.05
+  useDistanceCulling: 0
+  maxHearDistance: 20
+  cullingHysteresis: 2
+  listenerOverride: {fileID: 0}
   occlusionParameter: Occlusion
   showDebugLogs: 0
 --- !u!43 &620135137
@@ -66464,7 +66498,15 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5e3d381ddab227349aed5b9309070e56,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1614647000}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5e3d381ddab227349aed5b9309070e56,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1614647001}
   m_SourcePrefab: {fileID: 100100000, guid: 5e3d381ddab227349aed5b9309070e56, type: 3}
 --- !u!1 &794503880
 GameObject:
@@ -114489,6 +114531,10 @@ MonoBehaviour:
   playOnStart: 1
   occludable: 1
   occlusionParameter: Occlusion
+  useDistanceCulling: 0
+  maxHearDistance: 25
+  cullingHysteresis: 2
+  listenerOverride: {fileID: 0}
   showDebugLogs: 0
 --- !u!43 &1297558450
 Mesh:
@@ -140097,6 +140143,10 @@ MonoBehaviour:
   playOnStart: 1
   occludable: 1
   occlusionParameter: Occlusion
+  useDistanceCulling: 0
+  maxHearDistance: 25
+  cullingHysteresis: 2
+  listenerOverride: {fileID: 0}
   showDebugLogs: 0
 --- !u!43 &1564169127
 Mesh:
@@ -143855,6 +143905,72 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 793969689}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1614647000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332410144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6feacd3947a9740822c72418e127a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monster: {fileID: 0}
+  footOrigin: {fileID: 0}
+  footstepEvent:
+    Guid:
+      Data1: 1557731470
+      Data2: 1143057876
+      Data3: -1647221075
+      Data4: -2098638543
+    Path: event:/Monster/Footsteps
+  surfaceParameter: Surface
+  autoDetectSurface: 1
+  defaultSurface: 4
+  surfaceTags:
+  - tag: Concrete
+    surface: 0
+  - tag: Wood
+    surface: 4
+  - tag: Carpet
+    surface: 1
+  - tag: Glass
+    surface: 2
+  - tag: Linoleum
+    surface: 3
+  surfaceRayLength: 1.5
+  surfaceRayUpOffset: 0.3
+  surfaceRayMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  occludeFootsteps: 1
+  occlusionParameter: Occlusion
+  showDebugLogs: 0
+--- !u!114 &1614647001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332410144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ad996b83ddd8e42b49ef58c79bbf49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monster: {fileID: 0}
+  attackEvent:
+    Guid:
+      Data1: 1031832081
+      Data2: 1199032468
+      Data3: -524162429
+      Data4: 52845419
+    Path: event:/Monster/Attack
+  occlude: 1
+  occlusionParameter: Occlusion
+  showDebugLogs: 0
 --- !u!1 &1614920463
 GameObject:
   m_ObjectHideFlags: 0
@@ -145668,6 +145784,10 @@ MonoBehaviour:
   playOnStart: 1
   occludable: 1
   occlusionParameter: Occlusion
+  useDistanceCulling: 0
+  maxHearDistance: 25
+  cullingHysteresis: 2
+  listenerOverride: {fileID: 0}
   showDebugLogs: 0
 --- !u!4 &1628372335 stripped
 Transform:
@@ -149597,7 +149717,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -558.727, y: -106.604}
+  m_AnchoredPosition: {x: -557.2, y: -106.604}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &1661006979
@@ -164741,6 +164861,10 @@ MonoBehaviour:
   playOnStart: 1
   occludable: 1
   occlusionParameter: Occlusion
+  useDistanceCulling: 0
+  maxHearDistance: 25
+  cullingHysteresis: 2
+  listenerOverride: {fileID: 0}
   showDebugLogs: 0
 --- !u!1 &1825375151
 GameObject:
@@ -179034,7 +179158,19 @@ MonoBehaviour:
   objectCollider: {fileID: 0}
   onInteract:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1984183502}
+        m_TargetAssemblyTypeName: SC_InteractSound, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onStageChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -192876,6 +193012,10 @@ MonoBehaviour:
   playOnStart: 1
   occludable: 1
   occlusionParameter: Occlusion
+  useDistanceCulling: 0
+  maxHearDistance: 25
+  cullingHysteresis: 2
+  listenerOverride: {fileID: 0}
   showDebugLogs: 0
 --- !u!43 &2138354366
 Mesh:

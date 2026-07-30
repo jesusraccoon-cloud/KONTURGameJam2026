@@ -360,6 +360,35 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 9
   Length: 2000
+--- !u!114 &-6274945966325903819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Footsteps/Surface
+  m_EditorClassIdentifier: 
+  Name: Surface
+  StudioPath: 
+  Min: 0
+  Max: 4
+  Default: 1
+  ID:
+    data1: 140007625
+    data2: 3548623802
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Concrete
+  - Carpet
+  - Glass
+  - linoleum
+  - Wood
+  Exists: 1
 --- !u!114 &-6259013303031668692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -945,6 +974,8 @@ MonoBehaviour:
   - {fileID: 5113898643380506545}
   - {fileID: 2879056110575982894}
   - {fileID: -812518729132420092}
+  - {fileID: 1826307243490669821}
+  - {fileID: 2894052734628790441}
   EditorParameters:
   - {fileID: 3038740214914519220}
   MasterBanks:
@@ -952,7 +983,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 390493745208664655}
   cacheVersion: 131860
-  cacheTime: 639209722080000000
+  cacheTime: 639209827280000000
   SerializableEventsDict:
   - key: event:/Player/Footsteps
     index: 0
@@ -1032,6 +1063,10 @@ MonoBehaviour:
     index: 37
   - key: event:/Objects/MoldPassge
     index: 38
+  - key: event:/Monster/Footsteps
+    index: 39
+  - key: event:/Monster/Attack
+    index: 40
 --- !u!114 &176710144190681147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1074,10 +1109,10 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639209722080000000
+  lastModified: 639209827280000000
   FileSizes:
   - Name: Desktop
-    Value: 3074
+    Value: 3408
   Exists: 1
 --- !u!114 &534891873104745030
 MonoBehaviour:
@@ -1154,6 +1189,35 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &1826307243490669821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Monster/Footsteps
+  m_EditorClassIdentifier: 
+  Path: event:/Monster/Footsteps
+  Guid:
+    Data1: 1557731470
+    Data2: 1143057876
+    Data3: -1647221075
+    Data4: -2098638543
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -6274945966325903819}
+  - {fileID: 6614260231428270452}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &1947904214544387957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1286,6 +1350,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 6500
+--- !u!114 &2894052734628790441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Monster/Attack
+  m_EditorClassIdentifier: 
+  Path: event:/Monster/Attack
+  Guid:
+    Data1: 1031832081
+    Data2: 1199032468
+    Data3: -524162429
+    Data4: 52845419
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3500
 --- !u!114 &2928059199406592043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1428,10 +1519,10 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639209722080000000
+  lastModified: 639209827280000000
   FileSizes:
   - Name: Desktop
-    Value: 36891680
+    Value: 37214048
   Exists: 1
 --- !u!114 &4980667345281820645
 MonoBehaviour:
@@ -1725,6 +1816,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2839
+--- !u!114 &6614260231428270452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Footsteps/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 664784307
+    data2: 2168317822
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &7527099755692281281
 MonoBehaviour:
   m_ObjectHideFlags: 0
