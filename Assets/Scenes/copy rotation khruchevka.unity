@@ -4340,6 +4340,41 @@ MonoBehaviour:
   showNoiseOnUI: 1
   mixNoiseOnUI: 1
   showDebugLogs: 0
+--- !u!1 &60113182 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1211489635194706215, guid: 673a1bbe66d9de347a28c5742bffaa27,
+    type: 3}
+  m_PrefabInstance: {fileID: 4872853773458824305}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &60113184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60113182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f94942871f3d7824a9420b9a861319f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawer: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: 881903666
+      Data2: 1183796599
+      Data3: 2076635571
+      Data4: -1175699237
+    Path: event:/Ambience/Door/Drawer
+  closeEvent:
+    Guid:
+      Data1: 1821867891
+      Data2: 1320119187
+      Data3: 530843307
+      Data4: 2128578552
+    Path: event:/Ambience/Door/DrawerClose
+  attachToDrawer: 1
+  showDebugLogs: 0
 --- !u!1 &61390768 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7683863757469247502, guid: cc5b95d3fb165e749b14ef7451b7ee95,
@@ -20131,6 +20166,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250786722}
   m_CullTransparentMesh: 1
+--- !u!1 &252499356 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1871257434390891846, guid: dc0264777ac48214eaea66998e38a9dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 2109643485}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &252499358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252499356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7cb10c26c21841b86a5436d18404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: 1291886350
+      Data2: 1286667250
+      Data3: -1937246838
+      Data4: 1113831487
+    Path: event:/Ambience/Door/ClosetOpen
+  closeEvent:
+    Guid:
+      Data1: -1619558422
+      Data2: 1277590986
+      Data3: 2060584890
+      Data4: -733862918
+    Path: event:/Ambience/Door/ClosetClose
+  attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
+  showDebugLogs: 0
 --- !u!43 &253881750
 Mesh:
   m_ObjectHideFlags: 0
@@ -28353,6 +28425,7 @@ GameObject:
   - component: {fileID: 347838001}
   - component: {fileID: 347838003}
   - component: {fileID: 347838004}
+  - component: {fileID: 347838005}
   m_Layer: 0
   m_Name: MoldHolePassage
   m_TagString: Untagged
@@ -28492,6 +28565,28 @@ MonoBehaviour:
   scriptedGravity: -2
   apartmentFinalSequence: {fileID: 0}
   showDebugLogs: 1
+--- !u!114 &347838005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347837999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6878db727306189488e0b7f1b28aebb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  passage: {fileID: 0}
+  crawlEvent:
+    Guid:
+      Data1: 155109245
+      Data2: 1321428199
+      Data3: -1591497039
+      Data4: 64462129
+    Path: event:/Player/MoldPassage
+  attachToPlayer: 1
+  showDebugLogs: 0
 --- !u!1 &356514074
 GameObject:
   m_ObjectHideFlags: 0
@@ -32993,6 +33088,171 @@ MonoBehaviour:
   m_Offset: {x: 0, y: 0, z: 0.025}
   m_Size: {x: 1, y: 1, z: 0.05}
   m_FadeFactor: 1
+--- !u!43 &406687834
+Mesh:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: pb_Mesh-22322(Clone)(Clone)
+  serializedVersion: 11
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 36
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 24
+    localAABB:
+      m_Center: {x: 1.2882566, y: 0.70878625, z: 0.6475153}
+      m_Extent: {x: 1.2882562, y: 0.70878696, z: 0.6475158}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_BonesAABB: []
+  m_VariableBoneCountWeights:
+    m_Data: 
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 000001000200010003000200040005000600050007000600080009000a0009000b000a000c000d000e000d000f000e00100011001200110013001200140015001600150017001600
+  m_VertexData:
+    serializedVersion: 3
+    m_VertexCount: 24
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 24
+      format: 0
+      dimension: 4
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 40
+      format: 0
+      dimension: 2
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 1152
+    _typelessdata: 00002035000050b594c3a53f00000000000000000000803f000080bf0000000000000000000080bf000020b5000050b596e52440000050b594c3a53f00000000000000000000803f000080bf0000000000000000000080bf96e524c0000050b5000020350a73b53f94c3a53f00000000000000000000803f000080bf0000000000000000000080bf000020b50a73b53f96e524400a73b53f94c3a53f00000000000000000000803f000080bf0000000000000000000080bf96e524c00a73b53f96e52440000050b594c3a53f0000803f000000000000000000000000000000000000803f000080bf94c3a53f000050b596e52440000050b5000000b50000803f000000000000000000000000000000000000803f000080bf000000b5000050b596e524400a73b53f94c3a53f0000803f000000000000000000000000000000000000803f000080bf94c3a53f0a73b53f96e524400a73b53f000000b50000803f000000000000000000000000000000000000803f000080bf000000b50a73b53f96e52440000050b5000000b50000000000000000000080bf0000803f0000000000000000000080bf96e52440000050b500002035000050b5000000b50000000000000000000080bf0000803f0000000000000000000080bf00002035000050b596e524400a73b53f000000b50000000000000000000080bf0000803f0000000000000000000080bf96e524400a73b53f000020350a73b53f000000b50000000000000000000080bf0000803f0000000000000000000080bf000020350a73b53f00002035000050b5000000b5000080bf00000000000000000000000000000000000080bf000080bf00000035000050b500002035000050b594c3a53f000080bf00000000000000000000000000000000000080bf000080bf94c3a5bf000050b5000020350a73b53f000000b5000080bf00000000000000000000000000000000000080bf000080bf000000350a73b53f000020350a73b53f94c3a53f000080bf00000000000000000000000000000000000080bf000080bf94c3a5bf0a73b53f000020350a73b53f94c3a53f000000000000803f000000000000803f0000000000000000000080bf0000203594c3a53f96e524400a73b53f94c3a53f000000000000803f000000000000803f0000000000000000000080bf96e5244094c3a53f000020350a73b53f000000b5000000000000803f000000000000803f0000000000000000000080bf00002035000000b596e524400a73b53f000000b5000000000000803f000000000000803f0000000000000000000080bf96e52440000000b500002035000050b5000000b500000000000080bf00000000000080bf0000000000000000000080bf000020b5000000b596e52440000050b5000000b500000000000080bf00000000000080bf0000000000000000000080bf96e524c0000000b500002035000050b594c3a53f00000000000080bf00000000000080bf0000000000000000000080bf000020b594c3a53f96e52440000050b594c3a53f00000000000080bf00000000000080bf0000000000000000000080bf96e524c094c3a53f
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 1.2882566, y: 0.70878625, z: 0.6475153}
+    m_Extent: {x: 1.2882562, y: 0.70878696, z: 0.6475158}
+  m_MeshUsageFlags: 0
+  m_CookingOptions: 30
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  m_MeshMetrics[0]: 1
+  m_MeshMetrics[1]: 1
+  m_MeshOptimizationFlags: 1
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 
 --- !u!1001 &408286828
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37242,171 +37502,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!43 &476446267
-Mesh:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-22322(Clone)
-  serializedVersion: 11
-  m_SubMeshes:
-  - serializedVersion: 2
-    firstByte: 0
-    indexCount: 36
-    topology: 0
-    baseVertex: 0
-    firstVertex: 0
-    vertexCount: 24
-    localAABB:
-      m_Center: {x: 1.2882566, y: 0.70878625, z: 0.6475153}
-      m_Extent: {x: 1.2882562, y: 0.70878696, z: 0.6475158}
-  m_Shapes:
-    vertices: []
-    shapes: []
-    channels: []
-    fullWeights: []
-  m_BindPose: []
-  m_BoneNameHashes: 
-  m_RootBoneNameHash: 0
-  m_BonesAABB: []
-  m_VariableBoneCountWeights:
-    m_Data: 
-  m_MeshCompression: 0
-  m_IsReadable: 1
-  m_KeepVertices: 1
-  m_KeepIndices: 1
-  m_IndexFormat: 0
-  m_IndexBuffer: 000001000200010003000200040005000600050007000600080009000a0009000b000a000c000d000e000d000f000e00100011001200110013001200140015001600150017001600
-  m_VertexData:
-    serializedVersion: 3
-    m_VertexCount: 24
-    m_Channels:
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 3
-    - stream: 0
-      offset: 12
-      format: 0
-      dimension: 3
-    - stream: 0
-      offset: 24
-      format: 0
-      dimension: 4
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 40
-      format: 0
-      dimension: 2
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    m_DataSize: 1152
-    _typelessdata: 00002035000050b594c3a53f00000000000000000000803f000080bf0000000000000000000080bf000020b5000050b596e52440000050b594c3a53f00000000000000000000803f000080bf0000000000000000000080bf96e524c0000050b5000020350a73b53f94c3a53f00000000000000000000803f000080bf0000000000000000000080bf000020b50a73b53f96e524400a73b53f94c3a53f00000000000000000000803f000080bf0000000000000000000080bf96e524c00a73b53f96e52440000050b594c3a53f0000803f000000000000000000000000000000000000803f000080bf94c3a53f000050b596e52440000050b5000000b50000803f000000000000000000000000000000000000803f000080bf000000b5000050b596e524400a73b53f94c3a53f0000803f000000000000000000000000000000000000803f000080bf94c3a53f0a73b53f96e524400a73b53f000000b50000803f000000000000000000000000000000000000803f000080bf000000b50a73b53f96e52440000050b5000000b50000000000000000000080bf0000803f0000000000000000000080bf96e52440000050b500002035000050b5000000b50000000000000000000080bf0000803f0000000000000000000080bf00002035000050b596e524400a73b53f000000b50000000000000000000080bf0000803f0000000000000000000080bf96e524400a73b53f000020350a73b53f000000b50000000000000000000080bf0000803f0000000000000000000080bf000020350a73b53f00002035000050b5000000b5000080bf00000000000000000000000000000000000080bf000080bf00000035000050b500002035000050b594c3a53f000080bf00000000000000000000000000000000000080bf000080bf94c3a5bf000050b5000020350a73b53f000000b5000080bf00000000000000000000000000000000000080bf000080bf000000350a73b53f000020350a73b53f94c3a53f000080bf00000000000000000000000000000000000080bf000080bf94c3a5bf0a73b53f000020350a73b53f94c3a53f000000000000803f000000000000803f0000000000000000000080bf0000203594c3a53f96e524400a73b53f94c3a53f000000000000803f000000000000803f0000000000000000000080bf96e5244094c3a53f000020350a73b53f000000b5000000000000803f000000000000803f0000000000000000000080bf00002035000000b596e524400a73b53f000000b5000000000000803f000000000000803f0000000000000000000080bf96e52440000000b500002035000050b5000000b500000000000080bf00000000000080bf0000000000000000000080bf000020b5000000b596e52440000050b5000000b500000000000080bf00000000000080bf0000000000000000000080bf96e524c0000000b500002035000050b594c3a53f00000000000080bf00000000000080bf0000000000000000000080bf000020b594c3a53f96e52440000050b594c3a53f00000000000080bf00000000000080bf0000000000000000000080bf96e524c094c3a53f
-  m_CompressedMesh:
-    m_Vertices:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UV:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Normals:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Tangents:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Weights:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_NormalSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_TangentSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_FloatColors:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_BoneIndices:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Triangles:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UVInfo: 0
-  m_LocalAABB:
-    m_Center: {x: 1.2882566, y: 0.70878625, z: 0.6475153}
-    m_Extent: {x: 1.2882562, y: 0.70878696, z: 0.6475158}
-  m_MeshUsageFlags: 0
-  m_CookingOptions: 30
-  m_BakedConvexCollisionMesh: 
-  m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
-  m_MeshOptimizationFlags: 1
-  m_StreamData:
-    serializedVersion: 2
-    offset: 0
-    size: 0
-    path: 
 --- !u!1 &481430738
 GameObject:
   m_ObjectHideFlags: 0
@@ -37783,6 +37878,7 @@ GameObject:
   - component: {fileID: 481491797}
   - component: {fileID: 481491794}
   - component: {fileID: 481491800}
+  - component: {fileID: 481491801}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Untagged
@@ -38162,6 +38258,51 @@ MonoBehaviour:
   maxFear: 1
   riseSpeed: 3
   fallSpeed: 1
+  showDebugLogs: 0
+--- !u!114 &481491801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481491782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60278a0fac36eac45ae562ed23f36235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monster: {fileID: 0}
+  vision: {fileID: 0}
+  cryEvent:
+    Guid:
+      Data1: 989279271
+      Data2: 1184582240
+      Data3: -1522602327
+      Data4: -1312983053
+    Path: event:/Monster/Cry
+  talkEvent:
+    Guid:
+      Data1: -1046008441
+      Data2: 1255734590
+      Data3: -1197399671
+      Data4: 1477725151
+    Path: event:/Monster/Phrases
+  screamEvent:
+    Guid:
+      Data1: -274750025
+      Data2: 1104448504
+      Data3: -735477576
+      Data4: 1818018324
+    Path: event:/Monster/Scream
+  idleMinInterval: 0.5
+  idleMaxInterval: 2
+  cryChance: 0.512
+  screamOnSpot: 1
+  screamRepeats: 1
+  screamMinInterval: 0.5
+  screamMaxInterval: 2
+  occludeVoice: 1
+  occlusionParameter: Occlusion
   showDebugLogs: 0
 --- !u!4 &483894259 stripped
 Transform:
@@ -41326,6 +41467,7 @@ GameObject:
   - component: {fileID: 519136219}
   - component: {fileID: 519136218}
   - component: {fileID: 519136217}
+  - component: {fileID: 519136222}
   m_Layer: 0
   m_Name: Closet_LeftDoor
   m_TagString: Untagged
@@ -41477,6 +41619,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519136215}
   m_Mesh: {fileID: 2015652272997458661, guid: 9836d5a8fbf153340960a85509f03a73, type: 3}
+--- !u!114 &519136222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519136215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7cb10c26c21841b86a5436d18404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: 1874634771
+      Data2: 1226541702
+      Data3: 242884493
+      Data4: -1215000243
+    Path: event:/Ambience/Door/Closet Small
+  closeEvent:
+    Guid:
+      Data1: 1874634771
+      Data2: 1226541702
+      Data3: 242884493
+      Data4: -1215000243
+    Path: event:/Ambience/Door/Closet Small
+  attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
+  showDebugLogs: 0
 --- !u!1 &519514895
 GameObject:
   m_ObjectHideFlags: 0
@@ -49487,6 +49660,43 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 33864468}
   m_SourcePrefab: {fileID: 100100000, guid: 0addcdb57e495094f830224594ebadb3, type: 3}
+--- !u!1 &602843138 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2715275332902148838, guid: 673a1bbe66d9de347a28c5742bffaa27,
+    type: 3}
+  m_PrefabInstance: {fileID: 4872853773458824305}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &602843140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602843138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7cb10c26c21841b86a5436d18404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: 1874634771
+      Data2: 1226541702
+      Data3: 242884493
+      Data4: -1215000243
+    Path: event:/Ambience/Door/Closet Small
+  closeEvent:
+    Guid:
+      Data1: 1874634771
+      Data2: 1226541702
+      Data3: 242884493
+      Data4: -1215000243
+    Path: event:/Ambience/Door/Closet Small
+  attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
+  showDebugLogs: 0
 --- !u!43 &604391869
 Mesh:
   m_ObjectHideFlags: 0
@@ -52360,6 +52570,43 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1557980704}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &630711548 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1871257434390891846, guid: dc0264777ac48214eaea66998e38a9dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1339760817070847315}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &630711550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630711548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7cb10c26c21841b86a5436d18404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: 1291886350
+      Data2: 1286667250
+      Data3: -1937246838
+      Data4: 1113831487
+    Path: event:/Ambience/Door/ClosetOpen
+  closeEvent:
+    Guid:
+      Data1: -1619558422
+      Data2: 1277590986
+      Data3: 2060584890
+      Data4: -733862918
+    Path: event:/Ambience/Door/ClosetClose
+  attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
+  showDebugLogs: 0
 --- !u!43 &630805737
 Mesh:
   m_ObjectHideFlags: 0
@@ -98229,6 +98476,7 @@ GameObject:
   - component: {fileID: 1156402787}
   - component: {fileID: 1156402786}
   - component: {fileID: 1156402785}
+  - component: {fileID: 1156402790}
   m_Layer: 0
   m_Name: Closet_RightDra
   m_TagString: Untagged
@@ -98363,6 +98611,35 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1156402783}
   m_Mesh: {fileID: 5507680605272191016, guid: 9836d5a8fbf153340960a85509f03a73, type: 3}
+--- !u!114 &1156402790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156402783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f94942871f3d7824a9420b9a861319f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawer: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: 881903666
+      Data2: 1183796599
+      Data3: 2076635571
+      Data4: -1175699237
+    Path: event:/Ambience/Door/Drawer
+  closeEvent:
+    Guid:
+      Data1: 1821867891
+      Data2: 1320119187
+      Data3: 530843307
+      Data4: 2128578552
+    Path: event:/Ambience/Door/DrawerClose
+  attachToDrawer: 1
+  showDebugLogs: 0
 --- !u!1 &1159096759
 GameObject:
   m_ObjectHideFlags: 0
@@ -102726,6 +103003,7 @@ GameObject:
   - component: {fileID: 1199750889}
   - component: {fileID: 1199750888}
   - component: {fileID: 1199750887}
+  - component: {fileID: 1199750892}
   m_Layer: 0
   m_Name: Closet_LeftDrawer
   m_TagString: Untagged
@@ -102860,6 +103138,35 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1199750885}
   m_Mesh: {fileID: 5507680605272191016, guid: 9836d5a8fbf153340960a85509f03a73, type: 3}
+--- !u!114 &1199750892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199750885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f94942871f3d7824a9420b9a861319f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawer: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: 881903666
+      Data2: 1183796599
+      Data3: 2076635571
+      Data4: -1175699237
+    Path: event:/Ambience/Door/Drawer
+  closeEvent:
+    Guid:
+      Data1: 1821867891
+      Data2: 1320119187
+      Data3: 530843307
+      Data4: 2128578552
+    Path: event:/Ambience/Door/DrawerClose
+  attachToDrawer: 1
+  showDebugLogs: 0
 --- !u!1 &1200573831
 GameObject:
   m_ObjectHideFlags: 0
@@ -118762,6 +119069,7 @@ GameObject:
   - component: {fileID: 1359332544}
   - component: {fileID: 1359332543}
   - component: {fileID: 1359332542}
+  - component: {fileID: 1359332547}
   m_Layer: 0
   m_Name: Closet_RightDoor.002 (1)
   m_TagString: Untagged
@@ -118913,6 +119221,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1359332540}
   m_Mesh: {fileID: 6312309100865918630, guid: db5f1f36c81ea0a4e965b9ca77a5bb49, type: 3}
+--- !u!114 &1359332547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359332540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7cb10c26c21841b86a5436d18404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: 1874634771
+      Data2: 1226541702
+      Data3: 242884493
+      Data4: -1215000243
+    Path: event:/Ambience/Door/Closet Small
+  closeEvent:
+    Guid:
+      Data1: 1874634771
+      Data2: 1226541702
+      Data3: 242884493
+      Data4: -1215000243
+    Path: event:/Ambience/Door/Closet Small
+  attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
+  showDebugLogs: 0
 --- !u!43 &1362781479
 Mesh:
   m_ObjectHideFlags: 0
@@ -121040,6 +121379,7 @@ GameObject:
   - component: {fileID: 1391343812}
   - component: {fileID: 1391343811}
   - component: {fileID: 1391343810}
+  - component: {fileID: 1391343815}
   m_Layer: 0
   m_Name: Closet_RightDoor
   m_TagString: Untagged
@@ -121191,6 +121531,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391343808}
   m_Mesh: {fileID: -5738989443955875770, guid: 9836d5a8fbf153340960a85509f03a73, type: 3}
+--- !u!114 &1391343815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391343808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7cb10c26c21841b86a5436d18404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: 1874634771
+      Data2: 1226541702
+      Data3: 242884493
+      Data4: -1215000243
+    Path: event:/Ambience/Door/Closet Small
+  closeEvent:
+    Guid:
+      Data1: 1874634771
+      Data2: 1226541702
+      Data3: 242884493
+      Data4: -1215000243
+    Path: event:/Ambience/Door/Closet Small
+  attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
+  showDebugLogs: 0
 --- !u!1 &1395836781
 GameObject:
   m_ObjectHideFlags: 0
@@ -128569,7 +128940,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1464138547}
-  m_Mesh: {fileID: 476446267}
+  m_Mesh: {fileID: 406687834}
 --- !u!23 &1464138551
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -128851,7 +129222,7 @@ MonoBehaviour:
     m_AreaError: 15
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
-  m_Mesh: {fileID: 476446267}
+  m_Mesh: {fileID: 406687834}
   m_VersionIndex: 2004
   m_IsSelectable: 1
   m_SelectedFaces: 
@@ -134509,6 +134880,43 @@ MonoBehaviour:
   canHighlight: 1
   outlineShader: {fileID: 4800000, guid: b273a6948c186e6428a433c768a4ce42, type: 3}
   showDebugWarnings: 1
+--- !u!1 &1518693570 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7325029042901959524, guid: 673a1bbe66d9de347a28c5742bffaa27,
+    type: 3}
+  m_PrefabInstance: {fileID: 4872853773458824305}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1518693572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518693570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7cb10c26c21841b86a5436d18404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: 1874634771
+      Data2: 1226541702
+      Data3: 242884493
+      Data4: -1215000243
+    Path: event:/Ambience/Door/Closet Small
+  closeEvent:
+    Guid:
+      Data1: 1874634771
+      Data2: 1226541702
+      Data3: 242884493
+      Data4: -1215000243
+    Path: event:/Ambience/Door/Closet Small
+  attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
+  showDebugLogs: 0
 --- !u!1 &1520416658
 GameObject:
   m_ObjectHideFlags: 0
@@ -137077,6 +137485,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bed_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7147379974466036213, guid: 64a1dbaedad185648bddb9a195c13f76,
+        type: 3}
+      propertyPath: m_TagString
+      value: Carpet
       objectReference: {fileID: 0}
     - target: {fileID: 7147379974466036213, guid: 64a1dbaedad185648bddb9a195c13f76,
         type: 3}
@@ -155988,6 +156401,7 @@ GameObject:
   - component: {fileID: 1759916642}
   - component: {fileID: 1759916644}
   - component: {fileID: 1759916643}
+  - component: {fileID: 1759916645}
   m_Layer: 0
   m_Name: DoorHinge
   m_TagString: Untagged
@@ -156068,6 +156482,37 @@ MonoBehaviour:
   useSecondRoom: 0
   showNoiseOnUI: 1
   mixNoiseOnUI: 1
+  showDebugLogs: 0
+--- !u!114 &1759916645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759916641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7cb10c26c21841b86a5436d18404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: 303946602
+      Data2: 1226283350
+      Data3: -1549403737
+      Data4: 692269019
+    Path: event:/Ambience/Door/FridgeOpen
+  closeEvent:
+    Guid:
+      Data1: 1963597777
+      Data2: 1285583378
+      Data3: -112233332
+      Data4: 1870980432
+    Path: event:/Ambience/Door/FridgeClose
+  attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
   showDebugLogs: 0
 --- !u!1 &1763824072 stripped
 GameObject:
@@ -159800,6 +160245,43 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &1793172138 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4937625558952099217, guid: dc0264777ac48214eaea66998e38a9dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 2109643485}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1793172141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793172138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7cb10c26c21841b86a5436d18404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: 1291886350
+      Data2: 1286667250
+      Data3: -1937246838
+      Data4: 1113831487
+    Path: event:/Ambience/Door/ClosetOpen
+  closeEvent:
+    Guid:
+      Data1: -1619558422
+      Data2: 1277590986
+      Data3: 2060584890
+      Data4: -733862918
+    Path: event:/Ambience/Door/ClosetClose
+  attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
+  showDebugLogs: 0
 --- !u!1 &1796524010
 GameObject:
   m_ObjectHideFlags: 0
@@ -166505,6 +166987,41 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1876037584 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2777177837951743010, guid: 673a1bbe66d9de347a28c5742bffaa27,
+    type: 3}
+  m_PrefabInstance: {fileID: 4872853773458824305}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1876037586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876037584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f94942871f3d7824a9420b9a861319f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawer: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: 881903666
+      Data2: 1183796599
+      Data3: 2076635571
+      Data4: -1175699237
+    Path: event:/Ambience/Door/Drawer
+  closeEvent:
+    Guid:
+      Data1: 1821867891
+      Data2: 1320119187
+      Data3: 530843307
+      Data4: 2128578552
+    Path: event:/Ambience/Door/DrawerClose
+  attachToDrawer: 1
+  showDebugLogs: 0
 --- !u!1001 &1878413197
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -168950,6 +169467,43 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.55, y: 0.45, z: 1.1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1886482941 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4937625558952099217, guid: dc0264777ac48214eaea66998e38a9dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1339760817070847315}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1886482944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886482941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7cb10c26c21841b86a5436d18404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: 1291886350
+      Data2: 1286667250
+      Data3: -1937246838
+      Data4: 1113831487
+    Path: event:/Ambience/Door/ClosetOpen
+  closeEvent:
+    Guid:
+      Data1: -1619558422
+      Data2: 1277590986
+      Data3: 2060584890
+      Data4: -733862918
+    Path: event:/Ambience/Door/ClosetClose
+  attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
+  showDebugLogs: 0
 --- !u!1 &1887367363
 GameObject:
   m_ObjectHideFlags: 0
@@ -187728,6 +188282,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5664211301930881680, guid: 616c7963ad9325645ba480eee49e1f1b,
         type: 3}
+      propertyPath: m_TagString
+      value: Carpet
+      objectReference: {fileID: 0}
+    - target: {fileID: 5664211301930881680, guid: 616c7963ad9325645ba480eee49e1f1b,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -188101,7 +188660,15 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4937625558952099217, guid: dc0264777ac48214eaea66998e38a9dd,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1793172141}
+    - targetCorrespondingSourceObject: {fileID: 1871257434390891846, guid: dc0264777ac48214eaea66998e38a9dd,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 252499358}
   m_SourcePrefab: {fileID: 100100000, guid: dc0264777ac48214eaea66998e38a9dd, type: 3}
 --- !u!1 &2113276546
 GameObject:
@@ -198438,7 +199005,15 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1693855542}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4937625558952099217, guid: dc0264777ac48214eaea66998e38a9dd,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1886482944}
+    - targetCorrespondingSourceObject: {fileID: 1871257434390891846, guid: dc0264777ac48214eaea66998e38a9dd,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 630711550}
   m_SourcePrefab: {fileID: 100100000, guid: dc0264777ac48214eaea66998e38a9dd, type: 3}
 --- !u!4 &1341773138068073176
 Transform:
@@ -213173,6 +213748,7 @@ GameObject:
   - component: {fileID: 1311081688055348483}
   - component: {fileID: 431511370574949107}
   - component: {fileID: 451426406383724295}
+  - component: {fileID: 8848045917644560509}
   m_Layer: 0
   m_Name: Closet_LeftDoor
   m_TagString: Untagged
@@ -213693,6 +214269,7 @@ GameObject:
   - component: {fileID: 8155890008352431122}
   - component: {fileID: 4905616453203098585}
   - component: {fileID: 6982575734967507941}
+  - component: {fileID: 8183771863985765986}
   m_Layer: 0
   m_Name: Closet_RightDoor
   m_TagString: Untagged
@@ -215695,7 +216272,23 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1211489635194706215, guid: 673a1bbe66d9de347a28c5742bffaa27,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 60113184}
+    - targetCorrespondingSourceObject: {fileID: 2777177837951743010, guid: 673a1bbe66d9de347a28c5742bffaa27,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1876037586}
+    - targetCorrespondingSourceObject: {fileID: 2715275332902148838, guid: 673a1bbe66d9de347a28c5742bffaa27,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 602843140}
+    - targetCorrespondingSourceObject: {fileID: 7325029042901959524, guid: 673a1bbe66d9de347a28c5742bffaa27,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1518693572}
   m_SourcePrefab: {fileID: 100100000, guid: 673a1bbe66d9de347a28c5742bffaa27, type: 3}
 --- !u!23 &4877961473120660355
 MeshRenderer:
@@ -219328,6 +219921,7 @@ GameObject:
   - component: {fileID: 2142017084091786258}
   - component: {fileID: 4232367487413027018}
   - component: {fileID: 2909347731712844791}
+  - component: {fileID: 8976314522624971200}
   m_Layer: 0
   m_Name: Closet_LeftDrawer
   m_TagString: Untagged
@@ -225111,6 +225705,7 @@ GameObject:
   - component: {fileID: 4567092621891079175}
   - component: {fileID: 2106276005046202138}
   - component: {fileID: 8654673537399424335}
+  - component: {fileID: 9219656948008237110}
   m_Layer: 0
   m_Name: Closet_RightDra
   m_TagString: Untagged
@@ -230076,6 +230671,7 @@ GameObject:
   - component: {fileID: 263780617039435692}
   - component: {fileID: 9104807461217092372}
   - component: {fileID: 7095150424420119760}
+  - component: {fileID: 9104807461217092373}
   m_Layer: 0
   m_Name: Closet_RightDoor.002
   m_TagString: Untagged
@@ -232122,6 +232718,37 @@ Transform:
   - {fileID: 7775203352945466926}
   m_Father: {fileID: 1835680418}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8183771863985765986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4509111667188657171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7cb10c26c21841b86a5436d18404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: 1874634771
+      Data2: 1226541702
+      Data3: 242884493
+      Data4: -1215000243
+    Path: event:/Ambience/Door/Closet Small
+  closeEvent:
+    Guid:
+      Data1: 1874634771
+      Data2: 1226541702
+      Data3: 242884493
+      Data4: -1215000243
+    Path: event:/Ambience/Door/Closet Small
+  attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
+  showDebugLogs: 0
 --- !u!33 &8184226397898129016
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -236051,6 +236678,37 @@ Transform:
   - {fileID: 4097893115761513045}
   m_Father: {fileID: 1835680418}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8848045917644560509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4437784525319622205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7cb10c26c21841b86a5436d18404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: 1874634771
+      Data2: 1226541702
+      Data3: 242884493
+      Data4: -1215000243
+    Path: event:/Ambience/Door/Closet Small
+  closeEvent:
+    Guid:
+      Data1: 1874634771
+      Data2: 1226541702
+      Data3: 242884493
+      Data4: -1215000243
+    Path: event:/Ambience/Door/Closet Small
+  attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
+  showDebugLogs: 0
 --- !u!1001 &8848753409111294323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -237179,6 +237837,35 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8976314522624971200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5691430600920667174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f94942871f3d7824a9420b9a861319f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawer: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: 881903666
+      Data2: 1183796599
+      Data3: 2076635571
+      Data4: -1175699237
+    Path: event:/Ambience/Door/Drawer
+  closeEvent:
+    Guid:
+      Data1: 1821867891
+      Data2: 1320119187
+      Data3: 530843307
+      Data4: 2128578552
+    Path: event:/Ambience/Door/DrawerClose
+  attachToDrawer: 1
+  showDebugLogs: 0
 --- !u!33 &8977246179813903186
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -238085,6 +238772,37 @@ MonoBehaviour:
   showNoiseOnUI: 1
   mixNoiseOnUI: 1
   showDebugLogs: 0
+--- !u!114 &9104807461217092373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7778533174571319199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7cb10c26c21841b86a5436d18404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: 1874634771
+      Data2: 1226541702
+      Data3: 242884493
+      Data4: -1215000243
+    Path: event:/Ambience/Door/Closet Small
+  closeEvent:
+    Guid:
+      Data1: 1874634771
+      Data2: 1226541702
+      Data3: 242884493
+      Data4: -1215000243
+    Path: event:/Ambience/Door/Closet Small
+  attachToDoor: 1
+  occludeDoorSounds: 1
+  occlusionParameter: Occlusion
+  showDebugLogs: 0
 --- !u!23 &9106498959580059991
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -238696,6 +239414,35 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &9219656948008237110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6833420843699729618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f94942871f3d7824a9420b9a861319f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawer: {fileID: 0}
+  openEvent:
+    Guid:
+      Data1: 881903666
+      Data2: 1183796599
+      Data3: 2076635571
+      Data4: -1175699237
+    Path: event:/Ambience/Door/Drawer
+  closeEvent:
+    Guid:
+      Data1: 1821867891
+      Data2: 1320119187
+      Data3: 530843307
+      Data4: 2128578552
+    Path: event:/Ambience/Door/DrawerClose
+  attachToDrawer: 1
+  showDebugLogs: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

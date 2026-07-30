@@ -360,6 +360,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 9
   Length: 2000
+--- !u!114 &-6259013303031668692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Monster/Cry
+  m_EditorClassIdentifier: 
+  Path: event:/Monster/Cry
+  Guid:
+    Data1: 989279271
+    Data2: 1184582240
+    Data3: -1522602327
+    Data4: -1312983053
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 5222427634862414562}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 12122
 --- !u!114 &-5100199245023624873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -732,6 +760,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 6.2000003
   Length: 108094
+--- !u!114 &-812518729132420092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Objects/MoldPassge
+  m_EditorClassIdentifier: 
+  Path: event:/Objects/MoldPassge
+  Guid:
+    Data1: -1701840399
+    Data2: 1176225858
+    Data3: -1322651773
+    Data4: -1492947650
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-497785548090678607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -886,6 +941,10 @@ MonoBehaviour:
   - {fileID: 8303592878790352136}
   - {fileID: 8796605848192628263}
   - {fileID: -6986333166227252385}
+  - {fileID: -6259013303031668692}
+  - {fileID: 5113898643380506545}
+  - {fileID: 2879056110575982894}
+  - {fileID: -812518729132420092}
   EditorParameters:
   - {fileID: 3038740214914519220}
   MasterBanks:
@@ -893,7 +952,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 390493745208664655}
   cacheVersion: 131860
-  cacheTime: 639209654800000000
+  cacheTime: 639209722080000000
   SerializableEventsDict:
   - key: event:/Player/Footsteps
     index: 0
@@ -965,6 +1024,14 @@ MonoBehaviour:
     index: 33
   - key: event:/Player/MoldPassage
     index: 34
+  - key: event:/Monster/Cry
+    index: 35
+  - key: event:/Monster/Phrases
+    index: 36
+  - key: event:/Monster/Scream
+    index: 37
+  - key: event:/Objects/MoldPassge
+    index: 38
 --- !u!114 &176710144190681147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1007,10 +1074,10 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639209654800000000
+  lastModified: 639209722080000000
   FileSizes:
   - Name: Desktop
-    Value: 2904
+    Value: 3074
   Exists: 1
 --- !u!114 &534891873104745030
 MonoBehaviour:
@@ -1191,6 +1258,34 @@ MonoBehaviour:
   - linoleum
   - Wood
   Exists: 1
+--- !u!114 &2879056110575982894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Monster/Scream
+  m_EditorClassIdentifier: 
+  Path: event:/Monster/Scream
+  Guid:
+    Data1: -274750025
+    Data2: 1104448504
+    Data3: -735477576
+    Data4: 1818018324
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 3208842364270099557}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 6500
 --- !u!114 &2928059199406592043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1237,6 +1332,30 @@ MonoBehaviour:
     data2: 1057073483
   Type: 0
   IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &3208842364270099557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Scream/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 664784307
+    data2: 2168317822
+  Type: 0
+  IsGlobal: 0
   Labels: []
   Exists: 1
 --- !u!114 &3969581204241585293
@@ -1309,10 +1428,10 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639209654800000000
+  lastModified: 639209722080000000
   FileSizes:
   - Name: Desktop
-    Value: 35075680
+    Value: 36891680
   Exists: 1
 --- !u!114 &4980667345281820645
 MonoBehaviour:
@@ -1338,6 +1457,34 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &5113898643380506545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Monster/Phrases
+  m_EditorClassIdentifier: 
+  Path: event:/Monster/Phrases
+  Guid:
+    Data1: -1046008441
+    Data2: 1255734590
+    Data3: -1197399671
+    Data4: 1477725151
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 5892910976390945324}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 5000
 --- !u!114 &5142142090603654503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1421,6 +1568,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2000
+--- !u!114 &5222427634862414562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Cry/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 664784307
+    data2: 2168317822
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &5352726842180284405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1476,6 +1647,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3155
+--- !u!114 &5892910976390945324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Phrases/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 664784307
+    data2: 2168317822
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &6372764328299172821
 MonoBehaviour:
   m_ObjectHideFlags: 0
