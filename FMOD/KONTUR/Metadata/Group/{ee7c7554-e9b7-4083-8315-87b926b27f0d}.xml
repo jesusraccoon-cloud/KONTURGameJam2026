@@ -4,6 +4,9 @@
 		<property name="name">
 			<value>Player</value>
 		</property>
+		<relationship name="masters">
+			<destination>{1d6fb0e2-00b8-45d4-9ea0-f9f1ba079f56}</destination>
+		</relationship>
 		<relationship name="effectChain">
 			<destination>{9f94e487-dcf7-4a3c-9e49-174d0be5da90}</destination>
 		</relationship>
@@ -11,7 +14,7 @@
 			<destination>{06446b4b-2bf9-48dc-959e-e36c703f1804}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{91c8bbe0-de89-461f-a004-df8a49b64509}</destination>
+			<destination>{1b01e86b-a998-4e15-b8fe-eb140d532eab}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{9f94e487-dcf7-4a3c-9e49-174d0be5da90}">

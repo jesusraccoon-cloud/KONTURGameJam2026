@@ -19,6 +19,15 @@ public class SC_LampHum : MonoBehaviour, IOccludable // Зацикленный �
 
     public float minIntensity = 0.05f; // Порог яркости, ниже которого считаем лампу выключенной
 
+    [Header("Distance Culling")] // Отсечка по дистанции (чтобы дальние лампы не держали инстанс)
+    public bool useDistanceCulling = false; // Включать гул только когда игрок близко
+
+    public float maxHearDistance = 20f; // Дальше этого расстояния гул не играет
+
+    public float cullingHysteresis = 2f; // Запас, чтобы не мигало на границе (стоп на maxHearDistance + это)
+
+    public Transform listenerOverride; // Слушатель вручную (если пусто — StudioListener/камера)
+
     [Header("Occlusion")] // Блок окклюзии
     public string occlusionParameter = "Occlusion"; // Непрерывный параметр 0..1 в событии гула (если есть)
 
@@ -28,6 +37,8 @@ public class SC_LampHum : MonoBehaviour, IOccludable // Зацикленный �
     private EventInstance humInstance; // Экземпляр зацикленного гула
 
     private bool isPlaying = false; // Играет ли гул сейчас
+
+    private Transform cachedListener; // Кэш слушателя для отсечки по дистанции
 
     private void Awake() // Вызывается при создании объекта
     {
@@ -66,7 +77,7 @@ public class SC_LampHum : MonoBehaviour, IOccludable // Зацикленный �
 
     private void UpdateHumState() // Включает/выключает гул под состояние лампы
     {
-        bool on = IsLampOn(); // Текущее состояние лампы
+        bool on = IsLampOn() && WithinHearRange(); // Лампа включена И игрок в пределах слышимости
 
         if (on && !isPlaying) // Лампа включилась, а гул не играет
         {
@@ -131,6 +142,35 @@ public class SC_LampHum : MonoBehaviour, IOccludable // Зацикленный �
         isPlaying = false; // Гул не играет
 
         if (showDebugLogs) Debug.Log(gameObject.name + ": гул лампы выключен"); // Лог
+    }
+
+    private bool WithinHearRange() // В пределах ли слышимости (для отсечки по дистанции)
+    {
+        if (!useDistanceCulling) return true; // Отсечка выключена — всегда «в радиусе»
+
+        Transform lis = ResolveListener(); // Находим слушателя
+
+        if (lis == null) return true; // Нет слушателя — не отсекаем
+
+        Vector3 pos = targetLight != null ? targetLight.transform.position : transform.position; // Позиция лампы
+
+        float limit = isPlaying ? maxHearDistance + cullingHysteresis : maxHearDistance; // Гистерезис: играющий гул глушим чуть дальше
+
+        return (pos - lis.position).sqrMagnitude <= limit * limit; // Сравниваем квадраты дистанций
+    }
+
+    private Transform ResolveListener() // Находит слушателя (кэширует)
+    {
+        if (listenerOverride != null) return listenerOverride; // Указан вручную
+
+        if (cachedListener != null) return cachedListener; // Уже нашли
+
+        StudioListener sl = FindFirstObjectByType<StudioListener>(); // Ищем FMOD-слушателя
+        if (sl != null) { cachedListener = sl.transform; return cachedListener; } // Нашли — кэшируем
+
+        if (Camera.main != null) { cachedListener = Camera.main.transform; return cachedListener; } // Иначе камера
+
+        return null; // Слушатель не найден
     }
 
     // --- IOccludable: окклюзию раздаёт SC_OcclusionListener с игрока ---
