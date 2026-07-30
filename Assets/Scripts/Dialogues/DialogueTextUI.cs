@@ -26,6 +26,8 @@ public class DialogueTextUI : MonoBehaviour // Универсальный кон
     private string configuredMessage; // Текст, заранее введённый в поле Text Input самого компонента TextMeshPro
     private static DialogueTextUI currentDialogue; // Текущий диалог на экране, общий для всех объектов DialogueTextUI
 
+    public event System.Action Shown; // Событие: реплику показали (SC_DialogueVoice цепляет сюда голос)
+
     private void Reset() // Unity вызывает этот метод при первом добавлении компонента
     {
         dialogueText = GetComponentInChildren<TMP_Text>(true); // Пытаемся автоматически найти TextMeshPro среди дочерних объектов
@@ -124,6 +126,9 @@ public class DialogueTextUI : MonoBehaviour // Универсальный кон
         }
 
         currentDialogue = this; // Запоминаем этот объект как единственный текущий диалог
+
+        Shown?.Invoke(); // Сообщаем подписчикам (голос) о показе реплики
+
         showTextCoroutine = StartCoroutine(ShowTextRoutine()); // Запускаем ожидание и плавное исчезновение
     }
 

@@ -1196,6 +1196,8 @@ MonoBehaviour:
   - {fileID: 0}
   playDialogueListInOrder: 0
   dialogueLineInterval: 3
+  usePerLineDuration: 0
+  perLinePauseAfter: 0.25
   useDialogueDelay: 0
   dialogueDelaySeconds: 0
   playerRoot: {fileID: 0}
@@ -1595,6 +1597,8 @@ MonoBehaviour:
   - {fileID: 0}
   playDialogueListInOrder: 0
   dialogueLineInterval: 3
+  usePerLineDuration: 0
+  perLinePauseAfter: 0.25
   useDialogueDelay: 0
   dialogueDelaySeconds: 0
   playerRoot: {fileID: 0}
@@ -1625,6 +1629,7 @@ GameObject:
   - component: {fileID: 19505831}
   - component: {fileID: 19505830}
   - component: {fileID: 19505829}
+  - component: {fileID: 19505833}
   m_Layer: 5
   m_Name: BathroomLock6/6
   m_TagString: Untagged
@@ -1778,6 +1783,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 19505827}
   m_CullTransparentMesh: 1
+--- !u!114 &19505833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19505827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27fdd8174941a49ad5fcdc95d587fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceEvent:
+    Guid:
+      Data1: -2000588895
+      Data2: 1241360737
+      Data3: 40113041
+      Data4: -1650998914
+    Path: event:/Player/Dialog/19. Zaklinelo
+  speaker: 0
+  showDebugLogs: 0
 --- !u!1 &22680381
 GameObject:
   m_ObjectHideFlags: 0
@@ -2197,6 +2223,8 @@ MonoBehaviour:
   enterDialogueList: []
   playDialogueListInOrder: 0
   dialogueLineInterval: 3
+  usePerLineDuration: 0
+  perLinePauseAfter: 0.25
   useDialogueDelay: 0
   dialogueDelaySeconds: 0
   playerRoot: {fileID: 0}
@@ -3553,6 +3581,7 @@ GameObject:
   - component: {fileID: 41152879}
   - component: {fileID: 41152881}
   - component: {fileID: 41152880}
+  - component: {fileID: 41152883}
   m_Layer: 5
   m_Name: TriggerCollider (1)
   m_TagString: Untagged
@@ -3622,15 +3651,17 @@ MonoBehaviour:
   - {fileID: 1774585967}
   playDialogueListInOrder: 0
   dialogueLineInterval: 3
+  usePerLineDuration: 0
+  perLinePauseAfter: 0.25
   useDialogueDelay: 1
   dialogueDelaySeconds: 2
   playerRoot: {fileID: 1881408431}
   playerController: {fileID: 1881408446}
   playerCharacterController: {fileID: 1881408436}
-  lockPlayerControlDuringDialogue: 1
-  lockControlDuringDialogueDelay: 1
+  lockPlayerControlDuringDialogue: 0
+  lockControlDuringDialogueDelay: 0
   dialogueControlLockDuration: 50
-  movePlayerToPointOnEnter: 1
+  movePlayerToPointOnEnter: 0
   playerMovePoint: {fileID: 1779401669}
   playerMoveSpeed: 1.5
   playerTurnSpeed: 360
@@ -3639,6 +3670,24 @@ MonoBehaviour:
   scriptedGravity: -2
   apartmentFinalSequence: {fileID: 0}
   showDebugLogs: 1
+--- !u!114 &41152883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41152878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269ac5ddbcf16334c9f71f74eee6f571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueText: {fileID: 0}
+  dialogueCanvasGroup: {fileID: 0}
+  visibleDuration: 3
+  fadeDuration: 0.35
+  useUnscaledTime: 1
+  showDebugWarnings: 1
 --- !u!1001 &42200579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6464,6 +6513,7 @@ GameObject:
   - component: {fileID: 81898732}
   - component: {fileID: 81898731}
   - component: {fileID: 81898730}
+  - component: {fileID: 81898734}
   m_Layer: 5
   m_Name: ActiveGirl
   m_TagString: Untagged
@@ -6618,6 +6668,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 81898728}
   m_CullTransparentMesh: 1
+--- !u!114 &81898734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81898728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27fdd8174941a49ad5fcdc95d587fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceEvent:
+    Guid:
+      Data1: 1009088302
+      Data2: 1098096345
+      Data3: 391526318
+      Data4: -13035838
+    Path: event:/Player/Dialog/5. Obnarujena aktivnost
+  speaker: 0
+  showDebugLogs: 0
 --- !u!43 &83833396
 Mesh:
   m_ObjectHideFlags: 0
@@ -7499,6 +7570,8 @@ MonoBehaviour:
   - {fileID: 0}
   playDialogueListInOrder: 0
   dialogueLineInterval: 3
+  usePerLineDuration: 0
+  perLinePauseAfter: 0.25
   useDialogueDelay: 0
   dialogueDelaySeconds: 0
   playerRoot: {fileID: 0}
@@ -10814,6 +10887,7 @@ GameObject:
   - component: {fileID: 138592680}
   - component: {fileID: 138592679}
   - component: {fileID: 138592678}
+  - component: {fileID: 138592682}
   m_Layer: 5
   m_Name: CuckoldClockActivate
   m_TagString: Untagged
@@ -10968,6 +11042,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 138592676}
   m_CullTransparentMesh: 1
+--- !u!114 &138592682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138592676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27fdd8174941a49ad5fcdc95d587fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceEvent:
+    Guid:
+      Data1: -908433009
+      Data2: 1086907450
+      Data3: -1742665291
+      Data4: -1762502777
+    Path: event:/Player/Dialog/14. Chert Ona eto uslishit
+  speaker: 0
+  showDebugLogs: 0
 --- !u!1 &139260402
 GameObject:
   m_ObjectHideFlags: 0
@@ -14582,6 +14677,8 @@ MonoBehaviour:
   - {fileID: 1030947746}
   playDialogueListInOrder: 0
   dialogueLineInterval: 3
+  usePerLineDuration: 0
+  perLinePauseAfter: 0.25
   useDialogueDelay: 0
   dialogueDelaySeconds: 0
   playerRoot: {fileID: 0}
@@ -22527,6 +22624,8 @@ MonoBehaviour:
   - {fileID: 0}
   playDialogueListInOrder: 0
   dialogueLineInterval: 3
+  usePerLineDuration: 0
+  perLinePauseAfter: 0.25
   useDialogueDelay: 0
   dialogueDelaySeconds: 0
   playerRoot: {fileID: 0}
@@ -27542,6 +27641,7 @@ GameObject:
   - component: {fileID: 342301916}
   - component: {fileID: 342301915}
   - component: {fileID: 342301914}
+  - component: {fileID: 342301917}
   - component: {fileID: 342301913}
   m_Layer: 5
   m_Name: HallExitAfter6/6
@@ -27698,6 +27798,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342301911}
   m_CullTransparentMesh: 1
+--- !u!114 &342301917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342301911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27fdd8174941a49ad5fcdc95d587fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceEvent:
+    Guid:
+      Data1: -276702285
+      Data2: 1078145139
+      Data3: 1437819043
+      Data4: 1345965278
+    Path: event:/Player/Dialog/18. Ne Uvidela
+  speaker: 0
+  showDebugLogs: 0
 --- !u!1 &343192176
 GameObject:
   m_ObjectHideFlags: 0
@@ -28906,6 +29027,8 @@ MonoBehaviour:
   enterDialogueList: []
   playDialogueListInOrder: 0
   dialogueLineInterval: 3
+  usePerLineDuration: 0
+  perLinePauseAfter: 0.25
   useDialogueDelay: 0
   dialogueDelaySeconds: 0
   playerRoot: {fileID: 0}
@@ -34423,6 +34546,8 @@ MonoBehaviour:
   enterDialogueList: []
   playDialogueListInOrder: 1
   dialogueLineInterval: 2
+  usePerLineDuration: 1
+  perLinePauseAfter: 0.25
   useDialogueDelay: 0
   dialogueDelaySeconds: 0
   playerRoot: {fileID: 1881408431}
@@ -34430,7 +34555,7 @@ MonoBehaviour:
   playerCharacterController: {fileID: 1881408436}
   lockPlayerControlDuringDialogue: 1
   lockControlDuringDialogueDelay: 1
-  dialogueControlLockDuration: 7
+  dialogueControlLockDuration: 4
   movePlayerToPointOnEnter: 1
   playerMovePoint: {fileID: 1779401669}
   playerMoveSpeed: 1.5
@@ -36025,6 +36150,7 @@ GameObject:
   - component: {fileID: 450671328}
   - component: {fileID: 450671327}
   - component: {fileID: 450671326}
+  - component: {fileID: 450671330}
   m_Layer: 5
   m_Name: MoldTentacles
   m_TagString: Untagged
@@ -36179,6 +36305,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 450671324}
   m_CullTransparentMesh: 1
+--- !u!114 &450671330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450671324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27fdd8174941a49ad5fcdc95d587fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceEvent:
+    Guid:
+      Data1: 1011572128
+      Data2: 1120248555
+      Data3: -2057726550
+      Data4: -752010661
+    Path: event:/Player/Dialog/17. Glavnoe ne lezt
+  speaker: 0
+  showDebugLogs: 0
 --- !u!1 &451694172
 GameObject:
   m_ObjectHideFlags: 0
@@ -44543,6 +44690,8 @@ MonoBehaviour:
   - {fileID: 81898730}
   playDialogueListInOrder: 0
   dialogueLineInterval: 3
+  usePerLineDuration: 0
+  perLinePauseAfter: 0.25
   useDialogueDelay: 0
   dialogueDelaySeconds: 0
   playerRoot: {fileID: 0}
@@ -46306,6 +46455,7 @@ GameObject:
   - component: {fileID: 555822748}
   - component: {fileID: 555822747}
   - component: {fileID: 555822746}
+  - component: {fileID: 555822750}
   m_Layer: 5
   m_Name: FirstRep
   m_TagString: Untagged
@@ -46346,7 +46496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 555822748}
   dialogueCanvasGroup: {fileID: 555822747}
-  visibleDuration: 3
+  visibleDuration: 3.4
   fadeDuration: 0.35
   useUnscaledTime: 1
   showDebugWarnings: 1
@@ -46461,6 +46611,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 555822744}
   m_CullTransparentMesh: 1
+--- !u!114 &555822750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555822744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27fdd8174941a49ad5fcdc95d587fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceEvent:
+    Guid:
+      Data1: -355656531
+      Data2: 1080937606
+      Data3: -785814102
+      Data4: -1527372638
+    Path: event:/Comp/2. 67
+  speaker: 1
+  showDebugLogs: 0
 --- !u!1 &558378916
 GameObject:
   m_ObjectHideFlags: 0
@@ -47974,6 +48145,8 @@ MonoBehaviour:
   - {fileID: 1105005548}
   playDialogueListInOrder: 0
   dialogueLineInterval: 3
+  usePerLineDuration: 0
+  perLinePauseAfter: 0.25
   useDialogueDelay: 0
   dialogueDelaySeconds: 0
   playerRoot: {fileID: 0}
@@ -48105,6 +48278,8 @@ MonoBehaviour:
   - {fileID: 37706995}
   playDialogueListInOrder: 0
   dialogueLineInterval: 3
+  usePerLineDuration: 0
+  perLinePauseAfter: 0.25
   useDialogueDelay: 1
   dialogueDelaySeconds: 2
   playerRoot: {fileID: 1881408431}
@@ -64279,6 +64454,7 @@ GameObject:
   - component: {fileID: 765923219}
   - component: {fileID: 765923218}
   - component: {fileID: 765923217}
+  - component: {fileID: 765923221}
   m_Layer: 5
   m_Name: Phase6/6Enable
   m_TagString: Untagged
@@ -64433,6 +64609,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 765923215}
   m_CullTransparentMesh: 1
+--- !u!114 &765923221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765923215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27fdd8174941a49ad5fcdc95d587fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceEvent:
+    Guid:
+      Data1: -2105885501
+      Data2: 1334710081
+      Data3: 1857402515
+      Data4: 1714132189
+    Path: event:/Player/Dialog/15. Twoi Mat
+  speaker: 0
+  showDebugLogs: 0
 --- !u!1001 &766927421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71007,6 +71204,7 @@ GameObject:
   - component: {fileID: 864645404}
   - component: {fileID: 864645403}
   - component: {fileID: 864645402}
+  - component: {fileID: 864645406}
   m_Layer: 5
   m_Name: ClockKey
   m_TagString: Untagged
@@ -71161,6 +71359,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 864645400}
   m_CullTransparentMesh: 1
+--- !u!114 &864645406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864645400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27fdd8174941a49ad5fcdc95d587fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceEvent:
+    Guid:
+      Data1: -1039423418
+      Data2: 1223535734
+      Data3: 549328004
+      Data4: 61299329
+    Path: event:/Player/Dialog/13.Zaperto Nushen Kluch
+  speaker: 0
+  showDebugLogs: 0
 --- !u!1 &865224065
 GameObject:
   m_ObjectHideFlags: 0
@@ -76202,6 +76421,8 @@ MonoBehaviour:
   - {fileID: 0}
   playDialogueListInOrder: 0
   dialogueLineInterval: 3
+  usePerLineDuration: 0
+  perLinePauseAfter: 0.25
   useDialogueDelay: 0
   dialogueDelaySeconds: 0
   playerRoot: {fileID: 0}
@@ -88084,6 +88305,7 @@ GameObject:
   - component: {fileID: 1030947748}
   - component: {fileID: 1030947747}
   - component: {fileID: 1030947746}
+  - component: {fileID: 1030947750}
   m_Layer: 5
   m_Name: KitchenBarricadeAfter6/6
   m_TagString: Untagged
@@ -88238,6 +88460,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030947744}
   m_CullTransparentMesh: 1
+--- !u!114 &1030947750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030947744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27fdd8174941a49ad5fcdc95d587fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceEvent:
+    Guid:
+      Data1: 1022319986
+      Data2: 1325578213
+      Data3: 58764453
+      Data4: -454284115
+    Path: event:/Player/Dialog/21.Blyad Nushno zakrit
+  speaker: 0
+  showDebugLogs: 0
 --- !u!1 &1031349910
 GameObject:
   m_ObjectHideFlags: 0
@@ -90044,6 +90287,7 @@ GameObject:
   - component: {fileID: 1058524200}
   - component: {fileID: 1058524199}
   - component: {fileID: 1058524198}
+  - component: {fileID: 1058524202}
   m_Layer: 5
   m_Name: Barricade0-5/6
   m_TagString: Untagged
@@ -90198,6 +90442,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1058524196}
   m_CullTransparentMesh: 1
+--- !u!114 &1058524202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058524196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27fdd8174941a49ad5fcdc95d587fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceEvent:
+    Guid:
+      Data1: 2119723876
+      Data2: 1291870131
+      Data3: -2098789212
+      Data4: -1785709553
+    Path: event:/Player/Dialog/10. Dejitse Na Chestnom Slove
+  speaker: 0
+  showDebugLogs: 0
 --- !u!1001 &1058691734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92009,6 +92274,8 @@ MonoBehaviour:
   - {fileID: 0}
   playDialogueListInOrder: 0
   dialogueLineInterval: 3
+  usePerLineDuration: 0
+  perLinePauseAfter: 0.25
   useDialogueDelay: 0
   dialogueDelaySeconds: 0
   playerRoot: {fileID: 0}
@@ -93474,6 +93741,7 @@ GameObject:
   - component: {fileID: 1105005550}
   - component: {fileID: 1105005549}
   - component: {fileID: 1105005548}
+  - component: {fileID: 1105005552}
   m_Layer: 5
   m_Name: HallwayStart
   m_TagString: Untagged
@@ -93628,6 +93896,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1105005546}
   m_CullTransparentMesh: 1
+--- !u!114 &1105005552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105005546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27fdd8174941a49ad5fcdc95d587fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceEvent:
+    Guid:
+      Data1: -323465481
+      Data2: 1087318166
+      Data3: 72213129
+      Data4: 1122250913
+    Path: event:/Player/Dialog/4. obkect67
+  speaker: 0
+  showDebugLogs: 0
 --- !u!43 &1105624656
 Mesh:
   m_ObjectHideFlags: 0
@@ -97139,6 +97428,8 @@ MonoBehaviour:
   - {fileID: 342301913}
   playDialogueListInOrder: 0
   dialogueLineInterval: 3
+  usePerLineDuration: 0
+  perLinePauseAfter: 0.25
   useDialogueDelay: 0
   dialogueDelaySeconds: 0
   playerRoot: {fileID: 0}
@@ -97737,6 +98028,8 @@ MonoBehaviour:
   - {fileID: 0}
   playDialogueListInOrder: 0
   dialogueLineInterval: 3
+  usePerLineDuration: 0
+  perLinePauseAfter: 0.25
   useDialogueDelay: 0
   dialogueDelaySeconds: 0
   playerRoot: {fileID: 0}
@@ -99643,6 +99936,8 @@ MonoBehaviour:
   - {fileID: 765923217}
   playDialogueListInOrder: 0
   dialogueLineInterval: 3
+  usePerLineDuration: 0
+  perLinePauseAfter: 0.25
   useDialogueDelay: 0
   dialogueDelaySeconds: 0
   playerRoot: {fileID: 0}
@@ -101803,6 +102098,8 @@ MonoBehaviour:
   - {fileID: 0}
   playDialogueListInOrder: 0
   dialogueLineInterval: 3
+  usePerLineDuration: 0
+  perLinePauseAfter: 0.25
   useDialogueDelay: 0
   dialogueDelaySeconds: 0
   playerRoot: {fileID: 0}
@@ -120122,6 +120419,7 @@ GameObject:
   - component: {fileID: 1353513991}
   - component: {fileID: 1353513990}
   - component: {fileID: 1353513989}
+  - component: {fileID: 1353513993}
   m_Layer: 5
   m_Name: HallEnterence0-3/6
   m_TagString: Untagged
@@ -120276,6 +120574,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1353513987}
   m_CullTransparentMesh: 1
+--- !u!114 &1353513993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353513987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27fdd8174941a49ad5fcdc95d587fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceEvent:
+    Guid:
+      Data1: -1210564380
+      Data2: 1330999714
+      Data3: 939555993
+      Data4: -1605409398
+    Path: event:/Player/Dialog/6. Rano
+  speaker: 0
+  showDebugLogs: 0
 --- !u!43 &1353711130
 Mesh:
   m_ObjectHideFlags: 0
@@ -124274,6 +124593,7 @@ GameObject:
   - component: {fileID: 1405490577}
   - component: {fileID: 1405490576}
   - component: {fileID: 1405490575}
+  - component: {fileID: 1405490579}
   m_Layer: 5
   m_Name: WindowStreetView
   m_TagString: Untagged
@@ -124429,6 +124749,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1405490573}
   m_CullTransparentMesh: 1
+--- !u!114 &1405490579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405490573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27fdd8174941a49ad5fcdc95d587fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceEvent:
+    Guid:
+      Data1: 447633391
+      Data2: 1315201962
+      Data3: 1244409006
+      Data4: 674656868
+    Path: event:/Player/Dialog/12. Strana dom eche
+  speaker: 0
+  showDebugLogs: 0
 --- !u!1 &1407291711
 GameObject:
   m_ObjectHideFlags: 0
@@ -134533,6 +134874,7 @@ GameObject:
   - component: {fileID: 1506299485}
   - component: {fileID: 1506299487}
   - component: {fileID: 1506299486}
+  - component: {fileID: 1506299488}
   m_Layer: 5
   m_Name: 'TriggerCollider '
   m_TagString: Untagged
@@ -134603,6 +134945,8 @@ MonoBehaviour:
   - {fileID: 0}
   playDialogueListInOrder: 0
   dialogueLineInterval: 3
+  usePerLineDuration: 0
+  perLinePauseAfter: 0.25
   useDialogueDelay: 0
   dialogueDelaySeconds: 0
   playerRoot: {fileID: 0}
@@ -134620,6 +134964,24 @@ MonoBehaviour:
   scriptedGravity: -2
   apartmentFinalSequence: {fileID: 0}
   showDebugLogs: 1
+--- !u!114 &1506299488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506299484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269ac5ddbcf16334c9f71f74eee6f571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueText: {fileID: 0}
+  dialogueCanvasGroup: {fileID: 0}
+  visibleDuration: 3
+  fadeDuration: 0.35
+  useUnscaledTime: 1
+  showDebugWarnings: 1
 --- !u!43 &1508168953
 Mesh:
   m_ObjectHideFlags: 0
@@ -141100,6 +141462,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1576291766}
+  - component: {fileID: 1576291767}
   m_Layer: 0
   m_Name: CompanionFloor2
   m_TagString: Untagged
@@ -141123,6 +141486,19 @@ Transform:
   - {fileID: 713197613}
   m_Father: {fileID: 1063578361}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1576291767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576291765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 392c681a4d18fd346b0a4c334811a510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceOrigin: {fileID: 713197613}
 --- !u!43 &1576976139
 Mesh:
   m_ObjectHideFlags: 0
@@ -142275,6 +142651,7 @@ GameObject:
   - component: {fileID: 1597721785}
   - component: {fileID: 1597721784}
   - component: {fileID: 1597721783}
+  - component: {fileID: 1597721788}
   m_Layer: 5
   m_Name: ThirdRep
   m_TagString: Untagged
@@ -142296,7 +142673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 1597721785}
   dialogueCanvasGroup: {fileID: 1597721784}
-  visibleDuration: 3
+  visibleDuration: 2.7
   fadeDuration: 0.35
   useUnscaledTime: 1
   showDebugWarnings: 1
@@ -142428,6 +142805,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1597721788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597721782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27fdd8174941a49ad5fcdc95d587fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceEvent:
+    Guid:
+      Data1: 1674073217
+      Data2: 1305715121
+      Data3: -1710943822
+      Data4: -1053706414
+    Path: "event:/Comp/3. \u0445\u0445\u0430\u0445\u0430 \u0443\u0434\u0430\u0447\u0438"
+  speaker: 1
+  showDebugLogs: 0
 --- !u!1 &1602314909
 GameObject:
   m_ObjectHideFlags: 0
@@ -145520,6 +145918,8 @@ MonoBehaviour:
   - {fileID: 450671326}
   playDialogueListInOrder: 0
   dialogueLineInterval: 3
+  usePerLineDuration: 0
+  perLinePauseAfter: 0.25
   useDialogueDelay: 0
   dialogueDelaySeconds: 0
   playerRoot: {fileID: 1881408431}
@@ -145934,6 +146334,7 @@ GameObject:
   - component: {fileID: 1637152445}
   - component: {fileID: 1637152444}
   - component: {fileID: 1637152443}
+  - component: {fileID: 1637152447}
   m_Layer: 5
   m_Name: Up3Floor
   m_TagString: Untagged
@@ -146089,6 +146490,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1637152441}
   m_CullTransparentMesh: 1
+--- !u!114 &1637152447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637152441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27fdd8174941a49ad5fcdc95d587fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceEvent:
+    Guid:
+      Data1: -207473347
+      Data2: 1250513211
+      Data3: 1618770345
+      Data4: -1749561715
+    Path: event:/Player/Dialog/3
+  speaker: 0
+  showDebugLogs: 0
 --- !u!1 &1638901434
 GameObject:
   m_ObjectHideFlags: 0
@@ -146102,6 +146524,7 @@ GameObject:
   - component: {fileID: 1638901438}
   - component: {fileID: 1638901437}
   - component: {fileID: 1638901436}
+  - component: {fileID: 1638901440}
   m_Layer: 5
   m_Name: MoldHole
   m_TagString: Untagged
@@ -146256,6 +146679,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1638901434}
   m_CullTransparentMesh: 1
+--- !u!114 &1638901440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638901434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27fdd8174941a49ad5fcdc95d587fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceEvent:
+    Guid:
+      Data1: -1247515909
+      Data2: 1235288017
+      Data3: 1283665035
+      Data4: 748299130
+    Path: event:/Player/Dialog/9. Ne seichas
+  speaker: 0
+  showDebugLogs: 0
 --- !u!43 &1638989985
 Mesh:
   m_ObjectHideFlags: 0
@@ -147050,6 +147494,8 @@ MonoBehaviour:
   - {fileID: 1962664991}
   playDialogueListInOrder: 0
   dialogueLineInterval: 3
+  usePerLineDuration: 0
+  perLinePauseAfter: 0.25
   useDialogueDelay: 0
   dialogueDelaySeconds: 0
   playerRoot: {fileID: 0}
@@ -149016,6 +149462,7 @@ GameObject:
   - component: {fileID: 1661006978}
   - component: {fileID: 1661006980}
   - component: {fileID: 1661006979}
+  - component: {fileID: 1661006981}
   m_Layer: 5
   m_Name: TriggerCollider
   m_TagString: Untagged
@@ -149084,7 +149531,9 @@ MonoBehaviour:
   enterDialogueList:
   - {fileID: 1637152443}
   playDialogueListInOrder: 0
-  dialogueLineInterval: 3
+  dialogueLineInterval: 1
+  usePerLineDuration: 0
+  perLinePauseAfter: 0.25
   useDialogueDelay: 0
   dialogueDelaySeconds: 0
   playerRoot: {fileID: 1881408431}
@@ -149092,7 +149541,7 @@ MonoBehaviour:
   playerCharacterController: {fileID: 1881408436}
   lockPlayerControlDuringDialogue: 0
   lockControlDuringDialogueDelay: 0
-  dialogueControlLockDuration: 5
+  dialogueControlLockDuration: 2
   movePlayerToPointOnEnter: 1
   playerMovePoint: {fileID: 1779401669}
   playerMoveSpeed: 1.5
@@ -149102,6 +149551,24 @@ MonoBehaviour:
   scriptedGravity: -2
   apartmentFinalSequence: {fileID: 0}
   showDebugLogs: 1
+--- !u!114 &1661006981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661006977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269ac5ddbcf16334c9f71f74eee6f571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueText: {fileID: 0}
+  dialogueCanvasGroup: {fileID: 0}
+  visibleDuration: 3
+  fadeDuration: 0.35
+  useUnscaledTime: 1
+  showDebugWarnings: 1
 --- !u!1 &1662243033 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9005220659476430823, guid: 2d3a85ecde41a8246a79669975912b74,
@@ -150317,6 +150784,7 @@ GameObject:
   - component: {fileID: 1667902322}
   - component: {fileID: 1667902321}
   - component: {fileID: 1667902320}
+  - component: {fileID: 1667902325}
   m_Layer: 5
   m_Name: SecondRep
   m_TagString: Untagged
@@ -150338,7 +150806,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 1667902322}
   dialogueCanvasGroup: {fileID: 1667902321}
-  visibleDuration: 3
+  visibleDuration: 2.2
   fadeDuration: 0.35
   useUnscaledTime: 1
   showDebugWarnings: 1
@@ -150470,6 +150938,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1667902325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667902319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27fdd8174941a49ad5fcdc95d587fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceEvent:
+    Guid:
+      Data1: -1476794618
+      Data2: 1132807104
+      Data3: 2002037123
+      Data4: -880380748
+    Path: event:/Player/Dialog/2.
+  speaker: 0
+  showDebugLogs: 0
 --- !u!43 &1668496462
 Mesh:
   m_ObjectHideFlags: 0
@@ -159113,6 +159602,7 @@ GameObject:
   - component: {fileID: 1774585969}
   - component: {fileID: 1774585968}
   - component: {fileID: 1774585967}
+  - component: {fileID: 1774585971}
   m_Layer: 5
   m_Name: AfterStartUpFloor
   m_TagString: Untagged
@@ -159267,6 +159757,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1774585965}
   m_CullTransparentMesh: 1
+--- !u!114 &1774585971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774585965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27fdd8174941a49ad5fcdc95d587fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceEvent:
+    Guid:
+      Data1: -1834338552
+      Data2: 1173486197
+      Data3: 60041630
+      Data4: 568987493
+    Path: event:/Comp/1. Ti Chevo
+  speaker: 1
+  showDebugLogs: 1
 --- !u!1 &1775153441
 GameObject:
   m_ObjectHideFlags: 0
@@ -173991,6 +174502,7 @@ GameObject:
   - component: {fileID: 1927303434}
   - component: {fileID: 1927303433}
   - component: {fileID: 1927303432}
+  - component: {fileID: 1927303436}
   m_Layer: 5
   m_Name: InteractWardrobe
   m_TagString: Untagged
@@ -174145,6 +174657,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1927303430}
   m_CullTransparentMesh: 1
+--- !u!114 &1927303436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927303430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27fdd8174941a49ad5fcdc95d587fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceEvent:
+    Guid:
+      Data1: 1695097261
+      Data2: 1077251933
+      Data3: 1829692573
+      Data4: -609745789
+    Path: event:/Player/Dialog/11.Snachala Nuchnoi osvobodit
+  speaker: 0
+  showDebugLogs: 0
 --- !u!1 &1927815322
 GameObject:
   m_ObjectHideFlags: 0
@@ -176537,6 +177070,7 @@ GameObject:
   - component: {fileID: 1962664993}
   - component: {fileID: 1962664992}
   - component: {fileID: 1962664991}
+  - component: {fileID: 1962664995}
   m_Layer: 5
   m_Name: BathroomLockAfterWindow
   m_TagString: Untagged
@@ -176691,6 +177225,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1962664989}
   m_CullTransparentMesh: 1
+--- !u!114 &1962664995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962664989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27fdd8174941a49ad5fcdc95d587fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceEvent:
+    Guid:
+      Data1: 608034954
+      Data2: 1092080671
+      Data3: -495066198
+      Data4: -937316166
+    Path: event:/Player/Dialog/22. Zamok Nushno vibit
+  speaker: 0
+  showDebugLogs: 0
 --- !u!1 &1962887424
 GameObject:
   m_ObjectHideFlags: 0
@@ -190862,6 +191417,7 @@ GameObject:
   - component: {fileID: 2115811852}
   - component: {fileID: 2115811851}
   - component: {fileID: 2115811850}
+  - component: {fileID: 2115811854}
   m_Layer: 5
   m_Name: InteractKitchenWindow
   m_TagString: Untagged
@@ -191017,6 +191573,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2115811848}
   m_CullTransparentMesh: 1
+--- !u!114 &2115811854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115811848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f27fdd8174941a49ad5fcdc95d587fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceEvent:
+    Guid:
+      Data1: -590232623
+      Data2: 1104992042
+      Data3: 802676390
+      Data4: -1572083792
+    Path: event:/Player/Dialog/7. Esli Prigmet
+  speaker: 0
+  showDebugLogs: 0
 --- !u!1001 &2116290420
 PrefabInstance:
   m_ObjectHideFlags: 0

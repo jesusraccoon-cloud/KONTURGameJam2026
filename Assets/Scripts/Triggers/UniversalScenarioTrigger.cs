@@ -27,7 +27,9 @@ public class UniversalScenarioTrigger : MonoBehaviour, IInteractable, IHitIntera
 
     [Header("Dialogue Order")]
     public bool playDialogueListInOrder = false; // Проиграть весь выбранный список сверху вниз за одну активацию
-    [Min(0.05f)] public float dialogueLineInterval = 3f; // Пауза между запуском соседних реплик
+    [Min(0.05f)] public float dialogueLineInterval = 3f; // Пауза между запуском соседних реплик (общая, если per-line выключен)
+    public bool usePerLineDuration = false; // Ждать длину КАЖДОЙ реплики (её Visible Duration) вместо общего интервала — чтобы голос не обрывался
+    [Min(0f)] public float perLinePauseAfter = 0.25f; // Доп. пауза после каждой реплики в режиме per-line
 
     [Header("Dialogue Delay")]
     public bool useDialogueDelay = false; // Использовать задержку реплики
@@ -174,7 +176,12 @@ public class UniversalScenarioTrigger : MonoBehaviour, IInteractable, IHitIntera
             if (list[i] == null) continue; // Пустые элементы безопасно пропускаем
             list[i].ShowConfiguredText(); // Проигрываем текущую реплику
             if (HasNextDialogue(list, i + 1)) // Проверяем, есть ли следующая реплика
-                yield return new WaitForSeconds(dialogueLineInterval); // Ждём общую паузу между репликами
+            {
+                float wait = usePerLineDuration // Выбираем паузу до следующей реплики
+                    ? list[i].visibleDuration + perLinePauseAfter // Длина именно этой реплики + небольшая пауза (голос не обрывается)
+                    : dialogueLineInterval; // Или общий интервал (старое поведение)
+                yield return new WaitForSeconds(wait); // Ждём выбранное время
+            }
         }
 
         if (lockPlayerControlDuringDialogue && dialogueControlLockDuration > 0f) // Даём последней реплике остаться на экране

@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8947940910383673809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/6. Rano
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/6. Rano
+  Guid:
+    Data1: -1210564380
+    Data2: 1330999714
+    Data3: 939555993
+    Data4: -1605409398
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2377
 --- !u!114 &-8883905805698317535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,6 +148,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-7567753513369756941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/3
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/3
+  Guid:
+    Data1: -207473347
+    Data2: 1250513211
+    Data3: 1618770345
+    Data4: -1749561715
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1593
 --- !u!114 &-7548761212712199174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,6 +231,87 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 4.6
   Length: 306000
+--- !u!114 &-7271900846682593552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/21.Blyad Nushno zakrit
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/21.Blyad Nushno zakrit
+  Guid:
+    Data1: 1022319986
+    Data2: 1325578213
+    Data3: 58764453
+    Data4: -454284115
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2377
+--- !u!114 &-7267514538326632163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/22. Zamok Nushno vibit
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/22. Zamok Nushno vibit
+  Guid:
+    Data1: 608034954
+    Data2: 1092080671
+    Data3: -495066198
+    Data4: -937316166
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2142
+--- !u!114 &-7238430139859118236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/16. Nushno vibiratse
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/16. Nushno vibiratse
+  Guid:
+    Data1: 854928915
+    Data2: 1192665099
+    Data3: -1190757982
+    Data4: 35382082
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1300
 --- !u!114 &-7039978384953132775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,6 +552,60 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 12122
+--- !u!114 &-5708081707498409241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Comp/2. 67
+  m_EditorClassIdentifier: 
+  Path: event:/Comp/2. 67
+  Guid:
+    Data1: -355656531
+    Data2: 1080937606
+    Data3: -785814102
+    Data4: -1527372638
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3265
+--- !u!114 &-5452313747472490333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/24. Net Blyad Suka
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/24. Net Blyad Suka
+  Guid:
+    Data1: -1963936391
+    Data2: 1303570554
+    Data3: 1903296696
+    Data4: 147118247
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3422
 --- !u!114 &-5100199245023624873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,6 +657,60 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-4966202489352136562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/5. Obnarujena aktivnost
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/5. Obnarujena aktivnost
+  Guid:
+    Data1: 1009088302
+    Data2: 1098096345
+    Data3: 391526318
+    Data4: -13035838
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3400
+--- !u!114 &-4737187202913139174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/17. Glavnoe ne lezt
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/17. Glavnoe ne lezt
+  Guid:
+    Data1: 1011572128
+    Data2: 1120248555
+    Data3: -2057726550
+    Data4: -752010661
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2350
 --- !u!114 &-4610002411801351966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,6 +735,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-4297974333246593770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/23. Net 1
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/23. Net 1
+  Guid:
+    Data1: 1537990331
+    Data2: 1096028997
+    Data3: -453206353
+    Data4: -2052831271
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1436
 --- !u!114 &-4239528673032668459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -543,6 +813,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-4061456729069490584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/Comp/3. \u0445\u0445\u0430\u0445\u0430 \u0443\u0434\u0430\u0447\u0438"
+  m_EditorClassIdentifier: 
+  Path: "event:/Comp/3. \u0445\u0445\u0430\u0445\u0430 \u0443\u0434\u0430\u0447\u0438"
+  Guid:
+    Data1: 1674073217
+    Data2: 1305715121
+    Data3: -1710943822
+    Data4: -1053706414
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2612
 --- !u!114 &-3982825177419810735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567,6 +864,61 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-3863020032730552845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/1.
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/1.
+  Guid:
+    Data1: -239018852
+    Data2: 1314083798
+    Data3: -20569689
+    Data4: -719672777
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2220
+--- !u!114 &-3809739328830517064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Comp/1. Ti Chevo
+  m_EditorClassIdentifier: 
+  Path: event:/Comp/1. Ti Chevo
+  Guid:
+    Data1: -1834338552
+    Data2: 1173486197
+    Data3: 60041630
+    Data4: 568987493
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 2174211859420032377}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1802
 --- !u!114 &-3680594369633479694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,6 +1002,60 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 152873
+--- !u!114 &-2679192798912831936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/19. Zaklinelo
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/19. Zaklinelo
+  Guid:
+    Data1: -2000588895
+    Data2: 1241360737
+    Data3: 40113041
+    Data4: -1650998914
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1097
+--- !u!114 &-1888293904098950799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/7. Esli Prigmet
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/7. Esli Prigmet
+  Guid:
+    Data1: -590232623
+    Data2: 1104992042
+    Data3: 802676390
+    Data4: -1572083792
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3482
 --- !u!114 &-1175765840282098057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -705,6 +1111,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 9
   Length: 2000
+--- !u!114 &-1071687943911136885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/18. Ne Uvidela
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/18. Ne Uvidela
+  Guid:
+    Data1: -276702285
+    Data2: 1078145139
+    Data3: 1437819043
+    Data4: 1345965278
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
 --- !u!114 &-1070758260847107354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -816,6 +1249,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-563543777508553275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/15. Twoi Mat
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/15. Twoi Mat
+  Guid:
+    Data1: -2105885501
+    Data2: 1334710081
+    Data3: 1857402515
+    Data4: 1714132189
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1807
 --- !u!114 &-497785548090678607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -919,6 +1379,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 7
   Length: 141087
+--- !u!114 &-280549419598756422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/12. Strana dom eche
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/12. Strana dom eche
+  Guid:
+    Data1: 447633391
+    Data2: 1315201962
+    Data3: 1244409006
+    Data4: 674656868
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4500
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -976,6 +1463,34 @@ MonoBehaviour:
   - {fileID: -812518729132420092}
   - {fileID: 1826307243490669821}
   - {fileID: 2894052734628790441}
+  - {fileID: 6103909628022594009}
+  - {fileID: -3809739328830517064}
+  - {fileID: -7238430139859118236}
+  - {fileID: -4966202489352136562}
+  - {fileID: -7567753513369756941}
+  - {fileID: 4492163500906049072}
+  - {fileID: 4739460652445911797}
+  - {fileID: 9193025234251642303}
+  - {fileID: 2320636510569415818}
+  - {fileID: -7271900846682593552}
+  - {fileID: -5452313747472490333}
+  - {fileID: -4061456729069490584}
+  - {fileID: -7267514538326632163}
+  - {fileID: 6410114122654923028}
+  - {fileID: -3863020032730552845}
+  - {fileID: -4737187202913139174}
+  - {fileID: -2679192798912831936}
+  - {fileID: 857420139578597158}
+  - {fileID: -5708081707498409241}
+  - {fileID: 4482329055516820913}
+  - {fileID: -1071687943911136885}
+  - {fileID: -4297974333246593770}
+  - {fileID: -563543777508553275}
+  - {fileID: -1888293904098950799}
+  - {fileID: -8947940910383673809}
+  - {fileID: -280549419598756422}
+  - {fileID: 6339356442184734137}
+  - {fileID: 7153739701598144784}
   EditorParameters:
   - {fileID: 3038740214914519220}
   MasterBanks:
@@ -983,7 +1498,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 390493745208664655}
   cacheVersion: 131860
-  cacheTime: 639209976360590854
+  cacheTime: 639210555680000000
   SerializableEventsDict:
   - key: event:/Player/Footsteps
     index: 0
@@ -1067,6 +1582,62 @@ MonoBehaviour:
     index: 39
   - key: event:/Monster/Attack
     index: 40
+  - key: event:/Player/Dialog/2.
+    index: 41
+  - key: event:/Comp/1. Ti Chevo
+    index: 42
+  - key: event:/Player/Dialog/16. Nushno vibiratse
+    index: 43
+  - key: event:/Player/Dialog/5. Obnarujena aktivnost
+    index: 44
+  - key: event:/Player/Dialog/3
+    index: 45
+  - key: event:/Player/Dialog/25. AAAA
+    index: 46
+  - key: event:/Player/Dialog/13.Zaperto Nushen Kluch
+    index: 47
+  - key: event:/Player/Dialog/20.Nado Otvlech ee
+    index: 48
+  - key: event:/Player/Dialog/10. Dejitse Na Chestnom Slove
+    index: 49
+  - key: event:/Player/Dialog/21.Blyad Nushno zakrit
+    index: 50
+  - key: event:/Player/Dialog/24. Net Blyad Suka
+    index: 51
+  - key: "event:/Comp/3. \u0445\u0445\u0430\u0445\u0430 \u0443\u0434\u0430\u0447\u0438"
+    index: 52
+  - key: event:/Player/Dialog/22. Zamok Nushno vibit
+    index: 53
+  - key: event:/Player/Dialog/14. Chert Ona eto uslishit
+    index: 54
+  - key: event:/Player/Dialog/1.
+    index: 55
+  - key: event:/Player/Dialog/17. Glavnoe ne lezt
+    index: 56
+  - key: event:/Player/Dialog/19. Zaklinelo
+    index: 57
+  - key: event:/Player/Dialog/8. Poka Bey shuma
+    index: 58
+  - key: event:/Comp/2. 67
+    index: 59
+  - key: event:/Player/Dialog/11.Snachala Nuchnoi osvobodit
+    index: 60
+  - key: event:/Player/Dialog/18. Ne Uvidela
+    index: 61
+  - key: event:/Player/Dialog/23. Net 1
+    index: 62
+  - key: event:/Player/Dialog/15. Twoi Mat
+    index: 63
+  - key: event:/Player/Dialog/7. Esli Prigmet
+    index: 64
+  - key: event:/Player/Dialog/6. Rano
+    index: 65
+  - key: event:/Player/Dialog/12. Strana dom eche
+    index: 66
+  - key: event:/Player/Dialog/4. obkect67
+    index: 67
+  - key: event:/Player/Dialog/9. Ne seichas
+    index: 68
 --- !u!114 &176710144190681147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1109,10 +1680,10 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639209976360590854
+  lastModified: 639210555680000000
   FileSizes:
   - Name: Desktop
-    Value: 3408
+    Value: 4892
   Exists: 1
 --- !u!114 &534891873104745030
 MonoBehaviour:
@@ -1141,6 +1712,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 875
+--- !u!114 &857420139578597158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/8. Poka Bey shuma
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/8. Poka Bey shuma
+  Guid:
+    Data1: 1189995169
+    Data2: 1186894088
+    Data3: -1096493150
+    Data4: -1374067665
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1593
 --- !u!114 &1446152514084877850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1269,6 +1867,57 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &2174211859420032377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/1. Ti Chevo/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 664784307
+    data2: 2168317822
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &2320636510569415818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/10. Dejitse Na Chestnom Slove
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/10. Dejitse Na Chestnom Slove
+  Guid:
+    Data1: 2119723876
+    Data2: 1291870131
+    Data3: -2098789212
+    Data4: -1785709553
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1800
 --- !u!114 &2802758251877826373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1504,6 +2153,60 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 7.6
   Length: 19500
+--- !u!114 &4482329055516820913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/11.Snachala Nuchnoi osvobodit
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/11.Snachala Nuchnoi osvobodit
+  Guid:
+    Data1: 1695097261
+    Data2: 1077251933
+    Data3: 1829692573
+    Data4: -609745789
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1950
+--- !u!114 &4492163500906049072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/25. AAAA
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/25. AAAA
+  Guid:
+    Data1: 1182643773
+    Data2: 1129139421
+    Data3: -1990573418
+    Data4: -163852948
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1985
 --- !u!114 &4552191581410023176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1519,11 +2222,38 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639209976360590854
+  lastModified: 639210555680000000
   FileSizes:
   - Name: Desktop
-    Value: 37214048
+    Value: 37949536
   Exists: 1
+--- !u!114 &4739460652445911797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/13.Zaperto Nushen Kluch
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/13.Zaperto Nushen Kluch
+  Guid:
+    Data1: -1039423418
+    Data2: 1223535734
+    Data3: 549328004
+    Data4: 61299329
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2489
 --- !u!114 &4980667345281820645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1762,6 +2492,60 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &6103909628022594009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/2.
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/2.
+  Guid:
+    Data1: -1476794618
+    Data2: 1132807104
+    Data3: 2002037123
+    Data4: -880380748
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2063
+--- !u!114 &6339356442184734137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/4. obkect67
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/4. obkect67
+  Guid:
+    Data1: -323465481
+    Data2: 1087318166
+    Data3: 72213129
+    Data4: 1122250913
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 6400
 --- !u!114 &6372764328299172821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1789,6 +2573,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 161332
+--- !u!114 &6410114122654923028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/14. Chert Ona eto uslishit
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/14. Chert Ona eto uslishit
+  Guid:
+    Data1: -908433009
+    Data2: 1086907450
+    Data3: -1742665291
+    Data4: -1762502777
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1515
 --- !u!114 &6423867911238367399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1840,6 +2651,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &7153739701598144784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/9. Ne seichas
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/9. Ne seichas
+  Guid:
+    Data1: -1247515909
+    Data2: 1235288017
+    Data3: 1283665035
+    Data4: 748299130
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1300
 --- !u!114 &7527099755692281281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2015,3 +2853,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 4877
+--- !u!114 &9193025234251642303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Dialog/20.Nado Otvlech ee
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Dialog/20.Nado Otvlech ee
+  Guid:
+    Data1: 409889621
+    Data2: 1097341271
+    Data3: -1731087229
+    Data4: -2133168401
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2250
