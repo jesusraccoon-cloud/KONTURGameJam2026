@@ -9562,8 +9562,8 @@ MonoBehaviour:
   playOnStart: 1
   occludable: 1
   occlusionParameter: Occlusion
-  useDistanceCulling: 0
-  maxHearDistance: 25
+  useDistanceCulling: 1
+  maxHearDistance: 7
   cullingHysteresis: 2
   listenerOverride: {fileID: 0}
   showDebugLogs: 0
@@ -20984,8 +20984,8 @@ MonoBehaviour:
   playOnStart: 1
   occludable: 1
   occlusionParameter: Occlusion
-  useDistanceCulling: 0
-  maxHearDistance: 25
+  useDistanceCulling: 1
+  maxHearDistance: 8
   cullingHysteresis: 2
   listenerOverride: {fileID: 0}
   showDebugLogs: 0
@@ -29562,8 +29562,8 @@ MonoBehaviour:
   playOnStart: 1
   occludable: 1
   occlusionParameter: Occlusion
-  useDistanceCulling: 0
-  maxHearDistance: 25
+  useDistanceCulling: 1
+  maxHearDistance: 7
   cullingHysteresis: 2
   listenerOverride: {fileID: 0}
   showDebugLogs: 0
@@ -32779,8 +32779,8 @@ MonoBehaviour:
   playOnStart: 1
   occludable: 1
   occlusionParameter: Occlusion
-  useDistanceCulling: 0
-  maxHearDistance: 25
+  useDistanceCulling: 1
+  maxHearDistance: 7
   cullingHysteresis: 2
   listenerOverride: {fileID: 0}
   showDebugLogs: 0
@@ -34625,8 +34625,8 @@ MonoBehaviour:
   playOnStart: 0
   occludable: 1
   occlusionParameter: Occlusion
-  useDistanceCulling: 0
-  maxHearDistance: 25
+  useDistanceCulling: 1
+  maxHearDistance: 8
   cullingHysteresis: 2
   listenerOverride: {fileID: 0}
   showDebugLogs: 0
@@ -51654,10 +51654,10 @@ MonoBehaviour:
     Path: event:/Ambience/Lights/BrokenLight
   attachToLamp: 1
   fadeOutOnStop: 0
-  alsoRequireIntensity: 0
+  alsoRequireIntensity: 1
   minIntensity: 0.05
-  useDistanceCulling: 0
-  maxHearDistance: 20
+  useDistanceCulling: 1
+  maxHearDistance: 8
   cullingHysteresis: 2
   listenerOverride: {fileID: 0}
   occlusionParameter: Occlusion
@@ -86062,6 +86062,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2370364117595378483, guid: 574203dae4f5ecf4f81793051fb5080a,
+        type: 3}
+      propertyPath: maxHearDistance
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2370364117595378483, guid: 574203dae4f5ecf4f81793051fb5080a,
+        type: 3}
+      propertyPath: useDistanceCulling
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4141417508797730791, guid: 574203dae4f5ecf4f81793051fb5080a,
         type: 3}
       propertyPath: m_Range
@@ -95775,6 +95785,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2370364117595378483, guid: 574203dae4f5ecf4f81793051fb5080a,
+        type: 3}
+      propertyPath: maxHearDistance
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2370364117595378483, guid: 574203dae4f5ecf4f81793051fb5080a,
+        type: 3}
+      propertyPath: useDistanceCulling
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4141417508797730791, guid: 574203dae4f5ecf4f81793051fb5080a,
         type: 3}
@@ -113242,8 +113262,8 @@ MonoBehaviour:
   playOnStart: 1
   occludable: 1
   occlusionParameter: Occlusion
-  useDistanceCulling: 0
-  maxHearDistance: 25
+  useDistanceCulling: 1
+  maxHearDistance: 7
   cullingHysteresis: 2
   listenerOverride: {fileID: 0}
   showDebugLogs: 0
@@ -138237,8 +138257,8 @@ MonoBehaviour:
   playOnStart: 1
   occludable: 1
   occlusionParameter: Occlusion
-  useDistanceCulling: 0
-  maxHearDistance: 25
+  useDistanceCulling: 1
+  maxHearDistance: 7
   cullingHysteresis: 2
   listenerOverride: {fileID: 0}
   showDebugLogs: 0
@@ -143786,8 +143806,8 @@ MonoBehaviour:
   playOnStart: 1
   occludable: 1
   occlusionParameter: Occlusion
-  useDistanceCulling: 0
-  maxHearDistance: 25
+  useDistanceCulling: 1
+  maxHearDistance: 7
   cullingHysteresis: 2
   listenerOverride: {fileID: 0}
   showDebugLogs: 0
@@ -162754,8 +162774,8 @@ MonoBehaviour:
   playOnStart: 1
   occludable: 1
   occlusionParameter: Occlusion
-  useDistanceCulling: 0
-  maxHearDistance: 25
+  useDistanceCulling: 1
+  maxHearDistance: 8
   cullingHysteresis: 2
   listenerOverride: {fileID: 0}
   showDebugLogs: 0
@@ -166641,6 +166661,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2370364117595378483, guid: 574203dae4f5ecf4f81793051fb5080a,
+        type: 3}
+      propertyPath: maxHearDistance
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2370364117595378483, guid: 574203dae4f5ecf4f81793051fb5080a,
+        type: 3}
+      propertyPath: useDistanceCulling
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4141417508797730791, guid: 574203dae4f5ecf4f81793051fb5080a,
         type: 3}
@@ -190933,8 +190963,8 @@ MonoBehaviour:
   playOnStart: 1
   occludable: 1
   occlusionParameter: Occlusion
-  useDistanceCulling: 0
-  maxHearDistance: 25
+  useDistanceCulling: 1
+  maxHearDistance: 7
   cullingHysteresis: 2
   listenerOverride: {fileID: 0}
   showDebugLogs: 0
@@ -224399,6 +224429,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2370364117595378483, guid: 574203dae4f5ecf4f81793051fb5080a,
+        type: 3}
+      propertyPath: maxHearDistance
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2370364117595378483, guid: 574203dae4f5ecf4f81793051fb5080a,
+        type: 3}
+      propertyPath: useDistanceCulling
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4141417508797730791, guid: 574203dae4f5ecf4f81793051fb5080a,
         type: 3}
