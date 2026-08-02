@@ -36,7 +36,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 100
+    spritePixelsToUnits: 25
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -98,7 +98,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639209588027066504
+  platformSettingsDirtyTick: 639212714738921199
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -153,8 +153,28 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 179
-      height: 184
+      height: 163
     spriteID: d0a0f5b73d0b9a44dac76a5a99cff25f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: dnevnick_tab_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 20
+      y: 167
+      width: 38
+      height: 21
+    spriteID: 935dc8fd8466a6e458400a076bc99e8d
     spriteBone: []
     spriteOutline: []
     vertices: []
