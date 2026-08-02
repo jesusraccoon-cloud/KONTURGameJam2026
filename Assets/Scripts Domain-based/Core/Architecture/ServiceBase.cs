@@ -17,6 +17,7 @@ namespace Core
 
         protected virtual void Awake()
         {
+            base.Awake();
             Status.Subscribe(OnStatusUpdated).AddTo(this);
             Startup();
         }
