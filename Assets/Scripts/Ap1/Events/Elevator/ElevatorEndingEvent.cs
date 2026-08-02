@@ -62,6 +62,19 @@ public class ElevatorEndingEvent : MonoBehaviour // Главный скрипт 
     [Header("Debug")] // Заголовок в Inspector для отладочных сообщений
     public bool showDebugLogs = true; // Показывать ли сообщения Debug.Log в Console
 
+    private Vector3 lockedPlayerPosition; // Позиция, в которой игрок должен оставаться после входа в лифт
+
+    private bool lockPlayerPosition = false; // Нужно ли удерживать игрока на месте после входа
+
+    private void LateUpdate() // Выполняется после обычного Update всех компонентов
+    {
+        if (!lockPlayerPosition) return; // Если фиксация не включена, ничего не делаем
+
+        if (playerTransform == null) return; // Если игрок не назначен, выходим
+
+        playerTransform.position = lockedPlayerPosition; // Гарантированно удерживаем игрока в точке после входа
+    }
+
     private void Start() // Метод запускается один раз при старте сцены
     {
         if (finalExitDoor != null) finalExitDoor.SetActive(false); // Если финальная дверь назначена, выключаем ее на старте
@@ -109,77 +122,110 @@ public class ElevatorEndingEvent : MonoBehaviour // Главный скрипт 
 
         DisablePlayerControl(); // Забираем управление у игрока
 
-        yield return new WaitForSeconds(delayBeforePlayerMove); // Ждем перед началом автоматического движения
+        yield return new WaitForSeconds(delayBeforePlayerMove); // Ждём перед началом автоматического входа
 
         if (elevatorEntryPoint != null) // Проверяем, назначена ли точка входа в лифт
         {
-            yield return StartCoroutine(MovePlayerToPoint(elevatorEntryPoint)); // Двигаем игрока к точке входа и ждем завершения
+            yield return StartCoroutine(MovePlayerToPoint(elevatorEntryPoint)); // Двигаем игрока к точке внутри лифта
         }
         else // Если точка входа не назначена
         {
             Debug.LogError("ElevatorEndingEvent: Elevator Entry Point не назначен в Inspector"); // Пишем ошибку в Console
         }
 
-        if (finalExitDoorOpenSignal != null) // Проверяем, назначен ли скрипт финальной двери квартиры
-        {
-            if (showDebugLogs) Debug.Log("ElevatorEndingEvent: закрываю финальную дверь за игроком"); // Пишем лог перед закрытием двери квартиры
-
-            yield return StartCoroutine(finalExitDoorOpenSignal.CloseDoorAndWait()); // Закрываем дверь квартиры за игроком и ждем окончания закрытия
-        }
-        else // Если скрипт финальной двери не назначен
-        {
-            Debug.LogError("ElevatorEndingEvent: Final Exit Door Open Signal не назначен в Inspector"); // Пишем ошибку в Console
-        }
-
-        yield return new WaitForSeconds(delayAfterPlayerEntered); // Ждем после входа игрока и закрытия двери квартиры
-
         if (elevatorLookPoint != null) // Проверяем, назначена ли точка взгляда
         {
-            yield return StartCoroutine(RotatePlayerToPoint(elevatorLookPoint)); // Разворачиваем игрока к точке взгляда
+            yield return StartCoroutine(RotatePlayerToPoint(elevatorLookPoint)); // Сразу разворачиваем уже остановившегося игрока
         }
         else // Если точка взгляда не назначена
         {
             Debug.LogError("ElevatorEndingEvent: Elevator Look Point не назначен в Inspector"); // Пишем ошибку в Console
         }
 
-        yield return new WaitForSeconds(delayBeforeElevatorDoorClose); // Ждем перед закрытием двери лифта
+        if (finalExitDoorOpenSignal != null) // Проверяем, назначен ли скрипт финальной двери квартиры
+        {
+            if (showDebugLogs) Debug.Log("ElevatorEndingEvent: игрок зафиксирован, закрываю финальную дверь"); // Пишем лог перед закрытием двери
+
+            yield return StartCoroutine(finalExitDoorOpenSignal.CloseDoorAndWait()); // Закрываем дверь после фиксации игрока
+        }
+        else // Если скрипт финальной двери не назначен
+        {
+            Debug.LogError("ElevatorEndingEvent: Final Exit Door Open Signal не назначен в Inspector"); // Пишем ошибку в Console
+        }
+
+        yield return new WaitForSeconds(delayAfterPlayerEntered); // Ждём после разворота и закрытия двери квартиры
+
+        yield return new WaitForSeconds(delayBeforeElevatorDoorClose); // Ждём перед закрытием двери лифта
 
         if (slidingElevatorDoor != null) // Проверяем, назначен ли скрипт двери лифта
         {
             if (showDebugLogs) Debug.Log("ElevatorEndingEvent: вызываю закрытие двери лифта"); // Пишем лог перед закрытием двери лифта
 
-            yield return StartCoroutine(slidingElevatorDoor.CloseDoorAndWait()); // Закрываем дверь лифта и ждем окончания
+            yield return StartCoroutine(slidingElevatorDoor.CloseDoorAndWait()); // Закрываем дверь лифта и ждём окончания
         }
         else // Если скрипт двери лифта не назначен
         {
             Debug.LogError("ElevatorEndingEvent: Sliding Elevator Door не назначен в Inspector"); // Пишем ошибку в Console
         }
 
-        if (showDebugLogs) Debug.Log("ElevatorEndingEvent: игрок вошел в лифт, дверь квартиры закрылась, игрок развернулся, дверь лифта закрылась"); // Пишем финальный лог катсцены
+        if (showDebugLogs) Debug.Log("ElevatorEndingEvent: игрок вошёл, остановился, развернулся на месте и не смещался к двери"); // Пишем финальный лог
     }
 
-    private IEnumerator MovePlayerToPoint(Transform targetPoint) // Корутина движения игрока к точке
+    private IEnumerator MovePlayerToPoint(Transform targetPoint) // Корутина движения игрока к точке входа в лифт
     {
-        if (playerTransform == null) yield break; // Если Transform игрока не назначен, выходим из корутины
+        if (playerTransform == null) yield break; // Если Transform игрока не назначен, выходим
 
-        if (targetPoint == null) yield break; // Если целевая точка не назначена, выходим из корутины
+        if (targetPoint == null) yield break; // Если целевая точка не назначена, выходим
 
-        if (playerCharacterController != null) playerCharacterController.enabled = false; // Выключаем CharacterController, чтобы он не мешал двигать игрока вручную
+        lockPlayerPosition = false; // На время входа разрешаем менять позицию игрока
 
-        while (Vector3.Distance(playerTransform.position, targetPoint.position) > 0.03f) // Пока игрок не подошел достаточно близко к точке
+        if (playerCharacterController != null) playerCharacterController.enabled = false; // Выключаем физическую капсулу на время катсцены
+
+        Vector3 targetPosition = new Vector3(
+            targetPoint.position.x,
+            playerTransform.position.y,
+            targetPoint.position.z
+        ); // Берём X/Z точки, но сохраняем текущую высоту игрока
+
+        Vector2 playerHorizontalPosition = new Vector2(
+            playerTransform.position.x,
+            playerTransform.position.z
+        ); // Получаем горизонтальную позицию игрока
+
+        Vector2 targetHorizontalPosition = new Vector2(
+            targetPosition.x,
+            targetPosition.z
+        ); // Получаем горизонтальную позицию точки
+
+        while (Vector2.Distance(playerHorizontalPosition, targetHorizontalPosition) > 0.03f) // Пока игрок не дошёл по плоскости пола
         {
-            playerTransform.position = Vector3.MoveTowards(playerTransform.position, targetPoint.position, playerMoveSpeed * Time.deltaTime); // Двигаем игрока к точке
+            playerTransform.position = Vector3.MoveTowards(
+                playerTransform.position,
+                targetPosition,
+                playerMoveSpeed * Time.deltaTime
+            ); // Двигаем игрока только к рассчитанной позиции с сохранённой высотой
 
-            playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetPoint.rotation, playerRotateSpeed * Time.deltaTime); // Плавно поворачиваем игрока к повороту точки
+            playerHorizontalPosition = new Vector2(
+                playerTransform.position.x,
+                playerTransform.position.z
+            ); // Обновляем горизонтальную позицию после движения
 
-            yield return null; // Ждем следующий кадр
+            yield return null; // Ждём следующий кадр
         }
 
-        playerTransform.position = targetPoint.position; // Точно ставим игрока в позицию точки
+        playerTransform.position = targetPosition; // Точно ставим игрока по X/Z без изменения Y
 
-        playerTransform.rotation = targetPoint.rotation; // Точно ставим игрока в поворот точки
+        lockedPlayerPosition = playerTransform.position; // Запоминаем окончательную позицию внутри лифта
 
-        if (playerCharacterController != null) playerCharacterController.enabled = true; // Включаем CharacterController обратно
+        lockPlayerPosition = true; // Запрещаем любым дверям и коллайдерам смещать игрока
+
+        if (showDebugLogs)
+        {
+            Debug.Log(
+                "ElevatorEndingEvent: игрок дошёл до точки. Позиция зафиксирована: " + lockedPlayerPosition,
+                gameObject
+            ); // Подтверждаем фиксацию позиции
+        }
     }
 
     private IEnumerator RotatePlayerToPoint(Transform lookPoint) // Корутина поворота игрока к точке
