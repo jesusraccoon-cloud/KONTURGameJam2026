@@ -1491,6 +1491,9 @@ MonoBehaviour:
   - {fileID: -280549419598756422}
   - {fileID: 6339356442184734137}
   - {fileID: 7153739701598144784}
+  - {fileID: 2077218207683110015}
+  - {fileID: 3595529157783993695}
+  - {fileID: 7731253012250735588}
   EditorParameters:
   - {fileID: 3038740214914519220}
   MasterBanks:
@@ -1498,7 +1501,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 390493745208664655}
   cacheVersion: 131860
-  cacheTime: 639211427887253092
+  cacheTime: 639212338080000000
   SerializableEventsDict:
   - key: event:/Player/Footsteps
     index: 0
@@ -1680,10 +1683,10 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639211427887253092
+  lastModified: 639212338080000000
   FileSizes:
   - Name: Desktop
-    Value: 4892
+    Value: 5066
   Exists: 1
 --- !u!114 &534891873104745030
 MonoBehaviour:
@@ -1840,6 +1843,34 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &2077218207683110015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Objects/Radio/Music
+  m_EditorClassIdentifier: 
+  Path: event:/Objects/Radio/Music
+  Guid:
+    Data1: 2001315359
+    Data2: 1164233412
+    Data3: -718585435
+    Data4: 1835496379
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 6030002812613731754}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 20038
 --- !u!114 &2161738952148699194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2098,6 +2129,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &3595529157783993695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Objects/Radio/TurnOn
+  m_EditorClassIdentifier: 
+  Path: event:/Objects/Radio/TurnOn
+  Guid:
+    Data1: 1555659454
+    Data2: 1099752267
+    Data3: -1041543005
+    Data4: 16204383
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1082
 --- !u!114 &3969581204241585293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2222,10 +2280,10 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639211427887243057
+  lastModified: 639212338080000000
   FileSizes:
   - Name: Desktop
-    Value: 37949536
+    Value: 38870240
   Exists: 1
 --- !u!114 &4739460652445911797
 MonoBehaviour:
@@ -2492,6 +2550,30 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &6030002812613731754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 664784307
+    data2: 2168317822
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &6103909628022594009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2706,6 +2788,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 59658
+--- !u!114 &7731253012250735588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Objects/Radio/Brake
+  m_EditorClassIdentifier: 
+  Path: event:/Objects/Radio/Brake
+  Guid:
+    Data1: 1130122382
+    Data2: 1099225029
+    Data3: 1087262115
+    Data4: -1267227689
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4543
 --- !u!114 &7928712737379132139
 MonoBehaviour:
   m_ObjectHideFlags: 0
