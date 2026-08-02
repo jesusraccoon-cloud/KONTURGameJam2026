@@ -44,6 +44,10 @@ public class CuckooClockPuzzle : MonoBehaviour, IInteractable // Часы отк
 
     private bool isRunning = false; // Идёт ли сейчас сцена кукушки
 
+    public event System.Action Opened; // Событие: часы открылись (для звука открытия)
+
+    public event System.Action Cuckooed; // Событие: кукушка крикнула (для звука крика)
+
     public void Interact() // Вызывается PlayerInteractor при E
     {
         if (isOpened) return; // Если часы уже открыты — выходим
@@ -96,9 +100,13 @@ public class CuckooClockPuzzle : MonoBehaviour, IInteractable // Часы отк
             openedClockObject.SetActive(true); // Включаем открытую модель
         }
 
+        Opened?.Invoke(); // Сообщаем подписчикам (звук) об открытии часов
+
         for (int i = 0; i < cuckooCount; i++) // Повторяем крик кукушки столько раз, сколько указано в Inspector
         {
-            PlayCuckooSound(); // Проигрываем FMOD-звук
+            PlayCuckooSound(); // Проигрываем FMOD-звук (StudioEventEmitter, если назначен)
+
+            Cuckooed?.Invoke(); // Сообщаем подписчикам (звук) о крике кукушки
 
             EmitCuckooNoise(); // Создаём шум для монстра
 

@@ -53173,6 +53173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 613269344}
   - component: {fileID: 613269345}
+  - component: {fileID: 613269346}
   m_Layer: 0
   m_Name: CuckoldClockRoom2
   m_TagString: Untagged
@@ -53189,7 +53190,7 @@ Transform:
   m_GameObject: {fileID: 613269343}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -42.722, y: -363.2771, z: 531.3976}
+  m_LocalPosition: {x: -42.707, y: -363.2771, z: 531.393}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -53224,6 +53225,37 @@ MonoBehaviour:
   cuckooEmitter: {fileID: 0}
   closedClockObject: {fileID: 0}
   openedClockObject: {fileID: 0}
+  showDebugLogs: 1
+--- !u!114 &613269346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613269343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d5c4865ffc86244b9e610c49bc38b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clock: {fileID: 0}
+  soundOrigin: {fileID: 1291854744}
+  openEvent:
+    Guid:
+      Data1: -1702091663
+      Data2: 1156069340
+      Data3: -752623740
+      Data4: 315993973
+    Path: event:/Objects/Clock/Open
+  cuckooEvent:
+    Guid:
+      Data1: -785558949
+      Data2: 1231485916
+      Data3: -201849159
+      Data4: -1233344119
+    Path: event:/Objects/Clock/Bell
+  occlude: 1
+  occlusionParameter: Occlusion
   showDebugLogs: 1
 --- !u!1001 &615311804
 PrefabInstance:
@@ -78890,6 +78922,7 @@ GameObject:
   m_Component:
   - component: {fileID: 919646581}
   - component: {fileID: 919646582}
+  - component: {fileID: 919646583}
   m_Layer: 0
   m_Name: KitchenBarricadeFall
   m_TagString: Untagged
@@ -78949,15 +78982,72 @@ MonoBehaviour:
   objectCollider: {fileID: 2073738152}
   onInteract:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 919646583}
+        m_TargetAssemblyTypeName: SC_InteractSound, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onStageChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 919646583}
+        m_TargetAssemblyTypeName: SC_InteractSound, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDestroyed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 919646583}
+        m_TargetAssemblyTypeName: SC_InteractSound, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   currentStage: 0
   nextObjectIndex: 0
+--- !u!114 &919646583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919646580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3810ca3e04b44074bb338f91c578b8dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound:
+    Guid:
+      Data1: 277800663
+      Data2: 1331361476
+      Data3: 985762974
+      Data4: 230562324
+    Path: event:/Objects/WarDrop
+  attachToObject: 1
+  showDebugLogs: 0
 --- !u!1 &919956351
 GameObject:
   m_ObjectHideFlags: 0
@@ -88728,7 +88818,7 @@ PrefabInstance:
     - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
       propertyPath: isOn
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2550483351824588588, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
         type: 3}
@@ -126995,6 +127085,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1405142718}
   - component: {fileID: 1405142719}
+  - component: {fileID: 1405142720}
   m_Layer: 0
   m_Name: EventBathDoor
   m_TagString: Untagged
@@ -127048,7 +127139,19 @@ MonoBehaviour:
   objectCollider: {fileID: 1165127645}
   onInteract:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1405142720}
+        m_TargetAssemblyTypeName: SC_InteractSound, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onStageChanged:
     m_PersistentCalls:
       m_Calls:
@@ -127064,11 +127167,44 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1405142720}
+        m_TargetAssemblyTypeName: SC_InteractSound, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDestroyed:
     m_PersistentCalls:
       m_Calls: []
   currentStage: 0
   nextObjectIndex: 0
+--- !u!114 &1405142720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405142717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3810ca3e04b44074bb338f91c578b8dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound:
+    Guid:
+      Data1: -1074536411
+      Data2: 1120593000
+      Data3: -652221775
+      Data4: -37699841
+    Path: event:/Objects/DoorHit
+  attachToObject: 0
+  showDebugLogs: 0
 --- !u!1 &1405490573
 GameObject:
   m_ObjectHideFlags: 0
@@ -176677,6 +176813,8 @@ GameObject:
   - component: {fileID: 1893785908}
   - component: {fileID: 1893785910}
   - component: {fileID: 1893785909}
+  - component: {fileID: 1893785911}
+  - component: {fileID: 1893785912}
   m_Layer: 0
   m_Name: WindowRoot
   m_TagString: Untagged
@@ -176748,9 +176886,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1893785911}
+        m_TargetAssemblyTypeName: SC_InteractSound, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onBreak:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1893785912}
+        m_TargetAssemblyTypeName: SC_InteractSound, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   showDebugLogs: 1
 --- !u!114 &1893785910
 MonoBehaviour:
@@ -176773,6 +176935,48 @@ MonoBehaviour:
   useSecondRoom: 0
   showNoiseOnUI: 1
   mixNoiseOnUI: 1
+  showDebugLogs: 0
+--- !u!114 &1893785911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893785907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3810ca3e04b44074bb338f91c578b8dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound:
+    Guid:
+      Data1: 1648288326
+      Data2: 1285763888
+      Data3: -386142079
+      Data4: 1396391718
+    Path: event:/Objects/WindowHit
+  attachToObject: 0
+  showDebugLogs: 0
+--- !u!114 &1893785912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893785907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3810ca3e04b44074bb338f91c578b8dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound:
+    Guid:
+      Data1: 1000532558
+      Data2: 1107216803
+      Data3: -34867312
+      Data4: 514900926
+    Path: event:/Objects/GlassBrake
+  attachToObject: 0
   showDebugLogs: 0
 --- !u!1001 &1894252408
 PrefabInstance:
