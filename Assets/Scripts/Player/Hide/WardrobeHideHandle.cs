@@ -4,47 +4,43 @@ using System.Collections; // Подключаем корутины
 public class WardrobeHideHandle : MonoBehaviour // Скрипт конкретного шкафа
 {
     [Header("Door Zone")] // Блок зон дверей
-
     public Collider[] doorInteractZones; // Несколько коллайдеров, через которые E открывает или закрывает соответствующую дверь шкафа
 
     [Header("Inside Hide Zone")] // Блок внутренней зоны пряток
-
     public Collider insideHideInteractZone; // Внутренний коллайдер, через который Q запускает прятки
 
     public bool insideZoneOnlyAfterPropDestroyed = true; // Включать внутреннюю зону только после destroyed стадии пропса
 
-    public bool setInsideZoneObjectActive = true; // Включать или выключать весь объект внутренней зоны
+    public bool setInsideZoneObjectActive = true; // Включать/выключать весь объект внутренней зоны
 
     [Header("Hide System")] // Блок системы пряток
-
     public PlayerHideController playerHideController; // Контроллер пряток игрока
 
     public UniversalDoor[] wardrobeDoors; // Несколько основных дверей шкафа, соответствующих Door Interact Zones
 
-    public UniversalDoor[] wardrobeDoorsToCloseAfterHide; // Дополнительные двери, которые открываются и закрываются при входе и выходе
+    public UniversalDoor[] wardrobeDoorsToCloseAfterHide; // Дополнительные двери шкафа, которые надо открывать/закрывать при входе и выходе
 
-    public UniversalDoor wardrobeDoor // Старое имя сохранено для совместимости с PlayerHideController
+    public UniversalDoor wardrobeDoor // Совместимость со старым PlayerHideController; в Inspector это поле не появляется
     {
-        get // Возвращаем одну основную дверь старым скриптам
+        get
         {
-            if (wardrobeDoors == null) return null; // Если массива нет, возвращаем пустую ссылку
-
-            for (int i = 0; i < wardrobeDoors.Length; i++) // Перебираем все основные двери
+            if (wardrobeDoors != null) // Сначала проверяем двери, через которые разрешены прятки
             {
-                if (wardrobeDoors[i] != null) return wardrobeDoors[i]; // Возвращаем первую назначенную дверь
+                for (int i = 0; i < wardrobeDoors.Length; i++) // Ищем первую назначенную дверь
+                {
+                    if (wardrobeDoors[i] != null) return wardrobeDoors[i]; // Возвращаем первую найденную дверь
+                }
             }
 
-            return null; // Если все элементы пустые, возвращаем null
-        }
-
-        set // Позволяем старому коду при необходимости назначить основную дверь
-        {
-            if (wardrobeDoors == null || wardrobeDoors.Length == 0) // Проверяем наличие первого элемента
+            if (wardrobeDoorsToCloseAfterHide != null) // Если первый массив пуст, проверяем двери последовательности пряток
             {
-                wardrobeDoors = new UniversalDoor[1]; // Создаём массив с одним элементом
+                for (int i = 0; i < wardrobeDoorsToCloseAfterHide.Length; i++) // Ищем первую назначенную дверь
+                {
+                    if (wardrobeDoorsToCloseAfterHide[i] != null) return wardrobeDoorsToCloseAfterHide[i]; // Возвращаем первую найденную дверь
+                }
             }
 
-            wardrobeDoors[0] = value; // Назначаем переданную дверь первым элементом массива
+            return null; // Если двери не назначены, возвращаем пустую ссылку
         }
     }
 
@@ -53,13 +49,11 @@ public class WardrobeHideHandle : MonoBehaviour // Скрипт конкретн
     public Transform exitPoint; // Точка выхода перед шкафом
 
     [Header("Required Destroyed Prop")] // Блок условия с пропсом
-
     public ThreeStageInteractableObject requiredDestroyedProp; // Пропс, который должен быть уничтожен
 
     public bool requirePropDestroyed = true; // Нужно ли ждать destroyed стадии пропса
 
     [Header("Door Timings")] // Блок задержек дверей
-
     public float doorOpenBeforeHideDelay = 0.6f; // Пауза после открытия дверей перед входом игрока
 
     public float doorCloseAfterHideDelay = 0.4f; // Пауза перед закрытием дверей после входа
@@ -68,51 +62,56 @@ public class WardrobeHideHandle : MonoBehaviour // Скрипт конкретн
 
     public float doorCloseAfterExitDelay = 0.4f; // Пауза перед закрытием дверей после выхода
 
-    [Header("Door Safety")] // Блок надёжности дверей
+    [Header("Peek While Hidden")] // Настройки щели, пока игрок сидит в шкафу
+    public bool usePeekPositionWhileHidden = true; // Оставлять двери приоткрытыми вместо полного закрытия
 
-    public int doorActionAttempts = 8; // Сколько раз пробовать открыть или закрыть двери
+    public float[] peekAngles; // Угол щели для каждой двери из Wardrobe Doors To Close After Hide
 
-    public float doorActionRetryDelay = 0.15f; // Пауза между попытками открыть или закрыть двери
+    public float delayBeforePeek = 0.15f; // Пауза после полного закрытия перед приоткрыванием
+
+    [Header("Door Safety")] // Блок надежности дверей
+    public int doorActionAttempts = 8; // Сколько раз пробовать открыть/закрыть двери
+
+    public float doorActionRetryDelay = 0.15f; // Пауза между попытками открыть/закрыть двери
 
     [Header("Debug")] // Блок отладки
-
     [SerializeField] private bool insideZoneUnlocked = false; // Показывает, включена ли внутренняя зона
 
-    private bool missingPropWarningShown = false; // Защита от повторяющегося предупреждения
+    private bool missingPropWarningShown = false; // Защита от спама предупреждением
 
-    private void Start() // Запускается при старте сцены
+    private void Start() // Запуск при старте сцены
     {
         SetupDoorZones(); // Настраиваем все дверные зоны
 
         SetupInsideHideZone(); // Настраиваем внутреннюю зону
 
-        RefreshInsideHideZone(true); // Сразу устанавливаем правильное состояние внутренней зоны
+        RefreshInsideHideZone(true); // Сразу выставляем правильное состояние внутренней зоны
     }
 
-    private void Update() // Вызывается каждый кадр
+    private void Update() // Каждый кадр
     {
         RefreshInsideHideZone(false); // Проверяем, можно ли включить внутреннюю зону
     }
 
     private void SetupDoorZones() // Настраивает все зоны дверей
     {
-        if (doorInteractZones == null) return; // Если массив отсутствует, выходим
+        if (doorInteractZones == null) return; // Если массив не назначен, выходим
 
-        for (int i = 0; i < doorInteractZones.Length; i++) // Перебираем все дверные зоны
+        for (int i = 0; i < doorInteractZones.Length; i++) // Проходим по всем зонам
         {
             Collider currentZone = doorInteractZones[i]; // Получаем текущую зону
 
-            if (currentZone == null) continue; // Пропускаем пустой элемент
+            if (currentZone == null) continue; // Если зона не назначена, пропускаем её
 
-            currentZone.isTrigger = true; // Делаем коллайдер триггером
+            currentZone.isTrigger = true; // Делаем зону триггером
 
-            WardrobeHideInteractForwarder forwarder = GetOrCreateForwarder(currentZone); // Получаем передатчик взаимодействия
+            WardrobeHideInteractForwarder forwarder = GetOrCreateForwarder(currentZone); // Получаем передатчик
 
-            forwarder.wardrobe = this; // Передаём ссылку на шкаф
+            forwarder.wardrobe = this; // Передаем ссылку на шкаф
 
-            forwarder.zoneType = WardrobeHideZoneType.DoorZone; // Указываем, что это дверная зона
+            forwarder.zoneType = WardrobeHideZoneType.DoorZone; // Указываем тип зоны
 
-            forwarder.doorIndex = i; // Связываем зону с дверью того же индекса
+            forwarder.doorIndex = i; // Связываем зону с дверью под тем же индексом
         }
     }
 
@@ -120,173 +119,192 @@ public class WardrobeHideHandle : MonoBehaviour // Скрипт конкретн
     {
         if (insideHideInteractZone == null) return; // Если зона не назначена, выходим
 
-        insideHideInteractZone.isTrigger = true; // Делаем внутренний коллайдер триггером
+        insideHideInteractZone.isTrigger = true; // Делаем зону триггером
 
         WardrobeHideInteractForwarder forwarder = GetOrCreateForwarder(insideHideInteractZone); // Получаем передатчик
 
-        forwarder.wardrobe = this; // Передаём ссылку на шкаф
+        forwarder.wardrobe = this; // Передаем ссылку на шкаф
 
-        forwarder.zoneType = WardrobeHideZoneType.InsideHideZone; // Указываем тип внутренней зоны
+        forwarder.zoneType = WardrobeHideZoneType.InsideHideZone; // Указываем тип зоны
 
-        forwarder.doorIndex = -1; // Внутренняя зона не относится к одной двери
+        forwarder.doorIndex = -1; // Внутренняя зона не относится к конкретной двери
     }
 
-    private WardrobeHideInteractForwarder GetOrCreateForwarder(Collider zone) // Получает или создаёт передатчик
+    private WardrobeHideInteractForwarder GetOrCreateForwarder(Collider zone) // Получает или создает передатчик
     {
-        WardrobeHideInteractForwarder forwarder = zone.GetComponent<WardrobeHideInteractForwarder>(); // Ищем существующий передатчик
+        WardrobeHideInteractForwarder forwarder = zone.GetComponent<WardrobeHideInteractForwarder>(); // Ищем передатчик
 
-        if (forwarder == null) // Проверяем, найден ли компонент
-        {
-            forwarder = zone.gameObject.AddComponent<WardrobeHideInteractForwarder>(); // Добавляем передатчик
-        }
+        if (forwarder == null) forwarder = zone.gameObject.AddComponent<WardrobeHideInteractForwarder>(); // Если нет, добавляем
 
-        return forwarder; // Возвращаем готовый компонент
+        return forwarder; // Возвращаем передатчик
     }
 
     private void RefreshInsideHideZone(bool forceRefresh) // Включает или выключает внутреннюю зону
     {
         if (insideHideInteractZone == null) return; // Если зоны нет, выходим
 
-        bool shouldBeEnabled = true; // По умолчанию зона доступна
+        bool shouldBeEnabled = true; // По умолчанию зона включена
 
-        if (insideZoneOnlyAfterPropDestroyed == true) // Проверяем условие уничтожения пропса
-        {
-            shouldBeEnabled = CanPlayerHide(); // Определяем доступность пряток
-        }
+        if (insideZoneOnlyAfterPropDestroyed == true) shouldBeEnabled = CanPlayerHide(); // Если нужно ждать пропс, проверяем условие
 
-        if (forceRefresh == false && insideZoneUnlocked == shouldBeEnabled) return; // Не повторяем уже применённое состояние
+        if (forceRefresh == false && insideZoneUnlocked == shouldBeEnabled) return; // Если состояние не изменилось, выходим
 
-        insideZoneUnlocked = shouldBeEnabled; // Запоминаем новое состояние
+        insideZoneUnlocked = shouldBeEnabled; // Запоминаем состояние
 
-        if (setInsideZoneObjectActive == true) // Проверяем способ отключения зоны
-        {
-            insideHideInteractZone.gameObject.SetActive(shouldBeEnabled); // Переключаем весь объект зоны
-        }
-        else // Если весь объект переключать не нужно
-        {
-            insideHideInteractZone.enabled = shouldBeEnabled; // Переключаем только Collider
-        }
+        if (setInsideZoneObjectActive == true) insideHideInteractZone.gameObject.SetActive(shouldBeEnabled); // Включаем/выключаем объект
+
+        if (setInsideZoneObjectActive == false) insideHideInteractZone.enabled = shouldBeEnabled; // Или только коллайдер
     }
 
-    public void InteractWithDoor(int doorIndex) // Вызывается при нажатии E по конкретной зоне двери
+    public void InteractWithDoor(int doorIndex) // E по конкретной дверной зоне
     {
-        if (playerHideController != null && playerHideController.isHidden) return; // Спрятанный игрок не управляет дверью снаружи
+        if (playerHideController != null && playerHideController.isHidden) return; // Если игрок спрятан, дверь снаружи не трогаем
 
-        if (playerHideController != null && playerHideController.IsBusy) return; // Во время входа или выхода команды блокируются
+        if (playerHideController != null && playerHideController.IsBusy) return; // Если идет вход/выход, ничего не делаем
 
-        if (wardrobeDoors == null) return; // Если массива дверей нет, выходим
+        if (wardrobeDoors == null) return; // Если массив дверей не назначен, выходим
 
-        if (doorIndex < 0 || doorIndex >= wardrobeDoors.Length) // Проверяем правильность индекса
-        {
-            Debug.LogWarning(
-                "WardrobeHideHandle: неверный индекс двери " + doorIndex + ".",
-                gameObject
-            ); // Выводим понятное предупреждение
+        if (doorIndex < 0 || doorIndex >= wardrobeDoors.Length) return; // Если индекс неправильный, выходим
 
-            return; // Не продолжаем
-        }
+        UniversalDoor selectedDoor = wardrobeDoors[doorIndex]; // Получаем дверь с тем же индексом
 
-        UniversalDoor selectedDoor = wardrobeDoors[doorIndex]; // Получаем дверь с таким же индексом
-
-        if (selectedDoor == null) // Проверяем назначение двери
-        {
-            Debug.LogWarning(
-                "WardrobeHideHandle: Wardrobe Doors, Element " + doorIndex + " не назначен.",
-                gameObject
-            ); // Показываем пустой элемент
-
-            return; // Не продолжаем
-        }
-
-        selectedDoor.Interact(); // Открываем или закрываем выбранную дверь
+        if (selectedDoor != null) selectedDoor.Interact(); // Открываем или закрываем выбранную дверь
     }
 
-    public void TryHide() // Запускает попытку спрятаться
+    public void TryHide() // Q по зоне пряток
     {
-        if (playerHideController == null) // Проверяем ссылку на игрока
-        {
-            Debug.LogWarning(
-                "WardrobeHideHandle: Player Hide Controller не назначен.",
-                gameObject
-            ); // Показываем ошибку настройки
+        if (playerHideController == null) return; // Если контроллер игрока не назначен, выходим
 
-            return; // Не продолжаем
-        }
-
-        if (playerHideController.IsBusy) return; // Не запускаем повторный вход или выход
-
-        if (CanPlayerHide() == false) return; // Не разрешаем прятки до выполнения условия
-
-        playerHideController.TryEnterWardrobe(this); // Передаём шкаф контроллеру игрока
+        playerHideController.TryEnterWardrobe(this); // Передаем шкаф контроллеру игрока
     }
 
-    public bool CanPlayerHide() // Проверяет возможность спрятаться
+    public bool CanPlayerHide() // Проверяет, можно ли прятаться в этот шкаф
     {
-        if (requirePropDestroyed == false) return true; // Если условие отключено, разрешаем прятки
+        if (requirePropDestroyed == false) return true; // Если пропс не нужен, разрешаем
 
-        if (requiredDestroyedProp == null) // Проверяем назначение пропса
+        if (requiredDestroyedProp == null) // Если пропс не назначен
         {
-            if (missingPropWarningShown == false) // Не повторяем сообщение каждый кадр
-            {
-                Debug.LogWarning(
-                    "WardrobeHideHandle: Required Destroyed Prop не назначен.",
-                    gameObject
-                ); // Показываем предупреждение
-            }
+            if (missingPropWarningShown == false) Debug.LogWarning("WardrobeHideHandle: Required Destroyed Prop не назначен.", this); // Пишем предупреждение
 
-            missingPropWarningShown = true; // Запоминаем показ сообщения
+            missingPropWarningShown = true; // Запоминаем, что уже предупредили
 
-            return false; // Без пропса прятки недоступны
+            return false; // Запрещаем прятки
         }
 
-        return requiredDestroyedProp.IsDestroyed; // Разрешаем прятки после стадии Destroyed
+        return requiredDestroyedProp.IsDestroyed; // Разрешаем только после destroyed
     }
 
     public IEnumerator OpenDoorsBeforeHide() // Открывает двери перед входом
     {
-        yield return StartCoroutine(OpenAllDoorsRoutine()); // Надёжно открываем все двери
+        yield return StartCoroutine(OpenAllDoorsRoutine()); // Надежно открываем двери
 
-        yield return new WaitForSeconds(doorOpenBeforeHideDelay); // Ждём перед входом игрока
+        yield return new WaitForSeconds(doorOpenBeforeHideDelay); // Ждем перед входом
     }
 
-    public IEnumerator CloseDoorsAfterHide() // Закрывает двери после входа
+    public IEnumerator CloseDoorsAfterHide() // После входа закрывает двери и оставляет щель
     {
-        yield return new WaitForSeconds(doorCloseAfterHideDelay); // Ждём перед закрытием
+        yield return new WaitForSeconds(doorCloseAfterHideDelay); // Ждем перед закрытием
 
-        yield return StartCoroutine(CloseAllDoorsRoutine()); // Надёжно закрываем все двери
+        yield return StartCoroutine(CloseHideDoorsRoutine()); // Полностью закрываем двери пряток
+
+        if (usePeekPositionWhileHidden) // Если щель включена
+        {
+            if (delayBeforePeek > 0f) yield return new WaitForSeconds(delayBeforePeek); // Ждем перед приоткрыванием
+
+            SetHideDoorsToPeekPosition(); // Оставляем щель
+        }
     }
 
-    public IEnumerator OpenDoorsBeforeExit() // Открывает двери перед выходом
+    public IEnumerator OpenDoorsBeforeExit() // Полностью открывает двери перед выходом
     {
-        yield return StartCoroutine(OpenAllDoorsRoutine()); // Надёжно открываем двери
+        yield return StartCoroutine(OpenHideDoorsRoutine()); // Открываем двери пряток
 
-        yield return new WaitForSeconds(doorOpenBeforeExitDelay); // Ждём перед выходом
+        yield return new WaitForSeconds(doorOpenBeforeExitDelay); // Ждем перед выходом
     }
 
-    public IEnumerator CloseDoorsAfterExit() // Закрывает двери после выхода
+    public IEnumerator CloseDoorsAfterExit() // Полностью закрывает двери после выхода
     {
-        yield return new WaitForSeconds(doorCloseAfterExitDelay); // Ждём перед закрытием
+        yield return new WaitForSeconds(doorCloseAfterExitDelay); // Ждем перед закрытием
 
-        yield return StartCoroutine(CloseAllDoorsRoutine()); // Надёжно закрываем двери
+        yield return StartCoroutine(CloseHideDoorsRoutine()); // Закрываем двери пряток
     }
 
     private IEnumerator OpenAllDoorsRoutine() // Несколько раз пробует открыть все двери
     {
-        for (int i = 0; i < doorActionAttempts; i++) // Выполняем нужное количество попыток
+        for (int i = 0; i < doorActionAttempts; i++) // Повторяем попытки
         {
             OpenAllDoors(); // Пробуем открыть двери
 
-            yield return new WaitForSeconds(doorActionRetryDelay); // Ждём перед повтором
+            yield return new WaitForSeconds(doorActionRetryDelay); // Ждем перед следующей попыткой
         }
     }
 
     private IEnumerator CloseAllDoorsRoutine() // Несколько раз пробует закрыть все двери
     {
-        for (int i = 0; i < doorActionAttempts; i++) // Выполняем нужное количество попыток
+        for (int i = 0; i < doorActionAttempts; i++) // Повторяем попытки
         {
             CloseAllDoors(); // Пробуем закрыть двери
 
-            yield return new WaitForSeconds(doorActionRetryDelay); // Ждём перед повтором
+            yield return new WaitForSeconds(doorActionRetryDelay); // Ждем перед следующей попыткой
+        }
+    }
+
+    private IEnumerator OpenHideDoorsRoutine() // Несколько раз открывает двери пряток
+    {
+        for (int i = 0; i < doorActionAttempts; i++)
+        {
+            OpenHideDoors();
+            yield return new WaitForSeconds(doorActionRetryDelay);
+        }
+    }
+
+    private IEnumerator CloseHideDoorsRoutine() // Несколько раз полностью закрывает двери пряток
+    {
+        for (int i = 0; i < doorActionAttempts; i++)
+        {
+            CloseHideDoors();
+            yield return new WaitForSeconds(doorActionRetryDelay);
+        }
+    }
+
+    private void OpenHideDoors() // Полностью открывает двери из Wardrobe Doors To Close After Hide
+    {
+        if (wardrobeDoorsToCloseAfterHide == null) return;
+
+        for (int i = 0; i < wardrobeDoorsToCloseAfterHide.Length; i++)
+        {
+            UniversalDoor currentDoor = wardrobeDoorsToCloseAfterHide[i];
+            if (currentDoor == null) continue;
+            currentDoor.OpenDoor();
+        }
+    }
+
+    private void CloseHideDoors() // Полностью закрывает двери из Wardrobe Doors To Close After Hide
+    {
+        if (wardrobeDoorsToCloseAfterHide == null) return;
+
+        for (int i = 0; i < wardrobeDoorsToCloseAfterHide.Length; i++)
+        {
+            UniversalDoor currentDoor = wardrobeDoorsToCloseAfterHide[i];
+            if (currentDoor == null) continue;
+            currentDoor.CloseDoor();
+        }
+    }
+
+    private void SetHideDoorsToPeekPosition() // Приоткрывает каждую дверь на свой угол
+    {
+        if (wardrobeDoorsToCloseAfterHide == null) return;
+
+        for (int i = 0; i < wardrobeDoorsToCloseAfterHide.Length; i++)
+        {
+            UniversalDoor currentDoor = wardrobeDoorsToCloseAfterHide[i];
+            if (currentDoor == null) continue;
+
+            float angle = currentDoor.defaultPeekAngle;
+
+            if (peekAngles != null && i < peekAngles.Length) angle = peekAngles[i];
+
+            currentDoor.SetPeekPosition(angle);
         }
     }
 
@@ -294,23 +312,17 @@ public class WardrobeHideHandle : MonoBehaviour // Скрипт конкретн
     {
         if (wardrobeDoors != null) // Проверяем основные двери
         {
-            for (int i = 0; i < wardrobeDoors.Length; i++) // Перебираем основные двери
+            for (int i = 0; i < wardrobeDoors.Length; i++) // Проходим по основным дверям
             {
-                if (wardrobeDoors[i] != null) // Проверяем текущий элемент
-                {
-                    wardrobeDoors[i].OpenDoor(); // Открываем текущую дверь
-                }
+                if (wardrobeDoors[i] != null) wardrobeDoors[i].OpenDoor(); // Открываем дверь
             }
         }
 
-        if (wardrobeDoorsToCloseAfterHide != null) // Проверяем дополнительные двери
+        if (wardrobeDoorsToCloseAfterHide != null) // Проверяем дополнительный массив дверей
         {
-            for (int i = 0; i < wardrobeDoorsToCloseAfterHide.Length; i++) // Перебираем дополнительные двери
+            for (int i = 0; i < wardrobeDoorsToCloseAfterHide.Length; i++) // Проходим по дополнительным дверям
             {
-                if (wardrobeDoorsToCloseAfterHide[i] != null) // Проверяем текущий элемент
-                {
-                    wardrobeDoorsToCloseAfterHide[i].OpenDoor(); // Открываем текущую дверь
-                }
+                if (wardrobeDoorsToCloseAfterHide[i] != null) wardrobeDoorsToCloseAfterHide[i].OpenDoor(); // Открываем дверь
             }
         }
     }
@@ -319,23 +331,17 @@ public class WardrobeHideHandle : MonoBehaviour // Скрипт конкретн
     {
         if (wardrobeDoors != null) // Проверяем основные двери
         {
-            for (int i = 0; i < wardrobeDoors.Length; i++) // Перебираем основные двери
+            for (int i = 0; i < wardrobeDoors.Length; i++) // Проходим по основным дверям
             {
-                if (wardrobeDoors[i] != null) // Проверяем текущий элемент
-                {
-                    wardrobeDoors[i].CloseDoor(); // Закрываем текущую дверь
-                }
+                if (wardrobeDoors[i] != null) wardrobeDoors[i].CloseDoor(); // Закрываем дверь
             }
         }
 
-        if (wardrobeDoorsToCloseAfterHide != null) // Проверяем дополнительные двери
+        if (wardrobeDoorsToCloseAfterHide != null) // Проверяем дополнительный массив дверей
         {
-            for (int i = 0; i < wardrobeDoorsToCloseAfterHide.Length; i++) // Перебираем дополнительные двери
+            for (int i = 0; i < wardrobeDoorsToCloseAfterHide.Length; i++) // Проходим по дополнительным дверям
             {
-                if (wardrobeDoorsToCloseAfterHide[i] != null) // Проверяем текущий элемент
-                {
-                    wardrobeDoorsToCloseAfterHide[i].CloseDoor(); // Закрываем текущую дверь
-                }
+                if (wardrobeDoorsToCloseAfterHide[i] != null) wardrobeDoorsToCloseAfterHide[i].CloseDoor(); // Закрываем дверь
             }
         }
     }
@@ -343,45 +349,35 @@ public class WardrobeHideHandle : MonoBehaviour // Скрипт конкретн
 
 public enum WardrobeHideZoneType // Тип зоны шкафа
 {
-    DoorZone, // Зона конкретной двери
-
+    DoorZone, // Зона двери
     InsideHideZone // Внутренняя зона пряток
 }
 
 public class WardrobeHideInteractForwarder : MonoBehaviour, IInteractable // Передатчик взаимодействия зоны шкафа
 {
-    public WardrobeHideHandle wardrobe; // Ссылка на корневой скрипт шкафа
+    public WardrobeHideHandle wardrobe; // Ссылка на шкаф
 
-    public WardrobeHideZoneType zoneType = WardrobeHideZoneType.DoorZone; // Тип текущей зоны
+    public WardrobeHideZoneType zoneType = WardrobeHideZoneType.DoorZone; // Тип зоны
 
-    public int doorIndex = -1; // Индекс двери, связанной с этой зоной
+    public int doorIndex = -1; // Индекс двери для дверной зоны
 
-    public void Interact() // Вызывается при нажатии E
+    public void Interact() // Нажатие E
     {
-        if (wardrobe == null) // Проверяем ссылку на шкаф
-        {
-            wardrobe = GetComponentInParent<WardrobeHideHandle>(); // Ищем шкаф среди родителей
-        }
+        if (wardrobe == null) wardrobe = GetComponentInParent<WardrobeHideHandle>(); // Ищем шкаф выше
 
-        if (wardrobe == null) return; // Без шкафа взаимодействие невозможно
+        if (wardrobe == null) return; // Если шкафа нет, выходим
 
         if (zoneType == WardrobeHideZoneType.InsideHideZone) return; // Внутренняя зона игнорирует E
 
-        if (zoneType == WardrobeHideZoneType.DoorZone) // Проверяем дверную зону
-        {
-            wardrobe.InteractWithDoor(doorIndex); // Передаём индекс соответствующей двери
-        }
+        if (zoneType == WardrobeHideZoneType.DoorZone) wardrobe.InteractWithDoor(doorIndex); // Дверная зона открывает/закрывает соответствующую дверь
     }
 
-    public void TryHide() // Вызывается при нажатии Q
+    public void TryHide() // Нажатие Q
     {
-        if (wardrobe == null) // Проверяем ссылку на шкаф
-        {
-            wardrobe = GetComponentInParent<WardrobeHideHandle>(); // Ищем шкаф среди родителей
-        }
+        if (wardrobe == null) wardrobe = GetComponentInParent<WardrobeHideHandle>(); // Ищем шкаф выше
 
-        if (wardrobe == null) return; // Без шкафа прятки невозможны
+        if (wardrobe == null) return; // Если шкафа нет, выходим
 
-        wardrobe.TryHide(); // Передаём попытку спрятаться
+        wardrobe.TryHide(); // Передаем попытку спрятаться шкафу
     }
 }

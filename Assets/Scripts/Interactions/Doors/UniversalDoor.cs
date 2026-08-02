@@ -1,466 +1,347 @@
-using UnityEngine; // Подключаем Unity-классы
-using UnityEngine.AI; // Подключаем NavMeshObstacle
-using System.Collections; // Подключаем корутины
+using UnityEngine; // Подключаем Unity-классы.
+using UnityEngine.AI; // Подключаем NavMeshObstacle.
+using System.Collections; // Подключаем корутины.
 
-public class UniversalDoor : MonoBehaviour // Основной скрипт двери, теперь сам не является IInteractable
+public class UniversalDoor : MonoBehaviour // Универсальная дверь.
 {
-    public enum DoorOpenDirection { Forward, Backward } // Направление открытия двери
+    public enum DoorOpenDirection { Forward, Backward } // Направление открытия.
+    public enum DoorRotationAxis { X, Y, Z } // Ось вращения.
 
-    public enum DoorRotationAxis { X, Y, Z } // Ось вращения двери
+    [Header("Door Settings")]
+    public bool isOpen = false; // Полностью ли открыта дверь.
 
-    [Header("Door Settings")] // Блок настроек двери
-    public bool isOpen = false; // Открыта ли дверь
+    public bool IsOpen => isOpen; // Публичное логическое состояние.
+    public bool IsBusy => isBusy; // Выполняется ли команда двери.
+    public bool IsPeekOpen => isPeekOpen; // Находится ли дверь в положении щели.
+    public bool IsFullyOpen => isOpen && !isPeekOpen && Quaternion.Angle(transform.localRotation, openedRotation) <= fullyOpenAngleTolerance;
+    public bool CanMonsterOpenNow => canMonsterOpen && !isBusy && !isOpen && !isPeekOpen && !isLocked && CanOpenDoor();
 
-    public bool IsOpen => isOpen; // Публичная проверка логического состояния двери
+    public DoorOpenDirection openDirection = DoorOpenDirection.Forward;
 
-    public bool IsBusy => isBusy; // Публичная проверка занятости двери
+    [Header("Rotation Axis")]
+    public DoorRotationAxis rotationAxis = DoorRotationAxis.Y;
 
-    public bool IsFullyOpen => isOpen && Quaternion.Angle(transform.localRotation, openedRotation) <= fullyOpenAngleTolerance; // Полотно физически дошло до открытого положения
+    [Header("Open Angle")]
+    public float openAngle = 90f;
+    public float fullyOpenAngleTolerance = 2f;
 
-    public bool CanMonsterOpenNow => canMonsterOpen && !isBusy && !isOpen && !isLocked && CanOpenDoor(); // Может ли монстр начать открытие сейчас
+    [Header("Open / Close Speed")]
+    public float openSpeed = 5f;
+    public float closeSpeed = 7f;
 
-    public DoorOpenDirection openDirection = DoorOpenDirection.Forward; // Куда открывается дверь
+    [Header("Peek Position")]
+    [Min(0f)] public float defaultPeekAngle = 10f; // Угол щели по умолчанию.
+    [Min(0.01f)] public float peekSpeed = 5f; // Скорость перехода в положение щели.
 
-    [Header("Rotation Axis")] // Блок оси вращения
-    public DoorRotationAxis rotationAxis = DoorRotationAxis.Y; // Ось вращения двери
+    [Header("Auto Close")]
+    public bool autoClose = false;
+    [Min(0f)] public float autoCloseDelay = 3f;
+    public bool AutoCloseEnabled => autoClose;
 
-    [Header("Open Angle")] // Блок угла открытия
-    public float openAngle = 90f; // Угол открытия
-    public float fullyOpenAngleTolerance = 2f; // Погрешность угла полного открытия
+    [Header("Interact Zone")]
+    public Collider doorInteractZone;
 
-    [Header("Open / Close Speed")] // Блок скоростей
-    public float openSpeed = 5f; // Скорость открытия
-    public float closeSpeed = 7f; // Скорость закрытия
+    [Header("Handles")]
+    public Transform outsideHandle;
+    public Transform insideHandle;
+    public float handleDownAngle = 20f;
+    public float handlePressSpeed = 12f;
+    public float handleReturnSpeed = 10f;
+    public float handleHoldTime = 0.05f;
 
-    [Header("Auto Close")] // Блок автоматического закрытия двери
-    public bool autoClose = false; // Должна ли дверь автоматически закрываться после открытия
+    [Header("Door Delay")]
+    public float doorOpenDelay = 0.03f;
 
-    [Min(0f)] public float autoCloseDelay = 3f; // Через сколько секунд после открытия начать закрытие
+    [Header("Monster Access")]
+    public bool canMonsterOpen = true;
+    public NavMeshObstacle navMeshObstacle;
 
-    public bool AutoCloseEnabled => autoClose; // Публичная проверка состояния автозакрытия
+    [Header("Noise")]
+    public NoiseEmitter noiseEmitter;
+    [Range(1, 10)] public int openNoisePower = 3;
+    [Range(1, 10)] public int closeNoisePower = 4;
 
-    [Header("Player Opening Block")] // Блок запрета повторного открытия двери игроком через E
-    public bool blockPlayerOpeningAfterFirstOpen = false; // После первого открытия игроком запустить таймер запрета
+    [Header("Lock")]
+    public bool isLocked = false;
 
-    [Min(0f)] public float playerOpeningBlockDelay = 20f; // Через сколько секунд запретить игроку открывать дверь через E
+    [Header("Tumbler Lock")]
+    public bool requiresTumbler = false;
+    public TumblerSwitch requiredTumbler;
 
-    public bool IsPlayerOpeningBlocked => isPlayerOpeningBlocked; // Публичная проверка запрета открытия через E
+    private Quaternion closedRotation;
+    private Quaternion openedRotation;
+    private Quaternion peekRotation;
+    private Quaternion outsideHandleStartRotation;
+    private Quaternion insideHandleStartRotation;
+    private Quaternion outsideHandlePressedRotation;
+    private Quaternion insideHandlePressedRotation;
+    private bool isBusy = false;
+    private bool isPeekOpen = false;
+    private Coroutine autoCloseCoroutine;
 
-    [Header("Interact Zone")] // Блок отдельной зоны взаимодействия
-    public Collider doorInteractZone; // Отдельный коллайдер-зона, по которому игрок нажимает E
-
-    [Header("Handles")] // Блок ручек
-    public Transform outsideHandle; // Внешняя ручка
-    public Transform insideHandle; // Внутренняя ручка
-    public float handleDownAngle = 20f; // Угол опускания ручки
-    public float handlePressSpeed = 12f; // Скорость опускания ручки
-    public float handleReturnSpeed = 10f; // Скорость возврата ручки
-    public float handleHoldTime = 0.05f; // Пауза удержания ручки
-
-    [Header("Door Delay")] // Блок задержки двери
-    public float doorOpenDelay = 0.03f; // Задержка между ручкой и дверью
-
-    [Header("Monster Access")] // Блок доступа монстра
-    public bool canMonsterOpen = true; // Может ли монстр открыть дверь
-    public NavMeshObstacle navMeshObstacle; // Препятствие для обхода открытого полотна
-
-    [Header("Noise")] // Блок шума
-    public NoiseEmitter noiseEmitter; // Источник шума двери
-
-    [Range(1, 10)] public int openNoisePower = 3; // Сила шума открытия
-    [Range(1, 10)] public int closeNoisePower = 4; // Сила шума закрытия
-
-    [Header("Lock")] // Блок замка
-    public bool isLocked = false; // Заблокирована ли дверь
-
-    [Header("Tumbler Lock")] // Блок тумблера
-    public bool requiresTumbler = false; // Требуется ли тумблер
-    public TumblerSwitch requiredTumbler; // Нужный тумблер
-
-    private Quaternion closedRotation; // Закрытый поворот двери
-    private Quaternion openedRotation; // Открытый поворот двери
-    private Quaternion outsideHandleStartRotation; // Стартовый поворот внешней ручки
-    private Quaternion insideHandleStartRotation; // Стартовый поворот внутренней ручки
-    private Quaternion outsideHandlePressedRotation; // Нажатый поворот внешней ручки
-    private Quaternion insideHandlePressedRotation; // Нажатый поворот внутренней ручки
-    private bool isBusy = false; // Занята ли дверь анимацией
-    private Coroutine autoCloseCoroutine; // Текущий таймер автоматического закрытия
-    private bool isPlayerOpeningBlocked = false; // Запрещено ли игроку открывать дверь через E
-    private bool playerOpeningBlockCountdownStarted = false; // Был ли уже запущен таймер после первого открытия
-    private Coroutine playerOpeningBlockCoroutine; // Текущий таймер запрета открытия через E
-
-    private void OnValidate() // Вызывается при изменении значений в Inspector
+    private void OnValidate()
     {
-        if (navMeshObstacle == null) navMeshObstacle = GetComponent<NavMeshObstacle>(); // Ищем NavMeshObstacle на этом объекте
-
-        if (autoCloseDelay < 0f) autoCloseDelay = 0f; // Не разрешаем отрицательную задержку автозакрытия
-
-        if (playerOpeningBlockDelay < 0f) playerOpeningBlockDelay = 0f; // Не разрешаем отрицательную задержку запрета открытия
-
-        SyncNavMeshObstacleWithBoxCollider(); // Копируем форму Box Collider в obstacle
+        if (navMeshObstacle == null) navMeshObstacle = GetComponent<NavMeshObstacle>();
+        if (autoCloseDelay < 0f) autoCloseDelay = 0f;
+        if (defaultPeekAngle < 0f) defaultPeekAngle = 0f;
+        if (peekSpeed < 0.01f) peekSpeed = 0.01f;
+        SyncNavMeshObstacleWithBoxCollider();
     }
 
-    private void Start() // Запуск при старте сцены
+    private void Start()
     {
-        closedRotation = transform.localRotation; // Запоминаем закрытое положение
+        closedRotation = transform.localRotation;
+        openedRotation = BuildRotationForAngle(openAngle);
+        peekRotation = BuildRotationForAngle(defaultPeekAngle);
 
-        float direction = openDirection == DoorOpenDirection.Forward ? 1f : -1f; // Выбираем знак открытия
-
-        Vector3 rotationVector = Vector3.zero; // Создаем вектор поворота
-
-        if (rotationAxis == DoorRotationAxis.X) rotationVector = new Vector3(openAngle * direction, 0f, 0f); // Поворот по X
-        if (rotationAxis == DoorRotationAxis.Y) rotationVector = new Vector3(0f, openAngle * direction, 0f); // Поворот по Y
-        if (rotationAxis == DoorRotationAxis.Z) rotationVector = new Vector3(0f, 0f, openAngle * direction); // Поворот по Z
-
-        openedRotation = closedRotation * Quaternion.Euler(rotationVector); // Рассчитываем открытый поворот
-
-        if (outsideHandle != null) // Если внешняя ручка назначена
+        if (outsideHandle != null)
         {
-            outsideHandleStartRotation = outsideHandle.localRotation; // Запоминаем старт внешней ручки
-            outsideHandlePressedRotation = outsideHandleStartRotation * Quaternion.Euler(0f, 0f, -handleDownAngle); // Считаем нажатое положение
+            outsideHandleStartRotation = outsideHandle.localRotation;
+            outsideHandlePressedRotation = outsideHandleStartRotation * Quaternion.Euler(0f, 0f, -handleDownAngle);
         }
 
-        if (insideHandle != null) // Если внутренняя ручка назначена
+        if (insideHandle != null)
         {
-            insideHandleStartRotation = insideHandle.localRotation; // Запоминаем старт внутренней ручки
-            insideHandlePressedRotation = insideHandleStartRotation * Quaternion.Euler(0f, 0f, -handleDownAngle); // Считаем нажатое положение
+            insideHandleStartRotation = insideHandle.localRotation;
+            insideHandlePressedRotation = insideHandleStartRotation * Quaternion.Euler(0f, 0f, -handleDownAngle);
         }
 
-        if (noiseEmitter == null) noiseEmitter = GetComponent<NoiseEmitter>(); // Если шум не назначен, ищем его на этом объекте
-
-        if (navMeshObstacle == null) navMeshObstacle = GetComponent<NavMeshObstacle>(); // Ищем NavMeshObstacle на этом объекте
-
-        SyncNavMeshObstacleWithBoxCollider(); // Синхронизируем obstacle с дверным Box Collider
-
-        if (navMeshObstacle != null) navMeshObstacle.carving = false; // Закрытая дверь не вырезает проход из NavMesh
-
-        SetupDoorInteractZone(); // Настраиваем отдельную зону взаимодействия
+        if (noiseEmitter == null) noiseEmitter = GetComponent<NoiseEmitter>();
+        if (navMeshObstacle == null) navMeshObstacle = GetComponent<NavMeshObstacle>();
+        SyncNavMeshObstacleWithBoxCollider();
+        if (navMeshObstacle != null) navMeshObstacle.carving = false;
+        SetupDoorInteractZone();
     }
 
-    private void Update() // Каждый кадр
+    private void Update()
     {
-        UpdateDoorRotation(); // Плавно двигаем дверь
-
-        UpdateNavMeshObstacle(); // Обновляем режим обхода полотна
+        UpdateDoorRotation();
+        UpdateNavMeshObstacle();
     }
 
-    private void SyncNavMeshObstacleWithBoxCollider() // Копировать форму дверного коллайдера в obstacle
+    private Quaternion BuildRotationForAngle(float angle)
     {
-        if (navMeshObstacle == null) return; // Если obstacle отсутствует, выходим
-
-        BoxCollider boxCollider = GetComponent<BoxCollider>(); // Ищем Box Collider полотна
-
-        if (boxCollider == null) return; // Если Box Collider отсутствует, выходим
-
-        navMeshObstacle.shape = NavMeshObstacleShape.Box; // Используем прямоугольную форму
-        navMeshObstacle.center = boxCollider.center; // Копируем локальный центр
-        navMeshObstacle.size = boxCollider.size; // Копируем локальный размер
-        navMeshObstacle.carveOnlyStationary = true; // Carving работает только на остановившемся полотне
+        float direction = openDirection == DoorOpenDirection.Forward ? 1f : -1f;
+        Vector3 rotationVector = Vector3.zero;
+        if (rotationAxis == DoorRotationAxis.X) rotationVector = new Vector3(angle * direction, 0f, 0f);
+        if (rotationAxis == DoorRotationAxis.Y) rotationVector = new Vector3(0f, angle * direction, 0f);
+        if (rotationAxis == DoorRotationAxis.Z) rotationVector = new Vector3(0f, 0f, angle * direction);
+        return closedRotation * Quaternion.Euler(rotationVector);
     }
 
-    private void UpdateNavMeshObstacle() // Переключить carving после полного открытия
+    private void SyncNavMeshObstacleWithBoxCollider()
     {
-        if (navMeshObstacle == null) return; // Если obstacle отсутствует, выходим
-
-        bool shouldCarve = IsFullyOpen; // Полностью открытая дверь должна учитываться при построении пути
-
-        if (navMeshObstacle.carving == shouldCarve) return; // Если состояние уже правильное, выходим
-
-        navMeshObstacle.carving = shouldCarve; // Закрытая или движущаяся дверь: false; полностью открытая: true
+        if (navMeshObstacle == null) return;
+        BoxCollider boxCollider = GetComponent<BoxCollider>();
+        if (boxCollider == null) return;
+        navMeshObstacle.shape = NavMeshObstacleShape.Box;
+        navMeshObstacle.center = boxCollider.center;
+        navMeshObstacle.size = boxCollider.size;
+        navMeshObstacle.carveOnlyStationary = true;
     }
 
-    private void SetupDoorInteractZone() // Настройка отдельной зоны взаимодействия
+    private void UpdateNavMeshObstacle()
     {
-        if (doorInteractZone == null) return; // Если зона не назначена, выходим
-
-        UniversalDoorInteractForwarder forwarder = doorInteractZone.GetComponent<UniversalDoorInteractForwarder>(); // Ищем forwarder на зоне
-
-        if (forwarder == null) forwarder = doorInteractZone.gameObject.AddComponent<UniversalDoorInteractForwarder>(); // Если его нет, добавляем
-
-        forwarder.door = this; // Передаем forwarder ссылку на эту дверь
+        if (navMeshObstacle == null) return;
+        bool shouldCarve = IsFullyOpen;
+        if (navMeshObstacle.carving == shouldCarve) return;
+        navMeshObstacle.carving = shouldCarve;
     }
 
-    private bool CanOpenDoor() // Проверка возможности открыть дверь
+    private void SetupDoorInteractZone()
     {
-        if (!requiresTumbler) return true; // Если тумблер не нужен, открыть можно
-
-        if (requiredTumbler == null) return false; // Если тумблер нужен, но не назначен, открыть нельзя
-
-        return requiredTumbler.isOn; // Открыть можно только если тумблер включен
+        if (doorInteractZone == null) return;
+        UniversalDoorInteractForwarder forwarder = doorInteractZone.GetComponent<UniversalDoorInteractForwarder>();
+        if (forwarder == null) forwarder = doorInteractZone.gameObject.AddComponent<UniversalDoorInteractForwarder>();
+        forwarder.door = this;
     }
 
-    public void Interact() // Вызов взаимодействия от отдельной зоны
+    private bool CanOpenDoor()
     {
-        if (isBusy) return; // Если дверь занята, выходим
+        if (!requiresTumbler) return true;
+        if (requiredTumbler == null) return false;
+        return requiredTumbler.isOn;
+    }
 
-        if (isLocked) return; // Если дверь закрыта на замок, выходим
+    public void Interact()
+    {
+        if (isBusy || isLocked) return;
+        if (isPeekOpen) { OpenDoor(); return; }
+        if (!isOpen && CanOpenDoor()) ToggleDoor();
+        else if (isOpen) ToggleDoor();
+    }
 
-        if (!isOpen) // Если дверь сейчас закрыта
+    public void ToggleDoor()
+    {
+        if (isBusy) return;
+        if (isPeekOpen) { OpenDoor(); return; }
+        StartCoroutine(InteractSequence(!isOpen));
+    }
+
+    public void OpenDoor()
+    {
+        if (isBusy || isOpen || isLocked || !CanOpenDoor()) return;
+        isPeekOpen = false;
+        StartCoroutine(InteractSequence(true));
+    }
+
+    public void CloseDoor()
+    {
+        if (isBusy) return;
+        CancelAutoCloseCountdown();
+        if (isPeekOpen)
         {
-            if (isPlayerOpeningBlocked) return; // После окончания таймера игрок больше не может открыть её через E
-
-            if (CanOpenDoor()) StartCoroutine(InteractSequence(true, true)); // Открываем дверь и отмечаем, что это сделал игрок через E
-
-            return; // Завершаем обработку открытия
+            isPeekOpen = false;
+            isOpen = false;
+            return;
         }
-
-        StartCoroutine(InteractSequence(false)); // Открытую дверь игрок по-прежнему может закрыть через E
+        if (!isOpen) return;
+        StartCoroutine(InteractSequence(false));
     }
 
-    public void ToggleDoor() // Переключить дверь
-    {
-        if (isBusy) return; // Если дверь занята, выходим
+    public void SetPeekPosition() { SetPeekPosition(defaultPeekAngle); }
 
-        StartCoroutine(InteractSequence(!isOpen)); // Запускаем переключение
+    public void SetPeekPosition(float angle)
+    {
+        if (isBusy) return;
+        CancelAutoCloseCountdown();
+        float safeAngle = Mathf.Clamp(angle, 0f, Mathf.Abs(openAngle));
+        peekRotation = BuildRotationForAngle(safeAngle);
+        isOpen = false;
+        isPeekOpen = true;
     }
 
-    public void OpenDoor() // Открыть дверь из другого скрипта
+    public void SetAutoClose(bool value)
     {
-        if (isBusy || isOpen || isLocked || !CanOpenDoor()) return; // Проверяем запреты
-
-        StartCoroutine(InteractSequence(true)); // Запускаем открытие
+        autoClose = value;
+        if (!autoClose) { CancelAutoCloseCountdown(); return; }
+        if (isOpen && !isPeekOpen && !isBusy) StartAutoCloseCountdown();
     }
 
-    public void CloseDoor() // Закрыть дверь из другого скрипта
-    {
-        if (isBusy || !isOpen) return; // Проверяем запреты
+    public void EnableAutoClose() { SetAutoClose(true); }
+    public void DisableAutoClose() { SetAutoClose(false); }
+    public void ToggleAutoClose() { SetAutoClose(!autoClose); }
 
-        StartCoroutine(InteractSequence(false)); // Запускаем закрытие
+    private void StartAutoCloseCountdown()
+    {
+        CancelAutoCloseCountdown();
+        if (!autoClose || !isOpen || isPeekOpen) return;
+        autoCloseCoroutine = StartCoroutine(AutoCloseAfterDelay());
     }
 
-    public void SetAutoClose(bool value) // Включить или выключить автозакрытие из другого скрипта
+    private void CancelAutoCloseCountdown()
     {
-        autoClose = value; // Записываем новое состояние автозакрытия
+        if (autoCloseCoroutine == null) return;
+        StopCoroutine(autoCloseCoroutine);
+        autoCloseCoroutine = null;
+    }
 
-        if (!autoClose) // Если автозакрытие выключили
+    private IEnumerator AutoCloseAfterDelay()
+    {
+        if (autoCloseDelay > 0f) yield return new WaitForSeconds(autoCloseDelay);
+        while (isBusy) yield return null;
+        if (!autoClose || !isOpen || isPeekOpen)
         {
-            CancelAutoCloseCountdown(); // Отменяем уже запущенный таймер
-
-            return; // Больше ничего не делаем
+            autoCloseCoroutine = null;
+            yield break;
         }
+        autoCloseCoroutine = null;
+        CloseDoor();
+    }
 
-        if (isOpen && !isBusy) // Если автозакрытие включили, когда дверь уже открыта и свободна
+    public void SetLocked(bool value) { isLocked = value; }
+    public void UnlockDoor() { isLocked = false; }
+    public void LockDoor() { isLocked = true; }
+    public void SetMonsterCanOpen(bool value) { canMonsterOpen = value; }
+
+    public bool OpenDoorForMonster()
+    {
+        if (!CanMonsterOpenNow) return false;
+        isPeekOpen = false;
+        StartCoroutine(InteractSequence(true));
+        return true;
+    }
+
+    private IEnumerator InteractSequence(bool targetOpenState)
+    {
+        if (!targetOpenState) CancelAutoCloseCountdown();
+        isBusy = true;
+        yield return StartCoroutine(PressHandlesDown());
+        if (doorOpenDelay > 0f) yield return new WaitForSeconds(doorOpenDelay);
+        isPeekOpen = false;
+        isOpen = targetOpenState;
+        EmitDoorNoise(targetOpenState);
+        if (handleHoldTime > 0f) yield return new WaitForSeconds(handleHoldTime);
+        yield return StartCoroutine(ReturnHandlesBack());
+        isBusy = false;
+        if (targetOpenState && autoClose) StartAutoCloseCountdown();
+    }
+
+    private IEnumerator PressHandlesDown()
+    {
+        float t = 0f;
+        Quaternion outStart = outsideHandle != null ? outsideHandle.localRotation : Quaternion.identity;
+        Quaternion inStart = insideHandle != null ? insideHandle.localRotation : Quaternion.identity;
+        while (t < 1f)
         {
-            StartAutoCloseCountdown(); // Запускаем новый таймер закрытия
-        }
-    }
-
-    public void EnableAutoClose() // Включить автозакрытие
-    {
-        SetAutoClose(true); // Используем общий метод
-    }
-
-    public void DisableAutoClose() // Выключить автозакрытие
-    {
-        SetAutoClose(false); // Используем общий метод
-    }
-
-    public void ToggleAutoClose() // Переключить автозакрытие
-    {
-        SetAutoClose(!autoClose); // Меняем текущее состояние на противоположное
-    }
-
-    private void StartAutoCloseCountdown() // Запустить таймер автоматического закрытия
-    {
-        CancelAutoCloseCountdown(); // Сначала отменяем старый таймер, чтобы не было двух одновременно
-
-        if (!autoClose) return; // Если автозакрытие выключено, таймер не запускаем
-
-        if (!isOpen) return; // Если дверь закрыта, таймер не нужен
-
-        autoCloseCoroutine = StartCoroutine(AutoCloseAfterDelay()); // Запускаем ожидание перед закрытием
-    }
-
-    private void CancelAutoCloseCountdown() // Отменить текущий таймер автоматического закрытия
-    {
-        if (autoCloseCoroutine == null) return; // Если таймер не запущен, ничего не делаем
-
-        StopCoroutine(autoCloseCoroutine); // Останавливаем запущенную корутину
-
-        autoCloseCoroutine = null; // Очищаем сохранённую ссылку
-    }
-
-    private IEnumerator AutoCloseAfterDelay() // Ожидание и автоматическое закрытие двери
-    {
-        if (autoCloseDelay > 0f) // Если задана задержка больше нуля
-        {
-            yield return new WaitForSeconds(autoCloseDelay); // Ждём указанное количество секунд
-        }
-
-        while (isBusy) // Если дверь ещё выполняет другую анимацию
-        {
-            yield return null; // Ждём следующий кадр
-        }
-
-        if (!autoClose || !isOpen) // Если автозакрытие успели выключить или дверь уже закрыта
-        {
-            autoCloseCoroutine = null; // Очищаем ссылку на завершённый таймер
-
-            yield break; // Завершаем корутину
-        }
-
-        autoCloseCoroutine = null; // Очищаем ссылку перед запуском закрытия
-
-        CloseDoor(); // Закрываем дверь штатным методом с ручками и шумом
-    }
-
-    public void SetLocked(bool value) // Установить замок
-    {
-        isLocked = value; // Записываем состояние замка
-    }
-
-    public void UnlockDoor() // Разблокировать дверь
-    {
-        isLocked = false; // Снимаем замок
-    }
-
-    public void LockDoor() // Заблокировать дверь
-    {
-        isLocked = true; // Ставим замок
-    }
-
-    public void SetMonsterCanOpen(bool value) // Настроить доступ монстра
-    {
-        canMonsterOpen = value; // Записываем доступ монстра
-    }
-
-    public bool OpenDoorForMonster() // Попытаться открыть дверь монстром
-    {
-        if (!CanMonsterOpenNow) return false; // Если открыть нельзя, сообщаем об отказе
-
-        StartCoroutine(InteractSequence(true)); // Запускаем штатное открытие
-
-        return true; // Сообщаем, что открытие началось
-    }
-
-    private IEnumerator InteractSequence(bool targetOpenState, bool openedByPlayer = false) // Последовательность открытия/закрытия
-    {
-        if (!targetOpenState) CancelAutoCloseCountdown(); // При любом ручном или сценарном закрытии отменяем старый таймер
-
-        isBusy = true; // Блокируем повторное нажатие
-
-        yield return StartCoroutine(PressHandlesDown()); // Опускаем ручки
-
-        if (doorOpenDelay > 0f) yield return new WaitForSeconds(doorOpenDelay); // Ждем задержку
-
-        isOpen = targetOpenState; // Меняем состояние двери
-
-        EmitDoorNoise(targetOpenState); // Создаем шум
-
-        if (handleHoldTime > 0f) yield return new WaitForSeconds(handleHoldTime); // Ждем удержание ручки
-
-        yield return StartCoroutine(ReturnHandlesBack()); // Возвращаем ручки
-
-        isBusy = false; // Разрешаем новое взаимодействие
-
-        if (targetOpenState && openedByPlayer) // Если дверь открылась именно через E игрока
-        {
-            StartPlayerOpeningBlockCountdown(); // Запускаем таймер будущего запрета повторного открытия через E
-        }
-
-        if (targetOpenState && autoClose) // Если дверь только что открылась и автозакрытие разрешено
-        {
-            StartAutoCloseCountdown(); // Запускаем отсчёт до автоматического закрытия
+            t += Time.deltaTime * handlePressSpeed;
+            if (outsideHandle != null) outsideHandle.localRotation = Quaternion.Lerp(outStart, outsideHandlePressedRotation, t);
+            if (insideHandle != null) insideHandle.localRotation = Quaternion.Lerp(inStart, insideHandlePressedRotation, t);
+            yield return null;
         }
     }
 
-    private void StartPlayerOpeningBlockCountdown() // Запустить таймер запрета повторного открытия игроком
+    private IEnumerator ReturnHandlesBack()
     {
-        if (!blockPlayerOpeningAfterFirstOpen) return; // Если галочка выключена, ничего не запускаем
-
-        if (playerOpeningBlockCountdownStarted) return; // Таймер запускается только после самого первого открытия через E
-
-        playerOpeningBlockCountdownStarted = true; // Запоминаем, что отсчёт уже начался
-
-        playerOpeningBlockCoroutine = StartCoroutine(BlockPlayerOpeningAfterDelay()); // Запускаем ожидание
-    }
-
-    private IEnumerator BlockPlayerOpeningAfterDelay() // Ожидание перед запретом открытия через E
-    {
-        if (playerOpeningBlockDelay > 0f) // Если указана задержка больше нуля
+        float t = 0f;
+        Quaternion outStart = outsideHandle != null ? outsideHandle.localRotation : Quaternion.identity;
+        Quaternion inStart = insideHandle != null ? insideHandle.localRotation : Quaternion.identity;
+        while (t < 1f)
         {
-            yield return new WaitForSeconds(playerOpeningBlockDelay); // Ждём заданное в Inspector время
-        }
-
-        playerOpeningBlockCoroutine = null; // Очищаем ссылку на завершённую корутину
-
-        if (!blockPlayerOpeningAfterFirstOpen) // Если галочку выключили во время ожидания
-        {
-            playerOpeningBlockCountdownStarted = false; // Разрешаем запустить таймер заново после повторного включения
-
-            yield break; // Не запрещаем открытие
-        }
-
-        isPlayerOpeningBlocked = true; // Запрещаем только открытие двери игроком через E
-    }
-
-    private IEnumerator PressHandlesDown() // Опускание ручек
-    {
-        float t = 0f; // Прогресс
-
-        Quaternion outStart = outsideHandle != null ? outsideHandle.localRotation : Quaternion.identity; // Старт внешней ручки
-        Quaternion inStart = insideHandle != null ? insideHandle.localRotation : Quaternion.identity; // Старт внутренней ручки
-
-        while (t < 1f) // Пока анимация не закончена
-        {
-            t += Time.deltaTime * handlePressSpeed; // Увеличиваем прогресс
-
-            if (outsideHandle != null) outsideHandle.localRotation = Quaternion.Lerp(outStart, outsideHandlePressedRotation, t); // Опускаем внешнюю ручку
-
-            if (insideHandle != null) insideHandle.localRotation = Quaternion.Lerp(inStart, insideHandlePressedRotation, t); // Опускаем внутреннюю ручку
-
-            yield return null; // Ждем кадр
+            t += Time.deltaTime * handleReturnSpeed;
+            if (outsideHandle != null) outsideHandle.localRotation = Quaternion.Lerp(outStart, outsideHandleStartRotation, t);
+            if (insideHandle != null) insideHandle.localRotation = Quaternion.Lerp(inStart, insideHandleStartRotation, t);
+            yield return null;
         }
     }
 
-    private IEnumerator ReturnHandlesBack() // Возврат ручек
+    private void UpdateDoorRotation()
     {
-        float t = 0f; // Прогресс
-
-        Quaternion outStart = outsideHandle != null ? outsideHandle.localRotation : Quaternion.identity; // Старт внешней ручки
-        Quaternion inStart = insideHandle != null ? insideHandle.localRotation : Quaternion.identity; // Старт внутренней ручки
-
-        while (t < 1f) // Пока анимация не закончена
+        Quaternion targetRotation;
+        float movementSpeed;
+        if (isPeekOpen)
         {
-            t += Time.deltaTime * handleReturnSpeed; // Увеличиваем прогресс
-
-            if (outsideHandle != null) outsideHandle.localRotation = Quaternion.Lerp(outStart, outsideHandleStartRotation, t); // Возвращаем внешнюю ручку
-
-            if (insideHandle != null) insideHandle.localRotation = Quaternion.Lerp(inStart, insideHandleStartRotation, t); // Возвращаем внутреннюю ручку
-
-            yield return null; // Ждем кадр
+            targetRotation = peekRotation;
+            movementSpeed = peekSpeed;
         }
+        else if (isOpen)
+        {
+            targetRotation = openedRotation;
+            movementSpeed = openSpeed;
+        }
+        else
+        {
+            targetRotation = closedRotation;
+            movementSpeed = closeSpeed;
+        }
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, Time.deltaTime * movementSpeed);
     }
 
-    private void UpdateDoorRotation() // Плавное движение двери
+    private void EmitDoorNoise(bool targetOpenState)
     {
-        Quaternion target = isOpen ? openedRotation : closedRotation; // Выбираем цель
-
-        float speed = isOpen ? openSpeed : closeSpeed; // Выбираем скорость
-
-        transform.localRotation = Quaternion.Slerp(transform.localRotation, target, Time.deltaTime * speed); // Поворачиваем дверь
-    }
-
-    private void EmitDoorNoise(bool targetOpenState) // Шум двери
-    {
-        if (noiseEmitter == null) return; // Если шума нет, выходим
-
-        int noisePower = targetOpenState ? openNoisePower : closeNoisePower; // Выбираем силу шума
-
-        noiseEmitter.EmitNoise(noisePower); // Отправляем шум
+        if (noiseEmitter == null) return;
+        int noisePower = targetOpenState ? openNoisePower : closeNoisePower;
+        noiseEmitter.EmitNoise(noisePower);
     }
 }
 
-public class UniversalDoorInteractForwarder : MonoBehaviour, IInteractable // Скрипт отдельной зоны взаимодействия двери
+public class UniversalDoorInteractForwarder : MonoBehaviour, IInteractable
 {
-    public UniversalDoor door; // Ссылка на дверь
-
-    public void Interact() // Игрок нажал E по отдельной зоне
+    public UniversalDoor door;
+    public void Interact()
     {
-        if (door == null) door = GetComponentInParent<UniversalDoor>(); // Если ссылка пустая, ищем дверь выше
-
-        if (door == null) return; // Если дверь не найдена, выходим
-
-        door.Interact(); // Передаем взаимодействие двери
+        if (door == null) door = GetComponentInParent<UniversalDoor>();
+        if (door == null) return;
+        door.Interact();
     }
 }
