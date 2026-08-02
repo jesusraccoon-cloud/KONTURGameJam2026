@@ -1,4 +1,5 @@
 using UnityEngine; // Подключаем Unity-классы
+using UnityEngine.Events; // Подключаем UnityEvent (для автосейва на 4/6 и 6/6)
 using TMPro; // Подключаем TextMeshPro
 using Gameplay.Quest; // Подключаем систему задач
 
@@ -22,6 +23,11 @@ public class CassetteInventoryUI : MonoBehaviour // Скрипт счетчик�
 
     [Header("Final Sequence")] // Блок финальной последовательности
     public ApartmentFinalSequence finalSequence; // Ссылка на режиссёрский скрипт финала квартиры
+
+    [Header("Save Checkpoints")] // Автосейв — вешай сюда SaveManager.SaveCheckpoint
+    public UnityEvent onReachedFourOfSix; // Собрано 4/6 кассет (чекпоинт 2)
+
+    public UnityEvent onReachedSixOfSix; // Собрано 6/6 кассет (чекпоинт 3)
 
     private bool monsterActivated = false; // Защита от повторной активации монстра
 
@@ -55,6 +61,8 @@ public class CassetteInventoryUI : MonoBehaviour // Скрипт счетчик�
     {
         monsterActivated = true; // Запоминаем, что событие 4/6 уже запущено со стороны кассет
 
+        onReachedFourOfSix.Invoke(); // Автосейв: чекпоинт 2 (собрано 4/6)
+
         UnlockHallDoors(); // Разблокируем двери, если они ещё существуют как UniversalDoor
 
         if (finalSequence != null) // Если ApartmentFinalSequence назначен
@@ -86,6 +94,8 @@ public class CassetteInventoryUI : MonoBehaviour // Скрипт счетчик�
     private void TriggerFinalEvent() // Метод запуска финального события
     {
         finalEventTriggered = true; // Запоминаем, что финал уже был запущен
+
+        onReachedSixOfSix.Invoke(); // Автосейв: чекпоинт 3 (собрано 6/6)
 
         if (finalSequence != null) // Если режиссёр финала назначен
         {

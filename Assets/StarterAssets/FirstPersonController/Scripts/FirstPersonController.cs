@@ -259,6 +259,13 @@ namespace StarterAssets // Пространство имён StarterAssets
             }
         }
 
+        public void SetYaw(float yaw) // Принудительно задать поворот игрока по Y (например, после телепорта/загрузки)
+        {
+            _targetYaw = yaw; // Желаемый угол
+            _currentYaw = yaw; // Текущий (сглаженный) угол — чтобы камера не «отскочила»
+            transform.rotation = Quaternion.Euler(0.0f, yaw, 0.0f); // Сразу применяем к трансформу
+        }
+
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax) // Метод ограничения угла
         {
             if (lfAngle < -360f) lfAngle += 360f; // Нормализуем слишком маленький угол

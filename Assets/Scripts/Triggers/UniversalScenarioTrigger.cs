@@ -2,6 +2,7 @@ using System.Collections; // Coroutine для задержек и движени
 using System.Collections.Generic; // HashSet для коллайдеров игрока
 using System.Reflection; // Синхронизация yaw Starter Assets
 using UnityEngine; // Основные классы Unity
+using UnityEngine.Events; // UnityEvent (хук для сохранений)
 
 public class UniversalScenarioTrigger : MonoBehaviour, IInteractable, IHitInteractable
 {
@@ -57,6 +58,11 @@ public class UniversalScenarioTrigger : MonoBehaviour, IInteractable, IHitIntera
     [Header("Apartment Final Sequence")]
     public ApartmentFinalSequence apartmentFinalSequence; // Сохранённая ссылка на режиссёра квартиры
 
+    [Header("Save Hook")]
+    public UnityEvent onActivated; // Доп. реакция при активации (MarkUsed вызывается автоматически)
+
+    [SerializeField] private SC_Saveable saveable; // Компонент сохранения (авто-поиск). Через него триггер сам себя помечает и глушит после загрузки
+
     [Header("Debug")]
     public bool showDebugLogs = true; // Сообщения в Console
 
@@ -77,8 +83,20 @@ public class UniversalScenarioTrigger : MonoBehaviour, IInteractable, IHitIntera
     private void Awake()
     {
         triggerCollider = GetComponent<Collider>(); // Получаем Collider один раз
+        if (saveable == null) saveable = GetComponent<SC_Saveable>(); // Ищем SC_Saveable на самом триггере
+        if (saveable == null) saveable = GetComponentInChildren<SC_Saveable>(true); // Или на дочернем объекте
         CachePlayerReferences(); // Восстанавливаем ссылки игрока
         ValidateSettings(); // Проверяем настройку Trigger
+    }
+
+    private void Start()
+    {
+        // Если триггер уже срабатывал до загрузки чекпоинта — глушим его, чтобы сцена/звук не запустились повторно
+        if (saveable != null && SC_SaveSystem.IsUsed(saveable.id))
+        {
+            hasActivated = true; // Помечаем сработавшим
+            DisableTrigger(); // Выключаем Collider
+        }
     }
 
     private void OnDisable()
@@ -129,6 +147,8 @@ public class UniversalScenarioTrigger : MonoBehaviour, IInteractable, IHitIntera
     {
         if (!canActivate || (hasActivated && !repeatActivation)) return; // Проверяем разрешение и повтор
         hasActivated = true; // Запоминаем срабатывание
+        if (saveable != null) saveable.MarkUsed(); // Автоматически помечаем триггер использованным (не нужно вручную вешать хук)
+        onActivated.Invoke(); // Доп. реакция при активации
         ScheduleDialogue(source); // Запускаем реплику
         if (source == ActivationSource.Enter) StartPlayerMove(); // Движение используется только при входе
         if (showDebugLogs) Debug.Log("UniversalScenarioTrigger: активация — " + source, gameObject); // Отладка

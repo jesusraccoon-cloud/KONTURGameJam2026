@@ -77,6 +77,9 @@ public class UniversalDoor : MonoBehaviour // Основной скрипт дв
     public bool requiresTumbler = false; // Требуется ли тумблер
     public TumblerSwitch requiredTumbler; // Нужный тумблер
 
+    [Header("Save")] // Блок сохранения
+    [SerializeField] private SC_Saveable saveable; // Компонент сохранения (авто-поиск). Добавь его на дверь, если её открытое/закрытое состояние должно сохраняться. Без него дверь не сохраняется.
+
     private Quaternion closedRotation; // Закрытый поворот двери
     private Quaternion openedRotation; // Открытый поворот двери
     private Quaternion outsideHandleStartRotation; // Стартовый поворот внешней ручки
@@ -135,6 +138,31 @@ public class UniversalDoor : MonoBehaviour // Основной скрипт дв
         if (navMeshObstacle != null) navMeshObstacle.carving = false; // Закрытая дверь не вырезает проход из NavMesh
 
         SetupDoorInteractZone(); // Настраиваем отдельную зону взаимодействия
+
+        RestoreSavedState(); // Восстанавливаем открытое/закрытое и запертое состояние двери после загрузки
+    }
+
+    private void RestoreSavedState() // Восстановить состояние двери из сохранения
+    {
+        if (saveable == null) saveable = GetComponent<SC_Saveable>(); // Ищем SC_Saveable на двери
+        if (saveable == null) saveable = GetComponentInChildren<SC_Saveable>(true); // Или на дочернем
+
+        if (saveable == null || !SC_SaveSystem.TryGetState(saveable.id, out int st)) return; // Нет сохранённого состояния — оставляем как в сцене
+
+        isLocked = (st & 2) != 0; // Бит 1 — заперта
+        isOpen = (st & 1) != 0; // Бит 0 — открыта
+
+        transform.localRotation = isOpen ? openedRotation : closedRotation; // Мгновенно ставим полотно в нужное положение (без анимации)
+
+        if (navMeshObstacle != null) navMeshObstacle.carving = IsFullyOpen; // Синхронизируем проход в NavMesh
+    }
+
+    private void SaveDoorState() // Сохранить текущее состояние двери
+    {
+        if (saveable == null) return; // Дверь без SC_Saveable не сохраняется
+
+        int st = (isOpen ? 1 : 0) | (isLocked ? 2 : 0); // Пакуем открыта/заперта в биты
+        SC_SaveSystem.SetState(saveable.id, st); // Сохраняем
     }
 
     private void Update() // Каждый кадр
@@ -307,16 +335,19 @@ public class UniversalDoor : MonoBehaviour // Основной скрипт дв
     public void SetLocked(bool value) // Установить замок
     {
         isLocked = value; // Записываем состояние замка
+        SaveDoorState(); // Запоминаем состояние замка для сохранения
     }
 
     public void UnlockDoor() // Разблокировать дверь
     {
         isLocked = false; // Снимаем замок
+        SaveDoorState(); // Запоминаем состояние замка для сохранения
     }
 
     public void LockDoor() // Заблокировать дверь
     {
         isLocked = true; // Ставим замок
+        SaveDoorState(); // Запоминаем состояние замка для сохранения
     }
 
     public void SetMonsterCanOpen(bool value) // Настроить доступ монстра
@@ -344,6 +375,8 @@ public class UniversalDoor : MonoBehaviour // Основной скрипт дв
         if (doorOpenDelay > 0f) yield return new WaitForSeconds(doorOpenDelay); // Ждем задержку
 
         isOpen = targetOpenState; // Меняем состояние двери
+
+        SaveDoorState(); // Запоминаем новое открытое/закрытое состояние для сохранения
 
         EmitDoorNoise(targetOpenState); // Создаем шум
 

@@ -1,4 +1,5 @@
 using UnityEngine; // Подключаем Unity-классы: MonoBehaviour, Transform, Vector3, Debug
+using UnityEngine.Events; // UnityEvent (хук для сохранений)
 using FMODUnity; // Подключаем FMOD (EventReference, RuntimeManager)
 
 public class CassettePickup : MonoBehaviour, IInteractable // Кассета является интерактивным объектом
@@ -18,6 +19,11 @@ public class CassettePickup : MonoBehaviour, IInteractable // Кассета я�
 
     [Header("FMOD")] // Блок звука FMOD
     [SerializeField] private EventReference pickupEvent; // Звук подбора/выезда кассеты
+
+    [Header("Save Hook")] // Хук сохранений
+    public UnityEvent onCollected; // Вызывается, когда кассета собрана (доп. реакция; MarkUsed вызывается автоматически)
+
+    [SerializeField] private SC_Saveable saveable; // Компонент сохранения на кассете (авто-поиск). Через него кассета сама себя помечает и прячется после загрузки
 
     [Header("Optional Auto Find")] // Блок автопоиска
     [SerializeField] private bool autoFindInventoryUI = true; // Автоматически искать UI кассет
@@ -40,6 +46,13 @@ public class CassettePickup : MonoBehaviour, IInteractable // Кассета я�
     private void Start() // Вызывается перед первым кадром
     {
         ValidateSetup(); // Проверяем настройки
+
+        // Если эту кассету уже собирали (после загрузки чекпоинта) — прячем её сразу, не даём подобрать повторно
+        if (saveable != null && SC_SaveSystem.IsUsed(saveable.id))
+        {
+            isCollected = true; // Помечаем собранной
+            gameObject.SetActive(false); // Прячем объект
+        }
     }
 
     private void Update() // Вызывается каждый кадр
@@ -82,6 +95,9 @@ public class CassettePickup : MonoBehaviour, IInteractable // Кассета я�
         {
             noiseEmitter = GetComponent<NoiseEmitter>(); // Пробуем найти NoiseEmitter на кассете
         }
+
+        if (saveable == null) saveable = GetComponent<SC_Saveable>(); // Ищем SC_Saveable на самой кассете
+        if (saveable == null) saveable = GetComponentInChildren<SC_Saveable>(true); // Или на дочернем объекте
     }
 
     private void ValidateSetup() // Метод проверки настроек
@@ -138,9 +154,12 @@ public class CassettePickup : MonoBehaviour, IInteractable // Кассета я�
 
         isCollected = true; // Помечаем кассету собранной
 
+        if (saveable != null) saveable.MarkUsed(); // Автоматически помечаем кассету использованной — не нужно вручную вешать хук
+        onCollected.Invoke(); // Доп. хук сохранений — ДО AddCassette, чтобы автосейв 4/6 уже видел эту кассету использованной
+
         if (inventoryUI != null) // Если UI назначен
         {
-            inventoryUI.AddCassette(); // Добавляем кассету
+            inventoryUI.AddCassette(); // Добавляем кассету (может сработать автосейв на 4/6 или 6/6)
         }
 
         gameObject.SetActive(false); // Выключаем объект кассеты

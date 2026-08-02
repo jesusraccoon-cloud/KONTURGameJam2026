@@ -50,20 +50,51 @@ public class RadioCassettePuzzle : MonoBehaviour, IInteractable // Радио в
     [Header("Events")] // События
     public UnityEvent onRadioExploded; // События после взрыва
 
+    [Header("Save")] // Сохранение
+    [SerializeField] private SC_Saveable saveable; // Компонент сохранения (авто-поиск). Через его ID хранятся флаги радио между загрузками.
+
     [Header("Debug")] // Отладка
     public bool showDebugLogs = true; // Показывать логи
 
     private void Start() // При старте сцены
     {
+        RestoreSavedState(); // Восстанавливаем сохранённое состояние (кассета открыта / радио взорвано)
+
         if (cassetteObject != null && !cassetteWasUnlocked) // Если кассета назначена и ещё не открыта
         {
             cassetteObject.SetActive(false); // Прячем кассету
         }
 
-        if (brokenRadioObject != null) // Если сломанная модель назначена
+        if (isExploded) // Радио уже взорвано (восстановлено после загрузки)
+        {
+            isRadioOn = false; // Радио точно выключено
+            if (intactRadioObject != null) intactRadioObject.SetActive(false); // Прячем целую модель
+            if (brokenRadioObject != null) brokenRadioObject.SetActive(true); // Показываем сломанную модель
+        }
+        else if (brokenRadioObject != null) // До взрыва
         {
             brokenRadioObject.SetActive(false); // Прячем сломанную модель
         }
+    }
+
+    private void RestoreSavedState() // Прочитать сохранённые флаги радио
+    {
+        if (saveable == null) saveable = GetComponent<SC_Saveable>(); // Ищем SC_Saveable на радио
+        if (saveable == null) saveable = GetComponentInChildren<SC_Saveable>(true); // Или на дочернем
+
+        if (saveable != null && SC_SaveSystem.TryGetState(saveable.id, out int st)) // Есть сохранённое состояние?
+        {
+            cassetteWasUnlocked = (st & 1) != 0; // Бит 0 — кассета была открыта
+            isExploded = (st & 2) != 0; // Бит 1 — радио взорвалось
+        }
+    }
+
+    private void SaveRadioState() // Записать текущие флаги радио в сохранение
+    {
+        if (saveable == null) return; // Нет ID — сохранять некуда
+
+        int st = (cassetteWasUnlocked ? 1 : 0) | (isExploded ? 2 : 0); // Пакуем флаги в биты
+        SC_SaveSystem.SetState(saveable.id, st); // Сохраняем
     }
 
     private void Update() // Каждый кадр
@@ -140,6 +171,8 @@ public class RadioCassettePuzzle : MonoBehaviour, IInteractable // Радио в
 
         cassetteWasUnlocked = true; // Запоминаем открытие
 
+        SaveRadioState(); // Сохраняем: кассета открыта
+
         if (cassetteObject != null) // Если кассета есть
         {
             cassetteObject.SetActive(true); // Включаем кассету
@@ -155,6 +188,8 @@ public class RadioCassettePuzzle : MonoBehaviour, IInteractable // Радио в
         isExploded = true; // Помечаем взрыв
 
         isRadioOn = false; // Радио больше не включено
+
+        SaveRadioState(); // Сохраняем: радио взорвано
 
         StopRadioMusic(); // Останавливаем музыку
 
