@@ -21,6 +21,8 @@ public class MonsterAI : MonoBehaviour // Центральный контрол�
     private Vector3 lastSeenPosition; // Последняя известная позиция игрока
     private float loseTimer; // Таймер после потери игрока
 
+    private bool blockCloseRangeReactionInFinalMode = false; // Запрещает ближней реакции прерывать защищённое финальное ожидание
+
     private void Reset() => AutoFindComponents(); // Автозаполнение при добавлении
     private void Awake() { AutoFindComponents(); SyncSharedReferences(); } // Заполняем ссылки при запуске
 
@@ -32,9 +34,20 @@ public class MonsterAI : MonoBehaviour // Центральный контрол�
 
         if (finalController != null && finalController.IsFinalModeActive) // Проверяем финальный режим
         {
-            currentState = MonsterState.FinalMode; // Ставим финальное состояние
-            finalController.Tick(); // Обновляем финальный режим
-            return; // Обычную логику не выполняем
+            bool closeRangeCanInterrupt =
+                !blockCloseRangeReactionInFinalMode
+                && CanDetectPlayerAtCloseRange(); // Проверяем, разрешено ли ближней реакции сорвать финальный режим
+
+            if (closeRangeCanInterrupt) // Если текущий финальный режим разрешает реакцию на близкого игрока
+            {
+                StartChaseInternal(); // Прерываем финальный режим и запускаем обычную погоню
+            }
+            else // Если реакция запрещена или игрок не вошёл в ближний радиус
+            {
+                currentState = MonsterState.FinalMode; // Ставим финальное состояние
+                finalController.Tick(); // Обновляем текущий финальный режим
+                return; // Обычную логику не выполняем
+            }
         }
 
         if (doorOpener != null && doorOpener.TryOpenDoorAhead()) return; // Закрытая дверь найдена: ждём
@@ -45,6 +58,25 @@ public class MonsterAI : MonoBehaviour // Центральный контрол�
         if (patrol != null && patrol.isPatrolActive) { currentState = MonsterState.Patrol; return; } // Патруль работает сам
 
         currentState = MonsterState.Idle; // Иначе монстр стоит
+    }
+
+    private bool CanDetectPlayerAtCloseRange() // Проверяет только ближнюю круговую зону MonsterVision
+    {
+        if (vision == null) return false; // Без MonsterVision проверка невозможна
+
+        if (!vision.useCloseAwareness) return false; // Ближняя зона отключена в Inspector
+
+        if (vision.player == null) return false; // Игрок не назначен в MonsterVision
+
+        Vector3 flatDirection = vision.player.position - vision.transform.position; // Получаем направление до игрока
+
+        flatDirection.y = 0f; // Не учитываем разницу высоты
+
+        float closeRadius = Mathf.Max(0f, vision.closeAwarenessRadius); // Получаем безопасный радиус ближнего обнаружения
+
+        if (flatDirection.sqrMagnitude > closeRadius * closeRadius) return false; // Игрок находится дальше ближнего радиуса
+
+        return vision.CanSeePlayer(); // Проверяем прятки и отсутствие стены между монстром и игроком
     }
 
     private void AutoFindComponents() // Находит компоненты на Monster
@@ -134,6 +166,7 @@ public class MonsterAI : MonoBehaviour // Центральный контрол�
     public void ActivateMonster() // Активирует монстра
     {
         if (!gameObject.activeInHierarchy) return; // Выключенный объект не активируем
+        blockCloseRangeReactionInFinalMode = false; // Обычная активация не должна сохранять защищённое ожидание
         isActivated = true; // Включаем монстра
         currentState = MonsterState.Patrol; // Ставим патруль
         if (hearing != null) hearing.StopHearingLogic(); // Очищаем поиск
@@ -150,6 +183,11 @@ public class MonsterAI : MonoBehaviour // Центральный контрол�
         if (hearing != null) hearing.ReactToNoise(noisePosition, noisePower, isActivated); // Передаём шум
     }
 
+    public void SetFinalCloseRangeReactionBlocked(bool blocked) // Разрешить или запретить ближней реакции прерывать финальный режим
+    {
+        blockCloseRangeReactionInFinalMode = blocked; // Сохраняем требуемое состояние защиты
+    }
+
     public void HearNoise(Vector3 noisePosition) => ReactToNoise(noisePosition, 6); // Старый метод совместимости
 
     public void GoToPointAndStop(Transform targetPoint) // Идти к специальной точке
@@ -163,6 +201,7 @@ public class MonsterAI : MonoBehaviour // Центральный контрол�
 
     public void StartFinalKitchenChase() // Финальная погоня на кухне
     {
+        blockCloseRangeReactionInFinalMode = false; // На кухне близкий игрок должен активировать погоню
         isActivated = true; currentState = MonsterState.FinalMode; // Активируем финал
         if (hearing != null) hearing.StopHearingLogic(); // Отключаем слух
         if (patrol != null) patrol.isPatrolActive = false; // Отключаем патруль
@@ -180,6 +219,7 @@ public class MonsterAI : MonoBehaviour // Центральный контрол�
 
     public void ForceChasePlayer() // Постоянная погоня после ванной
     {
+        blockCloseRangeReactionInFinalMode = false; // Снимаем защищённое ожидание у окна
         isActivated = true; currentState = MonsterState.FinalMode; // Активируем финал
         if (hearing != null) hearing.StopHearingLogic(); // Отключаем слух
         if (patrol != null) patrol.isPatrolActive = false; // Отключаем патруль

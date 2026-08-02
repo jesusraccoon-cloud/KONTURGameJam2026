@@ -36,14 +36,26 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
 
     public GameObject[] objectsToEnableAfterSixOfSix; // Объекты, которые нужно включить после 6/6
 
-    [Header("Closet Fall")] // Блок падения шкафа
-    public ClosetPhysicalFall closetPhysicalFall; // Скрипт падения шкафа
+    [Header("Kitchen Barricade")] // Блок трёхстадийной кухонной баррикады
+    public ThreeStageInteractableObject kitchenBarricade; // Баррикада: 0 — целая, 1 — упавшая, 2 — уничтоженная
 
     [Header("Bathroom Door")] // Блок двери ванной
     public UniversalDoor bathroomDoor; // Дверь ванной
 
-    [Header("Bathroom Lock")] // Блок замка ванной
-    public GameObject bathroomLockCollider; // Коллайдер замка ванной
+    [Header("Bathroom Door Stage Watch")] // Проверка стадии событийной двери ванной
+    public ThreeStageInteractableObject bathroomDoorStageObject; // Объект EventBathroomDoor с ThreeStageInteractableObject
+
+    [Min(1)]
+    public int bathroomDoorBrokenStage = 1; // Стадия Broken, после которой монстр начинает погоню
+
+    [Min(0.02f)]
+    public float bathroomDoorStageCheckInterval = 0.1f; // Как часто проверять CurrentStage двери ванной
+
+    [Min(0.1f)]
+    public float monsterWindowFinalReachDistance = 0.6f; // Дистанция, на которой монстр считается вставшим у окна
+
+    [Min(1f)]
+    public float monsterWindowFinalReachTimeout = 20f; // Максимальное время ожидания монстра у конечной точки окна
 
     [Header("Monster")] // Блок монстра
     public GameObject monsterObject; // Объект монстра
@@ -59,15 +71,15 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
 
     public GameObject finalBrokenDoor; // Сломанная дверь после реакции
 
-    public Rigidbody fallenWardrobeRigidbody; // Rigidbody шкафа
+    public Transform monsterWindowRoutePoint; // Обязательная промежуточная точка сразу за разрушенной баррикадой
 
-    public Vector3 wardrobeForceDirection = new Vector3(1f, 0.2f, 0f); // Направление толчка шкафа
+    public Transform monsterAfterWindowHitPoint; // Конечная точка перед окном, где монстр должен остаться
 
-    public float wardrobeForce = 4f; // Сила толчка шкафа
+    [Min(0.1f)]
+    public float monsterWindowRouteReachDistance = 0.5f; // Дистанция, на которой промежуточная точка считается достигнутой
 
-    public float wardrobeTorque = 2f; // Сила вращения шкафа
-
-    public Transform monsterAfterWindowHitPoint; // Точка монстра после удара по окну
+    [Min(0.1f)]
+    public float monsterWindowRouteTimeout = 12f; // Максимальное время ожидания достижения промежуточной точки
 
     [Header("Triggers")] // Блок триггеров
     public GameObject hallReturnDeathTrigger; // Триггер смерти при возврате в коридор
@@ -102,10 +114,19 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
 
     private bool bathroomExitTriggered = false; // Триггер выхода из ванной уже сработал
 
+    private bool monsterReachedWindowPoint = false; // Монстр действительно дошёл до конечной точки у окна
+
+    private bool bathroomDoorBroken = false; // Дверь или замок ванной уже разрушены
+
+    private bool bathroomChaseStarted = false; // Финальная погоня после ванной уже запущена
+
+    private Coroutine monsterWindowRouteCoroutine; // Корутина принудительного маршрута монстра к окну
+
+    private Coroutine bathroomDoorBreakWatchCoroutine; // Корутина ожидания монстра у окна и разрушения двери ванной
+
+
     private void Start() // При старте сцены
     {
-        if (closetPhysicalFall != null) closetPhysicalFall.canFall = false; // Запрещаем падение шкафа до финала
-
         if (bathroomExitChaseTrigger != null) bathroomExitChaseTrigger.SetActive(false); // Выключаем триггер выхода из ванной
 
         if (apartmentExitCompleteTrigger != null) apartmentExitCompleteTrigger.SetActive(false); // Выключаем триггер завершения квартиры
@@ -146,6 +167,7 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
         if (!finalStarted && monsterAI != null) monsterAI.ActivateMonster(); // Запускаем монстра, если финал еще не начался
 
         if (finalStarted && monsterAI != null && monsterExitBlockPoint != null) monsterAI.GoToPointAndStop(monsterExitBlockPoint); // Если финал уже идет, держим монстра у выхода
+
     }
 
     private IEnumerator EarlyHallDoorBreakRoutine() // Последовательность раннего события 4/6
@@ -196,8 +218,6 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
 
         SetObjectsActive(objectsToEnableAfterSixOfSix, true); // Включаем дополнительные объекты после 6/6
 
-        if (closetPhysicalFall != null) closetPhysicalFall.canFall = true; // Разрешаем падение шкафа
-
         if (bathroomDoor != null) // Проверяем, назначена ли дверь ванной
         {
             bathroomDoor.CloseDoor(); // Закрываем дверь ванной
@@ -206,8 +226,6 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
 
             bathroomDoor.canMonsterOpen = false; // Запрещаем монстру открыть ванную
         }
-
-        if (bathroomLockCollider != null) bathroomLockCollider.SetActive(true); // Включаем замок ванной
 
         if (hallReturnDeathTrigger != null) hallReturnDeathTrigger.SetActive(true); // Включаем триггер смерти
 
@@ -220,6 +238,7 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
         if (elevatorEndingEvent != null) elevatorEndingEvent.UnlockElevatorEvent(); // Разблокируем лифтовую концовку
 
         BlockExitWithMonster(); // Отправляем монстра блокировать выход
+
 
         Debug.Log("Финальная последовательность квартиры запущена"); // Пишем лог
     }
@@ -243,40 +262,273 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
     {
         if (windowFirstHitReactionStarted) return; // Если реакция уже была, выходим
 
-        windowFirstHitReactionStarted = true; // Запоминаем реакцию
+        windowFirstHitReactionStarted = true; // Запоминаем реакцию, чтобы событие не повторялось
 
-        if (finalNormalDoor != null) finalNormalDoor.SetActive(false); // Прячем обычную дверь
+        if (finalNormalDoor != null) finalNormalDoor.SetActive(false); // Прячем обычную дверь, если она используется отдельно
 
-        if (finalBrokenDoor != null) finalBrokenDoor.SetActive(true); // Показываем сломанную дверь
+        if (finalBrokenDoor != null) finalBrokenDoor.SetActive(true); // Показываем сломанную дверь, если она используется отдельно
 
-        if (fallenWardrobeRigidbody != null) // Проверяем Rigidbody шкафа
+        if (kitchenBarricade != null) kitchenBarricade.ForceSetStage(2); // Переводим кухонную баррикаду в стадию Destroyed
+
+        if (monsterObject != null) monsterObject.SetActive(true); // Гарантированно включаем объект монстра
+
+        if (monsterPatrol != null) monsterPatrol.StopPatrol(); // Гарантированно выключаем обычный патруль
+
+        if (monsterAI != null) monsterAI.SetFinalCloseRangeReactionBlocked(true); // Запрещаем близкому игроку сорвать ожидание монстра у окна
+
+        monsterReachedWindowPoint = false; // Сбрасываем состояние прибытия к окну
+
+        bathroomDoorBroken = false; // Сбрасываем состояние двери ванной
+
+        bathroomChaseStarted = false; // Сбрасываем состояние финальной погони
+
+        if (bathroomDoorBreakWatchCoroutine != null) // Проверяем старую корутину ожидания двери
         {
-            fallenWardrobeRigidbody.isKinematic = false; // Включаем физику шкафа
-
-            fallenWardrobeRigidbody.AddForce(wardrobeForceDirection.normalized * wardrobeForce, ForceMode.Impulse); // Толкаем шкаф
-
-            fallenWardrobeRigidbody.AddTorque(Random.insideUnitSphere * wardrobeTorque, ForceMode.Impulse); // Добавляем вращение
+            StopCoroutine(bathroomDoorBreakWatchCoroutine); // Останавливаем старое ожидание
+            bathroomDoorBreakWatchCoroutine = null; // Очищаем ссылку
         }
 
-        if (monsterObject != null) monsterObject.SetActive(true); // Включаем монстра
+        if (monsterWindowRouteCoroutine != null) // Проверяем, не запущен ли маршрут повторно
+        {
+            StopCoroutine(monsterWindowRouteCoroutine); // Останавливаем старую корутину маршрута
+        }
 
-        if (monsterAI != null && monsterAfterWindowHitPoint != null) monsterAI.StartFinalWindowThreat(monsterAfterWindowHitPoint); // Запускаем угрозу у окна
+        monsterWindowRouteCoroutine = StartCoroutine(MoveMonsterToWindowThroughRoutePoint()); // Запускаем обязательный маршрут через проём
 
-        Debug.Log("Первый удар по окну: монстр начал угрозу у окна"); // Пишем лог
+        Debug.Log("Первый удар по окну: баррикада уничтожена, запущен маршрут монстра через точку за баррикадой"); // Пишем лог
     }
 
-    public void OnPlayerEscapedThroughWindow() // Игрок перелез через окно
+    private IEnumerator MoveMonsterToWindowThroughRoutePoint() // Ведёт монстра сначала через баррикаду, затем к окну
+    {
+        yield return null; // Даём Unity один кадр на переключение объектов стадии Destroyed
+
+        if (monsterAI == null) // Проверяем ссылку на AI
+        {
+            Debug.LogWarning("ApartmentFinalSequence: не назначен Monster AI.", gameObject); // Пишем понятную ошибку
+            monsterWindowRouteCoroutine = null; // Очищаем ссылку на корутину
+            yield break; // Без AI движение невозможно
+        }
+
+        if (monsterAfterWindowHitPoint == null) // Проверяем конечную точку
+        {
+            Debug.LogWarning("ApartmentFinalSequence: не назначен Monster After Window Hit Point.", gameObject); // Пишем понятную ошибку
+            monsterWindowRouteCoroutine = null; // Очищаем ссылку на корутину
+            yield break; // Без конечной точки маршрут невозможен
+        }
+
+        if (monsterWindowRoutePoint != null) // Проверяем, назначена ли обязательная промежуточная точка
+        {
+            monsterAI.GoToPointAndStop(monsterWindowRoutePoint); // Сначала отправляем монстра прямо к проходу за разрушенной баррикадой
+
+            float routeTimer = 0f; // Создаём таймер ожидания промежуточной точки
+
+            while (Vector3.Distance(monsterAI.transform.position, monsterWindowRoutePoint.position) > monsterWindowRouteReachDistance) // Ждём реального прибытия
+            {
+                routeTimer += Time.deltaTime; // Увеличиваем таймер ожидания
+
+                if (routeTimer >= monsterWindowRouteTimeout) // Проверяем, не истекло ли максимальное время
+                {
+                    Debug.LogWarning(
+                        "ApartmentFinalSequence: монстр не смог дойти до Monster Window Route Point. Проверь положение точки на NavMesh.",
+                        gameObject
+                    ); // Пишем причину остановки последовательности
+
+                    monsterWindowRouteCoroutine = null; // Очищаем ссылку на корутину
+                    yield break; // Не отправляем монстра обходным путём к окну
+                }
+
+                yield return null; // Ждём следующий кадр
+            }
+
+            Debug.Log("ApartmentFinalSequence: монстр прошёл обязательную точку за баррикадой.", gameObject); // Подтверждаем прохождение проёма
+
+            yield return null; // Даём финальному контроллеру один кадр завершить первую команду
+        }
+
+        monsterAI.GoToPointAndStop(monsterAfterWindowHitPoint); // После прохода через баррикаду отправляем монстра к конечной точке окна
+
+        Debug.Log("ApartmentFinalSequence: монстр направлен к конечной точке перед окном.", gameObject); // Подтверждаем вторую команду
+
+        monsterWindowRouteCoroutine = null; // Очищаем ссылку на завершённую корутину
+
+        bathroomDoorBreakWatchCoroutine = StartCoroutine(
+            WaitForMonsterAtWindowAndBathroomDoorBreak()
+        ); // Запускаем ожидание прибытия монстра и разрушения двери ванной
+    }
+
+    private IEnumerator WaitForMonsterAtWindowAndBathroomDoorBreak() // Удерживает монстра у окна до разрушения двери ванной
+    {
+        float reachTimer = 0f; // Создаём таймер ожидания конечной точки
+
+        while (!HasMonsterReachedWindowPoint()) // Ждём, пока монстр действительно дойдёт к точке окна
+        {
+            reachTimer += Time.deltaTime; // Увеличиваем таймер ожидания
+
+            if (reachTimer >= monsterWindowFinalReachTimeout) // Проверяем максимальное время ожидания
+            {
+                Debug.LogWarning(
+                    "ApartmentFinalSequence: монстр не считается дошедшим до точки окна. "
+                    + "Проверь Monster Window Final Reach Distance и положение точки по X/Z.",
+                    gameObject
+                ); // Пишем понятную причину
+
+                bathroomDoorBreakWatchCoroutine = null; // Очищаем ссылку
+                yield break; // Не запускаем погоню из неправильного положения
+            }
+
+            yield return null; // Ждём следующий кадр
+        }
+
+        monsterReachedWindowPoint = true; // Запоминаем реальное прибытие монстра
+
+        Debug.Log(
+            "ApartmentFinalSequence: монстр встал у окна и ждёт разрушения двери ванной.",
+            gameObject
+        ); // Подтверждаем начало ожидания
+
+        if (
+            bathroomDoorStageObject != null
+            && bathroomDoorStageObject.CurrentStage >= bathroomDoorBrokenStage
+        ) // Проверяем, не была ли дверь уже переведена в Broken
+        {
+            bathroomDoorBroken = true; // Запоминаем уже наступившую стадию Broken
+            StartBathroomChaseAfterDoorBreak(); // Сразу запускаем погоню после прибытия монстра
+            bathroomDoorBreakWatchCoroutine = null; // Очищаем ссылку на корутину
+            yield break; // Дальнейшее ожидание больше не требуется
+        }
+
+        if (bathroomDoorStageObject == null) // Проверяем, назначен ли EventDoor
+        {
+            Debug.LogWarning(
+                "ApartmentFinalSequence: не назначен Bathroom Door Stage Object. Перетащи объект EventDoor.",
+                gameObject
+            ); // Пишем понятную ошибку настройки
+
+            bathroomDoorBreakWatchCoroutine = null; // Очищаем ссылку
+            yield break; // Без объекта двери нельзя определить стадию Broken
+        }
+
+        while (
+            !bathroomDoorBroken
+            && bathroomDoorStageObject.CurrentStage < bathroomDoorBrokenStage
+        ) // Ждём, пока EventDoor перейдёт в стадию Broken
+        {
+            yield return new WaitForSeconds(bathroomDoorStageCheckInterval); // Проверяем стадию с заданной частотой
+        }
+
+        bathroomDoorBroken = true; // Запоминаем достижение стадии Broken
+
+        Debug.Log(
+            "ApartmentFinalSequence: EventDoor перешёл в стадию Broken.",
+            gameObject
+        ); // Подтверждаем правильное событие
+
+        StartBathroomChaseAfterDoorBreak(); // Запускаем погоню только после прибытия монстра и Broken двери
+
+        bathroomDoorBreakWatchCoroutine = null; // Очищаем ссылку на завершённую корутину
+    }
+
+    public void OnBathroomDoorBroken() // Вызывается событием On Stage Changed объекта EventBathroomDoor
+    {
+        if (bathroomDoorStageObject == null) // Проверяем ссылку на событийную дверь
+        {
+            Debug.LogWarning(
+                "ApartmentFinalSequence: не назначен Bathroom Door Stage Object.",
+                gameObject
+            ); // Показываем точную ошибку настройки
+
+            return; // Без объекта двери стадию проверить нельзя
+        }
+
+        if (bathroomDoorStageObject.CurrentStage < bathroomDoorBrokenStage) // Проверяем, достигнута ли стадия Broken
+        {
+            return; // Стадия 0 ещё не должна запускать погоню
+        }
+
+        bathroomDoorBroken = true; // Запоминаем стадию Broken
+
+        if (HasMonsterReachedWindowPoint()) // Дополнительно проверяем реальное положение монстра по X/Z
+        {
+            monsterReachedWindowPoint = true; // Исправляем флаг прибытия, даже если высота точки Y отличается
+        }
+
+        Debug.Log(
+            "ApartmentFinalSequence: получено событие Broken от EventBathroomDoor. Stage = "
+            + bathroomDoorStageObject.CurrentStage,
+            gameObject
+        ); // Подтверждаем получение события двери
+
+        StartBathroomChaseAfterDoorBreak(); // Метод сам проверит оба обязательных условия
+    }
+
+    private bool HasMonsterReachedWindowPoint() // Проверяет прибытие монстра к окну без учёта разницы высоты Y
+    {
+        if (monsterAI == null) return false; // Без монстра проверка невозможна
+
+        if (monsterAfterWindowHitPoint == null) return false; // Без конечной точки проверка невозможна
+
+        Vector2 monsterPosition = new Vector2(
+            monsterAI.transform.position.x,
+            monsterAI.transform.position.z
+        ); // Получаем горизонтальную позицию монстра
+
+        Vector2 windowPointPosition = new Vector2(
+            monsterAfterWindowHitPoint.position.x,
+            monsterAfterWindowHitPoint.position.z
+        ); // Получаем горизонтальную позицию точки окна
+
+        float horizontalDistance = Vector2.Distance(
+            monsterPosition,
+            windowPointPosition
+        ); // Считаем расстояние только по плоскости пола
+
+        return horizontalDistance <= monsterWindowFinalReachDistance; // Возвращаем результат прибытия
+    }
+
+    private void StartBathroomChaseAfterDoorBreak() // Запускает финальную погоню после разрушения двери ванной
+    {
+        if (bathroomChaseStarted) return; // Не запускаем погоню повторно
+
+        if (!monsterReachedWindowPoint) return; // Монстр сначала обязан дойти до точки у окна
+
+        if (!bathroomDoorBroken) return; // Дверь ванной должна быть разрушена
+
+        bathroomChaseStarted = true; // Запоминаем запуск погони
+
+        if (monsterObject != null) monsterObject.SetActive(true); // Гарантированно включаем монстра
+
+        if (monsterPatrol != null) monsterPatrol.StopPatrol(); // Гарантированно выключаем патруль
+
+        if (monsterAI != null)
+        {
+            monsterAI.SetFinalCloseRangeReactionBlocked(false); // Снимаем защищённое ожидание
+
+            monsterAI.ForceChasePlayer(); // Запускаем постоянную погоню после ванной
+        }
+
+        if (bathroomExitChaseTrigger != null) bathroomExitChaseTrigger.SetActive(false); // Выключаем запасной триггер после запуска
+
+        Debug.Log(
+            "ApartmentFinalSequence: дверь ванной разрушена, монстр начал финальную погоню.",
+            gameObject
+        ); // Подтверждаем запуск погони
+    }
+
+    public void OnPlayerEscapedThroughWindow() // Игрок полностью перелез через окно
     {
         if (!finalSequenceStarted) return; // Если финал не начался, выходим
 
-        playerEscapedThroughWindow = true; // Запоминаем, что игрок перелез
+        if (playerEscapedThroughWindow) return; // Не выполняем действие повторно
 
-        if (bathroomExitChaseTrigger != null) bathroomExitChaseTrigger.SetActive(true); // Включаем триггер погони после ванной
+        playerEscapedThroughWindow = true; // Запоминаем, что игрок перелез через окно
 
-        Debug.Log("Игрок перелез через окно, триггер выхода из ванной включен"); // Пишем лог
+        Debug.Log(
+            "ApartmentFinalSequence: игрок перелез через окно.",
+            gameObject
+        ); // Двери уже переключены списками этапа 6/6
     }
 
-    public void OnBathroomExitTrigger() // Игрок вышел из ванной
+    public void OnBathroomExitTrigger() // Игрок прошёл через выход из ванной
     {
         if (bathroomExitTriggered) return; // Если уже сработало, выходим
 
@@ -286,15 +538,12 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
 
         bathroomExitTriggered = true; // Запоминаем срабатывание
 
-        if (monsterObject != null) monsterObject.SetActive(true); // Включаем монстра
+        if (bathroomExitChaseTrigger != null) bathroomExitChaseTrigger.SetActive(false); // Выключаем одноразовый триггер
 
-        if (monsterPatrol != null) monsterPatrol.StopPatrol(); // Останавливаем патруль
-
-        if (monsterAI != null) monsterAI.ForceChasePlayer(); // Запускаем финальную погоню
-
-        if (bathroomExitChaseTrigger != null) bathroomExitChaseTrigger.SetActive(false); // Выключаем триггер
-
-        Debug.Log("Игрок вышел из ванной, монстр начал финальную погоню"); // Пишем лог
+        Debug.Log(
+            "Игрок прошёл через выход ванной. Погоня зависит только от стадии Broken объекта EventDoor.",
+            gameObject
+        ); // Триггер больше не запускает погоню
     }
 
     public void TryCompleteApartmentAfterExit() // Игрок вышел из квартиры после финала
@@ -321,6 +570,7 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
 
         Debug.Log("Квартира завершена. Теперь ее можно отключить тумблером УМПСР"); // Пишем лог
     }
+
 
     public bool CanActivateUniversalTrigger(int requiredStage) // Проверяем, разрешает ли текущая стадия квартиры работу универсального триггера
     {

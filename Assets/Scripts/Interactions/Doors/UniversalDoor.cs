@@ -32,6 +32,20 @@ public class UniversalDoor : MonoBehaviour // Основной скрипт дв
     public float openSpeed = 5f; // Скорость открытия
     public float closeSpeed = 7f; // Скорость закрытия
 
+    [Header("Auto Close")] // Блок автоматического закрытия двери
+    public bool autoClose = false; // Должна ли дверь автоматически закрываться после открытия
+
+    [Min(0f)] public float autoCloseDelay = 3f; // Через сколько секунд после открытия начать закрытие
+
+    public bool AutoCloseEnabled => autoClose; // Публичная проверка состояния автозакрытия
+
+    [Header("Player Opening Block")] // Блок запрета повторного открытия двери игроком через E
+    public bool blockPlayerOpeningAfterFirstOpen = false; // После первого открытия игроком запустить таймер запрета
+
+    [Min(0f)] public float playerOpeningBlockDelay = 20f; // Через сколько секунд запретить игроку открывать дверь через E
+
+    public bool IsPlayerOpeningBlocked => isPlayerOpeningBlocked; // Публичная проверка запрета открытия через E
+
     [Header("Interact Zone")] // Блок отдельной зоны взаимодействия
     public Collider doorInteractZone; // Отдельный коллайдер-зона, по которому игрок нажимает E
 
@@ -70,10 +84,18 @@ public class UniversalDoor : MonoBehaviour // Основной скрипт дв
     private Quaternion outsideHandlePressedRotation; // Нажатый поворот внешней ручки
     private Quaternion insideHandlePressedRotation; // Нажатый поворот внутренней ручки
     private bool isBusy = false; // Занята ли дверь анимацией
+    private Coroutine autoCloseCoroutine; // Текущий таймер автоматического закрытия
+    private bool isPlayerOpeningBlocked = false; // Запрещено ли игроку открывать дверь через E
+    private bool playerOpeningBlockCountdownStarted = false; // Был ли уже запущен таймер после первого открытия
+    private Coroutine playerOpeningBlockCoroutine; // Текущий таймер запрета открытия через E
 
     private void OnValidate() // Вызывается при изменении значений в Inspector
     {
         if (navMeshObstacle == null) navMeshObstacle = GetComponent<NavMeshObstacle>(); // Ищем NavMeshObstacle на этом объекте
+
+        if (autoCloseDelay < 0f) autoCloseDelay = 0f; // Не разрешаем отрицательную задержку автозакрытия
+
+        if (playerOpeningBlockDelay < 0f) playerOpeningBlockDelay = 0f; // Не разрешаем отрицательную задержку запрета открытия
 
         SyncNavMeshObstacleWithBoxCollider(); // Копируем форму Box Collider в obstacle
     }
@@ -173,9 +195,16 @@ public class UniversalDoor : MonoBehaviour // Основной скрипт дв
 
         if (isLocked) return; // Если дверь закрыта на замок, выходим
 
-        if (!isOpen && CanOpenDoor()) ToggleDoor(); // Если дверь закрыта и можно открыть, открываем
+        if (!isOpen) // Если дверь сейчас закрыта
+        {
+            if (isPlayerOpeningBlocked) return; // После окончания таймера игрок больше не может открыть её через E
 
-        else if (isOpen) ToggleDoor(); // Если дверь открыта, закрываем
+            if (CanOpenDoor()) StartCoroutine(InteractSequence(true, true)); // Открываем дверь и отмечаем, что это сделал игрок через E
+
+            return; // Завершаем обработку открытия
+        }
+
+        StartCoroutine(InteractSequence(false)); // Открытую дверь игрок по-прежнему может закрыть через E
     }
 
     public void ToggleDoor() // Переключить дверь
@@ -197,6 +226,82 @@ public class UniversalDoor : MonoBehaviour // Основной скрипт дв
         if (isBusy || !isOpen) return; // Проверяем запреты
 
         StartCoroutine(InteractSequence(false)); // Запускаем закрытие
+    }
+
+    public void SetAutoClose(bool value) // Включить или выключить автозакрытие из другого скрипта
+    {
+        autoClose = value; // Записываем новое состояние автозакрытия
+
+        if (!autoClose) // Если автозакрытие выключили
+        {
+            CancelAutoCloseCountdown(); // Отменяем уже запущенный таймер
+
+            return; // Больше ничего не делаем
+        }
+
+        if (isOpen && !isBusy) // Если автозакрытие включили, когда дверь уже открыта и свободна
+        {
+            StartAutoCloseCountdown(); // Запускаем новый таймер закрытия
+        }
+    }
+
+    public void EnableAutoClose() // Включить автозакрытие
+    {
+        SetAutoClose(true); // Используем общий метод
+    }
+
+    public void DisableAutoClose() // Выключить автозакрытие
+    {
+        SetAutoClose(false); // Используем общий метод
+    }
+
+    public void ToggleAutoClose() // Переключить автозакрытие
+    {
+        SetAutoClose(!autoClose); // Меняем текущее состояние на противоположное
+    }
+
+    private void StartAutoCloseCountdown() // Запустить таймер автоматического закрытия
+    {
+        CancelAutoCloseCountdown(); // Сначала отменяем старый таймер, чтобы не было двух одновременно
+
+        if (!autoClose) return; // Если автозакрытие выключено, таймер не запускаем
+
+        if (!isOpen) return; // Если дверь закрыта, таймер не нужен
+
+        autoCloseCoroutine = StartCoroutine(AutoCloseAfterDelay()); // Запускаем ожидание перед закрытием
+    }
+
+    private void CancelAutoCloseCountdown() // Отменить текущий таймер автоматического закрытия
+    {
+        if (autoCloseCoroutine == null) return; // Если таймер не запущен, ничего не делаем
+
+        StopCoroutine(autoCloseCoroutine); // Останавливаем запущенную корутину
+
+        autoCloseCoroutine = null; // Очищаем сохранённую ссылку
+    }
+
+    private IEnumerator AutoCloseAfterDelay() // Ожидание и автоматическое закрытие двери
+    {
+        if (autoCloseDelay > 0f) // Если задана задержка больше нуля
+        {
+            yield return new WaitForSeconds(autoCloseDelay); // Ждём указанное количество секунд
+        }
+
+        while (isBusy) // Если дверь ещё выполняет другую анимацию
+        {
+            yield return null; // Ждём следующий кадр
+        }
+
+        if (!autoClose || !isOpen) // Если автозакрытие успели выключить или дверь уже закрыта
+        {
+            autoCloseCoroutine = null; // Очищаем ссылку на завершённый таймер
+
+            yield break; // Завершаем корутину
+        }
+
+        autoCloseCoroutine = null; // Очищаем ссылку перед запуском закрытия
+
+        CloseDoor(); // Закрываем дверь штатным методом с ручками и шумом
     }
 
     public void SetLocked(bool value) // Установить замок
@@ -228,8 +333,10 @@ public class UniversalDoor : MonoBehaviour // Основной скрипт дв
         return true; // Сообщаем, что открытие началось
     }
 
-    private IEnumerator InteractSequence(bool targetOpenState) // Последовательность открытия/закрытия
+    private IEnumerator InteractSequence(bool targetOpenState, bool openedByPlayer = false) // Последовательность открытия/закрытия
     {
+        if (!targetOpenState) CancelAutoCloseCountdown(); // При любом ручном или сценарном закрытии отменяем старый таймер
+
         isBusy = true; // Блокируем повторное нажатие
 
         yield return StartCoroutine(PressHandlesDown()); // Опускаем ручки
@@ -245,6 +352,46 @@ public class UniversalDoor : MonoBehaviour // Основной скрипт дв
         yield return StartCoroutine(ReturnHandlesBack()); // Возвращаем ручки
 
         isBusy = false; // Разрешаем новое взаимодействие
+
+        if (targetOpenState && openedByPlayer) // Если дверь открылась именно через E игрока
+        {
+            StartPlayerOpeningBlockCountdown(); // Запускаем таймер будущего запрета повторного открытия через E
+        }
+
+        if (targetOpenState && autoClose) // Если дверь только что открылась и автозакрытие разрешено
+        {
+            StartAutoCloseCountdown(); // Запускаем отсчёт до автоматического закрытия
+        }
+    }
+
+    private void StartPlayerOpeningBlockCountdown() // Запустить таймер запрета повторного открытия игроком
+    {
+        if (!blockPlayerOpeningAfterFirstOpen) return; // Если галочка выключена, ничего не запускаем
+
+        if (playerOpeningBlockCountdownStarted) return; // Таймер запускается только после самого первого открытия через E
+
+        playerOpeningBlockCountdownStarted = true; // Запоминаем, что отсчёт уже начался
+
+        playerOpeningBlockCoroutine = StartCoroutine(BlockPlayerOpeningAfterDelay()); // Запускаем ожидание
+    }
+
+    private IEnumerator BlockPlayerOpeningAfterDelay() // Ожидание перед запретом открытия через E
+    {
+        if (playerOpeningBlockDelay > 0f) // Если указана задержка больше нуля
+        {
+            yield return new WaitForSeconds(playerOpeningBlockDelay); // Ждём заданное в Inspector время
+        }
+
+        playerOpeningBlockCoroutine = null; // Очищаем ссылку на завершённую корутину
+
+        if (!blockPlayerOpeningAfterFirstOpen) // Если галочку выключили во время ожидания
+        {
+            playerOpeningBlockCountdownStarted = false; // Разрешаем запустить таймер заново после повторного включения
+
+            yield break; // Не запрещаем открытие
+        }
+
+        isPlayerOpeningBlocked = true; // Запрещаем только открытие двери игроком через E
     }
 
     private IEnumerator PressHandlesDown() // Опускание ручек

@@ -12,11 +12,19 @@ public class MonsterFinalController : MonoBehaviour // Отвечает толь
         BathroomChase // Постоянная погоня после ванной
     }
 
+    [Header("References")] // Основные ссылки финального контроллера
+
     public Transform player; // Ссылка на игрока
 
-    public GameObject kitchenBarricadeObject; // Баррикада кухни
+    [Header("Kitchen Barricade By Stage")] // Настройки кухонного шкафа через ThreeStageInteractableObject
 
-    public Transform kitchenAttackPoint; // Точка перед кухней
+    public ThreeStageInteractableObject kitchenBarricade; // Трёхстадийный кухонный шкаф
+
+    [Range(0, 2)] public int kitchenBlockFromStage = 1; // Начиная с какой стадии шкаф блокирует монстра
+
+    [Range(1, 3)] public int kitchenStopBlockingAtStage = 3; // С какой стадии шкаф перестаёт блокировать; 3 означает не перестаёт
+
+    public Transform kitchenAttackPoint; // Точка перед кухней, где монстр должен остановиться
 
     public WindowExitTrigger finalWindowExitTrigger; // Триггер выхода через окно
 
@@ -73,7 +81,11 @@ public class MonsterFinalController : MonoBehaviour // Отвечает толь
 
     public void GoToPointAndStop(Transform point) // Отправить монстра к точке и остановить там
     {
-        if (point == null) return; // Если точки нет — выходим
+        if (point == null) // Проверяем, назначена ли точка
+        {
+            Debug.LogWarning("MonsterFinalController: точка движения не назначена.", gameObject); // Пишем понятную ошибку
+            return; // Без точки движение невозможно
+        }
 
         targetPoint = point; // Запоминаем точку
 
@@ -83,7 +95,18 @@ public class MonsterFinalController : MonoBehaviour // Отвечает толь
 
         if (movement != null) movement.RestoreDefaultSpeed(); // Возвращаем стандартную скорость
 
-        if (movement != null) movement.MoveTo(targetPoint.position); // Отправляем монстра к точке
+        if (movement != null) movement.Resume(); // Снимаем обычную остановку NavMeshAgent, если она была
+
+        if (movement != null && !movement.IsMovementLocked) // Проверяем, не удерживает ли монстра дверная логика
+        {
+            movement.MoveToImmediate(targetPoint.position); // Сразу пытаемся назначить путь к новой точке
+        }
+
+        Debug.Log(
+            "MonsterFinalController: получена команда идти к точке "
+            + targetPoint.name,
+            gameObject
+        ); // Подтверждаем получение команды
     }
 
     public void StandAtCurrentPoint() // Оставить монстра стоять
@@ -138,15 +161,35 @@ public class MonsterFinalController : MonoBehaviour // Отвечает толь
 
     private void TickGoToPointAndStop() // Обновить движение к спецточке
     {
+        if (targetPoint == null) // Проверяем, не потерялась ли точка
+        {
+            Debug.LogWarning("MonsterFinalController: потеряна целевая точка движения.", gameObject); // Пишем причину остановки
+            StopFinalMode(); // Без точки завершаем текущий финальный режим
+            return; // Дальше двигаться некуда
+        }
+
         if (doorOpener != null) doorOpener.TryOpenDoorAhead(); // Открываем двери по пути
 
         if (movement == null) return; // Если движения нет — выходим
 
-        if (!movement.HasArrived(0.4f)) return; // Если монстр ещё не дошёл — ждём
+        if (movement.IsMovementLocked) return; // Пока дверная логика удерживает монстра, ждём разблокировки
 
-        movement.Stop(); // Останавливаем монстра
+        movement.RestoreDefaultSpeed(); // Гарантированно возвращаем скорость после прежней остановки
 
-        currentMode = FinalMode.StandingAtPoint; // Переводим в режим стояния
+        movement.MoveTo(targetPoint.position); // Повторно назначаем путь каждый кадр с внутренним ограничением repath
+
+        if (!movement.HasArrived(0.4f)) return; // Если монстр ещё не дошёл — продолжаем движение
+
+        movement.Stop(); // Останавливаем монстра после реального прибытия
+
+        currentMode = FinalMode.StandingAtPoint; // Переводим в постоянный режим стояния
+
+        Debug.Log(
+            "MonsterFinalController: монстр дошёл до точки "
+            + targetPoint.name
+            + " и остановился.",
+            gameObject
+        ); // Подтверждаем прибытие
     }
 
     private void TickStandingAtPoint() // Обновить стояние на точке
@@ -169,9 +212,9 @@ public class MonsterFinalController : MonoBehaviour // Отвечает толь
             return; // Выходим
         }
 
-        bool barricadeBlocksMonster = kitchenBarricadeObject != null && kitchenBarricadeObject.activeInHierarchy; // Проверяем баррикаду
+        bool barricadeBlocksMonster = IsKitchenBarricadeBlocking(); // Проверяем текущую стадию кухонного шкафа
 
-        if (barricadeBlocksMonster && kitchenAttackPoint != null) // Если баррикада стоит и точка назначена
+        if (barricadeBlocksMonster && kitchenAttackPoint != null) // Если шкаф блокирует проход и точка назначена
         {
             if (movement != null) movement.MoveTo(kitchenAttackPoint.position); // Идём к точке перед баррикадой
 
@@ -181,6 +224,19 @@ public class MonsterFinalController : MonoBehaviour // Отвечает толь
         }
 
         if (movement != null) movement.MoveTo(player.position); // Если баррикады нет — идём за игроком
+    }
+
+    private bool IsKitchenBarricadeBlocking() // Проверить, блокирует ли текущая стадия шкафа проход
+    {
+        if (kitchenBarricade == null) return false; // Если шкаф не назначен, проход считается свободным
+
+        int currentStage = kitchenBarricade.CurrentStage; // Получаем текущую стадию напрямую из ThreeStageInteractableObject
+
+        int blockFromStage = Mathf.Clamp(kitchenBlockFromStage, 0, 2); // Защищаем нижнюю границу стадии блокировки
+
+        int stopBlockingAtStage = Mathf.Clamp(kitchenStopBlockingAtStage, 1, 3); // Значение 3 означает блокировку до конца
+
+        return currentStage >= blockFromStage && currentStage < stopBlockingAtStage; // Возвращаем итоговое состояние баррикады
     }
 
     private void TickWindowThreat() // Обновить угрозу у окна

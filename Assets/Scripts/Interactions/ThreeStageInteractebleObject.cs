@@ -1,226 +1,291 @@
-using UnityEngine; // Подключаем Unity, чтобы использовать MonoBehaviour, GameObject, Collider и другие классы.
-using UnityEngine.Events; // Подключаем UnityEvent, чтобы вешать реакции (например, звук) в инспекторе.
+using UnityEngine; // Подключаем основные классы Unity.
+using UnityEngine.Events; // Подключаем UnityEvent для событий в Inspector.
 
-public class ThreeStageInteractableObject : MonoBehaviour, IInteractable, IHitInteractable // Объект с тремя стадиями, который работает от E и от удара.
+/// <summary>
+/// Универсальный объект с тремя стадиями.
+///
+/// Стадии:
+/// 0 — целый объект.
+/// 1 — повреждённый или упавший объект.
+/// 2 — уничтоженный объект.
+///
+/// Работает через E и через удар.
+/// На третьей стадии может включать и выключать назначенные объекты.
+/// </summary>
+public class ThreeStageInteractableObject : MonoBehaviour, IInteractable, IHitInteractable
 {
-    [Header("Stages")] // Заголовок в Inspector для настроек стадий.
+    [Header("STAGES")]
 
-    public GameObject stageWhole; // Визуал первой стадии: целый объект.
+    [Tooltip("Визуал первой стадии: целый объект.")]
+    public GameObject stageWhole; // Модель целого объекта.
 
-    public GameObject stageBroken; // Визуал второй стадии: повреждённый объект.
+    [Tooltip("Визуал второй стадии: повреждённый или упавший объект.")]
+    public GameObject stageBroken; // Модель повреждённого объекта.
 
-    public GameObject stageDestroyed; // Визуал третьей стадии: полностью уничтоженный объект, можно оставить пустым.
+    [Tooltip("Визуал третьей стадии. Можно оставить пустым, если третий объект включается отдельным списком.")]
+    public GameObject stageDestroyed; // Модель уничтоженного объекта.
 
+    [Header("INTERACTION SETTINGS")]
 
-    [Header("Interaction Settings")] // Заголовок в Inspector для настроек взаимодействия.
+    [Tooltip("Разрешить взаимодействие через клавишу E.")]
+    public bool canUseE = true; // Можно ли использовать E.
 
-    public bool canUseE = true; // Можно ли взаимодействовать с объектом через клавишу E.
+    [Tooltip("Разрешить взаимодействие через удар.")]
+    public bool canUseHit = true; // Можно ли использовать удар.
 
-    public bool canUseHit = true; // Можно ли взаимодействовать с объектом ударом.
+    [Min(1)]
+    [Tooltip("Сколько нажатий E требуется для перехода на следующую стадию.")]
+    public int ePressesForNextStage = 1; // Количество нажатий E.
 
-    [Min(1)] // Не позволяет указать значение меньше одного в Inspector.
+    [Min(1)]
+    [Tooltip("Сколько ударов требуется для перехода на следующую стадию.")]
+    public int hitsForNextStage = 1; // Количество ударов.
 
-    public int ePressesForNextStage = 1; // Сколько нажатий E нужно для перехода на следующую стадию.
+    [Tooltip("Разрешить обычным E или ударом перейти из Broken (Stage 1) в Destroyed (Stage 2). Выключи для баррикады, которую уничтожает только сценарий окна.")]
+    public bool allowInteractionToDestroyedStage = true; // Разрешаем или запрещаем ручной переход на третью стадию.
 
-    [Min(1)] // Не позволяет указать значение меньше одного в Inspector.
+    [Header("OBJECTS ACTIVATED ONE BY ONE")]
 
-    public int hitsForNextStage = 1; // Сколько ударов нужно для перехода на следующую стадию.
+    [Tooltip("Объекты, которые включаются по одному после каждого успешного взаимодействия.")]
+    public GameObject[] objectsToActivate; // Последовательно включаемые объекты.
 
+    [Tooltip("Автоматически выключить объекты из списка Objects To Activate при старте сцены.")]
+    public bool disableObjectsOnStart = true; // Начальное выключение последовательных объектов.
 
-    [Header("Objects Activated One By One")] // Заголовок для заранее размещённых предметов.
+    [Header("DESTROYED STAGE ACTIONS")]
 
-    public GameObject[] objectsToActivate; // Предметы, которые будут включаться по одному в указанном порядке.
+    [Tooltip("Объекты, которые будут включены при переходе на третью стадию.")]
+    public GameObject[] objectsToEnableWhenDestroyed; // Объекты для включения на стадии 2.
 
-    public bool disableObjectsOnStart = true; // Нужно ли автоматически выключить все назначенные предметы при запуске сцены.
+    [Tooltip("Объекты, которые будут выключены при переходе на третью стадию.")]
+    public GameObject[] objectsToDisableWhenDestroyed; // Объекты для выключения на стадии 2.
 
+    [Tooltip("Автоматически выключить Objects To Enable When Destroyed в начале сцены.")]
+    public bool disableDestroyedObjectsOnStart = true; // Скрываем финальные объекты до уничтожения.
 
-    [Header("Final Settings")] // Заголовок в Inspector для настроек финальной стадии.
+    [Header("FINAL SETTINGS")]
 
-    public bool disableColliderWhenDestroyed = true; // Нужно ли отключать основной коллайдер после полного уничтожения объекта.
+    [Tooltip("Отключить основной Collider после достижения третьей стадии.")]
+    public bool disableColliderWhenDestroyed = true; // Нужно ли отключать Collider.
 
-    public Collider objectCollider; // Коллайдер основного объекта, который можно отключить после уничтожения.
+    [Tooltip("Основной Collider объекта взаимодействия.")]
+    public Collider objectCollider; // Collider, принимающий взаимодействие.
 
+    [Header("EVENTS")]
 
-    [Header("Events")] // Заголовок для реакций (звук FMOD через SC_InteractSound и т.п.).
+    [Tooltip("Вызывается при каждом успешном взаимодействии.")]
+    public UnityEvent onInteract; // Событие каждого взаимодействия.
 
-    public UnityEvent onInteract; // Вызывается при каждом успешном взаимодействии (E или удар).
+    [Tooltip("Вызывается при каждом переходе на следующую стадию.")]
+    public UnityEvent onStageChanged; // Событие любой смены стадии.
 
-    public UnityEvent onStageChanged; // Вызывается при переходе на следующую стадию.
+    [Tooltip("Вызывается только один раз при достижении третьей стадии.")]
+    public UnityEvent onDestroyed; // Отдельное событие уничтожения.
 
+    [Header("DEBUG")]
 
-    [Header("Debug")] // Заголовок в Inspector для просмотра текущего состояния.
+    [SerializeField]
+    private int currentStage = 0; // Текущая стадия: 0, 1 или 2.
 
-    [SerializeField] // Показываем значение в Inspector, но не даём другим скриптам менять его напрямую.
+    [SerializeField]
+    private int nextObjectIndex = 0; // Индекс следующего включаемого объекта.
 
-    private int currentStage = 0; // Текущая стадия: 0 — целый, 1 — повреждённый, 2 — уничтоженный.
+    private int currentEPresses = 0; // Текущий счётчик нажатий E.
 
-    [SerializeField] // Показываем индекс следующего предмета в Inspector для отладки.
+    private int currentHits = 0; // Текущий счётчик ударов.
 
-    private int nextObjectIndex = 0; // Индекс предмета, который будет включён при следующем взаимодействии.
+    private bool destroyedActionsApplied = false; // Выполнялись ли финальные действия.
 
-
-    private int currentEPresses = 0; // Счётчик нажатий E на текущей стадии.
-
-    private int currentHits = 0; // Счётчик ударов на текущей стадии.
-
-
-    public int CurrentStage // Открытое свойство, через которое другие скрипты могут узнать текущую стадию.
+    public int CurrentStage
     {
-        get // Позволяем только получить значение.
+        get
         {
-            return currentStage; // Возвращаем текущую стадию объекта.
+            return currentStage; // Возвращаем текущую стадию.
         }
     }
 
-
-    public bool IsDestroyed // Открытое свойство, которое сообщает, достиг ли объект третьей стадии.
+    public bool IsDestroyed
     {
-        get // Позволяем только получить значение.
+        get
         {
-            return currentStage >= 2; // Возвращаем true, только если объект находится на третьей стадии.
+            return currentStage >= 2; // Третья стадия имеет индекс 2.
         }
     }
 
-
-    private void Start() // Метод запускается один раз при старте сцены.
+    private void Start()
     {
-        currentStage = Mathf.Clamp(currentStage, 0, 2); // Ограничиваем стадию значениями от нуля до двух.
+        currentStage = Mathf.Clamp(currentStage, 0, 2); // Ограничиваем стадию допустимыми значениями.
 
-        nextObjectIndex = 0; // Начинаем включение предметов с первого элемента массива.
+        nextObjectIndex = 0; // Начинаем последовательность с первого объекта.
 
-        if (disableObjectsOnStart == true) // Проверяем, нужно ли выключить предметы автоматически.
+        if (disableObjectsOnStart)
         {
-            DisableAllActivationObjects(); // Выключаем все заранее размещённые предметы.
+            DisableAllActivationObjects(); // Выключаем последовательные объекты.
         }
 
-        ApplyStageVisuals(); // Сразу выставляем правильный визуал в зависимости от текущей стадии.
-    }
-
-
-    public void Interact() // Метод вызывается PlayerInteractor, когда игрок нажимает E по объекту.
-    {
-        if (canUseE == false) return; // Если взаимодействие через E запрещено, прекращаем выполнение.
-
-        if (IsDestroyed) return; // Если объект уже уничтожен, больше ничего не делаем.
-
-        onInteract.Invoke(); // Сообщаем подписчикам (звук FMOD и т.п.) о взаимодействии.
-
-        ActivateNextObject(); // Включаем один следующий предмет после каждого успешного нажатия E.
-
-        currentEPresses++; // Увеличиваем счётчик нажатий E на один.
-
-        if (currentEPresses >= Mathf.Max(1, ePressesForNextStage)) // Проверяем, достаточно ли нажатий для следующей стадии.
+        if (disableDestroyedObjectsOnStart && !IsDestroyed)
         {
-            currentEPresses = 0; // Сбрасываем счётчик нажатий E.
+            SetObjectsActive(objectsToEnableWhenDestroyed, false); // Прячем финальные объекты до стадии 2.
+        }
 
-            currentHits = 0; // Сбрасываем счётчик ударов, чтобы способы взаимодействия не смешивались.
+        ApplyStageVisuals(); // Применяем правильный визуал текущей стадии.
 
-            AdvanceStage(); // Переводим объект на следующую стадию.
+        if (IsDestroyed)
+        {
+            ApplyDestroyedStageActions(); // Восстанавливаем финальное состояние при старте со стадии 2.
         }
     }
 
-
-    public void Hit() // Метод вызывается PlayerInteractor, когда игрок ударяет объект.
+    public void Interact()
     {
-        if (canUseHit == false) return; // Если взаимодействие ударом запрещено, прекращаем выполнение.
+        if (!canUseE) return; // Взаимодействие через E запрещено.
+        if (!CanAdvanceByInteraction()) return; // Проверяем, разрешён ли ручной переход с текущей стадии.
 
-        if (IsDestroyed) return; // Если объект уже уничтожен, больше ничего не делаем.
+        onInteract.Invoke(); // Вызываем общее событие взаимодействия.
+        ActivateNextObject(); // Включаем следующий объект из последовательного списка.
+        currentEPresses++; // Увеличиваем счётчик E.
 
-        onInteract.Invoke(); // Сообщаем подписчикам (звук FMOD и т.п.) о взаимодействии.
+        if (currentEPresses < Mathf.Max(1, ePressesForNextStage)) return; // Ждём нужное количество нажатий.
 
-        ActivateNextObject(); // Включаем один следующий предмет после каждого успешного удара.
-
-        currentHits++; // Увеличиваем счётчик ударов на один.
-
-        if (currentHits >= Mathf.Max(1, hitsForNextStage)) // Проверяем, достаточно ли ударов для следующей стадии.
-        {
-            currentHits = 0; // Сбрасываем счётчик ударов.
-
-            currentEPresses = 0; // Сбрасываем счётчик нажатий E, чтобы способы взаимодействия не смешивались.
-
-            AdvanceStage(); // Переводим объект на следующую стадию.
-        }
+        currentEPresses = 0; // Сбрасываем нажатия E.
+        currentHits = 0; // Сбрасываем удары, чтобы способы не смешивались.
+        AdvanceStage(); // Переходим на следующую стадию.
     }
 
-
-    private void ActivateNextObject() // Метод включает ровно один следующий предмет из массива.
+    public void Hit()
     {
-        if (objectsToActivate == null) return; // Если массив не назначен, прекращаем выполнение.
+        if (!canUseHit) return; // Взаимодействие через удар запрещено.
+        if (!CanAdvanceByInteraction()) return; // Проверяем, разрешён ли ручной переход с текущей стадии.
 
-        if (objectsToActivate.Length == 0) return; // Если массив пустой, прекращаем выполнение.
+        onInteract.Invoke(); // Вызываем общее событие взаимодействия.
+        ActivateNextObject(); // Включаем следующий объект из последовательного списка.
+        currentHits++; // Увеличиваем счётчик ударов.
 
-        while (nextObjectIndex < objectsToActivate.Length) // Ищем следующий корректно назначенный предмет.
+        if (currentHits < Mathf.Max(1, hitsForNextStage)) return; // Ждём нужное количество ударов.
+
+        currentHits = 0; // Сбрасываем удары.
+        currentEPresses = 0; // Сбрасываем нажатия E.
+        AdvanceStage(); // Переходим на следующую стадию.
+    }
+
+    private bool CanAdvanceByInteraction()
+    {
+        if (IsDestroyed) return false; // После Stage 2 взаимодействие больше не работает.
+
+        if (currentStage == 1 && !allowInteractionToDestroyedStage)
         {
-            GameObject objectToActivate = objectsToActivate[nextObjectIndex]; // Получаем текущий предмет из массива.
+            currentEPresses = 0; // Не сохраняем старые нажатия E на запрещённой стадии.
+            currentHits = 0; // Не сохраняем старые удары на запрещённой стадии.
+            return false; // Обычным взаимодействием нельзя перейти из Broken в Destroyed.
+        }
 
-            nextObjectIndex++; // Сразу переходим к следующему индексу для будущего взаимодействия.
+        return true; // Для остальных разрешённых стадий взаимодействие работает.
+    }
 
-            if (objectToActivate == null) // Проверяем, не оставлено ли пустое поле в массиве.
+    private void AdvanceStage()
+    {
+        if (IsDestroyed) return; // Не разрешаем перейти дальше стадии 2.
+
+        SetStage(currentStage + 1, true); // Увеличиваем стадию и вызываем события.
+    }
+
+    public void ForceSetStage(int newStage)
+    {
+        SetStage(newStage, true); // Устанавливаем стадию с вызовом событий.
+    }
+
+    private void SetStage(int newStage, bool invokeEvents)
+    {
+        int clampedStage = Mathf.Clamp(newStage, 0, 2); // Ограничиваем новое значение.
+
+        if (currentStage == clampedStage) return; // Не повторяем ту же стадию.
+
+        currentStage = clampedStage; // Сохраняем новую стадию.
+        currentEPresses = 0; // Сбрасываем счётчик E.
+        currentHits = 0; // Сбрасываем счётчик ударов.
+
+        ApplyStageVisuals(); // Переключаем визуальные объекты.
+
+        if (invokeEvents)
+        {
+            onStageChanged.Invoke(); // Сообщаем о смене стадии.
+        }
+
+        if (IsDestroyed)
+        {
+            if (invokeEvents)
             {
-                continue; // Пропускаем пустое поле и ищем следующий предмет.
+                onDestroyed.Invoke(); // Вызываем событие только для стадии 2.
             }
 
-            objectToActivate.SetActive(true); // Включаем заранее размещённый предмет в сцене.
-
-            return; // После включения одного предмета прекращаем выполнение метода.
+            ApplyDestroyedStageActions(); // Включаем и выключаем назначенные объекты.
         }
     }
 
-
-    private void DisableAllActivationObjects() // Метод выключает все назначенные предметы при запуске сцены.
+    private void ActivateNextObject()
     {
-        if (objectsToActivate == null) return; // Если массив не назначен, прекращаем выполнение.
+        if (objectsToActivate == null) return; // Массив не назначен.
+        if (objectsToActivate.Length == 0) return; // Массив пустой.
 
-        for (int i = 0; i < objectsToActivate.Length; i++) // Проходим по всем предметам массива.
+        while (nextObjectIndex < objectsToActivate.Length)
         {
-            if (objectsToActivate[i] == null) continue; // Пропускаем пустые элементы массива.
+            GameObject objectToActivate = objectsToActivate[nextObjectIndex]; // Получаем следующий объект.
+            nextObjectIndex++; // Переходим к следующему индексу.
 
-            objectsToActivate[i].SetActive(false); // Выключаем предмет до первого нужного взаимодействия.
+            if (objectToActivate == null) continue; // Пропускаем пустую ячейку.
+
+            objectToActivate.SetActive(true); // Включаем найденный объект.
+            return; // За одно взаимодействие включаем только один объект.
         }
     }
 
-
-    private void AdvanceStage() // Метод переводит объект на следующую стадию.
+    private void DisableAllActivationObjects()
     {
-        if (IsDestroyed) return; // Дополнительная защита от перехода дальше третьей стадии.
-
-        currentStage++; // Увеличиваем номер текущей стадии на один.
-
-        currentStage = Mathf.Clamp(currentStage, 0, 2); // Ограничиваем текущую стадию значением два.
-
-        ApplyStageVisuals(); // Обновляем видимые модели объекта после смены стадии.
-
-        onStageChanged.Invoke(); // Сообщаем подписчикам о смене стадии (можно повесить отдельный звук).
+        SetObjectsActive(objectsToActivate, false); // Выключаем весь последовательный список.
     }
 
-
-    private void ApplyStageVisuals() // Метод включает нужный визуал стадии и выключает остальные.
+    private void ApplyStageVisuals()
     {
-        if (stageWhole != null) // Проверяем, назначена ли модель целой стадии.
+        if (stageWhole != null)
         {
-            stageWhole.SetActive(currentStage == 0); // Включаем целый визуал только на стадии ноль.
+            stageWhole.SetActive(currentStage == 0); // Целая модель видна только на стадии 0.
         }
 
-        if (stageBroken != null) // Проверяем, назначена ли модель повреждённой стадии.
+        if (stageBroken != null)
         {
-            stageBroken.SetActive(currentStage == 1); // Включаем повреждённый визуал только на стадии один.
+            stageBroken.SetActive(currentStage == 1); // Упавшая модель видна только на стадии 1.
         }
 
-        if (stageDestroyed != null) // Проверяем, назначена ли модель уничтоженной стадии.
+        if (stageDestroyed != null)
         {
-            stageDestroyed.SetActive(currentStage == 2); // Включаем уничтоженный визуал только на стадии два.
+            stageDestroyed.SetActive(currentStage == 2); // Уничтоженная модель видна только на стадии 2.
         }
 
-        if (objectCollider != null) // Проверяем, назначен ли основной коллайдер.
+        if (objectCollider == null) return; // Если Collider не назначен, дальше ничего не меняем.
+
+        bool shouldDisableCollider = IsDestroyed && disableColliderWhenDestroyed; // Определяем состояние Collider.
+        objectCollider.enabled = !shouldDisableCollider; // Отключаем Collider только на финальной стадии.
+    }
+
+    private void ApplyDestroyedStageActions()
+    {
+        if (destroyedActionsApplied) return; // Не выполняем финальные действия повторно.
+
+        destroyedActionsApplied = true; // Запоминаем выполнение.
+
+        SetObjectsActive(objectsToEnableWhenDestroyed, true); // Сначала включаем внешние финальные объекты.
+        SetObjectsActive(objectsToDisableWhenDestroyed, false); // Затем выключаем старые объекты.
+    }
+
+    private void SetObjectsActive(GameObject[] objects, bool activeState)
+    {
+        if (objects == null) return; // Массив отсутствует.
+
+        for (int i = 0; i < objects.Length; i++)
         {
-            if (IsDestroyed && disableColliderWhenDestroyed) // Проверяем, уничтожен ли объект и нужно ли отключать коллайдер.
-            {
-                objectCollider.enabled = false; // Отключаем коллайдер после полного уничтожения.
-            }
-            else // Выполняем, если объект ещё не уничтожен или отключение коллайдера запрещено.
-            {
-                objectCollider.enabled = true; // Оставляем коллайдер включённым.
-            }
+            if (objects[i] == null) continue; // Пропускаем пустые элементы.
+
+            objects[i].SetActive(activeState); // Устанавливаем нужное состояние объекта.
         }
     }
 }

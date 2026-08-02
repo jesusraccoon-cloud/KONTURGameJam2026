@@ -138,4 +138,5 @@ public class FinalExitDoorOpenSignal : MonoBehaviour, IInteractable // Скри�
 
         if (showDebugLogs) Debug.Log("Финальная дверь дала сигнал ElevatorEndingEvent"); // Пишем сообщение в Console
     }
+    
 }
