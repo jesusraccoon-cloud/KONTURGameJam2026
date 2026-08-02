@@ -495,6 +495,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 9
   Length: 2000
+--- !u!114 &-6346954769986431734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/DoorFall/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 664784307
+    data2: 2168317822
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-6274945966325903819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1083,6 +1107,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2145
+--- !u!114 &-2120317316118730692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Objects/DoorFall
+  m_EditorClassIdentifier: 
+  Path: event:/Objects/DoorFall
+  Guid:
+    Data1: -1037222163
+    Data2: 1306952200
+    Data3: -1898357369
+    Data4: -1425370706
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -6346954769986431734}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3374
 --- !u!114 &-1888293904098950799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1554,6 +1606,8 @@ MonoBehaviour:
   - {fileID: 5474591010070667329}
   - {fileID: 6696496626857312109}
   - {fileID: 3030637511408875259}
+  - {fileID: 3687833661019031875}
+  - {fileID: -2120317316118730692}
   EditorParameters:
   - {fileID: 3038740214914519220}
   MasterBanks:
@@ -1561,7 +1615,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 390493745208664655}
   cacheVersion: 131860
-  cacheTime: 639212949440000000
+  cacheTime: 639212999900000000
   SerializableEventsDict:
   - key: event:/Player/Footsteps
     index: 0
@@ -1719,6 +1773,34 @@ MonoBehaviour:
     index: 76
   - key: event:/Objects/Clock/Open
     index: 77
+  - key: event:/Objects/ClosetFall
+    index: 78
+  - key: event:/Objects/DoorFall
+    index: 79
+--- !u!114 &170813609525510946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ClosetFall/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 664784307
+    data2: 2168317822
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &176710144190681147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1761,10 +1843,10 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639212949440000000
+  lastModified: 639212999900000000
   FileSizes:
   - Name: Desktop
-    Value: 5330
+    Value: 5426
   Exists: 1
 --- !u!114 &534891873104745030
 MonoBehaviour:
@@ -2261,6 +2343,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1082
+--- !u!114 &3687833661019031875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Objects/ClosetFall
+  m_EditorClassIdentifier: 
+  Path: event:/Objects/ClosetFall
+  Guid:
+    Data1: 542702052
+    Data2: 1294271915
+    Data3: -1541622367
+    Data4: 2147255384
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 170813609525510946}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3381
 --- !u!114 &3969581204241585293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2385,10 +2495,10 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639212949440000000
+  lastModified: 639212999900000000
   FileSizes:
   - Name: Desktop
-    Value: 39618368
+    Value: 39900160
   Exists: 1
 --- !u!114 &4739460652445911797
 MonoBehaviour:
