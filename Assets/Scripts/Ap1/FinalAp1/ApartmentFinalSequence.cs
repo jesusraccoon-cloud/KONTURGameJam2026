@@ -1,4 +1,5 @@
 using UnityEngine; // Подключаем Unity-классы
+using UnityEngine.Events; // Подключаем UnityEvent (для звуковых хуков)
 using System.Collections; // Подключаем корутины
 
 public class ApartmentFinalSequence : MonoBehaviour // Главный режиссер сценарных событий квартиры
@@ -97,6 +98,11 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
 
     [Header("Elevator Ending")] // Блок концовки с лифтом
     public ElevatorEndingEvent elevatorEndingEvent; // Ивент лифта, который включается после 6/6
+
+    [Header("Audio Hooks (FMOD)")] // Звуковые хуки — вешай сюда SC_SoundCue3D.Play() из нужной точки
+    public UnityEvent onHallDoorBreak; // Выбивание двери 4/6 (3D-звук от места двери)
+
+    public UnityEvent onFinalStart; // Старт финала 6/6 (3D-звук)
 
     [HideInInspector] public bool finalSequenceStarted = false; // Финал начался
 
@@ -202,6 +208,8 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
         SetObjectsActive(objectsToDisableAfterFourOfSix, false); // Выключаем дополнительные объекты после 4/6
 
         SetObjectsActive(objectsToEnableAfterFourOfSix, true); // Включаем дополнительные объекты после 4/6
+
+        onHallDoorBreak.Invoke(); // Звук выбивания двери 4/6 (3D)
     }
 
     public void StartFinalSequence() // Запуск финала
@@ -239,6 +247,7 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
 
         BlockExitWithMonster(); // Отправляем монстра блокировать выход
 
+        onFinalStart.Invoke(); // Звук старта финала 6/6 (3D)
 
         Debug.Log("Финальная последовательность квартиры запущена"); // Пишем лог
     }

@@ -30,17 +30,21 @@ public class SC_MonsterAttackSound : MonoBehaviour
     // Вызывается из Animation Event на анимации атаки.
     public void Attack()
     {
-        Debug.Log($"[MONSTER ATTACK] Attack() вызван на {gameObject.name}"); // ВРЕМЕННО безусловно — проверяем, что Animation Event дёргает метод
-
-        if (monster != null && !monster.isActivated) // Монстр ещё не активирован (напр. загрузка сцены)
+        if (monster != null) // Если ИИ известен — проверяем, что монстр реально атакует
         {
-            Debug.Log("[MONSTER ATTACK] пропущен — монстр не активен"); // ВРЕМЕННО безусловно
-            return; // Не играем
+            bool attacking = (monster.attack != null && monster.attack.IsAttacking) // Идёт атака
+                || monster.currentState == MonsterState.Attack; // Или состояние — атака
+
+            if (!monster.isActivated || !attacking) // Не активирован ИЛИ сейчас не в атаке (шальной Animation Event на респавне/загрузке)
+            {
+                if (showDebugLogs) Debug.Log($"[MONSTER ATTACK] пропущен: activated={monster.isActivated}, attacking={attacking}"); // Лог
+                return; // Не играем звук атаки
+            }
         }
 
         if (attackEvent.IsNull) // Если событие не назначено
         {
-            Debug.LogWarning($"[MONSTER ATTACK] {gameObject.name}: НЕ назначено FMOD-событие Attack Event"); // ВРЕМЕННО безусловно
+            if (showDebugLogs) Debug.LogWarning(gameObject.name + ": SC_MonsterAttackSound — не назначено Attack Event"); // Предупреждение
             return; // Выходим
         }
 
@@ -59,6 +63,6 @@ public class SC_MonsterAttackSound : MonoBehaviour
         inst.start(); // Запускаем
         inst.release(); // Освобождаем (one-shot доиграет и очистится)
 
-        Debug.Log($"[MONSTER ATTACK] сыграл атаку occlude={occlude} pos={pos}"); // ВРЕМЕННО безусловно
+        if (showDebugLogs) Debug.Log(gameObject.name + ": атака (звук)"); // Лог
     }
 }
