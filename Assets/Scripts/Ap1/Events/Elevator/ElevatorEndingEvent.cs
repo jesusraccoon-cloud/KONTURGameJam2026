@@ -1,6 +1,7 @@
 using System.Collections; // Подключаем корутины, чтобы выполнять действия с ожиданием во времени
 using UnityEngine; // Подключаем Unity-классы: GameObject, Transform, Vector3, Collider, Debug и другие
 using StarterAssets; // Подключаем Starter Assets, чтобы работать с FirstPersonController и StarterAssetsInputs
+using Gameplay.Quest; // Подключаем систему задач
 
 public class ElevatorEndingEvent : MonoBehaviour // Главный скрипт лифтовой концовки
 {
@@ -89,6 +90,8 @@ public class ElevatorEndingEvent : MonoBehaviour // Главный скрипт 
         if (finalExitDoorOpenSignal != null) finalExitDoorOpenSignal.UnlockDoor(); // Разрешаем игроку взаимодействовать с финальной дверью
 
         if (showDebugLogs) Debug.Log("ElevatorEndingEvent: дверь заменена, лифт включен"); // Пишем в Console, что событие лифта разблокировано
+
+        QuestService.Instance?.CompleteTask("escape"); // Отмечаем задачу «Добраться до лифта»
     }
 
     public void StartElevatorEnding() // Метод запускает катсцену входа в лифт

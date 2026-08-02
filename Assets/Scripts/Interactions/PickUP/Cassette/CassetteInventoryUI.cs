@@ -1,5 +1,6 @@
 using UnityEngine; // Подключаем Unity-классы
 using TMPro; // Подключаем TextMeshPro
+using Gameplay.Quest; // Подключаем систему задач
 
 public class CassetteInventoryUI : MonoBehaviour // Скрипт счетчика кассет
 {
@@ -44,6 +45,8 @@ public class CassetteInventoryUI : MonoBehaviour // Скрипт счетчик�
         {
             TriggerFinalEvent(); // Запускаем финальную последовательность
         }
+
+        QuestService.Instance?.CompleteTask("cassettes"); // Отмечаем задачу «Собрать все кассеты»
 
         UpdateUI(); // Обновляем текст счетчика
     }
@@ -114,6 +117,8 @@ public class CassetteInventoryUI : MonoBehaviour // Скрипт счетчик�
         {
             TriggerFinalEvent(); // Запускаем финальную последовательность
         }
+
+        QuestService.Instance?.CompleteTask("cassettes"); // Отмечаем задачу «Собрать все кассеты»
 
         UpdateUI(); // Обновляем текст счетчика
     }

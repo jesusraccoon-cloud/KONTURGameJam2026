@@ -1,6 +1,7 @@
 using UnityEngine; // Подключаем Unity-классы
 using UnityEngine.Events; // Подключаем UnityEvent
 using FMODUnity; // Подключаем FMOD
+using Gameplay.Quest; // Подключаем систему задач
 
 public class RadioCassettePuzzle : MonoBehaviour, IInteractable // Радио включает музыку, один раз открывает кассету и взрывается
 {
@@ -143,6 +144,8 @@ public class RadioCassettePuzzle : MonoBehaviour, IInteractable // Радио в
         {
             cassetteObject.SetActive(true); // Включаем кассету
         }
+
+        QuestService.Instance?.CompleteTask("radio_cassette"); // Отмечаем задачу «Достать кассету из радио»
 
         if (showDebugLogs) Debug.Log(gameObject.name + ": кассета стала доступна"); // Лог
     }

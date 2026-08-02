@@ -1,4 +1,5 @@
 using UnityEngine; // Подключаем Unity-классы
+using Gameplay.Quest; // Подключаем систему задач
 
 public class HammerBathroomLock : MonoBehaviour, IHitInteractable // Замок ванной, который выбивается ударом
 {
@@ -14,6 +15,8 @@ public class HammerBathroomLock : MonoBehaviour, IHitInteractable // Замок 
         }
 
         gameObject.SetActive(false); // Выключаем коллайдер замка после удара
+
+        QuestService.Instance?.CompleteTask("bathroom_lock"); // Отмечаем задачу «Выбить замок ванной»
 
         Debug.Log("Замок ванной выбит"); // Сообщение в Console
     }

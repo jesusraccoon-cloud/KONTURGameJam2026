@@ -1,5 +1,6 @@
 using System.Collections.Generic; // Подключаем списки List
 using UnityEngine; // Подключаем Unity-классы
+using Gameplay.Quest; // Подключаем систему задач
 
 public class UniversalInventory : MonoBehaviour // Универсальный инвентарь сюжетных предметов игрока
 {
@@ -16,6 +17,8 @@ public class UniversalInventory : MonoBehaviour // Универсальный и
         if (HasItem(itemId)) return; // Если предмет уже есть — второй раз не добавляем
 
         collectedItemIds.Add(itemId); // Добавляем ID предмета в список
+
+        QuestService.Instance?.CompleteTask("item_" + itemId); // Отмечаем задачу поиска предмета
 
         if (showDebugLogs) // Если debug включён
         {

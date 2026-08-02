@@ -1,4 +1,5 @@
 using UnityEngine; // Подключаем Unity
+using Gameplay.Quest; // Подключаем систему задач
 
 public class ApartmentPowerController : MonoBehaviour // Контроллер включения и отключения конкретной квартиры
 {
@@ -46,6 +47,8 @@ public class ApartmentPowerController : MonoBehaviour // Контроллер в
         if (isPermanentlyDisabled) return; // Если квартира окончательно отключена — выходим
 
         SetPower(true); // Включаем питание
+
+        QuestService.Instance?.CompleteTask("power"); // Отмечаем задачу «Включить питание квартиры»
     }
 
     public void TryPowerOff() // Попытка отключить квартиру

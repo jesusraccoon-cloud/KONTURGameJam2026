@@ -1,4 +1,5 @@
 using UnityEngine; // Подключаем Unity-классы
+using Gameplay.Quest; // Подключаем систему задач
 
 public class HammerBreakableBarricade : MonoBehaviour, IHitInteractable // Баррикада, которую можно сбить ударом
 {
@@ -86,6 +87,8 @@ public class HammerBreakableBarricade : MonoBehaviour, IHitInteractable // Ба�
         }
 
         Debug.Log("Баррикада сбита"); // Пишем лог
+
+        QuestService.Instance?.CompleteTask("barricade"); // Отмечаем задачу «Проломить баррикаду»
 
         if (disableThisAfterBreak) // Если нужно отключить скрипт
         {
