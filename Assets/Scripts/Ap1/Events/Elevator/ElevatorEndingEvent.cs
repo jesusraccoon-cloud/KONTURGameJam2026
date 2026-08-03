@@ -104,7 +104,7 @@ public class ElevatorEndingEvent : MonoBehaviour // Главный скрипт 
 
         if (showDebugLogs) Debug.Log("ElevatorEndingEvent: дверь заменена, лифт включен"); // Пишем в Console, что событие лифта разблокировано
 
-        QuestService.Instance?.CompleteTask("escape"); // Отмечаем задачу «Добраться до лифта»
+        QuestManager.Instance?.CompleteTask("escape"); // Отмечаем задачу «Добраться до лифта»
     }
 
     public void StartElevatorEnding() // Метод запускает катсцену входа в лифт

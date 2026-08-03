@@ -11,7 +11,7 @@ namespace Presentation.Canvases
     /// Блокнот с задачами уровня. Открывается/закрывается клавишей Tab через <see cref="InputService"/>
     /// </summary>
     /// <remarks>
-    /// Строит строки из <see cref="QuestService"/> и при открытии разблокирует курсор.
+    /// Строит строки из <see cref="QuestManager"/> и при открытии разблокирует курсор.
     /// Подписывается на событие ввода из <see cref="InputService"/> через R3
     /// </remarks>
     public class NotepadCanvas : CanvasBase
@@ -120,7 +120,7 @@ namespace Presentation.Canvases
         {
             if (isInitialized) return;
 
-            if (QuestService.Instance == null)
+            if (QuestManager.Instance == null)
             {
                 Debug.LogWarning("NotepadCanvas: QuestService не назначен", this);
                 return;
@@ -135,7 +135,7 @@ namespace Presentation.Canvases
             for (int i = tasksContainer.childCount - 1; i >= 0; i--)
                 Destroy(tasksContainer.GetChild(i).gameObject);
 
-            foreach (QuestService.TaskState task in QuestService.Instance.Tasks)
+            foreach (QuestManager.TaskState task in QuestManager.Instance.Tasks)
             {
                 TaskItemView item = Instantiate(taskItemPrefab, tasksContainer);
                 item.Setup(task);

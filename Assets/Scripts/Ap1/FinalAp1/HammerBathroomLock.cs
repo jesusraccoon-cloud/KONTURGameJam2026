@@ -16,7 +16,7 @@ public class HammerBathroomLock : MonoBehaviour, IHitInteractable // Замок 
 
         gameObject.SetActive(false); // Выключаем коллайдер замка после удара
 
-        QuestService.Instance?.CompleteTask("bathroom_lock"); // Отмечаем задачу «Выбить замок ванной»
+        QuestManager.Instance?.CompleteTask("bathroom_lock"); // Отмечаем задачу «Выбить замок ванной»
 
         Debug.Log("Замок ванной выбит"); // Сообщение в Console
     }

@@ -48,7 +48,7 @@ public class ApartmentPowerController : MonoBehaviour // Контроллер в
 
         SetPower(true); // Включаем питание
 
-        QuestService.Instance?.CompleteTask("power"); // Отмечаем задачу «Включить питание квартиры»
+        QuestManager.Instance?.CompleteTask("power"); // Отмечаем задачу «Включить питание квартиры»
     }
 
     public void TryPowerOff() // Попытка отключить квартиру

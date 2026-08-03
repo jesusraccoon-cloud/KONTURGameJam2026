@@ -18,7 +18,7 @@ public class UniversalInventory : MonoBehaviour // Универсальный и
 
         collectedItemIds.Add(itemId); // Добавляем ID предмета в список
 
-        QuestService.Instance?.CompleteTask("item_" + itemId); // Отмечаем задачу поиска предмета
+        QuestManager.Instance?.CompleteTask("item_" + itemId); // Отмечаем задачу поиска предмета
 
         if (showDebugLogs) // Если debug включён
         {

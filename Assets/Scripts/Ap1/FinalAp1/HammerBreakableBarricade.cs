@@ -88,7 +88,7 @@ public class HammerBreakableBarricade : MonoBehaviour, IHitInteractable // Ба�
 
         Debug.Log("Баррикада сбита"); // Пишем лог
 
-        QuestService.Instance?.CompleteTask("barricade"); // Отмечаем задачу «Проломить баррикаду»
+        QuestManager.Instance?.CompleteTask("barricade"); // Отмечаем задачу «Проломить баррикаду»
 
         if (disableThisAfterBreak) // Если нужно отключить скрипт
         {
