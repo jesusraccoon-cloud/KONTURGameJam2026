@@ -1,7 +1,9 @@
 using Core.Presentation;
 //using Infrastructure;
 //using Infrastructure.Abstactions;
+using UnityEngine;
 using R3;
+using UnityEngine.SceneManagement;
 
 namespace Presentation.Screens
 {
@@ -28,6 +30,17 @@ namespace Presentation.Screens
             //    .AddTo(this);
         }
 
+        private void OnEnable()
+        {
+            Time.timeScale = 0f;
+        }
+
+        private void OnDisable()
+        {
+            Time.timeScale = 1f;
+        }
+
+
         private void Start()
         {
             //Show(stateService.CurrentGameState.CurrentValue == GameState.Paused);
@@ -36,16 +49,21 @@ namespace Presentation.Screens
         public void Resume()
         {
             //gameService?.Resume();
+
+            this.gameObject.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         public void Restart()
         {
             //gameService?.Restart();
+            SceneManager.LoadSceneAsync("copy rotation khruchevka");
         }
 
         public void Exit()
         {
             //gameService?.Exit();
+            SceneManager.LoadSceneAsync("Main Menu");
         }
     }
 }

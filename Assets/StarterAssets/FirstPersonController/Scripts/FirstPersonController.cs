@@ -163,7 +163,9 @@ namespace StarterAssets // Пространство имён StarterAssets
 
         private void CameraRotation() // Поворот камеры
         {
-            if (_input.look.sqrMagnitude >= _threshold) // Если есть ввод поворота
+            bool isTimeActive = Time.deltaTime > 0f; // false при паузе (timeScale = 0), когда SmoothDampAngle даёт NaN
+
+            if (isTimeActive && _input.look.sqrMagnitude >= _threshold) // Если есть ввод поворота
             {
                 float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime; // Для мыши не умножаем на deltaTime
 
@@ -173,15 +175,24 @@ namespace StarterAssets // Пространство имён StarterAssets
                 _targetPitch = ClampAngle(_targetPitch, BottomClamp, TopClamp); // Ограничиваем вертикальный угол
             }
 
-            if (CameraLag && CameraLagSmoothTime > 0f) // Если включена задержка камеры
+            if (isTimeActive && CameraLag && CameraLagSmoothTime > 0f) // Если время идёт и включена задержка камеры
             {
                 _cinemachineTargetPitch = Mathf.SmoothDampAngle(_cinemachineTargetPitch, _targetPitch, ref _pitchVelocity, CameraLagSmoothTime); // Плавно догоняем вертикаль
                 _currentYaw = Mathf.SmoothDampAngle(_currentYaw, _targetYaw, ref _yawVelocity, CameraLagSmoothTime); // Плавно догоняем горизонталь
             }
-            else // Если задержка выключена — мгновенно
+            else // Если задержка выключена или игра на паузе — мгновенно
             {
                 _cinemachineTargetPitch = _targetPitch; // Вертикаль сразу
                 _currentYaw = _targetYaw; // Горизонталь сразу
+            }
+
+            if (float.IsNaN(_cinemachineTargetPitch) || float.IsNaN(_currentYaw)) // Защита от NaN, если он всё же появился
+            {
+                _targetPitch = ClampAngle(_targetPitch, BottomClamp, TopClamp); // Ограничиваем желаемый вертикальный угол
+                _cinemachineTargetPitch = _targetPitch; // Возвращаем вертикаль
+                _currentYaw = _targetYaw; // Возвращаем горизонталь
+                _pitchVelocity = 0f; // Сбрасываем скорость сглаживания по вертикали
+                _yawVelocity = 0f; // Сбрасываем скорость сглаживания по горизонтали
             }
 
             CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f); // Поворачиваем цель камеры по вертикали

@@ -1,6 +1,5 @@
 using Core.Presentation;
-//using Infrastructure;
-//using Infrastructure.Abstactions;
+using Infrastructure;
 using UnityEngine;
 
 using R3;
@@ -45,7 +44,42 @@ namespace Presentation.Canvases
 
         private void Start()
         {
-            //Show(stateService.CurrentGameState.CurrentValue == GameState.Paused);
+            Cursor.lockState = CursorLockMode.Locked;
+            SubscribeToInput();
+        }
+
+        private void SubscribeToInput()
+        {
+            if (InputService.Instance == null)
+            {
+                Debug.LogWarning("PMCanvas: InputService не найден в сцене", this);
+                return;
+            }
+
+            InputService.Instance.PauseRequested
+                .Subscribe(_ => TogglePauseScreen())
+                .AddTo(this);
+        }
+
+        private void TogglePauseScreen()
+        {
+            if (screens == null || screens.Length == 0) return;
+
+            bool isOpen = !screens[0].gameObject.activeInHierarchy;
+            screens[0].gameObject.SetActive(isOpen);
+
+            InputService.Instance?.SetPauseMenuOpen(isOpen);
+
+            if (Cursor.lockState == CursorLockMode.Locked)
+                Cursor.lockState = CursorLockMode.None;
+            else
+                Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        private void OnDestroy()
+        {
+            if (InputService.Instance != null)
+                InputService.Instance.SetPauseMenuOpen(false);
         }
 
         public void Resume()

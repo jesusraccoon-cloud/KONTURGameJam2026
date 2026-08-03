@@ -191,7 +191,7 @@ MonoBehaviour:
   tasksContainer: {fileID: 1467112278184905363}
   taskItemPrefab: {fileID: 6125736690371898712, guid: a558c29452756a6409a7c4e797ed1b98,
     type: 3}
-  toggleKey: 9
+  pauseCanvas: {fileID: 0}
   pauseGameWhileOpen: 1
   objectsToDisableWhileOpen: []
 --- !u!1 &5152706526350350594
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.7058824}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

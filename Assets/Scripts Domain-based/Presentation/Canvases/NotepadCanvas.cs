@@ -1,16 +1,18 @@
 using Core.Presentation;
 using Gameplay.Quest;
+using Infrastructure;
 using Presentation.Elements;
 using UnityEngine;
+using R3;
 
 namespace Presentation.Canvases
 {
     /// <summary>
-    /// Блокнот с задачами уровня. Открывается/закрывается клавишей Tab
+    /// Блокнот с задачами уровня. Открывается/закрывается клавишей Tab через <see cref="InputService"/>
     /// </summary>
     /// <remarks>
     /// Строит строки из <see cref="QuestService"/> и при открытии разблокирует курсор.
-    /// Canvas должен быть активен в сцене, чтобы слушать ввод
+    /// Подписывается на событие ввода из <see cref="InputService"/> через R3
     /// </remarks>
     public class NotepadCanvas : CanvasBase
     {
@@ -19,7 +21,6 @@ namespace Presentation.Canvases
         [SerializeField] private TaskItemView taskItemPrefab;
 
         [Header("Settings")]
-        [SerializeField] private KeyCode toggleKey = KeyCode.Tab;
         [SerializeField] private bool pauseGameWhileOpen = true;
         [Tooltip("Объекты, которые выключаются при открытом блокноте (например, корень игрока)")]
         [SerializeField] private GameObject[] objectsToDisableWhileOpen;
@@ -32,27 +33,40 @@ namespace Presentation.Canvases
 
         private void Awake()
         {
-            Show(false);
+            
         }
 
         private void Start()
         {
             BuildTaskList();
-        }
+            SubscribeToInput();
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(toggleKey))
-                Toggle();
+            Show(false);
         }
 
         private void OnDestroy()
         {
+            if (InputService.Instance != null)
+                InputService.Instance.SetNotepadOpen(false);
+
             if (isPausedByNotepad)
             {
                 Time.timeScale = previousTimeScale;
                 isPausedByNotepad = false;
             }
+        }
+
+        private void SubscribeToInput()
+        {
+            if (InputService.Instance == null)
+            {
+                Debug.LogWarning("NotepadCanvas: InputService не найден в сцене", this);
+                return;
+            }
+
+            InputService.Instance.NotepadToggleRequested
+                .Subscribe(_ => Toggle())
+                .AddTo(this);
         }
 
         public void Toggle()
@@ -79,6 +93,8 @@ namespace Presentation.Canvases
 
             SetObjectsActive(objectsToDisableWhileOpen, false);
 
+            InputService.Instance?.SetNotepadOpen(true);
+
             Show(true);
         }
 
@@ -94,6 +110,8 @@ namespace Presentation.Canvases
             }
 
             SetObjectsActive(objectsToDisableWhileOpen, true);
+
+            InputService.Instance?.SetNotepadOpen(false);
 
             Show(false);
         }
