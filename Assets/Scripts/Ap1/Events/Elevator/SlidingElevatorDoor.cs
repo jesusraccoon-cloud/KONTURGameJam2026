@@ -1,5 +1,6 @@
 using System.Collections; // Подключаем IEnumerator для плавного движения двери.
 using UnityEngine; // Подключаем основные Unity-классы.
+using UnityEngine.Events; // UnityEvent для звуковых хуков (старт открытия/закрытия).
 
 /// <summary>
 /// Управляет одной сдвижной частью двери лифта.
@@ -31,6 +32,20 @@ public class SlidingElevatorDoor : MonoBehaviour
     [Tooltip("Скорость открытия двери.")]
     [SerializeField]
     private float openSpeed = 2f; // Скорость движения при открытии.
+
+    [Header("EVENTS")]
+
+    [Tooltip("Вызывается в момент, когда дверь НАЧИНАЕТ закрываться. Вешай сюда SC_InteractSound.Play для разового звука.")]
+    public UnityEvent onCloseStart; // Хук: старт закрытия.
+
+    [Tooltip("Вызывается в момент, когда дверь НАЧИНАЕТ открываться (необязательно).")]
+    public UnityEvent onOpenStart; // Хук: старт открытия.
+
+    [Tooltip("Вызывается, когда дверь ПОЛНОСТЬЮ ЗАКРЫЛАСЬ. Вешай сюда включение звука лифта.")]
+    public UnityEvent onCloseEnd; // Хук: закрытие завершено.
+
+    [Tooltip("Вызывается, когда дверь ПОЛНОСТЬЮ ОТКРЫЛАСЬ (необязательно).")]
+    public UnityEvent onOpenEnd; // Хук: открытие завершено.
 
     [Header("DEBUG")]
 
@@ -223,6 +238,9 @@ public class SlidingElevatorDoor : MonoBehaviour
             movementCoroutine = null; // Очищаем старую ссылку.
         }
 
+        if (targetLocalPosition == closedLocalPosition) onCloseStart.Invoke(); // Дверь начинает закрываться — разовый звук
+        else if (targetLocalPosition == openedLocalPosition) onOpenStart.Invoke(); // Дверь начинает открываться
+
         movementCoroutine = StartCoroutine(
             MoveDoorRoutine(
                 targetLocalPosition,
@@ -263,6 +281,9 @@ public class SlidingElevatorDoor : MonoBehaviour
         isBusy = false; // Запоминаем завершение движения.
 
         movementCoroutine = null; // Очищаем ссылку на корутину.
+
+        if (targetLocalPosition == closedLocalPosition) onCloseEnd.Invoke(); // Дверь полностью закрылась — включаем звук лифта
+        else if (targetLocalPosition == openedLocalPosition) onOpenEnd.Invoke(); // Дверь полностью открылась
 
         if (showDebugLogs)
         {
