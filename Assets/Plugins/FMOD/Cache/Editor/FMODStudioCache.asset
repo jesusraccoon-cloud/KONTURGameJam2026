@@ -67,6 +67,33 @@ MonoBehaviour:
   - Name: Desktop
     Value: 766
   Exists: 1
+--- !u!114 &-8076351639425157418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Elevator/Ambience
+  m_EditorClassIdentifier: 
+  Path: event:/Elevator/Ambience
+  Guid:
+    Data1: 1935231554
+    Data2: 1315894578
+    Data3: -1454080859
+    Data4: -1580718196
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 35000
 --- !u!114 &-8056125206213276136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +175,34 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-7742176751963294162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Objects/Water
+  m_EditorClassIdentifier: 
+  Path: event:/Objects/Water
+  Guid:
+    Data1: -624901976
+    Data2: 1158104335
+    Data3: -1094070887
+    Data4: -1313792550
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -3180924868840801897}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 17204
 --- !u!114 &-7567753513369756941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1025,6 +1080,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2009
+--- !u!114 &-3180924868840801897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Water/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 664784307
+    data2: 2168317822
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-2748380295556093473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1608,6 +1687,11 @@ MonoBehaviour:
   - {fileID: 3030637511408875259}
   - {fileID: 3687833661019031875}
   - {fileID: -2120317316118730692}
+  - {fileID: -7742176751963294162}
+  - {fileID: 7312094557550991377}
+  - {fileID: -8076351639425157418}
+  - {fileID: 4327044942978234706}
+  - {fileID: 7774693367101725323}
   EditorParameters:
   - {fileID: 3038740214914519220}
   MasterBanks:
@@ -1615,7 +1699,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 390493745208664655}
   cacheVersion: 131860
-  cacheTime: 639213107542889677
+  cacheTime: 639213266080000000
   SerializableEventsDict:
   - key: event:/Player/Footsteps
     index: 0
@@ -1777,6 +1861,16 @@ MonoBehaviour:
     index: 78
   - key: event:/Objects/DoorFall
     index: 79
+  - key: event:/Objects/Water
+    index: 80
+  - key: event:/Objects/WaterEnd
+    index: 81
+  - key: event:/Elevator/Ambience
+    index: 82
+  - key: event:/Elevator/Door
+    index: 83
+  - key: event:/Objects/GlassBrake 2D
+    index: 84
 --- !u!114 &170813609525510946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1843,10 +1937,10 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639213107542889677
+  lastModified: 639213266080000000
   FileSizes:
   - Name: Desktop
-    Value: 5426
+    Value: 5658
   Exists: 1
 --- !u!114 &534891873104745030
 MonoBehaviour:
@@ -2426,6 +2520,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 7.6
   Length: 19500
+--- !u!114 &4327044942978234706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Elevator/Door
+  m_EditorClassIdentifier: 
+  Path: event:/Elevator/Door
+  Guid:
+    Data1: 24464886
+    Data2: 1209113073
+    Data3: 1899109510
+    Data4: -1811407114
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3000
 --- !u!114 &4482329055516820913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2495,10 +2616,10 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639213107542879721
+  lastModified: 639213266080000000
   FileSizes:
   - Name: Desktop
-    Value: 39900160
+    Value: 41642976
   Exists: 1
 --- !u!114 &4739460652445911797
 MonoBehaviour:
@@ -3081,6 +3202,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1300
+--- !u!114 &7312094557550991377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Objects/WaterEnd
+  m_EditorClassIdentifier: 
+  Path: event:/Objects/WaterEnd
+  Guid:
+    Data1: 465328088
+    Data2: 1219292863
+    Data3: 1870759606
+    Data4: 956419036
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1804
 --- !u!114 &7527099755692281281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3136,6 +3284,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 4543
+--- !u!114 &7774693367101725323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Objects/GlassBrake 2D
+  m_EditorClassIdentifier: 
+  Path: event:/Objects/GlassBrake 2D
+  Guid:
+    Data1: 1379282745
+    Data2: 1170320595
+    Data3: -501445983
+    Data4: 1471410364
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
 --- !u!114 &7928712737379132139
 MonoBehaviour:
   m_ObjectHideFlags: 0

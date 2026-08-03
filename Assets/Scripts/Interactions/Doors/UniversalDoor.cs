@@ -1,5 +1,6 @@
 using UnityEngine; // Подключаем Unity-классы.
 using UnityEngine.AI; // Подключаем NavMeshObstacle.
+using UnityEngine.Events; // UnityEvent (события открытия/закрытия).
 using System.Collections; // Подключаем корутины.
 
 public class UniversalDoor : MonoBehaviour // Универсальная дверь.
@@ -70,6 +71,10 @@ public class UniversalDoor : MonoBehaviour // Универсальная две�
 
     [Header("Save")] // Блок сохранения
     [SerializeField] private SC_Saveable saveable; // Компонент сохранения (авто-поиск). Добавь его на дверь, если её открытое/закрытое состояние должно сохраняться. Без него дверь не сохраняется.
+
+    [Header("Events")] // События двери
+    public UnityEvent onOpened; // Дверь полностью открылась
+    public UnityEvent onClosed; // Дверь закрылась (например: приглушить звуки подъезда через SC_StairwellSilencer.Silence)
 
     private Quaternion closedRotation;
     private Quaternion openedRotation;
@@ -223,6 +228,7 @@ public class UniversalDoor : MonoBehaviour // Универсальная две�
             isPeekOpen = false;
             isOpen = false;
             SaveDoorState(); // Дверь закрылась из положения щели — сохраняем
+            onClosed.Invoke(); // Событие «дверь закрылась»
             return;
         }
         if (!isOpen) return;
@@ -306,6 +312,8 @@ public class UniversalDoor : MonoBehaviour // Универсальная две�
         yield return StartCoroutine(ReturnHandlesBack());
         isBusy = false;
         if (targetOpenState && autoClose) StartAutoCloseCountdown();
+
+        if (targetOpenState) onOpened.Invoke(); else onClosed.Invoke(); // События открытия/закрытия
     }
 
     private IEnumerator PressHandlesDown()

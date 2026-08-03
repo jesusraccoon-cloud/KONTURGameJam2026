@@ -10,6 +10,8 @@ public class SC_InteractSound : MonoBehaviour
 
     public bool attachToObject = false; // true — звук следует за объектом; false — разово в его позиции
 
+    public Transform soundOrigin; // Откуда играть звук. Пусто — позиция этого объекта. ЗАДАЙ, если объект стоит не там, где слышно (например в «складе»/стейджинге координат).
+
     [Header("Debug")] // Блок отладки
     public bool showDebugLogs = false; // Показывать логи
 
@@ -23,11 +25,13 @@ public class SC_InteractSound : MonoBehaviour
 
         if (attachToObject) // Если привязываем к объекту
         {
-            RuntimeManager.PlayOneShotAttached(sound, gameObject); // Звук из позиции объекта, следует за ним
+            GameObject target = soundOrigin != null ? soundOrigin.gameObject : gameObject; // К чему привязать
+            RuntimeManager.PlayOneShotAttached(sound, target); // Звук следует за объектом-источником
         }
-        else // Иначе разово в точке объекта
+        else // Иначе разово в точке источника
         {
-            RuntimeManager.PlayOneShot(sound, transform.position); // Звук в позиции объекта
+            Vector3 pos = soundOrigin != null ? soundOrigin.position : transform.position; // Откуда играть
+            RuntimeManager.PlayOneShot(sound, pos); // Звук в нужной точке
         }
 
         if (showDebugLogs) Debug.Log(gameObject.name + ": SC_InteractSound — играю звук"); // Лог
