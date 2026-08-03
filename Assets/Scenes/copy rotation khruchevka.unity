@@ -39935,6 +39935,7 @@ Transform:
   - {fileID: 963369187}
   - {fileID: 1708216904}
   - {fileID: 314729132}
+  - {fileID: 1407729948}
   m_Father: {fileID: 467046980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &495309210
@@ -67119,7 +67120,89 @@ MonoBehaviour:
   closedLocalOffset: {x: -1.7, y: 0, z: 0}
   closeSpeed: 2
   openSpeed: 2
+  onCloseStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 816398668}
+        m_TargetAssemblyTypeName: SC_InteractSound, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onOpenStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onCloseEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 816398669}
+        m_TargetAssemblyTypeName: SC_ElevatorRideSound, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onOpenEnd:
+    m_PersistentCalls:
+      m_Calls: []
   showDebugLogs: 1
+--- !u!114 &816398668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816398659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3810ca3e04b44074bb338f91c578b8dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound:
+    Guid:
+      Data1: 24464886
+      Data2: 1209113073
+      Data3: 1899109510
+      Data4: -1811407114
+    Path: event:/Elevator/Door
+  attachToObject: 1
+  soundOrigin: {fileID: 0}
+  showDebugLogs: 0
+--- !u!114 &816398669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816398659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97ad872843010d544bc0199e6aebd4e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rideEvent:
+    Guid:
+      Data1: 1935231554
+      Data2: 1315894578
+      Data3: -1454080859
+      Data4: -1580718196
+    Path: event:/Elevator/Ambience
+  looping: 1
+  fadeOutOnStop: 1
+  attachTarget: {fileID: 0}
+  playerTag: Player
+  showDebugLogs: 0
 --- !u!1001 &822504225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -125154,6 +125237,37 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &1407729947
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1407729948}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1407729948
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407729947}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.107, y: 0, z: 0.782}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 494195679}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1407914365
 GameObject:
   m_ObjectHideFlags: 0
@@ -166657,6 +166771,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 816398663}
+    - targetCorrespondingSourceObject: {fileID: -8068073526183931155, guid: 47d021e856cccec4ba83d5f0355a24a0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 816398668}
+    - targetCorrespondingSourceObject: {fileID: -8068073526183931155, guid: 47d021e856cccec4ba83d5f0355a24a0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 816398669}
   m_SourcePrefab: {fileID: 100100000, guid: 47d021e856cccec4ba83d5f0355a24a0, type: 3}
 --- !u!4 &1876647344 stripped
 Transform:
@@ -178666,6 +178788,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chair (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 760868796876692311, guid: afb801a17e05eb741a51e58cf4135663,
+        type: 3}
+      propertyPath: m_TagString
+      value: Carpet
       objectReference: {fileID: 0}
     - target: {fileID: 760868796876692311, guid: afb801a17e05eb741a51e58cf4135663,
         type: 3}
