@@ -1434,6 +1434,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-749877434432379423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/StartGame
+  m_EditorClassIdentifier: 
+  Path: event:/Music/StartGame
+  Guid:
+    Data1: 676092304
+    Data2: 1284757022
+    Data3: -1847954792
+    Data4: 1671579799
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 92003
 --- !u!114 &-563543777508553275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1692,6 +1719,7 @@ MonoBehaviour:
   - {fileID: -8076351639425157418}
   - {fileID: 4327044942978234706}
   - {fileID: 7774693367101725323}
+  - {fileID: -749877434432379423}
   EditorParameters:
   - {fileID: 3038740214914519220}
   MasterBanks:
@@ -1699,7 +1727,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 390493745208664655}
   cacheVersion: 131860
-  cacheTime: 639213266080000000
+  cacheTime: 639213827100000000
   SerializableEventsDict:
   - key: event:/Player/Footsteps
     index: 0
@@ -1871,6 +1899,8 @@ MonoBehaviour:
     index: 83
   - key: event:/Objects/GlassBrake 2D
     index: 84
+  - key: event:/Music/StartGame
+    index: 85
 --- !u!114 &170813609525510946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1937,10 +1967,10 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639213266080000000
+  lastModified: 639213827100000000
   FileSizes:
   - Name: Desktop
-    Value: 5658
+    Value: 5762
   Exists: 1
 --- !u!114 &534891873104745030
 MonoBehaviour:
@@ -2616,10 +2646,10 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639213266080000000
+  lastModified: 639213827100000000
   FileSizes:
   - Name: Desktop
-    Value: 41642976
+    Value: 42892512
   Exists: 1
 --- !u!114 &4739460652445911797
 MonoBehaviour:

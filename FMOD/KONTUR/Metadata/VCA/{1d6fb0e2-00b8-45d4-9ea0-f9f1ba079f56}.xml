@@ -5,7 +5,7 @@
 			<value>Player</value>
 		</property>
 		<relationship name="masters">
-			<destination>{6e002d09-d5d6-4b9d-a8cd-0bd609f4ca69}</destination>
+			<destination>{c86dfd31-a1ae-4139-9815-9e4854812ad6}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{9300ff2a-fc70-42d3-a8ec-2999b5e77325}</destination>

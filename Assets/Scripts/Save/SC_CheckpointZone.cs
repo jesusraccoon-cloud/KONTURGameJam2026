@@ -1,4 +1,5 @@
 using UnityEngine; // Unity-классы
+using UnityEngine.Events; // UnityEvent (хук входа в зону — например fade-out музыки)
 
 // Триггер-зона чекпоинта. Когда игрок входит — сохраняет чекпоинт с заданным номером.
 // Удобно для «вход в квартиру» (чекпоинт 1). Для 4/6 и 6/6 лучше вешать SaveCheckpoint
@@ -14,6 +15,9 @@ public class SC_CheckpointZone : MonoBehaviour
     public string playerTag = "Player"; // Тег игрока (или его родителя)
 
     public bool once = true; // Срабатывать один раз за сессию
+
+    [Header("Events")] // Хуки
+    public UnityEvent onEntered; // Игрок вошёл в зону (вешай сюда SC_MusicPlayer.FadeOutAndStop для затухания вступления)
 
     [Header("Debug")] // Отладка
     public bool showDebugLogs = false; // Показывать логи
@@ -38,17 +42,14 @@ public class SC_CheckpointZone : MonoBehaviour
 
         if (!IsPlayer(other)) return; // Не игрок — выходим
 
-        if (saveManager == null) // Нет менеджера
-        {
-            if (showDebugLogs) Debug.LogWarning(gameObject.name + ": SC_CheckpointZone — не найден SC_SaveManager"); // Предупреждение
-            return; // Выходим
-        }
-
         fired = true; // Помечаем срабатывание
 
-        saveManager.SaveCheckpoint(checkpointIndex); // Сохраняем чекпоинт
+        if (saveManager != null) saveManager.SaveCheckpoint(checkpointIndex); // Сохраняем чекпоинт (если менеджер есть)
+        else if (showDebugLogs) Debug.LogWarning(gameObject.name + ": SC_CheckpointZone — не найден SC_SaveManager"); // Предупреждение
 
-        if (showDebugLogs) Debug.Log(gameObject.name + ": чекпоинт " + checkpointIndex + " сохранён по входу"); // Лог
+        onEntered.Invoke(); // Хук входа в зону (fade-out музыки вступления и т.п.) — работает даже без менеджера
+
+        if (showDebugLogs) Debug.Log(gameObject.name + ": вход в зону, чекпоинт " + checkpointIndex); // Лог
     }
 
     private bool IsPlayer(Collider other) // Проверка, что это игрок (по тегу, включая родителей)
