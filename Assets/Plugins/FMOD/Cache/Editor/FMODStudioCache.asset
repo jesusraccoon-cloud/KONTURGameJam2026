@@ -1618,6 +1618,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 4500
+--- !u!114 &-184609247644040668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Objects/TV_Off
+  m_EditorClassIdentifier: 
+  Path: event:/Objects/TV_Off
+  Guid:
+    Data1: 34843919
+    Data2: 1309775095
+    Data3: 1500500866
+    Data4: 947807196
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2630
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1720,6 +1747,9 @@ MonoBehaviour:
   - {fileID: 4327044942978234706}
   - {fileID: 7774693367101725323}
   - {fileID: -749877434432379423}
+  - {fileID: -184609247644040668}
+  - {fileID: 372060741255937086}
+  - {fileID: 8640728785924319695}
   EditorParameters:
   - {fileID: 3038740214914519220}
   MasterBanks:
@@ -1727,7 +1757,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 390493745208664655}
   cacheVersion: 131860
-  cacheTime: 639213903438227277
+  cacheTime: 639213974620000000
   SerializableEventsDict:
   - key: event:/Player/Footsteps
     index: 0
@@ -1901,6 +1931,12 @@ MonoBehaviour:
     index: 84
   - key: event:/Music/StartGame
     index: 85
+  - key: event:/Objects/TV_Off
+    index: 86
+  - key: event:/Objects/TV_On
+    index: 87
+  - key: event:/Objects/TV_Loop
+    index: 88
 --- !u!114 &170813609525510946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1952,6 +1988,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 179
+--- !u!114 &372060741255937086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Objects/TV_On
+  m_EditorClassIdentifier: 
+  Path: event:/Objects/TV_On
+  Guid:
+    Data1: -220619455
+    Data2: 1282381875
+    Data3: 604923024
+    Data4: 424572478
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 358
 --- !u!114 &390493745208664655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1967,10 +2030,10 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639213903438227277
+  lastModified: 639213974620000000
   FileSizes:
   - Name: Desktop
-    Value: 5762
+    Value: 5900
   Exists: 1
 --- !u!114 &534891873104745030
 MonoBehaviour:
@@ -2646,10 +2709,10 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639213903438187270
+  lastModified: 639213974620000000
   FileSizes:
   - Name: Desktop
-    Value: 42892512
+    Value: 43001184
   Exists: 1
 --- !u!114 &4739460652445911797
 MonoBehaviour:
@@ -3413,6 +3476,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2418
+--- !u!114 &8640728785924319695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Objects/TV_Loop
+  m_EditorClassIdentifier: 
+  Path: event:/Objects/TV_Loop
+  Guid:
+    Data1: 1539728043
+    Data2: 1234117332
+    Data3: -1665270615
+    Data4: 1009604372
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 5.2000003
+  Length: 10505
 --- !u!114 &8654389611466127150
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -41,8 +41,6 @@ public class SC_WaterTapAudio : MonoBehaviour, IOccludable // Поддержив
 
     private Transform cachedListener; // Кэш слушателя для отсечки по дистанции
 
-    private int lastLoggedStage = -999; // Для отладочного лога смены стадии
-
     private void Awake() // Вызывается при создании объекта
     {
         if (tap == null) tap = GetComponent<ThreeStageInteractableObject>(); // Пробуем взять кран с этого объекта
@@ -78,12 +76,6 @@ public class SC_WaterTapAudio : MonoBehaviour, IOccludable // Поддержив
 
     private void UpdateWaterState() // Включает/выключает воду под стадию крана
     {
-        if (showDebugLogs && tap != null && tap.CurrentStage != lastLoggedStage) // Стадия сменилась — логируем
-        {
-            lastLoggedStage = tap.CurrentStage; // Запоминаем
-            Debug.Log($"{gameObject.name}: стадия крана = {lastLoggedStage} (вода играет только при стадии {waterOnStage}), tap='{tap.name}'"); // Показываем текущую стадию
-        }
-
         bool on = IsWaterOn() && WithinHearRange(); // Кран в «водной» стадии И игрок в пределах слышимости
 
         if (on && !isPlaying) // Воду включили, а звук не играет
@@ -132,13 +124,12 @@ public class SC_WaterTapAudio : MonoBehaviour, IOccludable // Поддержив
             ? FMOD.Studio.STOP_MODE.ALLOWFADEOUT // С затуханием/хвостом
             : FMOD.Studio.STOP_MODE.IMMEDIATE; // Мгновенно, без хвоста
 
-        bool valid = waterInstance.isValid(); // Валиден ли наш инстанс перед остановкой
-        FMOD.RESULT stopResult = waterInstance.stop(mode); // Останавливаем воду (и запоминаем результат)
+        waterInstance.stop(mode); // Останавливаем воду
         waterInstance.release(); // Освобождаем инстанс
 
         isPlaying = false; // Вода не играет
 
-        if (showDebugLogs) Debug.Log($"{gameObject.name}: вода выключена (valid={valid}, stopResult={stopResult}, mode={mode})"); // Диагностика: приняла ли FMOD команду стоп
+        if (showDebugLogs) Debug.Log(gameObject.name + ": вода выключена"); // Лог
     }
 
     private bool WithinHearRange() // В пределах ли слышимости (для отсечки по дистанции)
