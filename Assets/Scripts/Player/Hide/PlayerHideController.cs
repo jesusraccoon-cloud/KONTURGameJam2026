@@ -14,7 +14,29 @@ public class PlayerHideController : MonoBehaviour // Контроллер вхо
 
     public FirstPersonController firstPersonController; // Контроллер движения и камеры игрока
 
+    public StarterAssetsInputs starterAssetsInputs; // Источник движения мыши из Starter Assets
+
+    public Transform cameraTarget; // CinemachineCameraTarget или другой объект, который вращает FPS-камеру
+
     public Behaviour[] movementScriptsToDisable; // Скрипты управления, которые отключаются внутри шкафа
+
+    [Header("Hidden Peek Camera")] // Настройки камеры, пока игрок сидит в шкафу
+    public bool enableHiddenPeekCamera = true; // Включать выдвижение камеры и свободный ограниченный обзор
+
+    [Min(0f)]
+    public float cameraForwardOffset = 0.28f; // Камера выдвигается вперёд на 28 см: прежние 18 см плюс ещё 10 см
+
+    [Min(0.01f)]
+    public float cameraMoveSpeed = 5f; // Скорость плавного выдвижения и возврата камеры
+
+    [Min(0.01f)]
+    public float hiddenLookSensitivity = 1f; // Чувствительность мыши внутри шкафа
+
+    [Range(0f, 89f)]
+    public float hiddenHorizontalLookLimit = 35f; // Максимальный поворот влево и вправо от центра
+
+    [Min(0f)]
+    public float cameraReturnBeforeExitTime = 0.2f; // Сколько ждать возврата камеры перед открытием дверей
 
     [Header("Enter Movement")] // Блок входа в шкаф
     public bool walkIntoWardrobe = true; // Если true, игрок заходит внутрь плавно
@@ -65,11 +87,25 @@ public class PlayerHideController : MonoBehaviour // Контроллер вхо
 
     private bool isExiting = false; // Идет ли сейчас выход
 
+    private bool hiddenPeekViewActive = false; // Разрешён ли сейчас обзор из щели
+
+    private Vector3 cameraTargetStartLocalPosition; // Исходная локальная позиция Camera Target
+
+    private Quaternion cameraTargetStartLocalRotation; // Исходный локальный поворот Camera Target
+
+    private float hiddenBaseYaw = 0f; // Центральный горизонтальный угол при входе в шкаф
+
+    private float hiddenYawOffset = 0f; // Текущий поворот влево или вправо от центра
+
     private void Reset() // Автонастройка при добавлении скрипта
     {
         characterController = GetComponent<CharacterController>(); // Ищем CharacterController на игроке
 
         firstPersonController = GetComponent<FirstPersonController>(); // Ищем FirstPersonController на игроке
+
+        starterAssetsInputs = GetComponent<StarterAssetsInputs>(); // Ищем StarterAssetsInputs на игроке
+
+        if (firstPersonController != null) cameraTarget = firstPersonController.CinemachineCameraTarget.transform; // Берём стандартную цель камеры Starter Assets
     }
 
     private void Awake() // Автоматически находит обязательные ссылки перед началом игры
@@ -79,6 +115,24 @@ public class PlayerHideController : MonoBehaviour // Контроллер вхо
         if (firstPersonController == null) firstPersonController = GetComponent<FirstPersonController>(); // Если ссылка не назначена, ищем FirstPersonController
 
         if (firstPersonController == null) firstPersonController = GetComponentInParent<FirstPersonController>(); // Дополнительно ищем FirstPersonController выше по иерархии
+
+        if (starterAssetsInputs == null) starterAssetsInputs = GetComponent<StarterAssetsInputs>(); // Ищем ввод Starter Assets
+
+        if (starterAssetsInputs == null) starterAssetsInputs = GetComponentInParent<StarterAssetsInputs>(); // Дополнительно ищем ввод выше
+
+        if (cameraTarget == null && firstPersonController != null) cameraTarget = firstPersonController.CinemachineCameraTarget.transform; // Автоматически берём стандартную цель камеры
+
+        if (cameraTarget != null) // Если Camera Target найден
+        {
+            cameraTargetStartLocalPosition = cameraTarget.localPosition; // Запоминаем исходную локальную позицию
+
+            cameraTargetStartLocalRotation = cameraTarget.localRotation; // Запоминаем исходный локальный поворот
+        }
+    }
+
+    private void LateUpdate() // Обновляет обзор и положение камеры после обычной логики игрока
+    {
+        UpdateHiddenPeekCamera(); // Двигаем и вращаем камеру только в режиме пряток
     }
 
     public void TryEnterWardrobe(WardrobeHideHandle wardrobe) // Попытка войти в шкаф по Q
@@ -146,7 +200,9 @@ public class PlayerHideController : MonoBehaviour // Контроллер вхо
             yield break; // Останавливаем последовательность
         }
 
-        yield return StartCoroutine(wardrobe.CloseDoorsAfterHide()); // Просим шкаф закрыть двери после входа
+        yield return StartCoroutine(wardrobe.CloseDoorsAfterHide()); // Просим шкаф закрыть двери или оставить их в Peek Position
+
+        BeginHiddenPeekView(); // Выдвигаем камеру вперёд и разрешаем ограниченный обзор мышью
 
         isEntering = false; // Вход завершен
     }
@@ -157,7 +213,11 @@ public class PlayerHideController : MonoBehaviour // Контроллер вхо
 
         WardrobeHideHandle wardrobeToExit = currentWardrobe; // Сохраняем шкаф в локальную переменную
 
-        if (wardrobeToExit != null) yield return StartCoroutine(wardrobeToExit.OpenDoorsBeforeExit()); // Просим шкаф открыть двери перед выходом
+        EndHiddenPeekView(); // Запрещаем обзор из щели и начинаем возвращать камеру назад
+
+        if (cameraReturnBeforeExitTime > 0f) yield return new WaitForSeconds(cameraReturnBeforeExitTime); // Даём камере время вернуться перед открытием дверей
+
+        if (wardrobeToExit != null) yield return StartCoroutine(wardrobeToExit.OpenDoorsBeforeExit()); // Просим шкаф полностью открыть двери перед выходом
 
         isHidden = false; // Снимаем состояние пряток
 
@@ -249,6 +309,79 @@ public class PlayerHideController : MonoBehaviour // Контроллер вхо
         if (monsterAttack == null) return; // Если атака не назначена, выходим
 
         monsterAttack.StartHideCatchAttack(wardrobeDoor); // Запускаем атаку монстра
+    }
+
+    private void BeginHiddenPeekView() // Запускает обзор из щели после завершения входа
+    {
+        if (enableHiddenPeekCamera == false) return; // Если функция выключена, ничего не делаем
+
+        if (cameraTarget == null) return; // Без Camera Target камера не сможет двигаться
+
+        hiddenBaseYaw = transform.eulerAngles.y; // Запоминаем центральное направление игрока
+
+        hiddenYawOffset = 0f; // Сбрасываем горизонтальное отклонение
+
+        hiddenPeekViewActive = true; // Разрешаем обработку мыши и выдвижение камеры
+    }
+
+    private void EndHiddenPeekView() // Завершает обзор из щели перед выходом
+    {
+        hiddenPeekViewActive = false; // Запрещаем дальнейший ввод мыши в режиме шкафа
+
+        hiddenYawOffset = 0f; // Сбрасываем горизонтальный угол
+
+        transform.rotation = Quaternion.Euler(0f, hiddenBaseYaw, 0f); // Возвращаем игрока в центральное направление
+    }
+
+    private void UpdateHiddenPeekCamera() // Двигает камеру и позволяет ограниченно смотреть мышью
+    {
+        if (cameraTarget == null) return; // Без Camera Target обновлять нечего
+
+        Vector3 targetLocalPosition = cameraTargetStartLocalPosition; // По умолчанию камера возвращается в исходную позицию
+
+        if (hiddenPeekViewActive == true) // Если игрок сидит в шкафу и двери находятся в Peek Position
+        {
+            targetLocalPosition += Vector3.forward * cameraForwardOffset; // Выдвигаем камеру немного вперёд
+
+            if (starterAssetsInputs != null) // Если ввод Starter Assets найден
+            {
+                Vector2 lookInput = starterAssetsInputs.look; // Получаем движение мыши или стика
+
+                hiddenYawOffset += lookInput.x * hiddenLookSensitivity; // Используем только горизонтальное движение мыши
+
+                hiddenYawOffset = Mathf.Clamp(
+                    hiddenYawOffset,
+                    -hiddenHorizontalLookLimit,
+                    hiddenHorizontalLookLimit
+                ); // Ограничиваем взгляд влево и вправо стенками шкафа
+            }
+
+            transform.rotation = Quaternion.Euler(
+                0f,
+                hiddenBaseYaw + hiddenYawOffset,
+                0f
+            ); // Поворачиваем игрока только на ограниченный горизонтальный угол
+
+            cameraTarget.localRotation = Quaternion.Slerp(
+                cameraTarget.localRotation,
+                cameraTargetStartLocalRotation,
+                Time.deltaTime * cameraMoveSpeed
+            ); // Удерживаем исходный вертикальный угол: вверх и вниз смотреть нельзя
+        }
+        else // Если Peek View выключен
+        {
+            cameraTarget.localRotation = Quaternion.Slerp(
+                cameraTarget.localRotation,
+                cameraTargetStartLocalRotation,
+                Time.deltaTime * cameraMoveSpeed
+            ); // Плавно возвращаем вертикальный поворот камеры
+        }
+
+        cameraTarget.localPosition = Vector3.Lerp(
+            cameraTarget.localPosition,
+            targetLocalPosition,
+            Time.deltaTime * cameraMoveSpeed
+        ); // Плавно выдвигаем или возвращаем Camera Target
     }
 
     private void TeleportPlayer(Vector3 targetPosition, Quaternion targetRotation) // Безопасный телепорт игрока
