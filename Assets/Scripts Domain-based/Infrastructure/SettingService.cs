@@ -14,20 +14,20 @@ namespace Infrastructure
         [Header("Audio Settings")]
         [SerializeField] private ReactiveProperty<float> volumeMaster = new(1f);
         [SerializeField] private ReactiveProperty<float> volumeMusic = new(1f);
-        [SerializeField] private ReactiveProperty<float> volumeEffect = new(1f);
         [SerializeField] private ReactiveProperty<float> volumeSFX = new(1f);
+        [SerializeField] private ReactiveProperty<float> volumeUI = new(1f);
         [SerializeField] private ReactiveProperty<float> volumeVoice = new(1f);
 
         private VCA vcaMaster;
         private VCA vcaMusic;
-        private VCA vcaEffects;
+        private VCA vcaSFX;
         private VCA vcaUI;
-        //private VCA voiceUI;
+        private VCA vcaVoice;
 
         public ReactiveProperty<float> MasterVolume => volumeMaster;
         public ReactiveProperty<float> MusicVolume => volumeMusic;
-        public ReactiveProperty<float> EffectVolume => volumeEffect;
         public ReactiveProperty<float> SFXVolume => volumeSFX;
+        public ReactiveProperty<float> UIVolume => volumeUI;
         public ReactiveProperty<float> VoiceVolume => volumeVoice;
 
 
@@ -43,17 +43,17 @@ namespace Infrastructure
                 .Subscribe(x => VolumeUpdatedHandler(vcaMusic, "MusicVolume", x))
                 .AddTo(this);
 
-            EffectVolume
-                .Subscribe(x => VolumeUpdatedHandler(vcaEffects, "EffectVolume", x))
-                .AddTo(this);
-
             SFXVolume
-                .Subscribe(x => VolumeUpdatedHandler(vcaUI, "SFXVolume", x))
+                .Subscribe(x => VolumeUpdatedHandler(vcaSFX, "SFXVolume", x))
                 .AddTo(this);
 
-            //VoiceVolume
-            //    .Subscribe(x => VolumeUpdatedHandler(voiceUI, "VoiceVolume", x))
-            //    .AddTo(this);
+            UIVolume
+                .Subscribe(x => VolumeUpdatedHandler(vcaUI, "UIVolume", x))
+                .AddTo(this);
+
+            VoiceVolume
+                .Subscribe(x => VolumeUpdatedHandler(vcaVoice, "VoiceVolume", x))
+                .AddTo(this);
 
             this.status.Value = LifecycleState.Started;
         }
@@ -65,14 +65,14 @@ namespace Infrastructure
         {
             vcaMaster = RuntimeManager.GetVCA("vca:/Master");
             vcaMusic = RuntimeManager.GetVCA("vca:/Music");
-            vcaEffects = RuntimeManager.GetVCA("vca:/Effects");
+            vcaSFX = RuntimeManager.GetVCA("vca:/SFX");
             vcaUI = RuntimeManager.GetVCA("vca:/UI");
-
+            vcaVoice = RuntimeManager.GetVCA("vca:/Voice");
 
             volumeMaster.OnNext(PlayerPrefs.GetFloat("MasterVolume", volumeMaster.Value));
             volumeMusic.OnNext(PlayerPrefs.GetFloat("MusicVolume", volumeMusic.Value));
-            volumeEffect.OnNext(PlayerPrefs.GetFloat("EffectVolume", volumeEffect.Value));
             volumeSFX.OnNext(PlayerPrefs.GetFloat("SFXVolume", volumeSFX.Value));
+            volumeUI.OnNext(PlayerPrefs.GetFloat("UIVolume", volumeUI.Value));
             volumeVoice.OnNext(PlayerPrefs.GetFloat("VoiceVolume", volumeVoice.Value));
 
             print("Setting Service is Started");
