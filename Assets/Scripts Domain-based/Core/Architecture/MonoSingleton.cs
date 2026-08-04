@@ -9,12 +9,17 @@ public class MonoSingleton<T> : MonoBehaviour
     {
         if (Instance != null)
         {
-            Destroy(this.gameObject);
+            Destroy(this.gameObject); // Дубликат (например при возврате в меню) — убираем
+            return;
         }
-        else
-        {
-            Instance = this as T;
-        }
+
+        Instance = this as T;
+
+        // DontDestroyOnLoad работает ТОЛЬКО на корневых объектах. Если синглтон вложен
+        // (напр. Services под [ Management ]), открепляем его к корню — иначе он уничтожится при смене сцены.
+        if (transform.parent != null)
+            transform.SetParent(null);
+
         DontDestroyOnLoad(this.gameObject);
     }
 

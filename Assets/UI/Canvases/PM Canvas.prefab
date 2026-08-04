@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2226050372527683562}
   - component: {fileID: 4926028434833715426}
   - component: {fileID: 4112956570527596703}
+  - component: {fileID: 307535787460202778}
   m_Layer: 0
   m_Name: PM Canvas
   m_TagString: Untagged
@@ -119,6 +120,34 @@ MonoBehaviour:
   screens:
   - {fileID: 5845422853885506871}
   - {fileID: 5294200632837527654}
+--- !u!114 &307535787460202778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780493651096074539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e9872aabdac01e4b8dcc6ebaec4d8fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverEvent:
+    Guid:
+      Data1: 1298811097
+      Data2: 1161727756
+      Data3: -997853032
+      Data4: -2091183377
+    Path: event:/UI/OnHovered
+  clickEvent:
+    Guid:
+      Data1: -848485663
+      Data2: 1081731931
+      Data3: -425952586
+      Data4: -1091681257
+    Path: event:/UI/Click
+  root: {fileID: 0}
+  includeInactive: 1
 --- !u!1001 &2168165176597441673
 PrefabInstance:
   m_ObjectHideFlags: 0

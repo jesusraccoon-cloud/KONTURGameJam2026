@@ -1,4 +1,5 @@
-﻿using Core;
+﻿using System.Collections;
+using Core;
 using FMOD.Studio;
 using FMODUnity;
 using R3;
@@ -61,14 +62,21 @@ namespace Infrastructure
         #endregion
 
 
-        private void Start()
+        private IEnumerator Start()
         {
+            // Ждём загрузки банков FMOD — иначе VCA ещё не существуют и setVolume не применится
+            while (!RuntimeManager.HaveAllBanksLoaded) yield return null;
+
             vcaMaster = RuntimeManager.GetVCA("vca:/Master");
             vcaMusic = RuntimeManager.GetVCA("vca:/Music");
             vcaSFX = RuntimeManager.GetVCA("vca:/SFX");
             vcaUI = RuntimeManager.GetVCA("vca:/UI");
             vcaVoice = RuntimeManager.GetVCA("vca:/Voice");
 
+<<<<<<< HEAD
+=======
+            // OnNext прогоняет сохранённые значения через подписку -> применяет к VCA (теперь валидным) и на старте
+>>>>>>> c7e953588fc564e6b31476eb5fbcf2077dad70de
             volumeMaster.OnNext(PlayerPrefs.GetFloat("MasterVolume", volumeMaster.Value));
             volumeMusic.OnNext(PlayerPrefs.GetFloat("MusicVolume", volumeMusic.Value));
             volumeSFX.OnNext(PlayerPrefs.GetFloat("SFXVolume", volumeSFX.Value));

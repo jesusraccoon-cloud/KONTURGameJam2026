@@ -1,5 +1,6 @@
 using System.Collections; // Подключаем корутины, чтобы выполнять действия с ожиданием во времени
 using UnityEngine; // Подключаем Unity-классы: GameObject, Transform, Vector3, Collider, Debug и другие
+using UnityEngine.Events; // UnityEvent — хук на старт концовки (например включить музыку)
 using StarterAssets; // Подключаем Starter Assets, чтобы работать с FirstPersonController и StarterAssetsInputs
 using Gameplay.Quest; // Подключаем систему задач
 
@@ -58,6 +59,9 @@ public class ElevatorEndingEvent : MonoBehaviour // Главный скрипт 
     public float delayAfterPlayerEntered = 0.2f; // Задержка после того, как игрок дошел до точки внутри лифта и дверь квартиры закрылась
 
     public float delayBeforeElevatorDoorClose = 0.4f; // Задержка перед закрытием двери лифта
+
+    [Header("Events")] // Заголовок в Inspector для хуков события
+    public UnityEvent onEndingStart; // Вызывается в момент старта концовки — вешай сюда SC_MusicPlayer.Play (финальная музыка)
 
     [Header("Debug")] // Заголовок в Inspector для отладочных сообщений
     public bool showDebugLogs = true; // Показывать ли сообщения Debug.Log в Console
@@ -119,6 +123,8 @@ public class ElevatorEndingEvent : MonoBehaviour // Главный скрипт 
     private IEnumerator ElevatorEndingRoutine() // Основная корутина входа игрока в лифт
     {
         eventStarted = true; // Запоминаем, что катсцена началась
+
+        onEndingStart.Invoke(); // Хук старта концовки — включаем финальную музыку и т.п.
 
         DisablePlayerControl(); // Забираем управление у игрока
 

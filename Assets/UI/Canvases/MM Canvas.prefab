@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4147954744861737183}
   - component: {fileID: 4074433365148144730}
   - component: {fileID: 91886386885883294}
+  - component: {fileID: 1663008781522099816}
   m_Layer: 0
   m_Name: MM Canvas
   m_TagString: Untagged
@@ -117,6 +118,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54dc4e748d56a2e4098e55f17b07a1fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1663008781522099816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8581003133086690751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e9872aabdac01e4b8dcc6ebaec4d8fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverEvent:
+    Guid:
+      Data1: 1298811097
+      Data2: 1161727756
+      Data3: -997853032
+      Data4: -2091183377
+    Path: event:/UI/OnHovered
+  clickEvent:
+    Guid:
+      Data1: -848485663
+      Data2: 1081731931
+      Data3: -425952586
+      Data4: -1091681257
+    Path: event:/UI/Click
+  root: {fileID: 0}
+  includeInactive: 1
 --- !u!1001 &5715385884539004602
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -733,7 +762,7 @@ PrefabInstance:
     - target: {fileID: 979916843158541273, guid: 5d8f6f8ac74230444a38b1927fefbe6e,
         type: 3}
       propertyPath: m_Size
-      value: 0.18968982
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 1626685843549204924, guid: 5d8f6f8ac74230444a38b1927fefbe6e,
         type: 3}
