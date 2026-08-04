@@ -8,11 +8,11 @@ using R3;
 namespace Presentation.Canvases
 {
     /// <summary>
-    /// Блокнот с задачами уровня. Открывается/закрывается клавишей Tab через <see cref="InputService"/>
+    /// Блокнот с задачами уровня. Открывается/закрывается клавишей Tab через <see cref="InputManager"/>
     /// </summary>
     /// <remarks>
     /// Строит строки из <see cref="QuestManager"/> и при открытии разблокирует курсор.
-    /// Подписывается на событие ввода из <see cref="InputService"/> через R3
+    /// Подписывается на событие ввода из <see cref="InputManager"/> через R3
     /// </remarks>
     public class NotepadCanvas : CanvasBase
     {
@@ -46,8 +46,8 @@ namespace Presentation.Canvases
 
         private void OnDestroy()
         {
-            if (InputService.Instance != null)
-                InputService.Instance.SetNotepadOpen(false);
+            if (InputManager.Instance != null)
+                InputManager.Instance.SetNotepadOpen(false);
 
             if (isPausedByNotepad)
             {
@@ -58,13 +58,13 @@ namespace Presentation.Canvases
 
         private void SubscribeToInput()
         {
-            if (InputService.Instance == null)
+            if (InputManager.Instance == null)
             {
                 Debug.LogWarning("NotepadCanvas: InputService не найден в сцене", this);
                 return;
             }
 
-            InputService.Instance.NotepadToggleRequested
+            InputManager.Instance.NotepadToggleRequested
                 .Subscribe(_ => Toggle())
                 .AddTo(this);
         }
@@ -93,7 +93,7 @@ namespace Presentation.Canvases
 
             SetObjectsActive(objectsToDisableWhileOpen, false);
 
-            InputService.Instance?.SetNotepadOpen(true);
+            InputManager.Instance?.SetNotepadOpen(true);
 
             Show(true);
         }
@@ -111,7 +111,7 @@ namespace Presentation.Canvases
 
             SetObjectsActive(objectsToDisableWhileOpen, true);
 
-            InputService.Instance?.SetNotepadOpen(false);
+            InputManager.Instance?.SetNotepadOpen(false);
 
             Show(false);
         }

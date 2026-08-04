@@ -50,13 +50,13 @@ namespace Presentation.Canvases
 
         private void SubscribeToInput()
         {
-            if (InputService.Instance == null)
+            if (InputManager.Instance == null)
             {
                 Debug.LogWarning("PMCanvas: InputService не найден в сцене", this);
                 return;
             }
 
-            InputService.Instance.PauseRequested
+            InputManager.Instance.PauseRequested
                 .Subscribe(_ => TogglePauseScreen())
                 .AddTo(this);
         }
@@ -68,7 +68,7 @@ namespace Presentation.Canvases
             bool isOpen = !screens[0].gameObject.activeInHierarchy;
             screens[0].gameObject.SetActive(isOpen);
 
-            InputService.Instance?.SetPauseMenuOpen(isOpen);
+            InputManager.Instance?.SetPauseMenuOpen(isOpen);
 
             if (Cursor.lockState == CursorLockMode.Locked)
                 Cursor.lockState = CursorLockMode.None;
@@ -78,8 +78,8 @@ namespace Presentation.Canvases
 
         private void OnDestroy()
         {
-            if (InputService.Instance != null)
-                InputService.Instance.SetPauseMenuOpen(false);
+            if (InputManager.Instance != null)
+                InputManager.Instance.SetPauseMenuOpen(false);
         }
 
         public void Resume()

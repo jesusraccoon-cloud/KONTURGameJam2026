@@ -6,7 +6,8 @@ namespace Core
     /// <summary>
     /// Класс, предназначенный для реализации игровых менеджеров и систем
     /// </summary>
-    public abstract class ManagerBase : MonoBehaviour, IManager
+    public abstract class ManagerBase<T> : MonoSingleton<T>, IManager
+        where T : class
     {
         protected ReactiveProperty<LifecycleState> status = new();
 
@@ -19,8 +20,10 @@ namespace Core
         public abstract void Dispose();
 
 
-        protected virtual void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             Status.Subscribe(OnStatusUpdated).AddTo(this);
             Initialize();
         }
@@ -30,8 +33,10 @@ namespace Core
             Startup();
         }
 
-        protected virtual void OnDestroy()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();
+
             Dispose();
         }
 

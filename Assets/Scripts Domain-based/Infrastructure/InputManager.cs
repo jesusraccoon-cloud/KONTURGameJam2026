@@ -13,7 +13,7 @@ namespace Infrastructure
     /// через R3: семантические события (блокнот, пауза) и общий поток клавиш.
     /// Клавиши настраиваются в Inspector
     /// </remarks>
-    public class InputService : ServiceBase<InputService>
+    public class InputManager : ManagerBase<InputManager>
     {
         [Header("Keys")]
         [SerializeField] private KeyCode notepadToggleKey = KeyCode.Tab;
@@ -40,6 +40,17 @@ namespace Infrastructure
         {
             this.status.Value = LifecycleState.Started;
         }
+
+        public override void Initialize()
+        {
+
+        }
+
+        public override void Dispose()
+        {
+
+        }
+
 
         private void Update()
         {
