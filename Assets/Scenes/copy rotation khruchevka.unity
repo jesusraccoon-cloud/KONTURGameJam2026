@@ -5080,6 +5080,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1250984182}
+        m_TargetAssemblyTypeName: Gameplay.Quest.QuestManager, Assembly-CSharp
+        m_MethodName: CompleteTask
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 6
+          m_BoolArgument: 0
+        m_CallState: 2
   saveable: {fileID: 0}
   autoFindInventoryUI: 1
   autoFindEjectPoint: 1
@@ -95870,6 +95882,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1250984182}
+        m_TargetAssemblyTypeName: Gameplay.Quest.QuestManager, Assembly-CSharp
+        m_MethodName: CompleteTask
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 2
+          m_BoolArgument: 0
+        m_CallState: 2
   saveable: {fileID: 0}
   autoFindInventoryUI: 1
   autoFindEjectPoint: 1
@@ -105618,6 +105642,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1250984182}
+        m_TargetAssemblyTypeName: Gameplay.Quest.QuestManager, Assembly-CSharp
+        m_MethodName: CompleteTask
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 3
+          m_BoolArgument: 0
+        m_CallState: 2
   saveable: {fileID: 0}
   autoFindInventoryUI: 1
   autoFindEjectPoint: 1
@@ -111348,7 +111384,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b266f29adb96c26499e8ce7b2cd92b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taskTemplates: []
+  taskTemplates:
+  - Id: 1
+    Title: "\u0420\u0430\u0434\u0438\u043E"
+    Icon: {fileID: 0}
+  - Id: 2
+    Title: "\u0417\u0435\u0440\u043A\u043E\u043B\u0430 1"
+    Icon: {fileID: 0}
+  - Id: 3
+    Title: Window 2
+    Icon: {fileID: 0}
+  - Id: 4
+    Title: Lenin
+    Icon: {fileID: 0}
+  - Id: 5
+    Title: Closet
+    Icon: {fileID: 0}
+  - Id: 6
+    Title: Clock
+    Icon: {fileID: 0}
 --- !u!4 &1250984183
 Transform:
   m_ObjectHideFlags: 0
@@ -134662,6 +134716,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 323524359882192829, guid: c0705474f75c64c4fafbb205b5e07a00,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 323524359882192829, guid: c0705474f75c64c4fafbb205b5e07a00,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 323524359882192829, guid: c0705474f75c64c4fafbb205b5e07a00,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 323524359882192829, guid: c0705474f75c64c4fafbb205b5e07a00,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 446782182960928040, guid: c0705474f75c64c4fafbb205b5e07a00,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -134683,6 +134757,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3739472436212675430, guid: c0705474f75c64c4fafbb205b5e07a00,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4282566900489906334, guid: c0705474f75c64c4fafbb205b5e07a00,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6006719458036206005, guid: c0705474f75c64c4fafbb205b5e07a00,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -134790,6 +134874,26 @@ PrefabInstance:
     - target: {fileID: 6617998130706453069, guid: c0705474f75c64c4fafbb205b5e07a00,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774858422019447604, guid: c0705474f75c64c4fafbb205b5e07a00,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774858422019447604, guid: c0705474f75c64c4fafbb205b5e07a00,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774858422019447604, guid: c0705474f75c64c4fafbb205b5e07a00,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774858422019447604, guid: c0705474f75c64c4fafbb205b5e07a00,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7926852550517273603, guid: c0705474f75c64c4fafbb205b5e07a00,
@@ -151728,6 +151832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1702064685}
   - component: {fileID: 1702064684}
+  - component: {fileID: 1702064686}
   m_Layer: 0
   m_Name: InputService
   m_TagString: Untagged
@@ -151764,6 +151869,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1702064686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702064683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1140829abd335a4458a9d982a8a851a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1704179886
 GameObject:
   m_ObjectHideFlags: 0
@@ -219761,6 +219878,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1250984182}
+        m_TargetAssemblyTypeName: Gameplay.Quest.QuestManager, Assembly-CSharp
+        m_MethodName: CompleteTask
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 5
+          m_BoolArgument: 0
+        m_CallState: 2
   saveable: {fileID: 0}
   autoFindInventoryUI: 1
   autoFindEjectPoint: 1
@@ -223179,6 +223308,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1250984182}
+        m_TargetAssemblyTypeName: Gameplay.Quest.QuestManager, Assembly-CSharp
+        m_MethodName: CompleteTask
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 4
+          m_BoolArgument: 0
+        m_CallState: 2
   saveable: {fileID: 0}
   autoFindInventoryUI: 1
   autoFindEjectPoint: 1
@@ -225411,6 +225552,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1250984182}
+        m_TargetAssemblyTypeName: Gameplay.Quest.QuestManager, Assembly-CSharp
+        m_MethodName: CompleteTask
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 1
           m_BoolArgument: 0
         m_CallState: 2
   saveable: {fileID: 0}

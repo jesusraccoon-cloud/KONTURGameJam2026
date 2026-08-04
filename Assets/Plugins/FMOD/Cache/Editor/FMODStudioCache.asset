@@ -814,6 +814,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-4550018796992287095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/Click
+  m_EditorClassIdentifier: 
+  Path: event:/UI/Click
+  Guid:
+    Data1: -848485663
+    Data2: 1081731931
+    Data3: -425952586
+    Data4: -1091681257
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 234
 --- !u!114 &-4297974333246593770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1241,6 +1268,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3482
+--- !u!114 &-1411823330646117878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/OnHovered
+  m_EditorClassIdentifier: 
+  Path: event:/UI/OnHovered
+  Guid:
+    Data1: 1298811097
+    Data2: 1161727756
+    Data3: -997853032
+    Data4: -2091183377
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 93
 --- !u!114 &-1175765840282098057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1750,6 +1804,11 @@ MonoBehaviour:
   - {fileID: -184609247644040668}
   - {fileID: 372060741255937086}
   - {fileID: 8640728785924319695}
+  - {fileID: -1411823330646117878}
+  - {fileID: -4550018796992287095}
+  - {fileID: 3290799632936559583}
+  - {fileID: 3338156433534781983}
+  - {fileID: 5677673410971294080}
   EditorParameters:
   - {fileID: 3038740214914519220}
   MasterBanks:
@@ -1757,7 +1816,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 390493745208664655}
   cacheVersion: 131860
-  cacheTime: 639213974620000000
+  cacheTime: 639214038500000000
   SerializableEventsDict:
   - key: event:/Player/Footsteps
     index: 0
@@ -1937,6 +1996,16 @@ MonoBehaviour:
     index: 87
   - key: event:/Objects/TV_Loop
     index: 88
+  - key: event:/UI/OnHovered
+    index: 89
+  - key: event:/UI/Click
+    index: 90
+  - key: event:/UI/Notepad
+    index: 91
+  - key: event:/Music/Menu
+    index: 92
+  - key: event:/Music/EndGame
+    index: 93
 --- !u!114 &170813609525510946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2030,10 +2099,10 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639213974620000000
+  lastModified: 639214038500000000
   FileSizes:
   - Name: Desktop
-    Value: 5900
+    Value: 6180
   Exists: 1
 --- !u!114 &534891873104745030
 MonoBehaviour:
@@ -2503,6 +2572,60 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &3290799632936559583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/Notepad
+  m_EditorClassIdentifier: 
+  Path: event:/UI/Notepad
+  Guid:
+    Data1: 2099280639
+    Data2: 1305542606
+    Data3: -1438617186
+    Data4: -167754327
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 923
+--- !u!114 &3338156433534781983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Menu
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Menu
+  Guid:
+    Data1: -2129522090
+    Data2: 1305452267
+    Data3: 154268080
+    Data4: -2007168889
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 293982
 --- !u!114 &3595529157783993695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2709,10 +2832,10 @@ MonoBehaviour:
   Path: FMOD/KONTUR/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639213974620000000
+  lastModified: 639214038500000000
   FileSizes:
   - Name: Desktop
-    Value: 43001184
+    Value: 48137024
   Exists: 1
 --- !u!114 &4739460652445911797
 MonoBehaviour:
@@ -2982,6 +3105,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3155
+--- !u!114 &5677673410971294080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/EndGame
+  m_EditorClassIdentifier: 
+  Path: event:/Music/EndGame
+  Guid:
+    Data1: 1365908605
+    Data2: 1287436793
+    Data3: 1611856570
+    Data4: -1051461781
+  Banks:
+  - {fileID: 4552191581410023176}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 152006
 --- !u!114 &5892910976390945324
 MonoBehaviour:
   m_ObjectHideFlags: 0
