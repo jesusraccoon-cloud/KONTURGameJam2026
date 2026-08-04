@@ -178,7 +178,7 @@ public class RadioCassettePuzzle : MonoBehaviour, IInteractable // Радио в
             cassetteObject.SetActive(true); // Включаем кассету
         }
 
-        QuestService.Instance?.CompleteTask("radio_cassette"); // Отмечаем задачу «Достать кассету из радио»
+        QuestManager.Instance?.CompleteTask("radio_cassette"); // Отмечаем задачу «Достать кассету из радио»
 
         if (showDebugLogs) Debug.Log(gameObject.name + ": кассета стала доступна"); // Лог
     }

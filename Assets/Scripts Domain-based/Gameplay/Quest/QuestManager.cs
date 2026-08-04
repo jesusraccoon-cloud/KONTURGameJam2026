@@ -14,7 +14,7 @@ namespace Gameplay.Quest
     /// через <see cref="CompleteTask"/>. При загрузке новой сцены состояние сбрасывается,
     /// так как сервис живёт между сценами (MonoSingleton)
     /// </remarks>
-    public class QuestService : ServiceBase<QuestService>
+    public class QuestManager : ServiceBase<QuestManager>
     {
         [Header("Tasks")]
         [Tooltip("Шаблоны задач уровня. Заполняется в Inspector")]

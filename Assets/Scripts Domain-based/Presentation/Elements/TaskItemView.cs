@@ -34,7 +34,7 @@ namespace Presentation.Elements
         /// <summary>
         /// Привязать строку к задаче
         /// </summary>
-        public void Setup(QuestService.TaskState state)
+        public void Setup(QuestManager.TaskState state)
         {
             if (state?.Data == null) return;
 
