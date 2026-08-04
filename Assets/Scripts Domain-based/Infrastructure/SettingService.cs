@@ -73,10 +73,8 @@ namespace Infrastructure
             vcaUI = RuntimeManager.GetVCA("vca:/UI");
             vcaVoice = RuntimeManager.GetVCA("vca:/Voice");
 
-<<<<<<< HEAD
-=======
             // OnNext прогоняет сохранённые значения через подписку -> применяет к VCA (теперь валидным) и на старте
->>>>>>> c7e953588fc564e6b31476eb5fbcf2077dad70de
+
             volumeMaster.OnNext(PlayerPrefs.GetFloat("MasterVolume", volumeMaster.Value));
             volumeMusic.OnNext(PlayerPrefs.GetFloat("MusicVolume", volumeMusic.Value));
             volumeSFX.OnNext(PlayerPrefs.GetFloat("SFXVolume", volumeSFX.Value));
