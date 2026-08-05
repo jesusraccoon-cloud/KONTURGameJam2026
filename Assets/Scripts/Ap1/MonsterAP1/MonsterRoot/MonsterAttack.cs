@@ -17,6 +17,10 @@ public class MonsterAttack : MonoBehaviour // Управляет останов�
     public float attackDelay = 1.2f; // Задержка от запуска Kill до Game Over
     public float hideCatchDelay = 1f; // Задержка при вытаскивании из шкафа
 
+    [Header("Permanent Kill Area")] // Постоянная зона смерти вокруг монстра
+    public bool killPlayerInsideArea = true; // Разрешаем убивать игрока при попадании в Trigger-зону на любом этапе
+    public bool checkPlayerEveryStayFrame = true; // Повторно проверяем игрока, если зона включилась, когда он уже находился внутри
+
     [Header("Face Each Other")] // Настройки взаимного разворота
     public float faceDuration = 0.2f; // Время плавного разворота перед анимацией
     public float monsterLookHeight = 1.45f; // Высота точки, куда смотрит камера игрока
@@ -54,6 +58,39 @@ public class MonsterAttack : MonoBehaviour // Управляет останов�
         difference.y = 0f; // Не учитываем разницу высоты
 
         return difference.sqrMagnitude <= attackDistance * attackDistance; // Сравниваем дистанцию без квадратного корня
+    }
+
+    private void OnTriggerEnter(Collider other) // Срабатывает в момент входа любого Collider в Trigger-зону монстра
+    {
+        TryStartAttackFromKillArea(other); // Проверяем, принадлежит ли вошедший Collider игроку
+    }
+
+    private void OnTriggerStay(Collider other) // Срабатывает, пока Collider остаётся внутри Trigger-зоны
+    {
+        if (!checkPlayerEveryStayFrame) return; // Если резервная постоянная проверка выключена, выходим
+
+        TryStartAttackFromKillArea(other); // Повторно проверяем игрока на случай включения зоны вокруг уже стоящего игрока
+    }
+
+    private void TryStartAttackFromKillArea(Collider other) // Пытается начать атаку от постоянной зоны смерти
+    {
+        if (!killPlayerInsideArea) return; // Если постоянная зона смерти выключена в Inspector, ничего не делаем
+
+        if (isAttacking) return; // Если атака уже запущена, не запускаем её повторно
+
+        if (other == null) return; // Защищаемся от отсутствующего Collider
+
+        if (player == null) return; // Без назначенного корневого объекта Player определить игрока нельзя
+
+        Transform enteredTransform = other.transform; // Получаем Transform объекта, вошедшего в зону
+
+        bool isPlayerCollider =
+            enteredTransform == player
+            || enteredTransform.IsChildOf(player); // Принимаем корневой Collider игрока и Collider любого его дочернего объекта
+
+        if (!isPlayerCollider) return; // Любые предметы, двери и прочие объекты игнорируем
+
+        StartAttack(); // Запускаем обычную Kill-анимацию и Game Over независимо от состояния MonsterAI
     }
 
     public void StartAttack() // Запускает обычную атаку

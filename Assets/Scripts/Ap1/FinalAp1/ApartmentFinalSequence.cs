@@ -1,5 +1,6 @@
 using UnityEngine; // Подключаем Unity-классы
 using UnityEngine.Events; // Подключаем UnityEvent (для звуковых хуков)
+using UnityEngine.AI; // Подключаем NavMeshAgent для точной проверки прибытия монстра
 using System.Collections; // Подключаем корутины
 
 public class ApartmentFinalSequence : MonoBehaviour // Главный режиссер сценарных событий квартиры
@@ -77,7 +78,7 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
     public Transform monsterAfterWindowHitPoint; // Конечная точка перед окном, где монстр должен остаться
 
     [Min(0.1f)]
-    public float monsterWindowRouteReachDistance = 0.5f; // Дистанция, на которой промежуточная точка считается достигнутой
+    public float monsterWindowRouteReachDistance = 1f; // Минимальная горизонтальная дистанция, на которой промежуточная точка считается достигнутой
 
     [Min(0.1f)]
     public float monsterWindowRouteTimeout = 12f; // Максимальное время ожидания достижения промежуточной точки
@@ -331,14 +332,14 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
 
             float routeTimer = 0f; // Создаём таймер ожидания промежуточной точки
 
-            while (Vector3.Distance(monsterAI.transform.position, monsterWindowRoutePoint.position) > monsterWindowRouteReachDistance) // Ждём реального прибытия
+            while (!HasMonsterReachedRoutePoint()) // Ждём реального прибытия с учётом Stopping Distance агента и без разницы высоты Y
             {
                 routeTimer += Time.deltaTime; // Увеличиваем таймер ожидания
 
                 if (routeTimer >= monsterWindowRouteTimeout) // Проверяем, не истекло ли максимальное время
                 {
                     Debug.LogWarning(
-                        "ApartmentFinalSequence: монстр не смог дойти до Monster Window Route Point. Проверь положение точки на NavMesh.",
+                        "ApartmentFinalSequence: монстр не смог пройти Monster Window Route Point. Проверь NavMesh, Stopping Distance и положение точки по X/Z.",
                         gameObject
                     ); // Пишем причину остановки последовательности
 
@@ -469,6 +470,46 @@ public class ApartmentFinalSequence : MonoBehaviour // Главный режис
 
         StartBathroomChaseAfterDoorBreak(); // Метод сам проверит оба обязательных условия
     }
+
+    private bool HasMonsterReachedRoutePoint() // Проверяет прохождение промежуточной точки без конфликта со Stopping Distance NavMeshAgent
+    {
+        if (monsterAI == null) return false; // Без монстра проверка невозможна
+
+        if (monsterWindowRoutePoint == null) return true; // Если промежуточная точка не используется, считаем её пройденной
+
+        Vector2 monsterPosition = new Vector2(
+            monsterAI.transform.position.x,
+            monsterAI.transform.position.z
+        ); // Получаем горизонтальную позицию монстра
+
+        Vector2 routePointPosition = new Vector2(
+            monsterWindowRoutePoint.position.x,
+            monsterWindowRoutePoint.position.z
+        ); // Получаем горизонтальную позицию промежуточной точки
+
+        float horizontalDistance = Vector2.Distance(
+            monsterPosition,
+            routePointPosition
+        ); // Считаем расстояние только по поверхности пола
+
+        float allowedDistance = Mathf.Max(
+            0.1f,
+            monsterWindowRouteReachDistance
+        ); // Берём дистанцию из Inspector и защищаемся от нулевого значения
+
+        NavMeshAgent monsterAgent = monsterAI.GetComponent<NavMeshAgent>(); // Получаем NavMeshAgent корневого объекта монстра
+
+        if (monsterAgent != null) // Если NavMeshAgent найден
+        {
+            allowedDistance = Mathf.Max(
+                allowedDistance,
+                monsterAgent.stoppingDistance + 0.45f
+            ); // Не требуем от монстра подойти ближе, чем ему разрешает собственная остановка
+        }
+
+        return horizontalDistance <= allowedDistance; // Точка считается пройденной при попадании в согласованный радиус
+    }
+
 
     private bool HasMonsterReachedWindowPoint() // Проверяет прибытие монстра к окну без учёта разницы высоты Y
     {

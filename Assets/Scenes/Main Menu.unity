@@ -996,6 +996,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MM Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8581003133086690751, guid: bb90a6d743be7ce418ea270b2b5186af,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8639405079865440998, guid: bb90a6d743be7ce418ea270b2b5186af,
         type: 3}
       propertyPath: m_AnchorMax.y
