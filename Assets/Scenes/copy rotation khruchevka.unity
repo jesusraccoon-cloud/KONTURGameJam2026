@@ -6840,8 +6840,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 11623
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 1.1144697e-35, y: 1.2133116e-35, z: 1.199105e-35,
-    w: 1.11446844e-35}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 1e-43, z: 2.6833e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -10081,8 +10080,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 11623
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 2.4569816e-36, y: 2.4687367e-36, z: 2.4922466e-36,
-    w: 2.4804918e-36}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 3.8e-44, z: 5.6441e-41, w: 2.158134e-39}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -17229,8 +17227,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 11623
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 4.5378476e-36, y: 4.7259264e-36, z: 4.7494352e-36,
-    w: 4.631886e-36}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 6.4e-44, z: 2.5488e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -25366,7 +25363,7 @@ MonoBehaviour:
   monsterAfterWindowHitPoint: {fileID: 431487157}
   monsterWindowRouteReachDistance: 1
   monsterWindowRouteTimeout: 12
-  hallReturnDeathTrigger: {fileID: 511015326}
+  hallReturnDeathTrigger: {fileID: 0}
   kitchenFinalTrigger: {fileID: 213670683}
   bathroomExitChaseTrigger: {fileID: 0}
   apartmentExitCompleteTrigger: {fileID: 1860453563}
@@ -38980,7 +38977,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041F\u043E\u0441\u043B\u0435\u0434\u043D\u0435\u0435\n\u0421\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u0435"
+  m_text: "\u041D\u0430\u0447\u0430\u0442\u044C \u0417\u0430\u043D\u043E\u0432\u043E"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 28ae6340c82a4e7459ef2eca0c7b397b, type: 2}
   m_sharedMaterial: {fileID: 6284459282052805927, guid: 28ae6340c82a4e7459ef2eca0c7b397b,
@@ -40932,139 +40929,6 @@ MonoBehaviour:
   canHighlight: 1
   outlineShader: {fileID: 4800000, guid: b273a6948c186e6428a433c768a4ce42, type: 3}
   showDebugWarnings: 1
---- !u!1 &511015326
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 511015327}
-  - component: {fileID: 511015329}
-  - component: {fileID: 511015328}
-  - component: {fileID: 511015330}
-  m_Layer: 0
-  m_Name: HallReturnDeathTrigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &511015327
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 511015326}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.9399986, y: -0.9049916, z: 1.5189819}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 912317839}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &511015328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 511015326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d457fed1754859c48b1cdef549fd81ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deathEnabled: 1
-  gameOverManager: {fileID: 1382673971}
-  gameOverDelay: 3.5
-  hallSidePoint: {fileID: 1841682977}
-  corridorSidePoint: {fileID: 1128076432}
-  sideDistance: 2
-  playerController: {fileID: 1881408446}
-  playerCharacterController: {fileID: 1881408436}
-  playerCameraRoot: {fileID: 0}
-  fallForwardDistance: 1.5
-  fallDownDistance: 1
-  fallDuration: 0.75
-  fallArcHeight: 0.25
-  cameraPitchDown: 15
-  cameraRoll: 0.9
-  fallCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  tripNoiseEmitter: {fileID: 511015330}
-  tripNoisePower: 10
-  monsterAI: {fileID: 481491791}
-  monsterChaseDelay: 0.5
-  showDebugLogs: 1
---- !u!65 &511015329
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 511015326}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.4, y: 1, z: 1.3}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &511015330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 511015326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75caa3bb8e4b8fa4aadcba6c1bec2b24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noiseManager: {fileID: 1341035694}
-  sourceRoomTracker: {fileID: 0}
-  fixedRoom: {fileID: 1217738658}
-  secondFixedRoom: {fileID: 1077312135}
-  noiseMeterUI: {fileID: 271453874}
-  noisePower: 10
-  useSecondRoom: 0
-  showNoiseOnUI: 1
-  mixNoiseOnUI: 1
-  showDebugLogs: 0
 --- !u!1 &511757433
 GameObject:
   m_ObjectHideFlags: 0
@@ -41383,7 +41247,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1854115569}
         m_TargetAssemblyTypeName: SC_SaveManager, Assembly-CSharp
-        m_MethodName: ReloadLastCheckpoint
+        m_MethodName: NewGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -74229,8 +74093,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 11623
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 3.4197957e+21, y: 1.4585243e-19, z: 7.0975523e+22,
-    w: 1.4881196e+37}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 7.8e-44, z: 5.0344e-41, w: -2.5092482e-26}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -77823,7 +77686,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 511015327}
   - {fileID: 213670684}
   - {fileID: 87774556}
   m_Father: {fileID: 1796524011}
@@ -88629,8 +88491,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 11623
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 1.3383749e+22, y: 8.2660556e-10, z: 0.0000539314,
-    w: 5.377825e+22}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 8.3e-44, z: 3.254e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -110799,7 +110660,7 @@ PrefabInstance:
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.233
+      value: 6.788
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
@@ -125026,7 +124887,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 11623
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: -0.17546326, y: 0.044982396, z: -0.08852914, w: 0}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 6.9e-44, z: 3.2238e-41, w: 5.381e-41}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -144313,7 +144174,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 11623
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 6.6e-44, z: 5.0018e-41, w: 2.40222e+20}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
