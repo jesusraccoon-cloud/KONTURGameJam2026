@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine; // Подключаем библиотеку Unity с GameObject, Component, MonoBehaviour и Debug
 
 public class MissingScriptFinder : MonoBehaviour // Создаем компонент MissingScriptFinder который можно повесить на объект
@@ -31,6 +32,27 @@ public class MissingScriptFinder : MonoBehaviour // Создаем компон�
                 }
             }
         }
+    }
+
+    [ContextMenu("Remove Missing Scripts (Simple)")]
+    private void RemoveMissingScriptsSimple()
+    {
+        // Получаем все объекты сцены (включая неактивные)
+        GameObject[] allObjects = FindObjectsOfType<GameObject>(true);
+        int totalRemoved = 0;
+
+        foreach (GameObject go in allObjects)
+        {
+            // Встроенный метод удаляет все Missing Scripts на объекте
+            int removed = GameObjectUtility.RemoveMonoBehavioursWithMissingScript(go);
+            if (removed > 0)
+            {
+                Debug.LogWarning($"Удалено {removed} Missing Scripts с {GetPath(go)}", go);
+                totalRemoved += removed;
+            }
+        }
+
+        Debug.LogWarning($"Всего удалено Missing Scripts: {totalRemoved}");
     }
 
     // Метод получения полного пути объекта в Hierarchy
