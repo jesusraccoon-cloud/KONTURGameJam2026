@@ -2,7 +2,8 @@ using System.Collections; // Подключаем корутины, чтобы �
 using UnityEngine; // Подключаем Unity-классы: GameObject, Transform, Vector3, Collider, Debug и другие
 using UnityEngine.Events; // UnityEvent — хук на старт концовки (например включить музыку)
 using StarterAssets; // Подключаем Starter Assets, чтобы работать с FirstPersonController и StarterAssetsInputs
-using Gameplay.Quest; // Подключаем систему задач
+using Gameplay.Quest;
+using UnityEngine.SceneManagement; // Подключаем систему задач
 
 public class ElevatorEndingEvent : MonoBehaviour // Главный скрипт лифтовой концовки
 {
@@ -111,6 +112,7 @@ public class ElevatorEndingEvent : MonoBehaviour // Главный скрипт 
         QuestManager.Instance?.CompleteTask("escape"); // Отмечаем задачу «Добраться до лифта»
     }
 
+    [ContextMenu("Выиграть")]
     public void StartElevatorEnding() // Метод запускает катсцену входа в лифт
     {
         if (eventUnlocked == false) return; // Если событие не разблокировано, катсцену не запускаем
@@ -175,6 +177,10 @@ public class ElevatorEndingEvent : MonoBehaviour // Главный скрипт 
         }
 
         if (showDebugLogs) Debug.Log("ElevatorEndingEvent: игрок вошёл, остановился, развернулся на месте и не смещался к двери"); // Пишем финальный лог
+
+        yield return new WaitForSeconds(3);
+
+        SceneManager.LoadSceneAsync("Main Menu");
     }
 
     private IEnumerator MovePlayerToPoint(Transform targetPoint) // Корутина движения игрока к точке входа в лифт
