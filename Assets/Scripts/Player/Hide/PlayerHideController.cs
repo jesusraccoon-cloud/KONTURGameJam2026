@@ -1,5 +1,7 @@
 using UnityEngine; // Подключаем Unity-классы
 using System.Collections; // Подключаем корутины
+using System.Collections.Generic; // Подключаем списки для сохранения материалов дверей
+using UnityEngine.Rendering; // Подключаем режимы отбрасывания теней
 using StarterAssets; // Подключаем FirstPersonController
 
 public class PlayerHideController : MonoBehaviour // Контроллер входа и выхода игрока из укрытий
@@ -37,6 +39,16 @@ public class PlayerHideController : MonoBehaviour // Контроллер вхо
 
     [Min(0f)]
     public float cameraReturnBeforeExitTime = 0.2f; // Сколько ждать возврата камеры перед открытием дверей
+
+    [Header("Wardrobe Door Transparency")] // Настройки прозрачности дверей во время пряток
+    public bool makeWardrobeDoorsTransparentWhileHidden = true; // Делать ли двери прозрачными после входа игрока
+
+    public Material transparentWardrobeDoorMaterial; // Отдельный URP-материал двери с Surface Type = Transparent
+
+    [Range(0f, 1f)]
+    public float hiddenDoorAlpha = 0.35f; // Прозрачность двери: 0 полностью невидима, 1 полностью непрозрачна
+
+    public bool disableDoorShadowsWhileTransparent = true; // Отключать ли тени прозрачных дверей
 
     [Header("Enter Movement")] // Блок входа в шкаф
     public bool walkIntoWardrobe = true; // Если true, игрок заходит внутрь плавно
@@ -96,6 +108,14 @@ public class PlayerHideController : MonoBehaviour // Контроллер вхо
     private float hiddenBaseYaw = 0f; // Центральный горизонтальный угол при входе в шкаф
 
     private float hiddenYawOffset = 0f; // Текущий поворот влево или вправо от центра
+
+    private readonly List<Renderer> transparentDoorRenderers = new List<Renderer>(); // Рендереры дверей, которым временно заменили материалы
+
+    private readonly List<Material[]> originalDoorMaterials = new List<Material[]>(); // Исходные материалы каждого рендерера
+
+    private readonly List<ShadowCastingMode> originalDoorShadowModes = new List<ShadowCastingMode>(); // Исходные режимы теней дверей
+
+    private Material runtimeTransparentWardrobeDoorMaterial; // Копия прозрачного материала, созданная только для игры
 
     private void Reset() // Автонастройка при добавлении скрипта
     {
@@ -202,6 +222,8 @@ public class PlayerHideController : MonoBehaviour // Контроллер вхо
 
         yield return StartCoroutine(wardrobe.CloseDoorsAfterHide()); // Просим шкаф закрыть двери или оставить их в Peek Position
 
+        MakeWardrobeDoorsTransparent(wardrobe); // Делаем левую и правую двери прозрачными после перехода в Peek Position
+
         BeginHiddenPeekView(); // Выдвигаем камеру вперёд и разрешаем ограниченный обзор мышью
 
         isEntering = false; // Вход завершен
@@ -214,6 +236,8 @@ public class PlayerHideController : MonoBehaviour // Контроллер вхо
         WardrobeHideHandle wardrobeToExit = currentWardrobe; // Сохраняем шкаф в локальную переменную
 
         EndHiddenPeekView(); // Запрещаем обзор из щели и начинаем возвращать камеру назад
+
+        RestoreWardrobeDoorMaterials(); // Возвращаем дверям обычные непрозрачные материалы до их открытия
 
         if (cameraReturnBeforeExitTime > 0f) yield return new WaitForSeconds(cameraReturnBeforeExitTime); // Даём камере время вернуться перед открытием дверей
 
@@ -382,6 +406,167 @@ public class PlayerHideController : MonoBehaviour // Контроллер вхо
             targetLocalPosition,
             Time.deltaTime * cameraMoveSpeed
         ); // Плавно выдвигаем или возвращаем Camera Target
+    }
+
+    private void MakeWardrobeDoorsTransparent(WardrobeHideHandle wardrobe) // Временно заменяет материалы обеих дверей шкафа
+    {
+        RestoreWardrobeDoorMaterials(); // Сначала очищаем возможное старое состояние от предыдущего шкафа
+
+        if (makeWardrobeDoorsTransparentWhileHidden == false) return; // Если функция выключена, выходим
+
+        if (wardrobe == null) return; // Без текущего шкафа двери определить нельзя
+
+        if (transparentWardrobeDoorMaterial == null) // Проверяем назначение прозрачного материала
+        {
+            Debug.LogWarning(
+                "PlayerHideController: не назначен Transparent Wardrobe Door Material.",
+                gameObject
+            ); // Показываем понятное предупреждение в Console
+
+            return; // Без прозрачного материала ничего не заменяем
+        }
+
+        PrepareRuntimeTransparentMaterial(); // Создаём игровую копию материала и применяем выбранную прозрачность
+
+        HashSet<Renderer> uniqueRenderers = new HashSet<Renderer>(); // Не разрешаем одной двери попасть в список дважды
+
+        CollectDoorRenderers(wardrobe.wardrobeDoors, uniqueRenderers); // Собираем рендереры основных дверей шкафа
+
+        CollectDoorRenderers(wardrobe.wardrobeDoorsToCloseAfterHide, uniqueRenderers); // Дополнительно собираем двери автоматического входа и выхода
+
+        foreach (Renderer doorRenderer in uniqueRenderers) // Проходим по найденным рендерерам дверей
+        {
+            if (doorRenderer == null) continue; // Пропускаем удалённые или пустые ссылки
+
+            Material[] currentMaterials = doorRenderer.sharedMaterials; // Получаем текущие материалы рендерера
+
+            if (currentMaterials == null || currentMaterials.Length == 0) continue; // Без материалов заменять нечего
+
+            transparentDoorRenderers.Add(doorRenderer); // Запоминаем рендерер для последующего восстановления
+
+            originalDoorMaterials.Add(currentMaterials); // Сохраняем исходные материалы именно этой двери
+
+            originalDoorShadowModes.Add(doorRenderer.shadowCastingMode); // Сохраняем исходное состояние теней
+
+            Material[] transparentMaterials = new Material[currentMaterials.Length]; // Создаём массив той же длины
+
+            for (int materialIndex = 0; materialIndex < transparentMaterials.Length; materialIndex++) // Заполняем все слоты
+            {
+                transparentMaterials[materialIndex] = runtimeTransparentWardrobeDoorMaterial; // Назначаем прозрачный материал
+            }
+
+            doorRenderer.sharedMaterials = transparentMaterials; // Применяем прозрачный материал ко всей двери
+
+            if (disableDoorShadowsWhileTransparent == true) // Если тени прозрачной двери надо отключить
+            {
+                doorRenderer.shadowCastingMode = ShadowCastingMode.Off; // Убираем непрозрачную тень от прозрачной двери
+            }
+        }
+    }
+
+    private void CollectDoorRenderers(UniversalDoor[] doors, HashSet<Renderer> result) // Собирает рендереры из массива дверей
+    {
+        if (doors == null) return; // Если массив не создан, выходим
+
+        for (int doorIndex = 0; doorIndex < doors.Length; doorIndex++) // Проходим по всем дверям
+        {
+            UniversalDoor door = doors[doorIndex]; // Получаем текущую дверь
+
+            if (door == null) continue; // Пустой элемент пропускаем
+
+            Renderer[] foundRenderers = door.GetComponentsInChildren<Renderer>(true); // Ищем Mesh Renderer на двери и её дочерних деталях
+
+            for (int rendererIndex = 0; rendererIndex < foundRenderers.Length; rendererIndex++) // Проходим по найденным рендерерам
+            {
+                Renderer foundRenderer = foundRenderers[rendererIndex]; // Получаем очередной рендерер
+
+                if (foundRenderer == null) continue; // Пустую ссылку пропускаем
+
+                result.Add(foundRenderer); // HashSet автоматически убирает повторы
+            }
+        }
+    }
+
+    private void PrepareRuntimeTransparentMaterial() // Подготавливает отдельную игровую копию прозрачного материала
+    {
+        if (
+            runtimeTransparentWardrobeDoorMaterial == null
+            || runtimeTransparentWardrobeDoorMaterial.shader != transparentWardrobeDoorMaterial.shader
+        ) // Создаём копию при первом использовании или после смены шейдера
+        {
+            if (runtimeTransparentWardrobeDoorMaterial != null) // Если старая копия существует
+            {
+                Destroy(runtimeTransparentWardrobeDoorMaterial); // Удаляем старую игровую копию
+            }
+
+            runtimeTransparentWardrobeDoorMaterial = new Material(transparentWardrobeDoorMaterial); // Копируем настроенный URP-материал
+
+            runtimeTransparentWardrobeDoorMaterial.name =
+                transparentWardrobeDoorMaterial.name + " (Runtime Hidden)"; // Даём понятное имя игровой копии
+        }
+
+        float safeAlpha = Mathf.Clamp01(hiddenDoorAlpha); // Ограничиваем прозрачность диапазоном от 0 до 1
+
+        if (runtimeTransparentWardrobeDoorMaterial.HasProperty("_BaseColor")) // Проверяем стандартный URP Lit цвет
+        {
+            Color baseColor = runtimeTransparentWardrobeDoorMaterial.GetColor("_BaseColor"); // Получаем текущий цвет материала
+
+            baseColor.a = safeAlpha; // Меняем только прозрачность, не трогая цвет и текстуру
+
+            runtimeTransparentWardrobeDoorMaterial.SetColor("_BaseColor", baseColor); // Возвращаем изменённый цвет
+        }
+
+        if (runtimeTransparentWardrobeDoorMaterial.HasProperty("_Color")) // Поддерживаем шейдеры с обычным свойством Color
+        {
+            Color color = runtimeTransparentWardrobeDoorMaterial.GetColor("_Color"); // Получаем цвет
+
+            color.a = safeAlpha; // Меняем прозрачность
+
+            runtimeTransparentWardrobeDoorMaterial.SetColor("_Color", color); // Применяем цвет обратно
+        }
+    }
+
+    private void RestoreWardrobeDoorMaterials() // Возвращает дверям материалы, которые были до входа в шкаф
+    {
+        int restoreCount = Mathf.Min(
+            transparentDoorRenderers.Count,
+            originalDoorMaterials.Count
+        ); // Защищаемся от несовпадения размеров списков
+
+        for (int rendererIndex = 0; rendererIndex < restoreCount; rendererIndex++) // Проходим по сохранённым дверям
+        {
+            Renderer doorRenderer = transparentDoorRenderers[rendererIndex]; // Получаем рендерер двери
+
+            if (doorRenderer == null) continue; // Удалённый объект пропускаем
+
+            doorRenderer.sharedMaterials = originalDoorMaterials[rendererIndex]; // Возвращаем исходные материалы
+
+            if (rendererIndex < originalDoorShadowModes.Count) // Проверяем наличие сохранённого режима теней
+            {
+                doorRenderer.shadowCastingMode = originalDoorShadowModes[rendererIndex]; // Возвращаем исходные тени
+            }
+        }
+
+        transparentDoorRenderers.Clear(); // Очищаем список рендереров
+
+        originalDoorMaterials.Clear(); // Очищаем сохранённые материалы
+
+        originalDoorShadowModes.Clear(); // Очищаем сохранённые режимы теней
+    }
+
+    private void OnDisable() // Срабатывает при выключении компонента или игрока
+    {
+        RestoreWardrobeDoorMaterials(); // Не оставляем двери прозрачными после выключения объекта
+    }
+
+    private void OnDestroy() // Срабатывает при уничтожении компонента
+    {
+        RestoreWardrobeDoorMaterials(); // Возвращаем исходные материалы перед уничтожением
+
+        if (runtimeTransparentWardrobeDoorMaterial != null) // Проверяем созданную игровую копию
+        {
+            Destroy(runtimeTransparentWardrobeDoorMaterial); // Освобождаем созданный материал
+        }
     }
 
     private void TeleportPlayer(Vector3 targetPosition, Quaternion targetRotation) // Безопасный телепорт игрока

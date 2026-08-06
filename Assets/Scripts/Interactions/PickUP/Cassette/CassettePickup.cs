@@ -1,183 +1,431 @@
-using UnityEngine; // Подключаем Unity-классы: MonoBehaviour, Transform, Vector3, Debug
-using UnityEngine.Events; // UnityEvent (хук для сохранений)
-using FMODUnity; // Подключаем FMOD (EventReference, RuntimeManager)
+using UnityEngine; // Подключаем Unity-классы
+using UnityEngine.Events; // Подключаем UnityEvent
+using FMODUnity; // Подключаем FMOD
 
-public class CassettePickup : MonoBehaviour, IInteractable // Кассета является интерактивным объектом
+public class CassettePickup : MonoBehaviour, IInteractable // Универсальная кассета: обычный подбор или выезд из радио
 {
-    [Header("Move Settings")] // Блок настроек движения
-    [SerializeField] private Transform ejectPoint; // Точка, куда кассета выезжает
+    public enum CassetteInteractionMode // Режим работы конкретной кассеты
+    {
+        SimplePickup, // Обычная кассета: одно нажатие E сразу добавляет её в инвентарь
 
-    [SerializeField] private float moveSpeed = 5f; // Скорость движения кассеты
+        EjectThenPickup, // Первое E выдвигает кассету, второе E забирает её
 
-    [Header("Inventory")] // Блок инвентаря
-    [SerializeField] private CassetteInventoryUI inventoryUI; // Ссылка на UI кассет
+        ExternalEjectThenPickup // Радио само вызывает EjectFromRadio, после выезда кассету можно забрать через E
+    }
 
-    [Header("Noise")] // Блок шума
-    [SerializeField] private NoiseEmitter noiseEmitter; // Источник шума кассеты
+    [Header("Interaction Mode")] // Главный режим работы кассеты
+    [SerializeField]
+    private CassetteInteractionMode interactionMode =
+        CassetteInteractionMode.SimplePickup; // По умолчанию обычная кассета забирается одним нажатием E
 
-    [SerializeField] [Range(1, 10)] private int ejectNoisePower = 5; // Сила шума выезда кассеты
+    [SerializeField]
+    private bool autoCollectAfterEject = false; // Автоматически забирать кассету после завершения выезда
 
-    [Header("FMOD")] // Блок звука FMOD
-    [SerializeField] private EventReference pickupEvent; // Звук подбора/выезда кассеты
+    [Header("Eject Movement")] // Настройки выезда кассеты
+    [SerializeField]
+    private Transform ejectPoint; // Точка, куда кассета должна выехать
 
-    [Header("Save Hook")] // Хук сохранений
-    public UnityEvent onCollected; // Вызывается, когда кассета собрана (доп. реакция; MarkUsed вызывается автоматически)
+    [SerializeField]
+    [Min(0.01f)]
+    private float moveSpeed = 5f; // Скорость движения кассеты к EjectPoint
 
-    [SerializeField] private SC_Saveable saveable; // Компонент сохранения на кассете (авто-поиск). Через него кассета сама себя помечает и прячется после загрузки
+    [Header("Inventory")] // Настройки инвентаря
+    [SerializeField]
+    private CassetteInventoryUI inventoryUI; // UI собранных кассет
 
-    [Header("Optional Auto Find")] // Блок автопоиска
-    [SerializeField] private bool autoFindInventoryUI = true; // Автоматически искать UI кассет
+    [Header("Noise")] // Настройки шума
+    [SerializeField]
+    private NoiseEmitter noiseEmitter; // Источник шума кассеты
 
-    [SerializeField] private bool autoFindEjectPoint = true; // Автоматически искать EjectPoint
+    [SerializeField]
+    [Range(1, 10)]
+    private int ejectNoisePower = 5; // Сила шума при выезде кассеты
 
-    [SerializeField] private string ejectPointName = "EjectPoint"; // Имя точки выезда
+    [Header("FMOD")] // Настройки FMOD
+    [SerializeField]
+    private EventReference pickupEvent; // Звук выезда или подбора кассеты
 
-    private Vector3 targetPosition; // Целевая позиция кассеты
+    [Header("Save Hook")] // Настройки сохранения
+    public UnityEvent onCollected; // Дополнительное событие после сбора кассеты
 
-    private bool isPickingUp = false; // Двигается ли кассета сейчас
+    [SerializeField]
+    private SC_Saveable saveable; // Компонент сохранения кассеты
 
-    private bool isCollected = false; // Собрана ли кассета
+    [Header("Optional Auto Find")] // Автоматический поиск ссылок
+    [SerializeField]
+    private bool autoFindInventoryUI = true; // Автоматически искать CassetteInventoryUI
+
+    [SerializeField]
+    private bool autoFindEjectPoint = true; // Автоматически искать EjectPoint для кассеты из радио
+
+    [SerializeField]
+    private string ejectPointName = "EjectPoint"; // Имя объекта точки выезда
+
+    [Header("Debug State")] // Состояние кассеты в Play Mode
+    [SerializeField]
+    private bool isEjected = false; // Выехала ли кассета полностью
+
+    [SerializeField]
+    private bool isEjecting = false; // Двигается ли кассета сейчас
+
+    [SerializeField]
+    private bool isCollected = false; // Забрана ли кассета игроком
+
+    [Header("Debug")] // Настройки отладки
+    [SerializeField]
+    private bool showDebugLogs = true; // Показывать сообщения в Unity Console
+
+    private Vector3 targetPosition; // Конечная мировая позиция кассеты
+
+    public bool IsEjected => isEjected; // Публичная проверка завершённого выезда
+
+    public bool IsEjecting => isEjecting; // Публичная проверка движения
+
+    public bool IsCollected => isCollected; // Публичная проверка сбора
 
     private void Awake() // Вызывается при создании объекта
     {
-        TryFindReferences(); // Пробуем найти ссылки
+        TryFindReferences(); // Ищем необходимые ссылки
     }
 
     private void Start() // Вызывается перед первым кадром
     {
-        ValidateSetup(); // Проверяем настройки
+        TryFindReferences(); // Повторно проверяем ссылки
 
-        // Если эту кассету уже собирали (после загрузки чекпоинта) — прячем её сразу, не даём подобрать повторно
-        if (saveable != null && SC_SaveSystem.IsUsed(saveable.id))
+        ValidateSetup(); // Проверяем настройку Inspector
+
+        if (saveable != null && SC_SaveSystem.IsUsed(saveable.id)) // Если кассета уже была собрана в сохранении
         {
-            isCollected = true; // Помечаем собранной
-            gameObject.SetActive(false); // Прячем объект
+            isCollected = true; // Помечаем кассету собранной
+
+            gameObject.SetActive(false); // Прячем кассету
         }
     }
 
-    private void Update() // Вызывается каждый кадр
+    private void Update() // Выполняется каждый кадр
     {
-        if (isPickingUp) // Если кассета выезжает
+        if (isEjecting) // Если кассета сейчас выезжает
         {
-            MoveToEjectPoint(); // Двигаем кассету
+            MoveToEjectPoint(); // Двигаем её к EjectPoint
         }
     }
 
-    public void Interact() // Вызывается PlayerInteractor при E
+    public void Interact() // Вызывается PlayerInteractor при нажатии E
     {
-        if (isCollected) return; // Если кассета уже собрана — выходим
-
-        if (isPickingUp) return; // Если кассета уже движется — выходим
-
-        StartPickup(); // Запускаем подбор
-    }
-
-    private void TryFindReferences() // Метод автопоиска ссылок
-    {
-        if (autoFindInventoryUI && inventoryUI == null) // Если нужно найти UI
+        if (isCollected) // Если кассета уже собрана
         {
-            inventoryUI = FindFirstObjectByType<CassetteInventoryUI>(); // Ищем CassetteInventoryUI
+            return; // Повторное взаимодействие не требуется
         }
 
-        if (autoFindEjectPoint && ejectPoint == null) // Если нужно найти EjectPoint
+        if (isEjecting) // Если кассета сейчас движется
         {
-            Transform foundPoint = transform.parent != null // Проверяем наличие родителя
-                ? transform.parent.Find(ejectPointName) // Ищем точку внутри родителя
-                : null; // Если родителя нет — null
+            return; // Во время движения повторное E игнорируем
+        }
 
-            if (foundPoint != null) // Если точка найдена
+        if (interactionMode == CassetteInteractionMode.SimplePickup) // Если это обычная кассета
+        {
+            CompletePickup(); // Одно E сразу добавляет её в инвентарь
+
+            return; // Завершаем взаимодействие
+        }
+
+        if (interactionMode == CassetteInteractionMode.EjectThenPickup) // Если первое E должно выдвигать кассету
+        {
+            if (!isEjected) // Если кассета ещё внутри
             {
-                ejectPoint = foundPoint; // Запоминаем точку
+                EjectFromRadio(false); // Запускаем плавный выезд
+
+                return; // В этот же кадр кассету не забираем
+            }
+
+            CompletePickup(); // После завершённого выезда следующее E забирает кассету
+
+            return; // Завершаем взаимодействие
+        }
+
+        if (interactionMode == CassetteInteractionMode.ExternalEjectThenPickup) // Если выездом управляет RadioCassettePuzzle
+        {
+            if (!isEjected) // Если радио ещё не выдвинуло кассету
+            {
+                if (showDebugLogs) // Если включены логи
+                {
+                    Debug.Log(
+                        gameObject.name
+                        + ": кассета ожидает вызов EjectFromRadio от радио.",
+                        gameObject
+                    ); // Объясняем текущее состояние
+                }
+
+                return; // До выезда подбор запрещён
+            }
+
+            CompletePickup(); // После выезда обычное E забирает кассету
+        }
+    }
+
+    public void EjectFromRadio(bool instant) // Публичный метод, который может вызвать RadioCassettePuzzle
+    {
+        if (isCollected) // Если кассета уже собрана
+        {
+            return; // Не возвращаем её
+        }
+
+        if (isEjected) // Если кассета уже выехала
+        {
+            if (autoCollectAfterEject) // Если включён автоматический сбор
+            {
+                CompletePickup(); // Сразу зачисляем её игроку
+            }
+
+            return; // Повторный выезд не запускаем
+        }
+
+        if (isEjecting) // Если движение уже идёт
+        {
+            return; // Второе движение не запускаем
+        }
+
+        TryFindReferences(); // Проверяем ссылки перед началом движения
+
+        if (ejectPoint == null) // Если точка выезда не назначена
+        {
+            Debug.LogWarning(
+                gameObject.name + ": EjectPoint не назначен, кассета не может выехать.",
+                gameObject
+            ); // Пишем точную причину
+
+            return; // Прерываем выезд
+        }
+
+        gameObject.SetActive(true); // Гарантированно включаем объект кассеты
+
+        targetPosition = ejectPoint.position; // Запоминаем мировую позицию EjectPoint
+
+        if (instant) // Если требуется мгновенное восстановление
+        {
+            transform.position = targetPosition; // Сразу ставим кассету в конечную точку
+
+            isEjecting = false; // Движение не требуется
+
+            isEjected = true; // Кассета считается выдвинутой
+
+            if (autoCollectAfterEject) // Если включён автоматический сбор
+            {
+                CompletePickup(); // Сразу добавляем кассету в инвентарь
+            }
+
+            return; // Завершаем метод
+        }
+
+        isEjecting = true; // Включаем плавное движение
+
+        PlayPickupSound(); // Проигрываем звук выезда
+
+        EmitEjectNoise(); // Создаём шум выезда
+
+        if (showDebugLogs) // Если включены логи
+        {
+            Debug.Log(
+                gameObject.name + ": кассета начала выезжать.",
+                gameObject
+            ); // Пишем состояние
+        }
+    }
+
+    public void CollectImmediately() // Публичный метод для мгновенного сбора из другого скрипта или UnityEvent
+    {
+        if (isCollected) // Если кассета уже собрана
+        {
+            return; // Повторно не собираем
+        }
+
+        CompletePickup(); // Добавляем кассету в инвентарь
+    }
+
+    private void TryFindReferences() // Автоматически находит нужные ссылки
+    {
+        if (autoFindInventoryUI && inventoryUI == null) // Если UI ещё не назначен
+        {
+            inventoryUI = FindFirstObjectByType<CassetteInventoryUI>(); // Ищем UI в сцене
+        }
+
+        bool modeUsesEjectPoint =
+            interactionMode != CassetteInteractionMode.SimplePickup; // Определяем, нужен ли этой кассете EjectPoint
+
+        if (modeUsesEjectPoint && autoFindEjectPoint && ejectPoint == null) // Если кассета использует выезд
+        {
+            Transform parentTransform = transform.parent; // Получаем родителя кассеты
+
+            if (parentTransform != null) // Если родитель существует
+            {
+                ejectPoint = parentTransform.Find(ejectPointName); // Ищем EjectPoint среди соседних объектов
             }
         }
 
         if (noiseEmitter == null) // Если NoiseEmitter не назначен
         {
-            noiseEmitter = GetComponent<NoiseEmitter>(); // Пробуем найти NoiseEmitter на кассете
+            noiseEmitter = GetComponent<NoiseEmitter>(); // Ищем его на кассете
         }
 
-        if (saveable == null) saveable = GetComponent<SC_Saveable>(); // Ищем SC_Saveable на самой кассете
-        if (saveable == null) saveable = GetComponentInChildren<SC_Saveable>(true); // Или на дочернем объекте
+        if (saveable == null) // Если SC_Saveable не назначен
+        {
+            saveable = GetComponent<SC_Saveable>(); // Ищем его на самой кассете
+        }
+
+        if (saveable == null) // Если на самой кассете не нашли
+        {
+            saveable = GetComponentInChildren<SC_Saveable>(true); // Ищем в дочерних объектах
+        }
     }
 
-    private void ValidateSetup() // Метод проверки настроек
+    private void ValidateSetup() // Проверяет обязательные ссылки
     {
         if (inventoryUI == null) // Если UI не найден
         {
-            Debug.LogWarning($"{gameObject.name}: CassetteInventoryUI не найден."); // Предупреждение
+            Debug.LogWarning(
+                gameObject.name + ": CassetteInventoryUI не найден.",
+                gameObject
+            ); // Предупреждаем о настройке
         }
 
-        if (ejectPoint == null) // Если EjectPoint не найден
+        bool modeUsesEjectPoint =
+            interactionMode != CassetteInteractionMode.SimplePickup; // Проверяем, должна ли кассета выезжать
+
+        if (modeUsesEjectPoint && ejectPoint == null) // Только кассете из радио нужен EjectPoint
         {
-            Debug.LogWarning($"{gameObject.name}: EjectPoint не найден."); // Предупреждение
+            Debug.LogWarning(
+                gameObject.name + ": для выбранного режима не найден EjectPoint.",
+                gameObject
+            ); // Предупреждаем о настройке
         }
     }
 
-    private void StartPickup() // Начать выезд кассеты
+    private void MoveToEjectPoint() // Плавно двигает кассету наружу
     {
-        if (ejectPoint == null) return; // Если точки выезда нет — выходим
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            targetPosition,
+            moveSpeed * Time.deltaTime
+        ); // Двигаем кассету с постоянной скоростью
 
-        targetPosition = ejectPoint.position; // Запоминаем позицию выезда
+        float distanceToTarget = Vector3.Distance(
+            transform.position,
+            targetPosition
+        ); // Считаем оставшееся расстояние
 
-        isPickingUp = true; // Включаем движение кассеты
-
-        if (!pickupEvent.IsNull) // Если FMOD-событие назначено
+        if (distanceToTarget > 0.002f) // Если кассета ещё не достигла точки
         {
-            RuntimeManager.PlayOneShot(pickupEvent, transform.position); // Проигрываем звук подбора в позиции кассеты
+            return; // Продолжаем движение в следующем кадре
         }
 
-        if (noiseEmitter != null) // Если источник шума назначен
+        transform.position = targetPosition; // Точно ставим её в EjectPoint
+
+        isEjecting = false; // Завершаем движение
+
+        isEjected = true; // Помечаем кассету выдвинутой
+
+        if (showDebugLogs) // Если включены логи
         {
-            noiseEmitter.EmitNoise(ejectNoisePower); // Создаём шум выезда кассеты
+            Debug.Log(
+                gameObject.name + ": кассета полностью выехала.",
+                gameObject
+            ); // Пишем состояние
+        }
+
+        if (autoCollectAfterEject) // Если кассету нужно забрать автоматически
+        {
+            CompletePickup(); // Сразу добавляем её в инвентарь
         }
     }
 
-    private void MoveToEjectPoint() // Метод движения кассеты
+    private void CompletePickup() // Добавляет кассету в инвентарь
     {
-        transform.position = Vector3.Lerp( // Плавно двигаем кассету
-            transform.position, // От текущей позиции
-            targetPosition, // К целевой позиции
-            Time.deltaTime * moveSpeed // С учётом скорости
-        );
-
-        float distanceToTarget = Vector3.Distance(transform.position, targetPosition); // Считаем расстояние до цели
-
-        if (distanceToTarget <= 0.02f) // Если почти доехали
+        if (isCollected) // Если кассета уже собрана
         {
-            CompletePickup(); // Завершаем подбор
+            return; // Защищаемся от повторного сбора
         }
-    }
-
-    private void CompletePickup() // Завершить подбор
-    {
-        isPickingUp = false; // Останавливаем движение
 
         isCollected = true; // Помечаем кассету собранной
 
-        if (saveable != null) saveable.MarkUsed(); // Автоматически помечаем кассету использованной — не нужно вручную вешать хук
-        onCollected.Invoke(); // Доп. хук сохранений — ДО AddCassette, чтобы автосейв 4/6 уже видел эту кассету использованной
+        isEjecting = false; // На всякий случай останавливаем движение
+
+        if (saveable != null) // Если сохранение назначено
+        {
+            saveable.MarkUsed(); // Сохраняем факт сбора
+        }
+
+        if (onCollected != null) // Если UnityEvent существует
+        {
+            onCollected.Invoke(); // Вызываем дополнительные события
+        }
 
         if (inventoryUI != null) // Если UI назначен
         {
-            inventoryUI.AddCassette(); // Добавляем кассету (может сработать автосейв на 4/6 или 6/6)
+            inventoryUI.AddCassette(); // Добавляем кассету в счётчик
+        }
+        else // Если UI не назначен
+        {
+            Debug.LogWarning(
+                gameObject.name + ": кассета собрана, но CassetteInventoryUI не назначен.",
+                gameObject
+            ); // Пишем предупреждение
         }
 
-        gameObject.SetActive(false); // Выключаем объект кассеты
+        PlayPickupSound(); // Проигрываем звук обычного подбора
+
+        if (showDebugLogs) // Если включены логи
+        {
+            Debug.Log(
+                gameObject.name + ": кассета добавлена в инвентарь.",
+                gameObject
+            ); // Пишем состояние
+        }
+
+        gameObject.SetActive(false); // Прячем собранную кассету
+    }
+
+    private void PlayPickupSound() // Проигрывает назначенный звук
+    {
+        if (pickupEvent.IsNull) // Если FMOD-событие не назначено
+        {
+            return; // Звук не запускаем
+        }
+
+        RuntimeManager.PlayOneShot(
+            pickupEvent,
+            transform.position
+        ); // Запускаем звук в позиции кассеты
+    }
+
+    private void EmitEjectNoise() // Создаёт шум выезда
+    {
+        if (noiseEmitter == null) // Если NoiseEmitter не назначен
+        {
+            return; // Шум создать невозможно
+        }
+
+        noiseEmitter.EmitNoise(ejectNoisePower); // Отправляем шум монстру
     }
 
 #if UNITY_EDITOR // Только для редактора Unity
-
-    private void OnDrawGizmosSelected() // Рисуем подсказку в Scene
+    private void OnDrawGizmosSelected() // Показывает путь выезда в Scene
     {
-        if (ejectPoint != null) // Если точка выезда назначена
+        if (ejectPoint == null) // Если точка не назначена
         {
-            Gizmos.color = Color.cyan; // Цвет Gizmos
-
-            Gizmos.DrawLine(transform.position, ejectPoint.position); // Линия до точки
-
-            Gizmos.DrawSphere(ejectPoint.position, 0.03f); // Шарик на точке
+            return; // Рисовать нечего
         }
-    }
 
-#endif // Конец блока редактора
+        Gizmos.color = Color.cyan; // Выбираем цвет линии
+
+        Gizmos.DrawLine(
+            transform.position,
+            ejectPoint.position
+        ); // Рисуем путь движения
+
+        Gizmos.DrawSphere(
+            ejectPoint.position,
+            0.03f
+        ); // Рисуем конечную точку
+    }
+#endif // Конец редакторного блока
 }
