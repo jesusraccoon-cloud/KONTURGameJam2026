@@ -4,8 +4,8 @@ using FMODUnity; // Подключаем FMOD
 
 public class CassettePickup : MonoBehaviour, IInteractable // Универсальная кассета: обычный подбор или выезд из радио
 {
-    public string hint = "Взаимодействовать";
-    public string Hint => hint;
+    public string hintGui = "Подобрать кассету";
+    public string Hint => hintGui;
     public enum CassetteInteractionMode // Режим работы конкретной кассеты
     {
         SimplePickup, // Обычная кассета: одно нажатие E сразу добавляет её в инвентарь

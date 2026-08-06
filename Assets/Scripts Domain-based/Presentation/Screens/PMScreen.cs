@@ -1,8 +1,9 @@
 using Core.Presentation;
+using Infrastructure;
+using R3;
 //using Infrastructure;
 //using Infrastructure.Abstactions;
 using UnityEngine;
-using R3;
 using UnityEngine.SceneManagement;
 
 namespace Presentation.Screens
@@ -49,6 +50,9 @@ namespace Presentation.Screens
         public void Resume()
         {
             //gameService?.Resume();
+
+            if (InputManager.Instance != null)
+                InputManager.Instance.SetPauseMenuOpen(false);
 
             this.gameObject.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;

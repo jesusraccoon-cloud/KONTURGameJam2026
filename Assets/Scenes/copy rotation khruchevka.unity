@@ -4633,7 +4633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010486d53ddf7584dadd73d67249fba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hint: 
+  hintGui: "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u0442\u044C \u043A\u0430\u0441\u0441\u0435\u0442\u0443"
   interactionMode: 0
   autoCollectAfterEject: 0
   ejectPoint: {fileID: 2996059756706005111}
@@ -4789,8 +4789,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 150}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 0, y: 120}
+  m_SizeDelta: {x: 800, y: 165.8235}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &64073233
 MonoBehaviour:
@@ -4812,7 +4812,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GAME OVER
+  m_text: "\u0412\u0430\u0441 \u0423\u0431\u0438\u043B\u0438"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 87c920886c8620943afd20ec24f06e59, type: 2}
   m_sharedMaterial: {fileID: -4892504569128400191, guid: 87c920886c8620943afd20ec24f06e59,
@@ -4822,8 +4822,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4835,19 +4835,19 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
+  m_TextStyleHashCode: 97690656
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 96
+  m_fontSizeBase: 96
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -6840,7 +6840,8 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 11623
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 1e-45, z: 2.9496e-41, w: 0}
+  m_BoundingSphereOverride: {x: 1.1144697e-35, y: 1.2133116e-35, z: 1.199105e-35,
+    w: 1.11446844e-35}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -10080,7 +10081,8 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 11623
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 0, y: NaN, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 2.4569816e-36, y: 2.4687367e-36, z: 2.4922466e-36,
+    w: 2.4804918e-36}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -17227,7 +17229,8 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 11623
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 1.02e-43, y: NaN, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 4.5378476e-36, y: 4.7259264e-36, z: 4.7494352e-36,
+    w: 4.631886e-36}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -23651,7 +23654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.7529412}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -38955,7 +38958,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 80}
+  m_SizeDelta: {x: 320, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &498730828
 MonoBehaviour:
@@ -38977,17 +38980,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: RestartButton
+  m_text: "\u041F\u043E\u0441\u043B\u0435\u0434\u043D\u0435\u0435\n\u0421\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u0435"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 28ae6340c82a4e7459ef2eca0c7b397b, type: 2}
+  m_sharedMaterial: {fileID: 6284459282052805927, guid: 28ae6340c82a4e7459ef2eca0c7b397b,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -41330,8 +41334,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: -80}
+  m_SizeDelta: {x: 400, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &517266331
 MonoBehaviour:
@@ -41376,7 +41380,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 517266332}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1854115569}
+        m_TargetAssemblyTypeName: SC_SaveManager, Assembly-CSharp
+        m_MethodName: ReloadLastCheckpoint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &517266332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41397,8 +41413,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 4008913117700459914, guid: 5849c81cfb5022c4a94cf8ac710747bc,
+    type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -56186,6 +56203,12 @@ PrefabInstance:
 --- !u!4 &662223689 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7cdb2581b0410474f821ab926bace67e,
+    type: 3}
+  m_PrefabInstance: {fileID: 662223688}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &662223690 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 7cdb2581b0410474f821ab926bace67e,
     type: 3}
   m_PrefabInstance: {fileID: 662223688}
   m_PrefabAsset: {fileID: 0}
@@ -74206,7 +74229,8 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 11623
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 0, y: NaN, z: 0, w: 1e-45}
+  m_BoundingSphereOverride: {x: 3.4197957e+21, y: 1.4585243e-19, z: 7.0975523e+22,
+    w: 1.4881196e+37}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -88605,7 +88629,8 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 11623
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 9.1835e-41, y: NaN, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 1.3383749e+22, y: 8.2660556e-10, z: 0.0000539314,
+    w: 5.377825e+22}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -96612,7 +96637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010486d53ddf7584dadd73d67249fba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hint: 
+  hintGui: "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u0442\u044C \u043A\u0430\u0441\u0441\u0435\u0442\u0443"
   interactionMode: 0
   autoCollectAfterEject: 0
   ejectPoint: {fileID: 2996059756982289919}
@@ -106015,7 +106040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010486d53ddf7584dadd73d67249fba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hint: 
+  hintGui: "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u0442\u044C \u043A\u0430\u0441\u0441\u0435\u0442\u0443"
   interactionMode: 0
   autoCollectAfterEject: 0
   ejectPoint: {fileID: 2996059756901087707}
@@ -111865,7 +111890,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dontDestroyOnLoad: 1
   taskTemplates:
-  - Id: 1
+  - Id: radio_cassette
     Title: "\u0420\u0430\u0434\u0438\u043E \u043D\u0430 \u043A\u0443\u0445\u043D\u0435"
     Icon: {fileID: 0}
   - Id: 2
@@ -123486,6 +123511,7 @@ GameObject:
   - component: {fileID: 1377654634}
   - component: {fileID: 1377654636}
   - component: {fileID: 1377654635}
+  - component: {fileID: 1377654637}
   m_Layer: 0
   m_Name: RottenFruit (1)
   m_TagString: Untagged
@@ -123546,11 +123572,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4400c421b7737b644866a2f8078d09a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hint: 
+  hint: "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u0442\u044C \u0444\u0440\u0443\u043A\u0442\u044B"
   itemId: RottenFruit
   inventory: {fileID: 1398795493}
   objectToDisableAfterPickup: {fileID: 1377654633}
   showDebugLogs: 1
+--- !u!114 &1377654637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377654633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b93cecb0e54ee54085dba3d3271ee02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineColor: {r: 4, g: 0.03, b: 0.03, a: 1}
+  outlineWidth: 0.012
+  outlineRenderers:
+  - {fileID: 537705261}
+  - {fileID: 1426808352}
+  - {fileID: 2060349218}
+  - {fileID: 951667530}
+  - {fileID: 601543947}
+  findRenderersInChildrenAutomatically: 1
+  includeInactiveRenderers: 1
+  canHighlight: 1
+  outlineShader: {fileID: 0}
+  showDebugWarnings: 1
 --- !u!43 &1380092732
 Mesh:
   m_ObjectHideFlags: 0
@@ -124975,7 +125026,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 11623
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 1.02e-43, y: NaN, z: 2.2241e-41, w: 3.408e-41}
+  m_BoundingSphereOverride: {x: -0.17546326, y: 0.044982396, z: -0.08852914, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -144262,7 +144313,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 11623
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 1.02e-43, y: NaN, z: 1.473e-41, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -153899,11 +153950,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 853021190}
-  - {fileID: 315463690}
   - {fileID: 271453873}
   - {fileID: 884158609}
   - {fileID: 733764627}
   - {fileID: 2039052862}
+  - {fileID: 315463690}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -217412,7 +217463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010486d53ddf7584dadd73d67249fba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hint: 
+  hintGui: "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u0442\u044C \u043A\u0430\u0441\u0441\u0435\u0442\u0443"
   interactionMode: 0
   autoCollectAfterEject: 0
   ejectPoint: {fileID: 1923611248}
@@ -220738,7 +220789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010486d53ddf7584dadd73d67249fba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hint: 
+  hintGui: "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u0442\u044C \u043A\u0430\u0441\u0441\u0435\u0442\u0443"
   interactionMode: 0
   autoCollectAfterEject: 0
   ejectPoint: {fileID: 2996059756995699812}
@@ -222918,7 +222969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010486d53ddf7584dadd73d67249fba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hint: 
+  hintGui: "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u0442\u044C \u043A\u0430\u0441\u0441\u0435\u0442\u0443"
   interactionMode: 0
   autoCollectAfterEject: 0
   ejectPoint: {fileID: 2996059756912576460}
@@ -228181,7 +228232,11 @@ PrefabInstance:
         type: 3}
       insertIndex: 0
       addedObject: {fileID: 662223689}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3647462276052843524, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8848753409111294326}
   m_SourcePrefab: {fileID: 100100000, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf, type: 3}
 --- !u!114 &8848753409111294324 stripped
 MonoBehaviour:
@@ -228195,6 +228250,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75caa3bb8e4b8fa4aadcba6c1bec2b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8848753409111294325 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3647462276052843524, guid: 65fd6eaef50cfae45ba7d20fbdfcb9cf,
+    type: 3}
+  m_PrefabInstance: {fileID: 8848753409111294323}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8848753409111294326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8848753409111294325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b93cecb0e54ee54085dba3d3271ee02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineColor: {r: 4, g: 0.03, b: 0.03, a: 1}
+  outlineWidth: 0.012
+  outlineRenderers:
+  - {fileID: 662223690}
+  findRenderersInChildrenAutomatically: 1
+  includeInactiveRenderers: 1
+  canHighlight: 1
+  outlineShader: {fileID: 0}
+  showDebugWarnings: 1
 --- !u!114 &8851714754275807967
 MonoBehaviour:
   m_ObjectHideFlags: 0
