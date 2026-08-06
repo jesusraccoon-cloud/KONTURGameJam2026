@@ -180,6 +180,8 @@ public class ElevatorEndingEvent : MonoBehaviour // Главный скрипт 
 
         yield return new WaitForSeconds(3);
 
+        Cursor.lockState = CursorLockMode.None;
+
         SceneManager.LoadSceneAsync("Main Menu");
     }
 
