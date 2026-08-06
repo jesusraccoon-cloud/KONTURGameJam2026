@@ -84,11 +84,6 @@ public class ThreeStageInteractableObject : MonoBehaviour, IInteractable, IHitIn
     [Tooltip("Вызывается только один раз при достижении третьей стадии.")]
     public UnityEvent onDestroyed; // Отдельное событие уничтожения.
 
-    [Header("SAVE")]
-
-    [SerializeField]
-    private SC_Saveable saveable; // Компонент сохранения (авто-поиск). Через его ID хранится стадия объекта между загрузками.
-
     [Header("DEBUG")]
 
     [SerializeField]
@@ -121,14 +116,6 @@ public class ThreeStageInteractableObject : MonoBehaviour, IInteractable, IHitIn
 
     private void Start()
     {
-        if (saveable == null) saveable = GetComponent<SC_Saveable>(); // Ищем SC_Saveable на этом объекте
-        if (saveable == null) saveable = GetComponentInChildren<SC_Saveable>(true); // Или на дочернем
-
-        if (saveable != null && SC_SaveSystem.TryGetState(saveable.id, out int savedStage)) // Есть сохранённая стадия?
-        {
-            currentStage = savedStage; // Восстанавливаем её ДО применения визуала (весь Start ниже настроит правильный вид)
-        }
-
         currentStage = Mathf.Clamp(currentStage, 0, 2); // Ограничиваем стадию допустимыми значениями.
 
         nextObjectIndex = 0; // Начинаем последовательность с первого объекта.
@@ -218,8 +205,6 @@ public class ThreeStageInteractableObject : MonoBehaviour, IInteractable, IHitIn
         currentStage = clampedStage; // Сохраняем новую стадию.
         currentEPresses = 0; // Сбрасываем счётчик E.
         currentHits = 0; // Сбрасываем счётчик ударов.
-
-        if (saveable != null) SC_SaveSystem.SetState(saveable.id, currentStage); // Запоминаем стадию для сохранения
 
         ApplyStageVisuals(); // Переключаем визуальные объекты.
 

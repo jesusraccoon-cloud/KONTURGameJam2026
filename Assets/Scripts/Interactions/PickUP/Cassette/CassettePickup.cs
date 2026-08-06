@@ -50,8 +50,6 @@ public class CassettePickup : MonoBehaviour, IInteractable // Универсал
     [Header("Save Hook")] // Настройки сохранения
     public UnityEvent onCollected; // Дополнительное событие после сбора кассеты
 
-    [SerializeField]
-    private SC_Saveable saveable; // Компонент сохранения кассеты
 
     [Header("Optional Auto Find")] // Автоматический поиск ссылок
     [SerializeField]
@@ -95,13 +93,6 @@ public class CassettePickup : MonoBehaviour, IInteractable // Универсал
         TryFindReferences(); // Повторно проверяем ссылки
 
         ValidateSetup(); // Проверяем настройку Inspector
-
-        if (saveable != null && SC_SaveSystem.IsUsed(saveable.id)) // Если кассета уже была собрана в сохранении
-        {
-            isCollected = true; // Помечаем кассету собранной
-
-            gameObject.SetActive(false); // Прячем кассету
-        }
     }
 
     private void Update() // Выполняется каждый кадр
@@ -268,16 +259,6 @@ public class CassettePickup : MonoBehaviour, IInteractable // Универсал
         {
             noiseEmitter = GetComponent<NoiseEmitter>(); // Ищем его на кассете
         }
-
-        if (saveable == null) // Если SC_Saveable не назначен
-        {
-            saveable = GetComponent<SC_Saveable>(); // Ищем его на самой кассете
-        }
-
-        if (saveable == null) // Если на самой кассете не нашли
-        {
-            saveable = GetComponentInChildren<SC_Saveable>(true); // Ищем в дочерних объектах
-        }
     }
 
     private void ValidateSetup() // Проверяет обязательные ссылки
@@ -350,11 +331,6 @@ public class CassettePickup : MonoBehaviour, IInteractable // Универсал
         isCollected = true; // Помечаем кассету собранной
 
         isEjecting = false; // На всякий случай останавливаем движение
-
-        if (saveable != null) // Если сохранение назначено
-        {
-            saveable.MarkUsed(); // Сохраняем факт сбора
-        }
 
         if (onCollected != null) // Если UnityEvent существует
         {
