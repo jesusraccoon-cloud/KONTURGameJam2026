@@ -30,17 +30,30 @@ public class SC_StairwellSilencer : MonoBehaviour
     [Tooltip("Выключить эти объекты при заглушении (например источники, не привязанные к шине).")]
     [SerializeField] private GameObject[] objectsToDisable; // Объекты выключить
 
+    [Header("Save (необязательно)")]
+    [Tooltip("SC_Saveable, чтобы 'подъезд заглушен' переживало загрузку чекпоинта. Авто-поиск на этом объекте.")]
+    [SerializeField] private SC_Saveable saveable; // Для сохранения состояния
+
     private Coroutine fadeRoutine; // Текущее затухание
     private bool silenced; // Заглушено ли сейчас
 
     private void Awake()
     {
+        if (saveable == null) saveable = GetComponent<SC_Saveable>(); // Ищем SC_Saveable на этом объекте
     }
 
     private void Start()
     {
         // FMOD-шины глобальны и переживают перезагрузку сцены — сбрасываем возможный «залипший» уровень с прошлой сессии
         SetBusVolume(restoreVolume);
+
+        // Если в сохранении отмечено, что подъезд уже заглушен — глушим сразу, без затухания
+        if (saveable != null && SC_SaveSystem.TryGetState(saveable.id, out int st) && st == 1)
+        {
+            silenced = true;
+            SetBusVolume(0f);
+            StopExtras();
+        }
     }
 
     // Вешай на UniversalDoor.onClosed двери квартиры (или вызывай из любого события).
@@ -58,6 +71,7 @@ public class SC_StairwellSilencer : MonoBehaviour
 
         StopExtras(); // Точечные эмиттеры/объекты
 
+        if (saveable != null) SC_SaveSystem.SetState(saveable.id, 1); // Запоминаем: подъезд заглушен
     }
 
     // Вернуть звуки подъезда (если вдруг понадобится). Эмиттеры из списка сами не перезапустятся — только шина/объекты.
@@ -73,6 +87,7 @@ public class SC_StairwellSilencer : MonoBehaviour
         if (objectsToDisable != null)
             foreach (GameObject o in objectsToDisable) if (o != null) o.SetActive(true); // Возвращаем объекты
 
+        if (saveable != null) SC_SaveSystem.SetState(saveable.id, 0); // Запоминаем: подъезд снова слышен
     }
 
     private void StopExtras() // Остановить точечные эмиттеры и выключить объекты
