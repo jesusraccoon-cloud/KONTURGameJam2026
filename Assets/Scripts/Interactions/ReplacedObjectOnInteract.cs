@@ -24,9 +24,6 @@ public class ReplaceObjectOnInteract : MonoBehaviour, IInteractable // Созд�
 
     public bool disableInteractColliderAfterUse = true; // Нужно ли отключить коллайдер после использования
 
-    [Header("Save")] // Заголовок в Inspector для сохранения
-    [SerializeField] private SC_Saveable saveable; // Компонент сохранения (авто-поиск). Через его ID запоминается, что замена уже произошла.
-
     [Header("Debug")] // Заголовок в Inspector для отладки
     public bool showDebugLogs = true; // Показывать ли сообщения в Console
 
@@ -37,18 +34,9 @@ public class ReplaceObjectOnInteract : MonoBehaviour, IInteractable // Созд�
 
     private void Start() // Запускается при старте сцены
     {
-        if (saveable == null) saveable = GetComponent<SC_Saveable>(); // Ищем SC_Saveable на объекте
-        if (saveable == null) saveable = GetComponentInChildren<SC_Saveable>(true); // Или на дочернем
-
         if (disableObjectsToEnableOnStart == true) // Проверяем, нужно ли выключать замену при старте
         {
             SetObjectsActive(objectsToEnable, false); // Выключаем все объекты, которые должны появиться после интеракции
-        }
-
-        if (saveable != null && SC_SaveSystem.TryGetState(saveable.id, out int st) && st == 1) // Замена уже была сделана до загрузки?
-        {
-            wasUsed = true; // Помечаем использованным
-            ApplyReplacement(); // Сразу приводим объект к заменённому виду
         }
     }
 
@@ -57,8 +45,6 @@ public class ReplaceObjectOnInteract : MonoBehaviour, IInteractable // Созд�
         if (canUseOnlyOnce == true && wasUsed == true) return; // Если объект уже использовали и повтор запрещен, выходим
 
         wasUsed = true; // Запоминаем, что интеракция уже произошла
-
-        if (saveable != null) SC_SaveSystem.SetState(saveable.id, 1); // Сохраняем факт замены
 
         ApplyReplacement(); // Выполняем замену
 

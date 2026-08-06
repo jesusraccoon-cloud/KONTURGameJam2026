@@ -40,7 +40,7 @@ public class SC_MusicPlayer : MonoBehaviour
     {
         if (!playOnStart) return; // Автозапуск выключен
 
-        if (suppressIfCheckpointAtLeast > 0 && SC_SaveSystem.Current.checkpoint >= suppressIfCheckpointAtLeast)
+        if (suppressIfCheckpointAtLeast > 0)
         {
             if (showDebugLogs) Debug.Log(gameObject.name + ": музыка не запущена — игрок уже прошёл дальше (чекпоинт)"); // Лог
             return; // После загрузки дальше по игре — вступление не нужно
