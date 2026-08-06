@@ -5,6 +5,8 @@ using Gameplay.Quest; // Подключаем систему задач
 
 public class RadioCassettePuzzle : MonoBehaviour, IInteractable // Один коллайдер включает радио, кассета выезжает и автоматически забирается
 {
+    public string hint = "Взаимодействовать";
+
     [Header("Radio State")] // Состояние радио
     public bool isRadioOn = false; // Включено ли радио сейчас
 
@@ -93,6 +95,8 @@ public class RadioCassettePuzzle : MonoBehaviour, IInteractable // Один ко
     public bool showDebugLogs = true; // Показывать сообщения в Console
 
     private Vector3 cassetteTargetPosition; // Конечная мировая позиция кассеты
+
+    public string Hint => hint;
 
     private void Awake() // Вызывается раньше Start
     {

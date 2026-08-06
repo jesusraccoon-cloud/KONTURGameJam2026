@@ -2,6 +2,8 @@ using UnityEngine; // Подключаем Unity-классы
 
 public class InventoryItemPickup : MonoBehaviour, IInteractable // Универсальный подбираемый предмет
 {
+    public string hint = "Взаимодействовать";
+    public string Hint => hint;
     [Header("Item Settings")] // Блок настроек предмета
     public string itemId = "ClockKey"; // Уникальный ID предмета, например ClockKey
 

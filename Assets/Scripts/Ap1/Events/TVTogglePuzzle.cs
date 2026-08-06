@@ -1,8 +1,11 @@
-using UnityEngine; // Подключаем Unity-классы
 using FMODUnity; // Подключаем FMOD
+using UnityEngine; // Подключаем Unity-классы
 
 public class TVTogglePuzzle : MonoBehaviour, IInteractable // Телевизор включается и выключается через E
 {
+    public string hint = "Взаимодействовать";
+
+
     [Header("TV State")] // Блок состояния телевизора
     public bool isOn = false; // Включён ли телевизор сейчас
 
@@ -29,6 +32,8 @@ public class TVTogglePuzzle : MonoBehaviour, IInteractable // Телевизор
 
     [Header("Debug")] // Блок отладки
     public bool showDebugLogs = true; // Показывать логи
+
+    public string Hint => hint;
 
     private void Start() // При старте сцены
     {

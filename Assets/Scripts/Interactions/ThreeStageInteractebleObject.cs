@@ -14,6 +14,8 @@ using UnityEngine.Events; // Подключаем UnityEvent для событи
 /// </summary>
 public class ThreeStageInteractableObject : MonoBehaviour, IInteractable, IHitInteractable
 {
+    public string hint = "Взаимодействовать";
+    public string Hint => hint;
     [Header("STAGES")]
 
     [Tooltip("Визуал первой стадии: целый объект.")]

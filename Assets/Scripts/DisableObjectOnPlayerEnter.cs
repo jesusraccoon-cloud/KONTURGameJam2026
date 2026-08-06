@@ -14,6 +14,9 @@ using System.Collections; // Подключаем корутины для зад
 [RequireComponent(typeof(Collider))] // На объекте обязательно должен находиться Collider.
 public class DisableObjectOnPlayerEnter : MonoBehaviour, IInteractable, IHitInteractable
 {
+    public string hint = "Взаимодействовать";
+
+
     [Header("ОБЪЕКТ ДЛЯ ОТКЛЮЧЕНИЯ")]
 
     [Tooltip("Перетащи сюда папку или отдельный объект, который должен отключиться.")]
@@ -66,6 +69,10 @@ public class DisableObjectOnPlayerEnter : MonoBehaviour, IInteractable, IHitInte
     private Collider activationCollider; // Сохраняем Collider этого объекта.
 
     private Coroutine activationCoroutine; // Сохраняем запущенную корутину задержки.
+
+    public string Hint => hint;
+
+    public bool ActivateOnInteract { get => activateOnInteract; set => activateOnInteract = value; }
 
     private void Awake()
     {

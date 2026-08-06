@@ -4,6 +4,9 @@ using StarterAssets; // Подключаем Starter Assets
 
 public class CrawlPassage : MonoBehaviour, IInteractable // Универсальный двухсторонний проход
 {
+    public string hint = "Взаимодействовать";
+
+
     [Header("Player References")]
     public Transform playerRoot; // Объект игрока PlayerCapsule
     public CharacterController characterController; // CharacterController игрока
@@ -40,6 +43,8 @@ public class CrawlPassage : MonoBehaviour, IInteractable // Универсаль
 
     [Header("Debug")]
     public bool showDebugLogs = true; // Показывать сообщения в Console
+
+    public string Hint => hint;
 
     public void Interact() // Вызывается PlayerInteractor
     {

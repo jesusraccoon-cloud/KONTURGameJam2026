@@ -4,6 +4,8 @@ using FMODUnity; // Подключаем FMOD
 
 public class CuckooClockPuzzle : MonoBehaviour, IInteractable // Часы открываются только ключом и запускают кукушку
 {
+    public string hint = "Взаимодействовать";
+
     [Header("Inventory")] // Блок инвентаря
     public UniversalInventory inventory; // Универсальный инвентарь игрока
 
@@ -47,6 +49,8 @@ public class CuckooClockPuzzle : MonoBehaviour, IInteractable // Часы отк
     public event System.Action Opened; // Событие: часы открылись (для звука открытия)
 
     public event System.Action Cuckooed; // Событие: кукушка крикнула (для звука крика)
+
+    public string Hint => hint;
 
     public void Interact() // Вызывается PlayerInteractor при E
     {

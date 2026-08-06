@@ -2,6 +2,8 @@ using UnityEngine; // Подключаем Unity-классы, чтобы раб
 
 public class ReplaceObjectOnInteract : MonoBehaviour, IInteractable // Создаем интерактивный скрипт замены объекта через E
 {
+    public string hint = "Взаимодействовать";
+    public string Hint => hint;
     [Header("Objects To Disable")] // Заголовок в Inspector для объектов, которые нужно выключить
     public GameObject[] objectsToDisable; // Сюда кладем оригинальный объект, например картину на стене
 

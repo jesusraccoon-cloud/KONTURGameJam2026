@@ -4,6 +4,8 @@ using UnityEngine; // Unity классы
 
 public class ClosetPhysicalFall : MonoBehaviour, IInteractable // Шкаф который валится после проверки
 {
+    public string hint = "Взаимодействовать";
+
     [Header("Availability")] // Блок доступности
     public ApartmentFinalSequence finalSequence; // Ссылка на финальный сценарий квартиры
     public bool requireFinalSequence = true; // Требовать ли запуск 6/6 перед падением
@@ -32,6 +34,8 @@ public class ClosetPhysicalFall : MonoBehaviour, IInteractable // Шкаф ко�
     private bool isRunning = false; // Защита от повторного запуска
     private bool completed = false; // Уже опрокинут
     public bool canFall = false; // Можно ли сейчас уронить шкаф
+
+    public string Hint => hint;
 
     private void Start() // При старте сцены
     {

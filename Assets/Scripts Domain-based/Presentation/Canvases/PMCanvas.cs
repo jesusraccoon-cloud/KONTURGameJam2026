@@ -3,6 +3,7 @@ using Infrastructure;
 using UnityEngine;
 
 using R3;
+using System.Linq;
 
 namespace Presentation.Canvases
 {
@@ -64,6 +65,9 @@ namespace Presentation.Canvases
         private void TogglePauseScreen()
         {
             if (screens == null || screens.Length == 0) return;
+
+            for (int k = 1; k < screens.Length; k++)
+                screens[k].gameObject.SetActive(false);
 
             bool isOpen = !screens[0].gameObject.activeInHierarchy;
             screens[0].gameObject.SetActive(isOpen);

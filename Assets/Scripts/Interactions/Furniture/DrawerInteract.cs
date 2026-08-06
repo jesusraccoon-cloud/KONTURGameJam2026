@@ -2,6 +2,10 @@ using UnityEngine; // Подключаем базовые функции Unity.
 
 public class DrawerInteract : MonoBehaviour, IInteractable // Скрипт для выдвижения ящика.
 {
+    public string hint = "Взаимодействовать";
+    public string Hint => hint;
+
+
     public enum SlideDirection // Список направлений движения ящика.
     {
         Forward, // Вперёд по локальной Z.

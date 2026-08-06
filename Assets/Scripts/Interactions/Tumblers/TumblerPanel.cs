@@ -2,6 +2,8 @@ using UnityEngine; // Подключаем Unity
 
 public class TumblerPanel : MonoBehaviour, IInteractable, ILookInteractable // Панель реагирует на взгляд и на E
 {
+    public string hint = "Взаимодействовать";
+    public string Hint => hint;
     public Camera playerCamera; // Камера игрока
 
     public TumblerSwitch[] tumblers; // Все тумблеры панели

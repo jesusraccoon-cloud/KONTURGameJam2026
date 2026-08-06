@@ -3,6 +3,9 @@ using UnityEngine; // Подключаем Unity-классы: MonoBehaviour, Tr
 
 public class FinalExitDoorOpenSignal : MonoBehaviour, IInteractable // Скрипт финальной двери: открывает дверь и запускает лифтовый ивент
 {
+    public string hint = "Взаимодействовать";
+
+
     [Header("State")] // Заголовок в Inspector для состояния двери
     public bool isUnlocked = false; // Разрешена ли дверь после 6/6
 
@@ -39,6 +42,8 @@ public class FinalExitDoorOpenSignal : MonoBehaviour, IInteractable // Скри�
     private bool isOpen = false; // Открыта ли дверь сейчас
 
     private bool isMoving = false; // Двигается ли дверь сейчас
+
+    public string Hint => hint;
 
     private void Start() // Запускается один раз при старте сцены
     {

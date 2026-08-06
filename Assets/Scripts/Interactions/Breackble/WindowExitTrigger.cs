@@ -2,6 +2,9 @@ using UnityEngine; // Подключаем Unity-классы
 
 public class WindowExitTrigger : MonoBehaviour, IInteractable // Универсальный двухсторонний переход через разбитое окно
 {
+    public string hint = "Взаимодействовать";
+
+
     [Header("Availability")] // Настройки доступности окна
     public bool availableImmediately = true; // Разрешать использование окна в любой момент после разрушения
 
@@ -50,6 +53,8 @@ public class WindowExitTrigger : MonoBehaviour, IInteractable // Универс�
     public bool playerStartedWindowExit = false; // Финальный флаг выхода через окно
 
     private bool exitUsed = false; // Был ли одноразовый переход уже использован
+
+    public string Hint => hint;
 
     private void Reset() // Автоматическая настройка при добавлении компонента
     {

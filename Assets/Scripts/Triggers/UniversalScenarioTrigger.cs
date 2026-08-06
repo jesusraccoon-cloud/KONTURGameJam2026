@@ -6,6 +6,8 @@ using UnityEngine.Events; // UnityEvent (хук для сохранений)
 
 public class UniversalScenarioTrigger : MonoBehaviour, IInteractable, IHitInteractable
 {
+    public string hint = "Взаимодействовать";
+    public string Hint => hint;
     private enum ActivationSource { Enter, Interact, Hit, External } // Источник активации
 
     [Header("Activation Type")]

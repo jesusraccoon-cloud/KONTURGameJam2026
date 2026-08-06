@@ -3,6 +3,8 @@ using FMODUnity; // Подключаем FMOD (EventReference, RuntimeManager)
 
 public class LightSwitch : MonoBehaviour, IInteractable // Выключатель света, который работает через PlayerInteractor
 {
+    public string hint = "Взаимодействовать";
+    public string Hint => hint;
     [Header("Light Settings")] // Настройки света
     public Light[] lightsToToggle; // Все источники света, которыми управляет этот выключатель
 

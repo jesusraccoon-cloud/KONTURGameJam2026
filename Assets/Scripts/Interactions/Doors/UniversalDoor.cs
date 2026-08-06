@@ -373,14 +373,3 @@ public class UniversalDoor : MonoBehaviour // Универсальная две�
         noiseEmitter.EmitNoise(noisePower);
     }
 }
-
-public class UniversalDoorInteractForwarder : MonoBehaviour, IInteractable
-{
-    public UniversalDoor door;
-    public void Interact()
-    {
-        if (door == null) door = GetComponentInParent<UniversalDoor>();
-        if (door == null) return;
-        door.Interact();
-    }
-}

@@ -1,6 +1,7 @@
 using UnityEngine; // Подключаем Unity-классы
+using R3;
 
-public class PlayerInteractor : MonoBehaviour // Центральный скрипт взаимодействия игрока
+public class PlayerInteractor : MonoSingleton<PlayerInteractor> // Центральный скрипт взаимодействия игрока
 {
     [Header("References")] // Блок ссылок
     public Camera playerCamera; // Камера игрока, из которой выпускаются лучи
@@ -32,7 +33,7 @@ public class PlayerInteractor : MonoBehaviour // Центральный скри
 
     public bool showDebugLogs = false; // Показывать debug-логи
 
-    private IInteractable currentInteractable; // Текущий объект для E
+    private ReactiveProperty<IInteractable> currentInteractable = new(); // Текущий объект для E
 
     private IHitInteractable currentHitInteractable; // Текущий объект для удара
 
@@ -41,6 +42,11 @@ public class PlayerInteractor : MonoBehaviour // Центральный скри
     private ILookInteractable currentLookInteractable; // Текущий объект наведения
 
     private ILookInteractable previousLookInteractable; // Предыдущий объект наведения
+
+
+    public ReadOnlyReactiveProperty<IInteractable> CurrentInteraction => 
+        currentInteractable.ToReadOnlyReactiveProperty();
+
 
     private void Start() // Запускается один раз при старте сцены
     {
@@ -74,9 +80,9 @@ public class PlayerInteractor : MonoBehaviour // Центральный скри
 
         if (playerHideController != null && playerHideController.isHidden) return; // Если игрок спрятан, E снаружи не работает
 
-        if (currentInteractable != null) // Если перед игроком есть интерактивный объект
+        if (currentInteractable.CurrentValue != null) // Если перед игроком есть интерактивный объект
         {
-            currentInteractable.Interact(); // Вызываем обычное взаимодействие
+            currentInteractable.CurrentValue.Interact(); // Вызываем обычное взаимодействие
 
             return; // Выходим, чтобы не подобрать предмет в этот же кадр
         }
@@ -114,7 +120,7 @@ public class PlayerInteractor : MonoBehaviour // Центральный скри
 
     private void FindCurrentInteractable() // Поиск объекта перед игроком
     {
-        currentInteractable = null; // Сбрасываем объект для E
+        currentInteractable.Value = null; // Сбрасываем объект для E
 
         currentWardrobeHideForwarder = null; // Сбрасываем зону пряток для Q
 
@@ -128,7 +134,32 @@ public class PlayerInteractor : MonoBehaviour // Центральный скри
 
         if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactLayers, triggerInteraction)) // Пускаем луч взаимодействия
         {
-            currentInteractable = FindInterfaceInColliderOrParents<IInteractable>(hit.collider); // Ищем объект для E
+            var interaction = FindInterfaceInColliderOrParents<IInteractable>(hit.collider); // Ищем объект для E
+
+            if (interaction != null)
+            {
+                if (interaction is DisableObjectOnPlayerEnter obj)
+                {
+                    if (obj != null)
+                    {
+                        currentInteractable.Value = obj.ActivateOnInteract
+                            ? obj
+                            : null;
+                    }
+                    else
+                    {
+                        currentInteractable.Value = interaction;
+                    }
+                }
+                else
+                {
+                    currentInteractable.Value = interaction;
+                }
+            }
+            else
+            {
+                currentInteractable.Value = null;
+            }
 
             currentWardrobeHideForwarder = hit.collider.GetComponent<WardrobeHideInteractForwarder>(); // Ищем зону пряток прямо на коллайдере
 

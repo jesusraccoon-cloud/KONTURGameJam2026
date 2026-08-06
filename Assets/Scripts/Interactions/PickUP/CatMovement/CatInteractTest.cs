@@ -3,7 +3,8 @@ using UnityEngine; // Подключаем Unity-классы
 public class CatInteractTest : MonoBehaviour, IInteractable // Скрипт интеракции с котом через PlayerInteractor
 {
     public CatMoveToPoint catMoveScript; // Ссылка на скрипт движения кота
-
+    public string hint = "Взаимодействовать";
+    public string Hint => hint;
     private void Reset() // Вызывается, когда скрипт добавляют на объект
     {
         catMoveScript = GetComponent<CatMoveToPoint>(); // Пытаемся найти CatMoveToPoint на этом же объекте
