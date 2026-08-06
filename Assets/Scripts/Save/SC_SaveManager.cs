@@ -74,6 +74,8 @@ public class SC_SaveManager : MonoBehaviour
     // а также на onHallDoorBreak (2) и onFinalStart (3) у ApartmentFinalSequence.
     public void SaveCheckpoint(int checkpointIndex)
     {
+        return;
+
         string label = (checkpoints != null && checkpointIndex >= 1 && checkpointIndex <= checkpoints.Length)
             ? checkpoints[checkpointIndex - 1].label // Берём подпись из конфига
             : ("Checkpoint " + checkpointIndex); // Или дефолтную
@@ -101,6 +103,8 @@ public class SC_SaveManager : MonoBehaviour
     // Перезагрузка сцены на последний чекпоинт (смерть игрока / кнопка «Загрузить»).
     public void ReloadLastCheckpoint()
     {
+        return;
+
         if (SC_SaveSystem.Current.checkpoint <= 0) // Если ещё ни одного чекпоинта не было
         {
             if (showDebugLogs) Debug.Log("SaveManager: нет чекпоинта — перезагрузка с начала"); // Лог
@@ -113,6 +117,8 @@ public class SC_SaveManager : MonoBehaviour
     // Continue из меню: читаем сейв с диска и грузим сохранённую сцену.
     public void ContinueFromDisk()
     {
+        return;
+
         if (!SC_SaveSystem.LoadDisk()) // Пробуем прочитать диск
         {
             if (showDebugLogs) Debug.Log("SaveManager: сейва на диске нет"); // Лог
@@ -128,9 +134,10 @@ public class SC_SaveManager : MonoBehaviour
     // Новая игра: удаляем сейв и грузим игровую сцену с нуля.
     public void NewGame()
     {
+        SceneManager.LoadScene(string.IsNullOrEmpty(gameplaySceneName) ? SceneManager.GetActiveScene().name : gameplaySceneName); // Грузим сцену
+        return;
         SC_SaveSystem.DeleteSave(); // Стираем сохранение
         SC_SaveSystem.ApplyOnNextLoad = false; // Ничего не применяем
-        SceneManager.LoadScene(string.IsNullOrEmpty(gameplaySceneName) ? SceneManager.GetActiveScene().name : gameplaySceneName); // Грузим сцену
     }
 
     public bool HasSave() => SC_SaveSystem.HasDiskSave; // Есть ли сейв (для активации кнопки Continue)
@@ -139,6 +146,8 @@ public class SC_SaveManager : MonoBehaviour
 
     private void ApplyLoadedState()
     {
+        return;
+
         SC_SaveData data = SC_SaveSystem.Current; // Текущее сохранение
 
         if (data == null || data.checkpoint <= 0) // Нечего применять
@@ -172,6 +181,8 @@ public class SC_SaveManager : MonoBehaviour
 
     private void RestoreMonster(SC_SaveData data) // Возврат монстра на сохранённую позицию
     {
+        return;
+
         if (!restoreMonsterState || monsterAI == null) return; // Выключено или монстра нет
 
         if (!data.monsterActive) return; // На чекпоинте монстр был неактивен — не трогаем
@@ -196,6 +207,8 @@ public class SC_SaveManager : MonoBehaviour
 
     private void TeleportPlayer(Vector3 pos, float yaw) // Телепорт игрока (с учётом CharacterController и поворота камеры)
     {
+        return;
+
         if (player == null) return; // Нет игрока — выходим
 
         bool ccWasEnabled = playerController != null && playerController.enabled; // Был ли включён CC

@@ -20,6 +20,8 @@ public static class SC_SaveSystem
 
     public static void MarkUsed(string id) // Пометить объект использованным
     {
+        return;
+
         if (string.IsNullOrEmpty(id)) return; // Пустой ID игнорируем
 
         if (!Current.used.Contains(id)) Current.used.Add(id); // Добавляем, если ещё нет
@@ -27,6 +29,7 @@ public static class SC_SaveSystem
 
     public static bool IsUsed(string id) // Использован ли объект
     {
+        return false;
         return current != null && !string.IsNullOrEmpty(id) && current.used.Contains(id); // Есть ли в списке
     }
 
@@ -34,6 +37,8 @@ public static class SC_SaveSystem
 
     public static void SetState(string id, int value) // Сохранить состояние объекта
     {
+        return;
+
         if (string.IsNullOrEmpty(id)) return; // Пустой ID игнорируем
 
         int idx = Current.stateKeys.IndexOf(id); // Ищем существующую запись
@@ -44,6 +49,7 @@ public static class SC_SaveSystem
     public static bool TryGetState(string id, out int value) // Прочитать сохранённое состояние
     {
         value = 0; // Значение по умолчанию
+        return false;
 
         if (current == null || string.IsNullOrEmpty(id)) return false; // Нечего читать
 
@@ -58,6 +64,8 @@ public static class SC_SaveSystem
     // Позиции игрока/монстра и список used менеджер выставляет в Current заранее.
     public static void SaveCheckpoint(int checkpoint, string label, string sceneName)
     {
+        return;
+
         Current.checkpoint = checkpoint; // Номер чекпоинта
         Current.checkpointLabel = label; // Подпись
         Current.sceneName = sceneName; // Сцена
@@ -68,12 +76,16 @@ public static class SC_SaveSystem
 
     public static void WriteDisk() // Записать текущее сохранение на диск
     {
+        return;
+
         try { File.WriteAllText(FilePath, JsonUtility.ToJson(Current, true)); } // JSON с отступами
         catch (System.Exception e) { Debug.LogWarning("SC_SaveSystem: не удалось записать сейв: " + e.Message); } // Ошибку не роняем
     }
 
     public static bool LoadDisk() // Прочитать сохранение с диска в память
     {
+        return false;
+
         if (!HasDiskSave) return false; // Нет файла — нечего грузить
 
         try
@@ -89,6 +101,8 @@ public static class SC_SaveSystem
 
     public static void DeleteSave() // Удалить сохранение (Новая игра)
     {
+        return;
+
         current = null; // Сбрасываем память
         try { if (File.Exists(FilePath)) File.Delete(FilePath); } catch { } // Удаляем файл
     }

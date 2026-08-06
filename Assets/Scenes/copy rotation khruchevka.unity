@@ -110799,7 +110799,7 @@ PrefabInstance:
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.788
+      value: 7.233
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
@@ -124681,7 +124681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae3913d065e90d46b12feacd5afc205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dontDestroyOnLoad: 1
+  _dontDestroyOnLoad: 0
   playerCamera: {fileID: 1662243037}
   playerHideController: {fileID: 1881408442}
   objectGrabber: {fileID: 1662243038}
